@@ -2,7 +2,7 @@
 Project model for Polarion Mock Server
 """
 
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any, List, Literal
 from datetime import datetime
 from dataclasses import dataclass, field
 from pydantic import BaseModel, Field
@@ -34,7 +34,7 @@ class ProjectAttributes(BaseModel):
 
 class Project(BaseModel):
     """Project model representing a Polarion project."""
-    type: str = Field(default="projects", const=True)
+    type: Literal["projects"] = Field(default="projects")
     id: str = Field(description="Project ID")
     attributes: ProjectAttributes = Field(description="Project attributes")
     relationships: Optional[Dict[str, Any]] = Field(default=None, description="Related resources")

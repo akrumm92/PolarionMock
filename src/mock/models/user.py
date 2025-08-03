@@ -2,7 +2,7 @@
 User model for Polarion Mock Server
 """
 
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any, List, Literal
 from datetime import datetime
 from pydantic import BaseModel, Field
 from .common import BaseResource
@@ -26,7 +26,7 @@ class UserAttributes(BaseModel):
 
 class User(BaseResource):
     """User model representing a Polarion user."""
-    type: str = Field(default="users", const=True)
+    type: Literal["users"] = Field(default="users")
     attributes: UserAttributes = Field(description="User attributes")
     
     @classmethod

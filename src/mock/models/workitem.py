@@ -2,7 +2,7 @@
 Work Item model for Polarion Mock Server
 """
 
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any, List, Literal
 from datetime import datetime
 from pydantic import BaseModel, Field
 from .common import Description, BaseResource
@@ -36,7 +36,7 @@ class WorkItemAttributes(BaseModel):
 
 class WorkItem(BaseResource):
     """Work Item model representing a Polarion work item."""
-    type: str = Field(default="workitems", const=True)
+    type: Literal["workitems"] = Field(default="workitems")
     attributes: WorkItemAttributes = Field(description="Work item attributes")
     
     @classmethod

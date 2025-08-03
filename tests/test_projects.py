@@ -6,7 +6,9 @@ Tests run against both mock and production environments
 import pytest
 import requests
 import logging
+import json
 from typing import List, Dict, Any
+from tests.utils.test_helpers import APITestClient, log_test_data, assert_with_logging, log_test_section
 
 logger = logging.getLogger(__name__)
 
@@ -15,33 +17,59 @@ class TestProjects:
     """Test suite for Projects API endpoints."""
     
     @pytest.mark.smoke
-    def test_api_availability(self, api_base_url, test_env):
+    def test_api_availability(self, api_base_url, test_env, log_test_info, capture_api_calls):
         """Test if API is available by checking projects endpoint without auth."""
+        log_test_info.info(f"Testing API availability at {api_base_url}")
+        log_test_info.info(f"Environment: {test_env}")
+        
         url = f"{api_base_url}/projects"
+        log_test_info.debug(f"Making request to: {url}")
+        
         response = requests.get(url)
+        capture_api_calls(
+            method="GET",
+            url=url,
+            status_code=response.status_code,
+            response_data=response.json() if response.status_code != 204 else None
+        )
         
         # According to Polarion spec, /projects returns 401 when API is available
+        log_test_info.info(f"Response status: {response.status_code}")
         assert response.status_code == 401, f"Expected 401, got {response.status_code}"
         
         # Check error format
         data = response.json()
+        log_test_info.debug(f"Response data: {data}")
         assert "errors" in data
         assert len(data["errors"]) > 0
         assert data["errors"][0]["status"] == "401"
         
-        logger.info(f"[{test_env}] API is available at {api_base_url}")
+        log_test_info.info(f"✓ [{test_env}] API is available at {api_base_url}")
     
     @pytest.mark.integration
-    def test_list_projects(self, api_base_url, auth_headers, test_env, mock_server_running):
+    def test_list_projects(self, api_base_url, auth_headers, test_env, mock_server_running, log_test_info, capture_api_calls):
         """Test listing all projects."""
+        log_test_info.info("Testing: List all projects")
+        
         url = f"{api_base_url}/projects"
+        log_test_info.debug(f"Request URL: {url}")
+        log_test_info.debug(f"Headers: {auth_headers}")
+        
         response = requests.get(url, headers=auth_headers)
+        capture_api_calls(
+            method="GET",
+            url=url,
+            status_code=response.status_code,
+            response_data=response.json() if response.content else None
+        )
         
         # Check response status
+        log_test_info.info(f"Response status: {response.status_code}")
         assert response.status_code == 200, f"Failed to list projects: {response.text}"
         
         # Validate JSON:API response structure
         data = response.json()
+        log_test_info.debug(f"Response has {len(data.get('data', []))} projects")
         assert "data" in data, "Response missing 'data' field"
         assert isinstance(data["data"], list), "Data should be a list"
         

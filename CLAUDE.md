@@ -40,10 +40,11 @@ This is currently a greenfield project with a detailed specification in PROJECT_
 ```bash
 # Install dependencies
 pip install -r requirements.txt
+# Or for minimal setup:
+pip install -r requirements-minimal.txt
 
 # Run the mock server
-python -m src.mock.app
-# Alternative: python -m src.mock.server (if server.py exists)
+MOCK_PORT=5001 python -m src.mock
 
 # Run all tests
 pytest
@@ -176,9 +177,9 @@ When writing tests:
 
 ```bash
 POLARION_ENV=mock|production  # Target environment for tests
-POLARION_API_URL             # Base URL for Polarion API
-POLARION_API_KEY             # API authentication key
-MOCK_PORT=5000              # Port for mock server
+POLARION_API_ENDPOINT        # Full Polarion REST API endpoint (e.g., https://polarion.example.com/polarion/rest/v1)
+POLARION_PERSONAL_ACCESS_TOKEN  # Personal Access Token for API authentication
+MOCK_PORT=5001              # Port for mock server (5001 to avoid macOS AirPlay conflicts)
 ENABLE_WEBSOCKET=true       # Enable WebSocket support
 ```
 
@@ -212,8 +213,12 @@ ENABLE_WEBSOCKET=true       # Enable WebSocket support
 
 1. **Always check .env**: Many issues come from wrong environment variables
 2. **Read logs**: Detailed logs in `test_reports/*/logs/`
+   - `pytest.log`: Complete test execution log with DEBUG level
+   - `environment.txt`: Test environment configuration
 3. **Incremental development**: Make small, testable changes
 4. **Mock-first**: Implement new features in mock before production tests
+5. **Test with logging**: Use `python run_single_test.py <test_file>` for detailed logs
+6. **Check reports**: HTML reports in `test_reports/*/report.html` show test results visually
 
 ## Resources
 

@@ -2,7 +2,7 @@
 Collection model for Polarion Mock Server
 """
 
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any, List, Literal
 from datetime import datetime
 from pydantic import BaseModel, Field
 from .common import Description, BaseResource
@@ -27,7 +27,7 @@ class CollectionAttributes(BaseModel):
 
 class Collection(BaseResource):
     """Collection model representing a Polarion collection."""
-    type: str = Field(default="collections", const=True)
+    type: Literal["collections"] = Field(default="collections")
     attributes: CollectionAttributes = Field(description="Collection attributes")
     
     @classmethod

@@ -2,7 +2,7 @@
 Document model for Polarion Mock Server
 """
 
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any, List, Literal
 from datetime import datetime
 from pydantic import BaseModel, Field
 from .common import Description, BaseResource
@@ -29,7 +29,7 @@ class DocumentAttributes(BaseModel):
 
 class Document(BaseResource):
     """Document model representing a Polarion document."""
-    type: str = Field(default="documents", const=True)
+    type: Literal["documents"] = Field(default="documents")
     attributes: DocumentAttributes = Field(description="Document attributes")
     
     @classmethod

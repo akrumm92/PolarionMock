@@ -11,7 +11,7 @@ A comprehensive mock and testing framework for Polarion ALM, providing:
 - 🔄 Real-time WebSocket support
 - 🧪 Comprehensive test suite with pytest
 - 📊 Performance tracking and analysis
-- 🔐 Authentication simulation
+- 🔐 JWT-based authentication with token generator
 - 📈 Real-time test execution dashboard
 
 ## Quick Start
@@ -29,6 +29,8 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
+# Or for minimal setup:
+pip install -r requirements-minimal.txt
 
 # Install in development mode
 pip install -e .
@@ -41,34 +43,104 @@ pip install -e .
 cp .env.example .env
 ```
 
-2. Update `.env` with your Polarion credentials and preferences.
+2. Update `.env` with your configuration:
+   - **For Mock Testing**: No changes needed, just set `POLARION_ENV=mock`
+   - **For Production Testing**: 
+     - Set `POLARION_API_ENDPOINT` to your Polarion REST API URL (e.g., `https://polarion.example.com/polarion/rest/v1`)
+     - Set `POLARION_PERSONAL_ACCESS_TOKEN` to your PAT (generated in Polarion user settings)
 
 ### Running the Mock Server
 
 ```bash
-# Start the mock server
-python -m src.mock.app
+# Start the mock server (default port 5001)
+MOCK_PORT=5001 python -m src.mock
 
-# Or use the CLI
-polarion-mock serve --port 5000
+# Or specify a different port
+MOCK_PORT=8080 python -m src.mock
 ```
+
+### Authentication
+
+The mock server supports JWT-based authentication similar to production Polarion.
+
+#### Quick Start:
+```bash
+# Option 1: Disable authentication for testing
+# Edit .env and set: DISABLE_AUTH=true
+
+# Option 2: Generate and use a token
+python generate_token.py
+# Copy the Bearer token and use in requests:
+curl -H "Authorization: Bearer <TOKEN>" http://localhost:5001/polarion/rest/v1/projects
+```
+
+#### Configuration:
+- `DISABLE_AUTH`: Set to `true` to disable authentication (default: `false`)
+- `JWT_SECRET_KEY`: Secret key for JWT signing (default: `dev-secret-key`)
+
+See [README_QUICK_START.md](README_QUICK_START.md) for detailed authentication examples.
 
 ### Running Tests
 
 ```bash
-# Run all tests against mock
-export POLARION_ENV=mock && pytest
+# Run all tests against mock with full logging
+python run_tests.py --env mock
+
+# Run a single test file with detailed logging
+python run_single_test.py tests/test_projects.py
 
 # Run specific test categories
 pytest tests/api/  # API tests only
 pytest tests/workflows/  # Workflow tests only
 
 # Run with coverage
-pytest --cov=src --cov-report=html
+python run_tests.py --env mock --coverage
 
-# Run tests in parallel
-pytest -n auto
+# View test results
+ls -la test_reports/  # List all test runs
+cat test_reports/*/logs/pytest.log  # View test logs
+open test_reports/*/report.html  # View HTML report (macOS)
 ```
+
+#### Test Logging
+
+All tests automatically generate:
+- **HTML Report**: `test_reports/<timestamp>/report.html`
+- **JSON Report**: `test_reports/<timestamp>/report.json`
+- **Detailed Logs**: `test_reports/<timestamp>/logs/pytest.log`
+- **Environment Info**: `test_reports/<timestamp>/logs/environment.txt`
+
+Logs include:
+- API request/response details
+- Test execution flow
+- Assertions with actual vs expected values
+- Performance metrics
+
+### Polarion Integration
+
+#### Testing Connection
+```bash
+# Test your Polarion connection with Personal Access Token
+python scripts/test_polarion_connection.py
+```
+
+#### Extracting API Specification
+```bash
+# Analyze Polarion's OpenAPI/Swagger specification
+python AnalyseSwaggerUI/analyseSwaggerUi.py
+```
+
+#### Personal Access Token (PAT)
+1. Generate a PAT in Polarion:
+   - Go to your Polarion user settings
+   - Navigate to "Personal Access Tokens"
+   - Create a new token with appropriate permissions
+
+2. Configure in `.env`:
+   ```
+   POLARION_API_ENDPOINT=https://your-server.com/polarion/rest/v1
+   POLARION_PERSONAL_ACCESS_TOKEN=your-token-here
+   ```
 
 ## Project Structure
 

@@ -25,6 +25,11 @@ def create_report_directory():
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     report_dir = Path(f"test_reports/{timestamp}")
     report_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Create logs subdirectory
+    logs_dir = report_dir / "logs"
+    logs_dir.mkdir(exist_ok=True)
+    
     return report_dir
 
 
@@ -67,6 +72,14 @@ def start_mock_server():
 def run_tests(env, test_path=None, extra_args=None):
     """Run pytest with specified environment."""
     report_dir = create_report_directory()
+    log_file = report_dir / "logs" / "pytest.log"
+    
+    # Configure logging to file
+    file_handler = logging.FileHandler(log_file)
+    file_handler.setLevel(logging.DEBUG)
+    file_formatter = logging.Formatter('%(asctime)s [%(levelname)s] [%(name)s] %(message)s')
+    file_handler.setFormatter(file_formatter)
+    logging.getLogger().addHandler(file_handler)
     
     # Build pytest command
     cmd = [
@@ -76,6 +89,8 @@ def run_tests(env, test_path=None, extra_args=None):
         f"--html={report_dir}/report.html",
         "--self-contained-html",
         f"--json-report-file={report_dir}/report.json",
+        f"--log-file={log_file}",
+        "--log-file-level=DEBUG",
     ]
     
     # Add coverage if requested
@@ -103,6 +118,20 @@ def run_tests(env, test_path=None, extra_args=None):
     result = subprocess.run(cmd)
     
     logger.info(f"Test reports saved to: {report_dir}")
+    logger.info(f"Logs saved to: {report_dir}/logs/pytest.log")
+    
+    # Save environment info
+    env_info_file = report_dir / "logs" / "environment.txt"
+    with open(env_info_file, 'w') as f:
+        f.write(f"Test Environment: {env}\n")
+        f.write(f"Test Path: {test_path or 'tests/'}\n")
+        f.write(f"Timestamp: {datetime.now()}\n")
+        f.write(f"Python Version: {sys.version}\n")
+        f.write(f"\nEnvironment Variables:\n")
+        for key, value in os.environ.items():
+            if 'POLARION' in key or 'MOCK' in key:
+                f.write(f"  {key}={value}\n")
+    
     return result.returncode
 
 

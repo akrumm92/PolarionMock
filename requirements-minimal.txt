@@ -2,8 +2,11 @@
 Flask==3.0.0
 Flask-CORS==4.0.0
 python-dotenv==1.0.0
-pydantic==2.5.2
+pydantic==2.10.6
 pytest==7.4.3
+pytest-html==4.1.1
+pytest-json-report==1.5.0
 requests==2.31.0
 structlog==23.2.0
 python-json-logger==2.0.7
+PyJWT==2.8.0

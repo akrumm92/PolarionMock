@@ -19,6 +19,7 @@ pydantic==2.5.2
 jsonschema==4.20.0
 openapi-spec-validator==0.7.1
 pyyaml==6.0.1
+PyJWT==2.8.0
 
 # HTTP clients and testing
 requests==2.31.0

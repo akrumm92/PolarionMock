@@ -12,11 +12,13 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 # 3. Install minimal dependencies
 pip install -r requirements-minimal.txt
 
-# 4. Start the mock server
-python3 -m src.mock
+# 4. Start the mock server (port 5001 to avoid conflicts)
+MOCK_PORT=5001 python3 -m src.mock
 ```
 
-The server will start on http://localhost:5000
+The server will start on http://localhost:5001
+
+**Note**: Port 5000 is often used by macOS AirPlay. Use port 5001 or another port to avoid conflicts.
 
 ## 📋 What's Included
 
@@ -42,26 +44,57 @@ The mock server comes pre-loaded with dummy data:
   - Test cases
   - User stories
 
+## 🔐 Authentication Quick Start
+
+**Note**: Authentication is currently enabled. You have two options:
+
+### Option A: Disable Auth (Easiest for testing)
+```bash
+# Edit .env and set:
+DISABLE_AUTH=true
+# Restart the server
+```
+
+### Option B: Generate a Token
+```bash
+python generate_token.py
+# Copy the Bearer token from output
+```
+
 ## 🧪 Testing the API
+
+**Note**: If authentication is enabled, add `-H "Authorization: Bearer <YOUR_TOKEN>"` to all curl commands.
 
 ### List all projects
 ```bash
-curl http://localhost:5000/polarion/rest/v1/projects
+# Without auth (if DISABLE_AUTH=true):
+curl http://localhost:5001/polarion/rest/v1/projects
+
+# With auth:
+curl -H "Authorization: Bearer <YOUR_TOKEN>" http://localhost:5001/polarion/rest/v1/projects
 ```
 
 ### List work items in a project
 ```bash
-curl http://localhost:5000/polarion/rest/v1/projects/elibrary/workitems
+# Without auth:
+curl http://localhost:5001/polarion/rest/v1/projects/elibrary/workitems
+
+# With auth:
+curl -H "Authorization: Bearer <YOUR_TOKEN>" http://localhost:5001/polarion/rest/v1/projects/elibrary/workitems
 ```
 
 ### Get a specific document
 ```bash
-curl http://localhost:5000/polarion/rest/v1/projects/elibrary/spaces/_default/documents/requirements
+# Without auth:
+curl http://localhost:5001/polarion/rest/v1/projects/elibrary/spaces/_default/documents/requirements
+
+# With auth:
+curl -H "Authorization: Bearer <YOUR_TOKEN>" http://localhost:5001/polarion/rest/v1/projects/elibrary/spaces/_default/documents/requirements
 ```
 
 ### Create a new work item
 ```bash
-curl -X POST http://localhost:5000/polarion/rest/v1/projects/myproject/workitems \
+curl -X POST http://localhost:5001/polarion/rest/v1/projects/myproject/workitems \
   -H "Content-Type: application/json" \
   -d '{
     "data": [{
@@ -78,18 +111,48 @@ curl -X POST http://localhost:5000/polarion/rest/v1/projects/myproject/workitems
 
 ### Query work items in a document
 ```bash
-curl "http://localhost:5000/polarion/rest/v1/projects/elibrary/workitems?query=module.id:elibrary/_default/requirements"
+curl "http://localhost:5001/polarion/rest/v1/projects/elibrary/workitems?query=module.id:elibrary/_default/requirements"
 ```
 
 ## 🔧 Configuration
 
-Authentication is disabled by default for easy testing. To enable it:
+### Authentication
 
-1. Edit `.env` file
-2. Set `DISABLE_AUTH=false`
-3. Use Bearer token in requests:
+Authentication is currently **enabled** by default (`DISABLE_AUTH=false` in `.env`).
+
+#### Option 1: Disable Authentication (for easy testing)
+```bash
+# Edit .env file and set:
+DISABLE_AUTH=true
+```
+
+#### Option 2: Use Authentication Token
+
+1. **Generate a token** using the provided script:
    ```bash
-   curl -H "Authorization: Bearer your-token" http://localhost:5000/polarion/rest/v1/projects
+   source venv/bin/activate
+   python generate_token.py
+   # Enter user ID (default: admin)
+   # Enter validity in hours (default: 24)
+   ```
+
+2. **Use the token** in your requests:
+   ```bash
+   # The script will output a Bearer token like:
+   # Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+   
+   # Use it in curl:
+   curl -H "Authorization: Bearer <YOUR_TOKEN>" http://localhost:5001/polarion/rest/v1/projects
+   
+   # Or set as environment variable:
+   export AUTH_TOKEN="Bearer <YOUR_TOKEN>"
+   curl -H "Authorization: $AUTH_TOKEN" http://localhost:5001/polarion/rest/v1/projects
+   ```
+
+3. **Configure JWT Secret** (optional):
+   ```bash
+   # In .env file:
+   JWT_SECRET_KEY=your-secret-key-here
    ```
 
 ## 📝 Running Tests
@@ -137,8 +200,10 @@ See `test_workitem_move_between_documents` in `tests/test_integration.py`
 ## 🐛 Troubleshooting
 
 1. **Module not found errors**: Make sure virtual environment is activated
-2. **Port already in use**: Change port in `.env` file (`MOCK_PORT=5001`)
+2. **Port already in use**: The server defaults to port 5001. Change with `MOCK_PORT=8080`
 3. **Import errors**: Ensure you're in the project root directory
+4. **PyJWT missing**: Run `pip install PyJWT==2.8.0`
+5. **Pydantic errors**: Ensure you have pydantic>=2.10.6 for Python 3.13 support
 
 ## 📚 More Information
 

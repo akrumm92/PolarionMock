@@ -2,7 +2,7 @@
 Common data models used across Polarion Mock Server
 """
 
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any, List, Literal
 from datetime import datetime
 from pydantic import BaseModel, Field
 
@@ -50,7 +50,7 @@ class Revision(BaseModel):
 
 class User(BaseModel):
     """User reference."""
-    type: str = Field(default="users", const=True)
+    type: Literal["users"] = Field(default="users")
     id: str = Field(description="User ID")
     name: Optional[str] = Field(default=None, description="User display name")
     email: Optional[str] = Field(default=None, description="User email")
