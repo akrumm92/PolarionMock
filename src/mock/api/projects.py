@@ -6,7 +6,8 @@ import logging
 from flask import Blueprint, request, jsonify, g
 from typing import Dict, Any
 
-from ..models.project import Project, ProjectStore
+from ..models.project import Project
+from ..storage.data_store import data_store
 from ..utils.response_builder import JSONAPIResponseBuilder
 from ..middleware.auth import require_auth
 from ..middleware.error_handler import NotFoundError, ValidationError
@@ -16,8 +17,8 @@ logger = logging.getLogger(__name__)
 # Create blueprint
 bp = Blueprint('projects', __name__)
 
-# Initialize project store (in production, this would be a database)
-project_store = ProjectStore()
+# Use global data store
+project_store = data_store.projects
 
 # Initialize response builder
 response_builder = JSONAPIResponseBuilder()
