@@ -1,0 +1,68 @@
+{
+  "data": [
+    {
+      "type": "workitems",
+      "attributes": {
+        "description": {
+          "type": "Use Case",
+          "value": "My text value"
+        },
+        "dueDate": "1970-01-01",
+        "hyperlinks": [
+          {
+            "role": "ref_ext",
+            "uri": "https://polarion.plm.automation.siemens.com"
+          }
+        ],
+        "initialEstimate": "5 1/2d",
+        "priority": "90.0",
+        "remainingEstimate": "5 1/2d",
+        "resolution": "done",
+        "resolvedOn": "1970-01-01T00:00:00Z",
+        "severity": "NA",
+        "status": "proposed",
+        "timeSpent": "5 1/2d",
+        "title": "Title",
+        "type": "information"
+      },
+      "relationships": {
+        "assignee": {
+          "data": [
+            {
+              "type": "users",
+              "id": "MyUserId"
+            }
+          ]
+        },
+        "author": {
+          "data": {
+            "type": "users",
+            "id": "MyUserId"
+          }
+        },
+        "categories": {
+          "data": [
+            {
+              "type": "categories",
+              "id": "MyProjectId/MyCategoryId"
+            }
+          ]
+        },
+        "linkedRevisions": {
+          "data": [
+            {
+              "type": "revisions",
+              "id": "default/1234"
+            }
+          ]
+        },
+        "module": {
+          "data": {
+            "type": "documents",
+            "id": "MyProjectId/MySpaceId/MyDocumentId"
+          }
+        }
+      }
+    }
+  ]
+}

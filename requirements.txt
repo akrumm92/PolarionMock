@@ -1,0 +1,58 @@
+# Core Flask dependencies
+Flask==3.0.0
+Flask-CORS==4.0.0
+Flask-SocketIO==5.3.5
+python-socketio==5.10.0
+
+# Testing framework
+pytest==7.4.3
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+pytest-html==4.1.1
+pytest-json-report==1.5.0
+pytest-benchmark==4.0.0
+pytest-xdist==3.5.0
+pytest-timeout==2.2.0
+
+# API and validation
+pydantic==2.5.2
+jsonschema==4.20.0
+openapi-spec-validator==0.7.1
+pyyaml==6.0.1
+
+# HTTP clients and testing
+requests==2.31.0
+httpx==0.25.2
+responses==0.24.1
+
+# Data generation and fixtures
+faker==20.1.0
+factory-boy==3.3.0
+
+# Environment and configuration
+python-dotenv==1.0.0
+
+# Logging and monitoring
+structlog==23.2.0
+python-json-logger==2.0.7
+
+# Dashboard dependencies
+dash==2.14.1
+plotly==5.18.0
+dash-bootstrap-components==1.5.0
+
+# Utilities
+click==8.1.7
+marshmallow==3.20.1
+python-dateutil==2.8.2
+
+# Development tools
+black==23.12.0
+flake8==6.1.0
+mypy==1.7.1
+pre-commit==3.6.0
+
+# Documentation
+sphinx==7.2.6
+sphinx-rtd-theme==2.0.0
+myst-parser==2.0.0
