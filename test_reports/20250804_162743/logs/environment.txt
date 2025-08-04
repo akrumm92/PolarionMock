@@ -1,6 +1,0 @@
-Test Environment: mock
-Test Path: tests/
-Timestamp: 2025-08-04 16:27:43.372605
-Python Version: 3.13.3 (main, Apr  8 2025, 13:54:08) [Clang 16.0.0 (clang-1600.0.26.6)]
-
-Environment Variables:

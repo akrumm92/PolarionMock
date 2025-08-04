@@ -1,9 +1,0 @@
-INFO     tests.session:conftest.py:226 ================================================================================
-INFO     tests.session:conftest.py:227 Test Session Started: 20250804_130830
-INFO     tests.session:conftest.py:228 Environment: mock
-INFO     tests.session:conftest.py:229 ================================================================================
-DEBUG    tests.session:conftest.py:151 Test environment: production
-DEBUG    tests.session:conftest.py:152 Base URL: https://polarion.example.com
-DEBUG    urllib3.connectionpool:connectionpool.py:1049 Starting new HTTPS connection (1): polarion.example.com:443
-2025-08-04 13:08:30,522 [INFO] [__main__] Test reports saved to: test_reports/20250804_130830
-2025-08-04 13:08:30,522 [INFO] [__main__] Logs saved to: test_reports/20250804_130830/logs/pytest.log

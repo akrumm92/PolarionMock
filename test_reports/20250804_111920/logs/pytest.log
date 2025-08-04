@@ -1,8 +1,0 @@
-INFO     tests.session:conftest.py:203 ================================================================================
-INFO     tests.session:conftest.py:204 Test Session Started: 20250804_111921
-INFO     tests.session:conftest.py:205 Environment: production
-INFO     tests.session:conftest.py:206 ================================================================================
-DEBUG    tests.session:conftest.py:127 Test environment: production
-DEBUG    tests.session:conftest.py:128 Base URL: N/A
-2025-08-04 11:19:21,507 [INFO] [__main__] Test reports saved to: test_reports\20250804_111920
-2025-08-04 11:19:21,507 [INFO] [__main__] Logs saved to: test_reports\20250804_111920/logs/pytest.log
