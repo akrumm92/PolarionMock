@@ -94,7 +94,7 @@ class TestWorkItems:
         logger.info(f"[{test_env}] Successfully retrieved work item: {workitem_id}")
     
     @pytest.mark.mock_only
-    def test_create_workitem(self, api_base_url, auth_headers):
+    def test_create_workitem(self, api_base_url, auth_headers, test_project_id):
         """Test creating a new work item (mock only)."""
         workitem_data = {
             "data": [{
@@ -112,7 +112,7 @@ class TestWorkItems:
             }]
         }
         
-        url = f"{api_base_url}/projects/myproject/workitems"
+        url = f"{api_base_url}/projects/{test_project_id}/workitems"
         response = requests.post(url, headers=auth_headers, json=workitem_data)
         
         assert response.status_code == 201, f"Failed to create work item: {response.text}"
@@ -130,7 +130,7 @@ class TestWorkItems:
         requests.delete(delete_url, headers=auth_headers)
     
     @pytest.mark.mock_only
-    def test_create_workitem_in_document(self, api_base_url, auth_headers):
+    def test_create_workitem_in_document(self, api_base_url, auth_headers, test_project_id):
         """Test creating a work item with document relationship."""
         workitem_data = {
             "data": [{
@@ -147,14 +147,14 @@ class TestWorkItems:
                     "module": {
                         "data": {
                             "type": "documents",
-                            "id": "myproject/_default/user_stories"
+                            "id": f"{test_project_id}/_default/user_stories"
                         }
                     }
                 }
             }]
         }
         
-        url = f"{api_base_url}/projects/myproject/workitems"
+        url = f"{api_base_url}/projects/{test_project_id}/workitems"
         response = requests.post(url, headers=auth_headers, json=workitem_data)
         
         assert response.status_code == 201, f"Failed to create work item in document: {response.text}"
@@ -165,7 +165,7 @@ class TestWorkItems:
         # Verify module relationship
         assert "relationships" in workitem
         assert "module" in workitem["relationships"]
-        assert workitem["relationships"]["module"]["data"]["id"] == "myproject/_default/user_stories"
+        assert workitem["relationships"]["module"]["data"]["id"] == f"{test_project_id}/_default/user_stories"
         
         created_id = workitem["id"]
         logger.info(f"[mock] Successfully created work item in document: {created_id}")
@@ -225,7 +225,7 @@ class TestWorkItems:
         logger.info(f"[{test_env}] Successfully tested includes")
     
     @pytest.mark.mock_only
-    def test_update_workitem(self, api_base_url, auth_headers):
+    def test_update_workitem(self, api_base_url, auth_headers, test_project_id):
         """Test updating a work item."""
         # First create a work item
         create_data = {
@@ -239,7 +239,7 @@ class TestWorkItems:
             }]
         }
         
-        url = f"{api_base_url}/projects/myproject/workitems"
+        url = f"{api_base_url}/projects/{test_project_id}/workitems"
         response = requests.post(url, headers=auth_headers, json=create_data)
         assert response.status_code == 201
         
@@ -275,7 +275,7 @@ class TestWorkItems:
         requests.delete(url, headers=auth_headers)
     
     @pytest.mark.mock_only
-    def test_move_workitem_to_document(self, api_base_url, auth_headers):
+    def test_move_workitem_to_document(self, api_base_url, auth_headers, test_project_id):
         """Test moving a work item to a document."""
         # Create a work item without document
         create_data = {
@@ -288,7 +288,7 @@ class TestWorkItems:
             }]
         }
         
-        url = f"{api_base_url}/projects/myproject/workitems"
+        url = f"{api_base_url}/projects/{test_project_id}/workitems"
         response = requests.post(url, headers=auth_headers, json=create_data)
         assert response.status_code == 201
         
@@ -297,7 +297,7 @@ class TestWorkItems:
         
         # Move to document
         move_data = {
-            "targetDocument": "myproject/_default/user_stories"
+            "targetDocument": f"{test_project_id}/_default/user_stories"
         }
         
         url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}/actions/moveToDocument"

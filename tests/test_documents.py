@@ -186,7 +186,7 @@ class TestDocumentParts:
         logger.info(f"[{test_env}] Found {len(data['data'])} document parts")
     
     @pytest.mark.mock_only
-    def test_add_workitem_to_document(self, api_base_url, auth_headers):
+    def test_add_workitem_to_document(self, api_base_url, auth_headers, test_project_id):
         """Test adding a work item to a document as a part."""
         # First create a work item
         workitem_data = {
@@ -204,7 +204,7 @@ class TestDocumentParts:
         }
         
         # Create work item
-        url = f"{api_base_url}/projects/myproject/workitems"
+        url = f"{api_base_url}/projects/{test_project_id}/workitems"
         response = requests.post(url, headers=auth_headers, json=workitem_data)
         assert response.status_code == 201
         

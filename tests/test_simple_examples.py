@@ -68,6 +68,10 @@ class TestSimpleExamples:
         """Create a work item with all required fields from WorkItemRequest.json example."""
         log_test_info.info("Testing: Create work item with full data structure")
         
+        # Get project ID from environment or use default
+        project_id = os.getenv("TEST_PROJECT_ID", "myproject")
+        log_test_info.debug(f"Using project ID: {project_id}")
+        
         # Prepare work item data based on WorkItemRequest.json structure
         workitem_data = {
             "data": [{
@@ -113,7 +117,7 @@ class TestSimpleExamples:
         }
         
         # Create work item
-        url = f"{api_base_url}/projects/myproject/workitems"
+        url = f"{api_base_url}/projects/{project_id}/workitems"
         log_test_info.debug(f"Creating work item at: {url}")
         log_test_info.debug(f"Work item request data: {json.dumps(workitem_data, indent=2)}")
         
