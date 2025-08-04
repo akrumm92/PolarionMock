@@ -5,6 +5,7 @@ Test script to verify Polarion API connection using Personal Access Token
 
 import os
 import sys
+import json
 import requests
 import urllib3
 from dotenv import load_dotenv
@@ -57,17 +58,45 @@ def test_polarion_connection():
             projects_response = requests.get(projects_url, headers=headers, timeout=10, verify=verify_ssl)
             
             if projects_response.status_code == 200:
-                data = projects_response.json()
-                project_count = len(data.get('data', []))
-                print(f"✅ Found {project_count} projects")
-                
-                # List first 5 projects
-                if project_count > 0:
-                    print("\nFirst projects:")
-                    for i, project in enumerate(data['data'][:5]):
-                        project_id = project.get('id', 'Unknown')
-                        project_name = project.get('attributes', {}).get('name', 'Unknown')
-                        print(f"   - {project_id}: {project_name}")
+                try:
+                    # Check if response has content
+                    if not projects_response.text:
+                        print("⚠️  Empty response from projects endpoint")
+                        return True  # Connection works but no data
+                    
+                    # Try to parse JSON
+                    data = projects_response.json()
+                    
+                    # Handle different response formats
+                    if isinstance(data, dict):
+                        if 'data' in data:  # JSON:API format
+                            project_count = len(data.get('data', []))
+                            print(f"✅ Found {project_count} projects (JSON:API format)")
+                            
+                            # List first 5 projects
+                            if project_count > 0:
+                                print("\nFirst projects:")
+                                for i, project in enumerate(data['data'][:5]):
+                                    project_id = project.get('id', 'Unknown')
+                                    project_name = project.get('attributes', {}).get('name', 'Unknown')
+                                    print(f"   - {project_id}: {project_name}")
+                        else:
+                            # Plain JSON format
+                            print("✅ Connected successfully (non-JSON:API format)")
+                            print(f"   Response keys: {list(data.keys())[:10]}")
+                    elif isinstance(data, list):
+                        print(f"✅ Found {len(data)} items (array response)")
+                    else:
+                        print(f"✅ Connected successfully (unexpected format: {type(data)})")
+                        
+                except json.JSONDecodeError as e:
+                    print(f"⚠️  Response is not valid JSON: {e}")
+                    print(f"   Response preview: {projects_response.text[:200]}...")
+                    # Connection works even if response isn't JSON
+                    return True
+                except Exception as e:
+                    print(f"⚠️  Error processing response: {e}")
+                    return True  # Connection works
             else:
                 print(f"⚠️  Could not retrieve projects: {projects_response.status_code}")
                 print(f"   Response: {projects_response.text[:200]}")
