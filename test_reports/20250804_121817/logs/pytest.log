@@ -1,0 +1,1583 @@
+INFO     tests.session:conftest.py:226 ================================================================================
+INFO     tests.session:conftest.py:227 Test Session Started: 20250804_121817
+INFO     tests.session:conftest.py:228 Environment: production
+INFO     tests.session:conftest.py:229 ================================================================================
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+DEBUG    urllib3.connectionpool:connectionpool.py:1049 Starting new HTTPS connection (1): polarion-d.claas.local:443
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/all/documents HTTP/1.1" 404 89
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/projects/Python/spaces/_default/documents HTTP/1.1" 405 98
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/all/documents?page%5Bsize%5D=1 HTTP/1.1" 404 89
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/all/documents?page%5Bsize%5D=2&page%5Bnumber%5D=1 HTTP/1.1" 404 89
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/projects/non_existent_project/workitems HTTP/1.1" 404 159
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+INFO     tests.session:conftest.py:241 
+============================================================
+INFO     tests.session:conftest.py:242 TEST START: test_api_availability
+INFO     tests.session:conftest.py:243 File: TestProjects
+INFO     tests.session:conftest.py:244 Time: 2025-08-04 12:18:18.723932
+INFO     tests.session:conftest.py:245 ============================================================
+
+INFO     tests.session:test_projects.py:23 Testing API availability at https://polarion-d.claas.local/polarion/rest/v1
+INFO     tests.session:test_projects.py:24 Environment: production
+INFO     tests.session:test_projects.py:25 Auth disabled: false
+DEBUG    tests.session:test_projects.py:28 Making request to: https://polarion-d.claas.local/polarion/rest/v1/projects
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/projects HTTP/1.1" 401 94
+DEBUG    tests.session:conftest.py:274 API Call: GET https://polarion-d.claas.local/polarion/rest/v1/projects -> 401
+DEBUG    tests.session:conftest.py:278 Response: {
+  "errors": [
+    {
+      "status": "401",
+      "title": "Unauthorized",
+      "detail": "No access token"
+    }
+  ]
+}
+INFO     tests.session:test_projects.py:49 Auth enabled - expecting 401, got 401
+INFO     tests.session:test_projects.py:56 ✓ [production] API is available at https://polarion-d.claas.local/polarion/rest/v1
+INFO     tests.session:conftest.py:284 Total API calls in test: 1
+INFO     tests.session:conftest.py:286   - GET https://polarion-d.claas.local/polarion/rest/v1/projects -> 401
+INFO     tests.session:conftest.py:250 
+============================================================
+INFO     tests.session:conftest.py:251 TEST END: test_api_availability
+INFO     tests.session:conftest.py:252 ============================================================
+
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+INFO     tests.session:conftest.py:241 
+============================================================
+INFO     tests.session:conftest.py:242 TEST START: test_list_projects
+INFO     tests.session:conftest.py:243 File: TestProjects
+INFO     tests.session:conftest.py:244 Time: 2025-08-04 12:18:18.787397
+INFO     tests.session:conftest.py:245 ============================================================
+
+INFO     tests.session:test_projects.py:61 Testing: List all projects
+DEBUG    tests.session:test_projects.py:64 Request URL: https://polarion-d.claas.local/polarion/rest/v1/projects
+DEBUG    tests.session:test_projects.py:65 Headers: {'Authorization': 'Bearer eyJraWQiOiI2OWZmMWRkNC0wYTAxMDU1MC03OTg2YzJiMS0yNTRjNTcyNSIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJFMDE3MDkzIiwiaWQiOiI3M2Y4Mjg2OC0wYTAxMDVhYS0wNmUxZGUwOS00MmIzYzUwZCIsImV4cCI6MTc2MjA2ODI5OSwiaWF0IjoxNzU0MjkyMjk5fQ.WYSHbFOWsqFJpdda9MSqRc57GEINHxbEFBZQtlgLng_LCgE_QTnDXkgIn4D8IDWuGyDPVyi8dPMFTkOHbGjDVSsicHcHqteTLBC-Hj1pT9mnhxDA3_PyRKs4u2Uqyj8bUDC0YyCsxByUt7EaXOn1Nomo5Nv9Wbws_eFruTSPbNvQA72edLoFwSp3BwOXFVgtaOQ6eMLwWT2I7UwIpI9qpR6pFJ7I1DAWBt1ZoZ-4EkY2uyda1fE64r7xrZjttp7kMnqJgrtsYUla9ZnG5Y7RlnZd__WFax_sEKw4QZ13Ws9RwelbPePMirzhJZ3Xc2-RzQRLUcCZRBAvzw5eVFMWhQ', 'Content-Type': 'application/json', 'Accept': '*/*'}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/projects HTTP/1.1" 200 None
+DEBUG    tests.session:conftest.py:274 API Call: GET https://polarion-d.claas.local/polarion/rest/v1/projects -> 200
+DEBUG    tests.session:conftest.py:278 Response: {
+  "links": {
+    "self": "https://polarion-d.claas.local/polarion/rest/v1/projects",
+    "first": "https://polarion-d.claas.local/polarion/rest/v1/projects?page%5Bnumber%5D=1",
+    "next": "https://polarion-d.claas.local/polarion/rest/v1/projects?page%5Bnumber%5D=2",
+    "last": "https://polarion-d.claas.local/polarion/rest/v1/projects?page%5Bnumber%5D=2"
+  },
+  "data": [
+    {
+      "type": "projects",
+      "id": "FormsConfigurationTest",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/FormsConfigurationTest"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "PMT_Playground",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/PMT_Playground"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CEG",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CEG"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "ProgramConnectors",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/ProgramConnectors"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "BetaTeam",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/BetaTeam"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "I006624",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/I006624"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "AE_HMI",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/AE_HMI"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "I0139631",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/I0139631"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "TREQILIO",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/TREQILIO"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "UCM_GEN_2",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/UCM_GEN_2"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "EmergencyTorchLight",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/EmergencyTorchLight"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Embedded_Software_Platform",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Embedded_Software_Platform"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "UBM",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/UBM"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "FOX",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/FOX"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Rotary_Knob_Encoder",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Rotary_Knob_Encoder"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Global_XERION",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Global_XERION"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "GIL_Global_Indicator_and_Position_Light",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/GIL_Global_Indicator_and_Position_Light"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Functional_Concepts_and_Technical_Specs",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Functional_Concepts_and_Technical_Specs"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Functional_Concept_Libary_BUG",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Functional_Concept_Libary_BUG"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CL06_OBE_Steering_Valve",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CL06_OBE_Steering_Valve"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "INA",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/INA"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "C001",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/C001"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "RE_Demonstrator",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/RE_Demonstrator"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "PolarionRightsTests",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/PolarionRightsTests"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "ASTERIX",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/ASTERIX"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Product_Integration_Requirements",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Product_Integration_Requirements"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "WUCHER1",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/WUCHER1"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "TeslaSens",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/TeslaSens"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Cabin_EE_Integration",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Cabin_EE_Integration"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "HMI",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/HMI"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "LION",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/LION"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Multimedia_ECU",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Multimedia_ECU"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Standard_Sensors",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Standard_Sensors"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "PoC_Testing",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/PoC_Testing"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "LTL",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/LTL"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "BET",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/BET"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Electronics_Service_and_Diagnostics",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Electronics_Service_and_Diagnostics"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "JagTest",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/JagTest"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "3DX_Platform_Demonstrator",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/3DX_Platform_Demonstrator"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Sandbox",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Sandbox"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CES_Engineering_Hello_World",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CES_Engineering_Hello_World"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CSE_Manufacturing",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CSE_Manufacturing"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "NCE",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/NCE"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "RMC_Feature_Update",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/RMC_Feature_Update"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Radio_and_Multimedia",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Radio_and_Multimedia"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Remote_Flash_2.0",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Remote_Flash_2.0"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "FHM_Auto_DISCO",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/FHM_Auto_DISCO"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "RE_Training",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/RE_Training"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Next_Gen_ECU_Platform_Family",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Next_Gen_ECU_Platform_Family"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "PMT_Specifications",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/PMT_Specifications"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CTWIX_Fachtest",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CTWIX_Fachtest"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "MAXI_CARE",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/MAXI_CARE"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Optimus",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Optimus"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "AD_ePower_Supply",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/AD_ePower_Supply"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "PolarionTemplate_NXG",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/PolarionTemplate_NXG"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Product_Security",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Product_Security"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "ISOBUS_Clients",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/ISOBUS_Clients"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "NIR_2.0",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/NIR_2.0"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "I002496",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/I002496"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "OEM_Machines",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/OEM_Machines"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "TEMPLATE_PROJECT_31",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/TEMPLATE_PROJECT_31"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "P0031_600NG_POC",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/P0031_600NG_POC"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "K09_RMK_Operator_Seat",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/K09_RMK_Operator_Seat"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "UCPTransferTest",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/UCPTransferTest"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Powermanagement",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Powermanagement"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CES_Training",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CES_Training"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "IntegrationsTeam",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/IntegrationsTeam"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Autonomous_Tractor",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Autonomous_Tractor"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "I011951",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/I011951"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CES_MACHINE_REQUIREMENTS",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CES_MACHINE_REQUIREMENTS"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Vision_Systems",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Vision_Systems"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CEG2",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CEG2"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Sensor_Fusion_Platform",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Sensor_Fusion_Platform"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "DAR_FD",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/DAR_FD"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Remote_Display_View",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Remote_Display_View"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "MddbDataExchange",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/MddbDataExchange"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Engineering_Methods",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Engineering_Methods"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "GEE_Quality_Management",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/GEE_Quality_Management"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "I013963",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/I013963"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Terminal",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Terminal"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "testUCM",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/testUCM"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Cabine_Electronics",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Cabine_Electronics"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "BUF_PM_Themenspeicher",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/BUF_PM_Themenspeicher"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "VOLBRAC",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/VOLBRAC"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "OmegaTeam",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/OmegaTeam"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CLAAS_SE_Template",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CLAAS_SE_Template"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "TrainingProject",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/TrainingProject"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CES_PM",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CES_PM"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Combine_Requriements_Library",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Combine_Requriements_Library"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Standards_Regulations_CES",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Standards_Regulations_CES"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CLAAS_Diagnostic_System_2.0",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CLAAS_Diagnostic_System_2.0"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "BSP_and_YOCTO_Maintenance",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/BSP_and_YOCTO_Maintenance"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CT_Function_Library",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CT_Function_Library"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Specification_Libary_CSE_E_E",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Specification_Libary_CSE_E_E"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Front_Loader",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Front_Loader"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Spray_Cam_Horsch",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Spray_Cam_Horsch"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "AlphaTeam",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/AlphaTeam"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "UCP",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/UCP"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "ARION_Medium_Wheel_Base",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/ARION_Medium_Wheel_Base"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "MO",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/MO"
+      }
+    }
+  ],
+  "meta": {
+    "totalCount": 186
+  }
+}
+INFO     tests.session:test_projects.py:76 Response status: 200
+DEBUG    tests.session:test_projects.py:81 Response has 100 projects
+INFO     tests.test_projects:test_projects.py:95 [production] Found 100 projects
+INFO     tests.session:conftest.py:284 Total API calls in test: 1
+INFO     tests.session:conftest.py:286   - GET https://polarion-d.claas.local/polarion/rest/v1/projects -> 200
+INFO     tests.session:conftest.py:250 
+============================================================
+INFO     tests.session:conftest.py:251 TEST END: test_list_projects
+INFO     tests.session:conftest.py:252 ============================================================
+
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/projects/Python HTTP/1.1" 200 138
+INFO     tests.test_projects:test_projects.py:121 [production] Successfully retrieved project: Python
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/projects?page%5Bsize%5D=2&page%5Bnumber%5D=1 HTTP/1.1" 200 232
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/projects/Python?fields%5Bprojects%5D=name,created HTTP/1.1" 200 164
+INFO     tests.test_projects:test_projects.py:169 [production] Sparse fieldsets test completed
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/projects?sort=name HTTP/1.1" 200 None
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/projects?sort=-name HTTP/1.1" 200 None
+INFO     tests.test_projects:test_projects.py:231 [production] Sorting functionality verified
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: N/A
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+INFO     tests.session:conftest.py:241 
+============================================================
+INFO     tests.session:conftest.py:242 TEST START: test_list_all_projects
+INFO     tests.session:conftest.py:243 File: TestSimpleExamples
+INFO     tests.session:conftest.py:244 Time: 2025-08-04 12:18:19.383865
+INFO     tests.session:conftest.py:245 ============================================================
+
+INFO     tests.session:test_simple_examples.py:23 Testing: List all projects in production
+DEBUG    tests.session:test_simple_examples.py:27 Request URL: https://polarion-d.claas.local/polarion/rest/v1/projects
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/projects HTTP/1.1" 200 None
+DEBUG    tests.session:conftest.py:274 API Call: GET https://polarion-d.claas.local/polarion/rest/v1/projects -> 200
+DEBUG    tests.session:conftest.py:278 Response: {
+  "links": {
+    "self": "https://polarion-d.claas.local/polarion/rest/v1/projects",
+    "first": "https://polarion-d.claas.local/polarion/rest/v1/projects?page%5Bnumber%5D=1",
+    "next": "https://polarion-d.claas.local/polarion/rest/v1/projects?page%5Bnumber%5D=2",
+    "last": "https://polarion-d.claas.local/polarion/rest/v1/projects?page%5Bnumber%5D=2"
+  },
+  "data": [
+    {
+      "type": "projects",
+      "id": "FormsConfigurationTest",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/FormsConfigurationTest"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "PMT_Playground",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/PMT_Playground"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CEG",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CEG"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "ProgramConnectors",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/ProgramConnectors"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "BetaTeam",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/BetaTeam"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "I006624",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/I006624"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "AE_HMI",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/AE_HMI"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "I0139631",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/I0139631"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "TREQILIO",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/TREQILIO"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "UCM_GEN_2",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/UCM_GEN_2"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "EmergencyTorchLight",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/EmergencyTorchLight"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Embedded_Software_Platform",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Embedded_Software_Platform"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "UBM",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/UBM"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "FOX",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/FOX"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Rotary_Knob_Encoder",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Rotary_Knob_Encoder"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Global_XERION",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Global_XERION"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "GIL_Global_Indicator_and_Position_Light",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/GIL_Global_Indicator_and_Position_Light"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Functional_Concepts_and_Technical_Specs",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Functional_Concepts_and_Technical_Specs"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Functional_Concept_Libary_BUG",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Functional_Concept_Libary_BUG"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CL06_OBE_Steering_Valve",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CL06_OBE_Steering_Valve"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "INA",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/INA"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "C001",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/C001"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "RE_Demonstrator",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/RE_Demonstrator"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "PolarionRightsTests",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/PolarionRightsTests"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "ASTERIX",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/ASTERIX"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Product_Integration_Requirements",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Product_Integration_Requirements"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "WUCHER1",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/WUCHER1"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "TeslaSens",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/TeslaSens"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Cabin_EE_Integration",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Cabin_EE_Integration"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "HMI",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/HMI"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "LION",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/LION"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Multimedia_ECU",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Multimedia_ECU"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Standard_Sensors",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Standard_Sensors"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "PoC_Testing",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/PoC_Testing"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "LTL",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/LTL"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "BET",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/BET"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Electronics_Service_and_Diagnostics",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Electronics_Service_and_Diagnostics"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "JagTest",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/JagTest"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "3DX_Platform_Demonstrator",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/3DX_Platform_Demonstrator"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Sandbox",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Sandbox"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CES_Engineering_Hello_World",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CES_Engineering_Hello_World"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CSE_Manufacturing",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CSE_Manufacturing"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "NCE",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/NCE"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "RMC_Feature_Update",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/RMC_Feature_Update"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Radio_and_Multimedia",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Radio_and_Multimedia"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Remote_Flash_2.0",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Remote_Flash_2.0"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "FHM_Auto_DISCO",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/FHM_Auto_DISCO"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "RE_Training",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/RE_Training"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Next_Gen_ECU_Platform_Family",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Next_Gen_ECU_Platform_Family"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "PMT_Specifications",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/PMT_Specifications"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CTWIX_Fachtest",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CTWIX_Fachtest"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "MAXI_CARE",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/MAXI_CARE"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Optimus",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Optimus"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "AD_ePower_Supply",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/AD_ePower_Supply"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "PolarionTemplate_NXG",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/PolarionTemplate_NXG"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Product_Security",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Product_Security"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "ISOBUS_Clients",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/ISOBUS_Clients"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "NIR_2.0",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/NIR_2.0"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "I002496",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/I002496"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "OEM_Machines",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/OEM_Machines"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "TEMPLATE_PROJECT_31",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/TEMPLATE_PROJECT_31"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "P0031_600NG_POC",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/P0031_600NG_POC"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "K09_RMK_Operator_Seat",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/K09_RMK_Operator_Seat"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "UCPTransferTest",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/UCPTransferTest"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Powermanagement",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Powermanagement"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CES_Training",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CES_Training"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "IntegrationsTeam",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/IntegrationsTeam"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Autonomous_Tractor",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Autonomous_Tractor"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "I011951",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/I011951"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CES_MACHINE_REQUIREMENTS",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CES_MACHINE_REQUIREMENTS"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Vision_Systems",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Vision_Systems"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CEG2",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CEG2"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Sensor_Fusion_Platform",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Sensor_Fusion_Platform"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "DAR_FD",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/DAR_FD"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Remote_Display_View",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Remote_Display_View"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "MddbDataExchange",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/MddbDataExchange"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Engineering_Methods",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Engineering_Methods"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "GEE_Quality_Management",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/GEE_Quality_Management"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "I013963",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/I013963"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Terminal",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Terminal"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "testUCM",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/testUCM"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Cabine_Electronics",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Cabine_Electronics"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "BUF_PM_Themenspeicher",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/BUF_PM_Themenspeicher"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "VOLBRAC",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/VOLBRAC"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "OmegaTeam",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/OmegaTeam"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CLAAS_SE_Template",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CLAAS_SE_Template"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "TrainingProject",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/TrainingProject"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CES_PM",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CES_PM"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Combine_Requriements_Library",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Combine_Requriements_Library"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Standards_Regulations_CES",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Standards_Regulations_CES"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CLAAS_Diagnostic_System_2.0",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CLAAS_Diagnostic_System_2.0"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "BSP_and_YOCTO_Maintenance",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/BSP_and_YOCTO_Maintenance"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "CT_Function_Library",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/CT_Function_Library"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Specification_Libary_CSE_E_E",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Specification_Libary_CSE_E_E"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Front_Loader",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Front_Loader"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "Spray_Cam_Horsch",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Spray_Cam_Horsch"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "AlphaTeam",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/AlphaTeam"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "UCP",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/UCP"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "ARION_Medium_Wheel_Base",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/ARION_Medium_Wheel_Base"
+      }
+    },
+    {
+      "type": "projects",
+      "id": "MO",
+      "links": {
+        "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/MO"
+      }
+    }
+  ],
+  "meta": {
+    "totalCount": 186
+  }
+}
+INFO     tests.session:test_simple_examples.py:39 ✓ Response status: 200
+INFO     tests.session:test_simple_examples.py:51 Found 100 projects: 
+INFO     tests.session:conftest.py:284 Total API calls in test: 1
+INFO     tests.session:conftest.py:286   - GET https://polarion-d.claas.local/polarion/rest/v1/projects -> 200
+INFO     tests.session:conftest.py:250 
+============================================================
+INFO     tests.session:conftest.py:251 TEST END: test_list_all_projects
+INFO     tests.session:conftest.py:252 ============================================================
+
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+INFO     tests.session:conftest.py:241 
+============================================================
+INFO     tests.session:conftest.py:242 TEST START: test_read_document_structure
+INFO     tests.session:conftest.py:243 File: TestSimpleExamples
+INFO     tests.session:conftest.py:244 Time: 2025-08-04 12:18:19.468518
+INFO     tests.session:conftest.py:245 ============================================================
+
+INFO     tests.session:test_simple_examples.py:164 Testing: Read document structure in production
+INFO     tests.session:conftest.py:250 
+============================================================
+INFO     tests.session:conftest.py:251 TEST END: test_read_document_structure
+INFO     tests.session:conftest.py:252 ============================================================
+
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/projects/Python/workitems HTTP/1.1" 200 None
+INFO     tests.test_workitems:test_workitems.py:45 [production] Found 100 work items in project Python
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/all/workitems HTTP/1.1" 200 None
+INFO     tests.test_workitems:test_workitems.py:59 [production] Found 100 work items total
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/projects/Python/workitems?page%5Bsize%5D=1 HTTP/1.1" 200 240
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/projects/Python/workitems/FCTS-9345 HTTP/1.1" 200 281
+INFO     tests.test_workitems:test_workitems.py:94 [production] Successfully retrieved work item: Python/FCTS-9345
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/all/workitems?query=type:requirement HTTP/1.1" 200 None
+INFO     tests.test_workitems:test_workitems.py:195 [production] Query returned 46 work items
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: https://polarion-d.claas.local
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/v1/all/workitems?include=module&page%5Bsize%5D=5 HTTP/1.1" 200 355
+INFO     tests.test_workitems:test_workitems.py:225 [production] Successfully tested includes
+2025-08-04 12:18:20,693 [INFO] [__main__] Test reports saved to: test_reports\20250804_121817
+2025-08-04 12:18:20,693 [INFO] [__main__] Logs saved to: test_reports\20250804_121817/logs/pytest.log
