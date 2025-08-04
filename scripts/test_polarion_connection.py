@@ -21,7 +21,7 @@ def test_polarion_connection():
     
     if not endpoint:
         print("❌ Error: POLARION_API_ENDPOINT not set in .env file")
-        print("   Example: https://polarion.example.com/polarion/rest/v1")
+        print("   Example: https://polarion.example.com/polarion/api")
         return False
     
     if not pat:
@@ -107,7 +107,8 @@ if __name__ == "__main__":
     else:
         print("\n❌ Connection test failed. Please check your configuration.")
         print("\nRequired environment variables in .env:")
-        print("  POLARION_API_ENDPOINT=https://your-polarion-server.com/polarion/rest/v1")
+        print("  POLARION_API_ENDPOINT=https://your-polarion-server.com/polarion/api")
         print("  POLARION_PERSONAL_ACCESS_TOKEN=your-personal-access-token")
+        print("  POLARION_VERIFY_SSL=false  # If using self-signed certificates")
     
     sys.exit(0 if success else 1)

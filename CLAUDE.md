@@ -198,7 +198,7 @@ When writing tests:
 
 ```bash
 POLARION_ENV=mock|production  # Target environment for tests
-POLARION_API_ENDPOINT        # Full Polarion REST API endpoint (e.g., https://polarion.example.com/polarion/rest/v1)
+POLARION_API_ENDPOINT        # Full Polarion REST API endpoint (e.g., https://polarion.example.com/polarion/api)
 POLARION_PERSONAL_ACCESS_TOKEN  # Personal Access Token for API authentication
 MOCK_PORT=5001              # Port for mock server (5001 to avoid macOS AirPlay conflicts)
 ENABLE_WEBSOCKET=true       # Enable WebSocket support
