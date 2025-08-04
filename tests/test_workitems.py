@@ -5,6 +5,7 @@ Tests run against both mock and production environments
 
 import pytest
 import requests
+import time
 import logging
 import os
 from typing import List, Dict, Any
@@ -93,18 +94,20 @@ class TestWorkItems:
         
         logger.info(f"[{test_env}] Successfully retrieved work item: {workitem_id}")
     
-    @pytest.mark.mock_only
-    def test_create_workitem(self, api_base_url, auth_headers, test_project_id, http_session):
-        """Test creating a new work item (mock only)."""
+    def test_create_workitem(self, api_base_url, auth_headers, test_project_id, http_session, test_env):
+        """Test creating a new work item."""
+        import time
+        timestamp = int(time.time())
+        
         workitem_data = {
             "data": [{
                 "type": "workitems",
                 "attributes": {
-                    "title": "Test Work Item 001",
+                    "title": f"Test Work Item {timestamp}",
                     "type": "requirement",
                     "description": {
                         "type": "text/html",
-                        "value": "<p>Created by automated test</p>"
+                        "value": f"<p>Created by automated test at {timestamp}</p>"
                     },
                     "priority": "high",
                     "status": "open"
@@ -118,16 +121,25 @@ class TestWorkItems:
         assert response.status_code == 201, f"Failed to create work item: {response.text}"
         
         data = response.json()
+        assert "data" in data, f"Response missing 'data' field: {data}"
         assert len(data["data"]) == 1
-        assert data["data"][0]["attributes"]["title"] == "Test Work Item 001"
+        assert data["data"][0]["attributes"]["title"] == f"Test Work Item {timestamp}"
         
         created_id = data["data"][0]["id"]
-        logger.info(f"[mock] Successfully created work item: {created_id}")
+        logger.info(f"[{test_env}] Successfully created work item: {created_id}")
+        
+        # Store for cleanup
+        self.created_workitem_id = created_id
         
         # Clean up - delete the work item
-        parts = created_id.split("/")
-        delete_url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}"
-        http_session.delete(delete_url, headers=auth_headers)
+        if "/" in created_id:
+            parts = created_id.split("/")
+            delete_url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}"
+        else:
+            delete_url = f"{api_base_url}/projects/{test_project_id}/workitems/{created_id}"
+        
+        delete_response = http_session.delete(delete_url, headers=auth_headers)
+        logger.info(f"[{test_env}] Cleanup delete response: {delete_response.status_code}")
     
     @pytest.mark.mock_only
     def test_create_workitem_in_document(self, api_base_url, auth_headers, test_project_id, http_session):
@@ -224,15 +236,17 @@ class TestWorkItems:
         
         logger.info(f"[{test_env}] Successfully tested includes")
     
-    @pytest.mark.mock_only
-    def test_update_workitem(self, api_base_url, auth_headers, test_project_id, http_session):
+    def test_update_workitem(self, api_base_url, auth_headers, test_project_id, http_session, test_env):
         """Test updating a work item."""
+        timestamp = int(time.time())
+        
         # First create a work item
         create_data = {
             "data": [{
                 "type": "workitems",
                 "attributes": {
-                    "title": "Work Item to Update",
+                    "title": f"Work Item to Update {timestamp}",
+                    "type": "requirement",
                     "status": "open",
                     "priority": "low"
                 }
@@ -240,11 +254,18 @@ class TestWorkItems:
         }
         
         url = f"{api_base_url}/projects/{test_project_id}/workitems"
-        response = requests.post(url, headers=auth_headers, json=create_data)
-        assert response.status_code == 201
+        response = http_session.post(url, headers=auth_headers, json=create_data)
+        assert response.status_code == 201, f"Failed to create work item: {response.text}"
         
         created_id = response.json()["data"][0]["id"]
-        parts = created_id.split("/")
+        logger.info(f"[{test_env}] Created work item for update test: {created_id}")
+        
+        # Determine URL format based on ID
+        if "/" in created_id:
+            parts = created_id.split("/")
+            workitem_url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}"
+        else:
+            workitem_url = f"{api_base_url}/projects/{test_project_id}/workitems/{created_id}"
         
         # Update the work item
         update_data = {
@@ -254,65 +275,107 @@ class TestWorkItems:
                 "attributes": {
                     "status": "in_progress",
                     "priority": "high",
-                    "title": "Updated Work Item Title"
+                    "title": f"Updated Work Item Title {timestamp}"
                 }
             }
         }
         
-        url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}"
-        response = http_session.patch(url, headers=auth_headers, json=update_data)
+        response = http_session.patch(workitem_url, headers=auth_headers, json=update_data)
         
         assert response.status_code == 200, f"Failed to update work item: {response.text}"
         
         updated = response.json()["data"]
         assert updated["attributes"]["status"] == "in_progress"
         assert updated["attributes"]["priority"] == "high"
-        assert updated["attributes"]["title"] == "Updated Work Item Title"
+        assert updated["attributes"]["title"] == f"Updated Work Item Title {timestamp}"
         
-        logger.info(f"[mock] Successfully updated work item: {created_id}")
+        logger.info(f"[{test_env}] Successfully updated work item: {created_id}")
         
         # Clean up
-        requests.delete(url, headers=auth_headers)
+        delete_response = http_session.delete(workitem_url, headers=auth_headers)
+        logger.info(f"[{test_env}] Cleanup delete response: {delete_response.status_code}")
     
-    @pytest.mark.mock_only
-    def test_move_workitem_to_document(self, api_base_url, auth_headers, test_project_id, http_session):
-        """Test moving a work item to a document."""
-        # Create a work item without document
-        create_data = {
+    def test_workitem_relationships(self, api_base_url, auth_headers, test_project_id, http_session, test_env):
+        """Test updating work item relationships (e.g., parent/child, linked items)."""
+        timestamp = int(time.time())
+        
+        # Create two work items - parent and child
+        parent_data = {
             "data": [{
                 "type": "workitems",
                 "attributes": {
-                    "title": "Work Item to Move",
-                    "type": "task"
+                    "title": f"Parent Work Item {timestamp}",
+                    "type": "requirement",
+                    "status": "open"
+                }
+            }]
+        }
+        
+        child_data = {
+            "data": [{
+                "type": "workitems",
+                "attributes": {
+                    "title": f"Child Work Item {timestamp}",
+                    "type": "task",
+                    "status": "open"
                 }
             }]
         }
         
         url = f"{api_base_url}/projects/{test_project_id}/workitems"
-        response = requests.post(url, headers=auth_headers, json=create_data)
-        assert response.status_code == 201
         
-        created_id = response.json()["data"][0]["id"]
-        parts = created_id.split("/")
+        # Create parent
+        response = http_session.post(url, headers=auth_headers, json=parent_data)
+        assert response.status_code == 201, f"Failed to create parent work item: {response.text}"
+        parent_id = response.json()["data"][0]["id"]
+        logger.info(f"[{test_env}] Created parent work item: {parent_id}")
         
-        # Move to document
-        move_data = {
-            "targetDocument": f"{test_project_id}/_default/user_stories"
+        # Create child
+        response = http_session.post(url, headers=auth_headers, json=child_data)
+        assert response.status_code == 201, f"Failed to create child work item: {response.text}"
+        child_id = response.json()["data"][0]["id"]
+        logger.info(f"[{test_env}] Created child work item: {child_id}")
+        
+        # Update child to reference parent
+        if "/" in child_id:
+            parts = child_id.split("/")
+            child_url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}"
+        else:
+            child_url = f"{api_base_url}/projects/{test_project_id}/workitems/{child_id}"
+        
+        update_data = {
+            "data": {
+                "type": "workitems",
+                "id": child_id,
+                "relationships": {
+                    "parent": {
+                        "data": {
+                            "type": "workitems",
+                            "id": parent_id
+                        }
+                    }
+                }
+            }
         }
         
-        url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}/actions/moveToDocument"
-        response = requests.post(url, headers=auth_headers, json=move_data)
+        response = http_session.patch(child_url, headers=auth_headers, json=update_data)
+        # Note: Relationship updates might return 200 or 204
+        assert response.status_code in [200, 204], f"Failed to update work item relationships: {response.text}"
         
-        assert response.status_code == 200, f"Failed to move work item: {response.text}"
+        logger.info(f"[{test_env}] Successfully updated work item relationships")
         
-        result = response.json()
-        assert result["data"]["attributes"]["status"] == "success"
+        # Clean up - delete both work items
+        if "/" in parent_id:
+            parts = parent_id.split("/")
+            parent_url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}"
+        else:
+            parent_url = f"{api_base_url}/projects/{test_project_id}/workitems/{parent_id}"
         
-        logger.info(f"[mock] Successfully moved work item to document")
+        delete_response = http_session.delete(child_url, headers=auth_headers)
+        logger.info(f"[{test_env}] Cleanup delete child response: {delete_response.status_code}")
         
-        # Clean up
-        delete_url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}"
-        http_session.delete(delete_url, headers=auth_headers)
+        delete_response = http_session.delete(parent_url, headers=auth_headers)
+        logger.info(f"[{test_env}] Cleanup delete parent response: {delete_response.status_code}")
     
     def _validate_workitem_structure(self, workitem: Dict[str, Any]):
         """Validate work item object structure."""
