@@ -39,18 +39,47 @@ class WorkItem(BaseResource):
     type: Literal["workitems"] = Field(default="workitems")
     attributes: WorkItemAttributes = Field(description="Work item attributes")
     
+    def to_json_api(self) -> Dict[str, Any]:
+        """Convert to JSON:API format."""
+        data = {
+            "type": self.type,
+            "id": self.id
+        }
+        
+        # Convert attributes to dict using Pydantic's model_dump
+        if self.attributes:
+            data["attributes"] = self.attributes.model_dump(exclude_none=True)
+        
+        if self.relationships:
+            data["relationships"] = self.relationships
+        
+        if self.links:
+            data["links"] = self.links
+        
+        if self.meta:
+            data["meta"] = self.meta
+        
+        return data
+    
     @classmethod
     def create_mock(cls, project_id: str, workitem_id: str, title: str, **kwargs) -> "WorkItem":
         """Create a mock work item for testing."""
         full_id = f"{project_id}/{workitem_id}"
         
+        # Handle description - can be string or dict
+        desc = kwargs.get("description")
+        if desc:
+            if isinstance(desc, str):
+                description = Description(type="text/plain", value=desc)
+            elif isinstance(desc, dict):
+                description = Description(**desc)
+            else:
+                description = None
+            kwargs["description"] = description
+        
         attributes = WorkItemAttributes(
             title=title,
-            description=Description(
-                type="text/plain",
-                value=kwargs.get("description", f"Description for {title}")
-            ) if "description" in kwargs else None,
-            **{k: v for k, v in kwargs.items() if k != "description"}
+            **kwargs
         )
         
         return cls(

@@ -74,8 +74,16 @@ def api_base_url(base_url, test_env) -> str:
 def auth_token(test_env) -> str:
     """Get authentication token based on environment."""
     if test_env == "mock":
-        # For mock, we can use a simple token or generate one
-        return "mock-token-12345"
+        # For mock, use token from env or generate one
+        mock_token = os.getenv("MOCK_AUTH_TOKEN")
+        if mock_token:
+            return mock_token
+        # If auth is disabled, use dummy token
+        if os.getenv('DISABLE_AUTH', 'false').lower() == 'true':
+            return "mock-token-12345"
+        # Otherwise generate a valid token
+        from src.mock.middleware.auth import generate_mock_token
+        return generate_mock_token("test-user")
     else:
         # For production, get Personal Access Token from environment variable
         token = os.getenv("POLARION_PERSONAL_ACCESS_TOKEN")

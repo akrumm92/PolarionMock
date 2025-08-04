@@ -72,13 +72,22 @@ class Project(BaseModel):
         if not name:
             name = f"Test Project {project_id}"
         
+        # Handle description - can be string or dict
+        desc = kwargs.get("description")
+        if desc:
+            if isinstance(desc, str):
+                description = ProjectDescription(type="text/plain", value=desc)
+            elif isinstance(desc, dict):
+                description = ProjectDescription(**desc)
+            else:
+                description = ProjectDescription(type="text/plain", value=str(desc))
+        else:
+            description = ProjectDescription(type="text/plain", value=f"Description for {name}")
+        
         attributes = ProjectAttributes(
             id=project_id,
             name=name,
-            description=ProjectDescription(
-                type="text/plain",
-                value=kwargs.get("description", f"Description for {name}")
-            ),
+            description=description,
             trackerPrefix=kwargs.get("trackerPrefix", project_id.upper()),
             **{k: v for k, v in kwargs.items() if k not in ["description", "trackerPrefix"]}
         )

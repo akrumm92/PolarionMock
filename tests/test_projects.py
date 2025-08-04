@@ -7,6 +7,7 @@ import pytest
 import requests
 import logging
 import json
+import os
 from typing import List, Dict, Any
 from tests.utils.test_helpers import APITestClient, log_test_data, assert_with_logging, log_test_section
 
@@ -18,9 +19,10 @@ class TestProjects:
     
     @pytest.mark.smoke
     def test_api_availability(self, api_base_url, test_env, log_test_info, capture_api_calls):
-        """Test if API is available by checking projects endpoint without auth."""
+        """Test if API is available by checking projects endpoint."""
         log_test_info.info(f"Testing API availability at {api_base_url}")
         log_test_info.info(f"Environment: {test_env}")
+        log_test_info.info(f"Auth disabled: {os.getenv('DISABLE_AUTH', 'false')}")
         
         url = f"{api_base_url}/projects"
         log_test_info.debug(f"Making request to: {url}")
@@ -30,19 +32,26 @@ class TestProjects:
             method="GET",
             url=url,
             status_code=response.status_code,
-            response_data=response.json() if response.status_code != 204 else None
+            response_data=response.json() if response.content else None
         )
         
-        # According to Polarion spec, /projects returns 401 when API is available
-        log_test_info.info(f"Response status: {response.status_code}")
-        assert response.status_code == 401, f"Expected 401, got {response.status_code}"
+        # Check if auth is disabled
+        auth_disabled = os.getenv('DISABLE_AUTH', 'false').lower() == 'true'
         
-        # Check error format
-        data = response.json()
-        log_test_info.debug(f"Response data: {data}")
-        assert "errors" in data
-        assert len(data["errors"]) > 0
-        assert data["errors"][0]["status"] == "401"
+        if auth_disabled:
+            # With auth disabled, should return 200 with projects
+            log_test_info.info(f"Auth disabled - expecting 200, got {response.status_code}")
+            assert response.status_code == 200, f"Expected 200, got {response.status_code}"
+            data = response.json()
+            assert "data" in data, "Response should contain data"
+        else:
+            # With auth enabled, should return 401
+            log_test_info.info(f"Auth enabled - expecting 401, got {response.status_code}")
+            assert response.status_code == 401, f"Expected 401, got {response.status_code}"
+            data = response.json()
+            assert "errors" in data
+            assert len(data["errors"]) > 0
+            assert data["errors"][0]["status"] == "401"
         
         log_test_info.info(f"✓ [{test_env}] API is available at {api_base_url}")
     

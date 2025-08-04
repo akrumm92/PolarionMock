@@ -21,6 +21,19 @@ bp = Blueprint('documents', __name__)
 response_builder = JSONAPIResponseBuilder()
 
 
+@bp.route('/documents/<path:document_id>', methods=['GET'])
+@require_auth
+def get_document_by_id(document_id: str):
+    """Get a document by its full ID."""
+    document = data_store.documents.get(document_id)
+    if not document:
+        raise NotFoundError("documents", document_id)
+    
+    response = response_builder.build_response(data=document.to_json_api())
+    logger.info(f"Retrieved document: {document_id}")
+    return jsonify(response)
+
+
 @bp.route('/all/documents', methods=['GET'])
 @require_auth
 def list_all_documents():
@@ -280,6 +293,31 @@ def list_document_parts(project_id: str, space_id: str, document_id: str):
     )
     
     logger.info(f"Listed {len(parts)} parts for document {full_id}")
+    return jsonify(response)
+
+
+@bp.route('/documents/<path:document_id>/workitems', methods=['GET'])
+@require_auth
+def list_document_workitems(document_id: str):
+    """List work items in a document."""
+    # Check if document exists
+    if document_id not in data_store.documents:
+        raise NotFoundError("documents", document_id)
+    
+    # Query work items that belong to this document
+    workitems = data_store.query_workitems(query=f"module.id:{document_id}")
+    
+    # Convert to JSON:API format
+    resources = [wi.to_json_api() for wi in workitems]
+    
+    response = response_builder.build_collection_response(
+        resources=resources,
+        total_count=len(resources),
+        page_number=1,
+        page_size=100
+    )
+    
+    logger.info(f"Listed {len(resources)} work items for document {document_id}")
     return jsonify(response)
 
 

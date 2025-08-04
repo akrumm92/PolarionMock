@@ -32,6 +32,28 @@ class Document(BaseResource):
     type: Literal["documents"] = Field(default="documents")
     attributes: DocumentAttributes = Field(description="Document attributes")
     
+    def to_json_api(self) -> Dict[str, Any]:
+        """Convert to JSON:API format."""
+        data = {
+            "type": self.type,
+            "id": self.id
+        }
+        
+        # Convert attributes to dict using Pydantic's model_dump
+        if self.attributes:
+            data["attributes"] = self.attributes.model_dump(exclude_none=True)
+        
+        if self.relationships:
+            data["relationships"] = self.relationships
+        
+        if self.links:
+            data["links"] = self.links
+        
+        if self.meta:
+            data["meta"] = self.meta
+        
+        return data
+    
     @classmethod
     def create_mock(cls, project_id: str, space_id: str, document_id: str, title: str, **kwargs) -> "Document":
         """Create a mock document for testing."""

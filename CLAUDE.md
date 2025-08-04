@@ -27,6 +27,24 @@ This is currently a greenfield project with a detailed specification in PROJECT_
 - **Error Handling**: Explicit and descriptive error messages
 - **Logging**: Structured logging at appropriate levels
 
+### Critical Implementation Guidelines
+
+#### Pydantic v2 Compatibility
+- Use `model_dump()` instead of `dict()` for Pydantic models
+- Use `Literal` types instead of deprecated `const=True`
+- Override `to_json_api()` in models that inherit from BaseResource to ensure proper JSON serialization
+
+#### JSON Serialization
+- All Pydantic model attributes must be properly serialized using `model_dump(exclude_none=True)`
+- Custom models (WorkItem, Document, Project) need explicit `to_json_api()` methods
+- Handle flexible input types (e.g., description can be string or dict)
+
+#### Test Implementation
+- Always import required modules: `os`, `json`, test helpers
+- Use logging fixtures (`log_test_info`, `capture_api_calls`) for better debugging
+- Handle authentication states properly (check `DISABLE_AUTH` environment variable)
+- Tests must work with both mock and production environments
+
 ## Planned Technology Stack
 
 - **Language**: Python 3.8+
@@ -45,6 +63,9 @@ pip install -r requirements-minimal.txt
 
 # Run the mock server
 MOCK_PORT=5001 python -m src.mock
+
+# Generate JWT token for authentication
+python generate_token_auto.py
 
 # Run all tests
 pytest
@@ -181,7 +202,23 @@ POLARION_API_ENDPOINT        # Full Polarion REST API endpoint (e.g., https://po
 POLARION_PERSONAL_ACCESS_TOKEN  # Personal Access Token for API authentication
 MOCK_PORT=5001              # Port for mock server (5001 to avoid macOS AirPlay conflicts)
 ENABLE_WEBSOCKET=true       # Enable WebSocket support
+DISABLE_AUTH=true|false     # Disable authentication for development (default: false)
+JWT_SECRET_KEY              # Secret key for signing JWT tokens (any string)
+MOCK_AUTH_TOKEN            # JWT token for mock API authentication
 ```
+
+## Authentication
+
+### Mock Server Authentication
+- Uses JWT tokens for authentication (unlike production Polarion which uses PAT)
+- Generate tokens with: `python generate_token_auto.py [username] [hours]`
+- Tokens must be generated with the same JWT_SECRET_KEY that the server uses
+- Set DISABLE_AUTH=true in .env for development without authentication
+
+### Important: JWT_SECRET_KEY vs Token
+- **JWT_SECRET_KEY**: A password/secret used to sign tokens (set in .env)
+- **MOCK_AUTH_TOKEN**: The actual JWT token used by tests (generated using the secret)
+- If you get "Signature verification failed", regenerate token with current JWT_SECRET_KEY
 
 ## Known Issues & Next Steps
 
