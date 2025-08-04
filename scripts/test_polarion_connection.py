@@ -41,7 +41,8 @@ def test_polarion_connection():
     # Prepare headers with PAT
     headers = {
         'Authorization': f'Bearer {pat}',
-        'Accept': 'application/vnd.api+json'  # JSON:API format required by Polarion
+        'Accept': 'application/json',  # Polarion uses standard JSON, not JSON:API
+        'Content-Type': 'application/json'
     }
     
     try:
