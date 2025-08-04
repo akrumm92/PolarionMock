@@ -31,6 +31,12 @@ def test_polarion_connection():
     print(f"🔍 Testing connection to: {endpoint}")
     print(f"🔑 Using Personal Access Token: {pat[:10]}...")
     
+    # Check SSL verification setting
+    verify_ssl = os.getenv('POLARION_VERIFY_SSL', 'true').lower() != 'false'
+    if not verify_ssl:
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        print("⚠️  SSL verification disabled")
+    
     # Prepare headers with PAT
     headers = {
         'Authorization': f'Bearer {pat}',
@@ -39,14 +45,14 @@ def test_polarion_connection():
     
     try:
         # Test API root endpoint
-        response = requests.get(endpoint, headers=headers, timeout=10)
+        response = requests.get(endpoint, headers=headers, timeout=10, verify=verify_ssl)
         
         if response.status_code == 200:
             print("✅ Successfully connected to Polarion API!")
             
             # Try to get projects
             projects_url = f"{endpoint}/projects"
-            projects_response = requests.get(projects_url, headers=headers, timeout=10)
+            projects_response = requests.get(projects_url, headers=headers, timeout=10, verify=verify_ssl)
             
             if projects_response.status_code == 200:
                 data = projects_response.json()
