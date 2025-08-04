@@ -1,0 +1,20 @@
+2025-08-04 15:19:09,829 - tests.session - INFO - ================================================================================
+2025-08-04 15:19:09,830 - tests.session - INFO - Test Session Started: 20250804_151909
+2025-08-04 15:19:09,830 - tests.session - INFO - Environment: production
+2025-08-04 15:19:09,830 - tests.session - INFO - ================================================================================
+2025-08-04 15:19:09,830 - tests.session - DEBUG - Test environment: production
+2025-08-04 15:19:09,830 - tests.session - DEBUG - Base URL: https://polarion-d.claas.local
+2025-08-04 15:19:11,307 - tests.session - DEBUG - Test environment: production
+2025-08-04 15:19:11,307 - tests.session - DEBUG - Base URL: https://polarion-d.claas.local
+2025-08-04 15:19:11,397 - tests.session - DEBUG - Test environment: production
+2025-08-04 15:19:11,397 - tests.session - DEBUG - Base URL: https://polarion-d.claas.local
+2025-08-04 15:19:11,520 - tests.session - DEBUG - Test environment: production
+2025-08-04 15:19:11,521 - tests.session - DEBUG - Base URL: https://polarion-d.claas.local
+2025-08-04 15:19:11,999 - tests.session - DEBUG - Test environment: production
+2025-08-04 15:19:11,999 - tests.session - DEBUG - Base URL: https://polarion-d.claas.local
+2025-08-04 15:19:12,076 - tests.session - DEBUG - Test environment: production
+2025-08-04 15:19:12,076 - tests.session - DEBUG - Base URL: https://polarion-d.claas.local
+2025-08-04 15:19:12,175 - tests.session - DEBUG - Test environment: production
+2025-08-04 15:19:12,175 - tests.session - DEBUG - Base URL: https://polarion-d.claas.local
+2025-08-04 15:19:12,817 - tests.session - DEBUG - Test environment: production
+2025-08-04 15:19:12,817 - tests.session - DEBUG - Base URL: https://polarion-d.claas.local
