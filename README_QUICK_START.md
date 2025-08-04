@@ -157,6 +157,8 @@ DISABLE_AUTH=true
 
 ## 📝 Running Tests
 
+### Against Mock Server
+
 ```bash
 # Run all tests against mock
 python run_tests.py --env mock --start-mock
@@ -166,6 +168,19 @@ pytest tests/test_projects.py -v
 
 # Run integration tests
 pytest tests/test_integration.py -v -m mock_only
+```
+
+### Against Production Polarion
+
+See [TESTING_AGAINST_POLARION.md](docs/TESTING_AGAINST_POLARION.md) for detailed instructions.
+
+Quick start:
+```bash
+# Set environment to production
+export POLARION_ENV=production
+
+# Run tests
+pytest -v
 ```
 
 ## 🏗️ Project Structure
