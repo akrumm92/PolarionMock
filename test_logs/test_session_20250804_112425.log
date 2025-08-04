@@ -1,0 +1,22 @@
+2025-08-04 11:24:25,610 - tests.session - INFO - ================================================================================
+2025-08-04 11:24:25,610 - tests.session - INFO - Test Session Started: 20250804_112425
+2025-08-04 11:24:25,610 - tests.session - INFO - Environment: production
+2025-08-04 11:24:25,610 - tests.session - INFO - ================================================================================
+2025-08-04 11:24:25,610 - tests.session - DEBUG - Test environment: production
+2025-08-04 11:24:25,610 - tests.session - DEBUG - Base URL: https://polarion.example.com
+2025-08-04 11:24:25,610 - tests.session - INFO - 
+============================================================
+2025-08-04 11:24:25,610 - tests.session - INFO - TEST START: test_api_availability
+2025-08-04 11:24:25,610 - tests.session - INFO - File: TestProjects
+2025-08-04 11:24:25,610 - tests.session - INFO - Time: 2025-08-04 11:24:25.610469
+2025-08-04 11:24:25,610 - tests.session - INFO - ============================================================
+
+2025-08-04 11:24:25,610 - tests.session - INFO - Testing API availability at https://polarion.example.com/polarion/rest/v1
+2025-08-04 11:24:25,610 - tests.session - INFO - Environment: production
+2025-08-04 11:24:25,610 - tests.session - INFO - Auth disabled: false
+2025-08-04 11:24:25,610 - tests.session - DEBUG - Making request to: https://polarion.example.com/polarion/rest/v1/projects
+2025-08-04 11:24:25,916 - tests.session - INFO - 
+============================================================
+2025-08-04 11:24:25,916 - tests.session - INFO - TEST END: test_api_availability
+2025-08-04 11:24:25,916 - tests.session - INFO - ============================================================
+

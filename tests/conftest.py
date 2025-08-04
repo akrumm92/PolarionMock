@@ -61,7 +61,7 @@ def base_url(request, test_env) -> str:
 
 
 @pytest.fixture(scope="session")
-def api_base_url(base_url, test_env) -> str:
+def api_base_url(base_url, test_env, request) -> str:
     """Get the API base URL."""
     if test_env == "mock":
         return f"{base_url}/polarion/rest/v1"

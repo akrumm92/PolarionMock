@@ -1,0 +1,22 @@
+2025-08-04 11:24:17,584 - tests.session - INFO - ================================================================================
+2025-08-04 11:24:17,584 - tests.session - INFO - Test Session Started: 20250804_112417
+2025-08-04 11:24:17,584 - tests.session - INFO - Environment: mock
+2025-08-04 11:24:17,584 - tests.session - INFO - ================================================================================
+2025-08-04 11:24:17,584 - tests.session - DEBUG - Test environment: mock
+2025-08-04 11:24:17,584 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 11:24:17,584 - tests.session - INFO - 
+============================================================
+2025-08-04 11:24:17,584 - tests.session - INFO - TEST START: test_api_availability
+2025-08-04 11:24:17,585 - tests.session - INFO - File: TestProjects
+2025-08-04 11:24:17,585 - tests.session - INFO - Time: 2025-08-04 11:24:17.585065
+2025-08-04 11:24:17,585 - tests.session - INFO - ============================================================
+
+2025-08-04 11:24:17,585 - tests.session - INFO - Testing API availability at http://localhost:5001/polarion/rest/v1
+2025-08-04 11:24:17,585 - tests.session - INFO - Environment: mock
+2025-08-04 11:24:17,585 - tests.session - INFO - Auth disabled: false
+2025-08-04 11:24:17,585 - tests.session - DEBUG - Making request to: http://localhost:5001/polarion/rest/v1/projects
+2025-08-04 11:24:17,653 - tests.session - INFO - 
+============================================================
+2025-08-04 11:24:17,653 - tests.session - INFO - TEST END: test_api_availability
+2025-08-04 11:24:17,653 - tests.session - INFO - ============================================================
+
