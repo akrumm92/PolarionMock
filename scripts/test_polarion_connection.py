@@ -17,12 +17,27 @@ def test_polarion_connection():
     """Test connection to Polarion REST API using Personal Access Token."""
     
     # Get configuration from environment
-    endpoint = os.getenv('POLARION_API_ENDPOINT')
+    base_url = os.getenv('POLARION_BASE_URL')
+    rest_path = os.getenv('POLARION_REST_V1_PATH', '/polarion/rest/v1')
+    api_path = os.getenv('POLARION_API_PATH', '/polarion/api')
+    
+    # For backward compatibility, check old variable too
+    if not base_url:
+        old_endpoint = os.getenv('POLARION_API_ENDPOINT')
+        if old_endpoint:
+            print("⚠️  Using deprecated POLARION_API_ENDPOINT. Please update to use POLARION_BASE_URL")
+            endpoint = old_endpoint
+        else:
+            endpoint = None
+    else:
+        # Use REST v1 endpoint for main tests
+        endpoint = f"{base_url}{rest_path}"
+    
     pat = os.getenv('POLARION_PERSONAL_ACCESS_TOKEN')
     
     if not endpoint:
-        print("❌ Error: POLARION_API_ENDPOINT not set in .env file")
-        print("   Example: https://polarion.example.com/polarion/api")
+        print("❌ Error: POLARION_BASE_URL not set in .env file")
+        print("   Example: POLARION_BASE_URL=https://polarion.example.com")
         return False
     
     if not pat:
