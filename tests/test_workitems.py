@@ -17,10 +17,10 @@ class TestWorkItems:
     """Test suite for Work Items API endpoints."""
     
     @pytest.mark.integration
-    def test_list_project_workitems(self, api_base_url, auth_headers, test_project_id, test_env, mock_server_running):
+    def test_list_project_workitems(self, api_base_url, auth_headers, test_project_id, test_env, mock_server_running, http_session):
         """Test listing work items for a specific project."""
         url = f"{api_base_url}/projects/{test_project_id}/workitems"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         # Check if project exists
         if response.status_code == 404:
@@ -45,10 +45,10 @@ class TestWorkItems:
         logger.info(f"[{test_env}] Found {len(data['data'])} work items in project {test_project_id}")
     
     @pytest.mark.integration
-    def test_list_all_workitems(self, api_base_url, auth_headers, test_env, mock_server_running):
+    def test_list_all_workitems(self, api_base_url, auth_headers, test_env, mock_server_running, http_session):
         """Test listing all work items across all projects."""
         url = f"{api_base_url}/all/workitems"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         assert response.status_code == 200, f"Failed to list all work items: {response.text}"
         
@@ -59,11 +59,11 @@ class TestWorkItems:
         logger.info(f"[{test_env}] Found {len(data['data'])} work items total")
     
     @pytest.mark.integration
-    def test_get_workitem(self, api_base_url, auth_headers, test_project_id, test_env, mock_server_running):
+    def test_get_workitem(self, api_base_url, auth_headers, test_project_id, test_env, mock_server_running, http_session):
         """Test getting a specific work item."""
         # First, list work items to find one
         url = f"{api_base_url}/projects/{test_project_id}/workitems?page[size]=1"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         if response.status_code == 404:
             pytest.skip(f"Project '{test_project_id}' not found")
@@ -81,7 +81,7 @@ class TestWorkItems:
         
         # Get specific work item
         url = f"{api_base_url}/projects/{project_id}/workitems/{item_id}"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         assert response.status_code == 200, f"Failed to get work item: {response.text}"
         
@@ -94,7 +94,7 @@ class TestWorkItems:
         logger.info(f"[{test_env}] Successfully retrieved work item: {workitem_id}")
     
     @pytest.mark.mock_only
-    def test_create_workitem(self, api_base_url, auth_headers, test_project_id):
+    def test_create_workitem(self, api_base_url, auth_headers, test_project_id, http_session):
         """Test creating a new work item (mock only)."""
         workitem_data = {
             "data": [{
@@ -113,7 +113,7 @@ class TestWorkItems:
         }
         
         url = f"{api_base_url}/projects/{test_project_id}/workitems"
-        response = requests.post(url, headers=auth_headers, json=workitem_data)
+        response = http_session.post(url, headers=auth_headers, json=workitem_data)
         
         assert response.status_code == 201, f"Failed to create work item: {response.text}"
         
@@ -127,10 +127,10 @@ class TestWorkItems:
         # Clean up - delete the work item
         parts = created_id.split("/")
         delete_url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}"
-        requests.delete(delete_url, headers=auth_headers)
+        http_session.delete(delete_url, headers=auth_headers)
     
     @pytest.mark.mock_only
-    def test_create_workitem_in_document(self, api_base_url, auth_headers, test_project_id):
+    def test_create_workitem_in_document(self, api_base_url, auth_headers, test_project_id, http_session):
         """Test creating a work item with document relationship."""
         workitem_data = {
             "data": [{
@@ -155,7 +155,7 @@ class TestWorkItems:
         }
         
         url = f"{api_base_url}/projects/{test_project_id}/workitems"
-        response = requests.post(url, headers=auth_headers, json=workitem_data)
+        response = http_session.post(url, headers=auth_headers, json=workitem_data)
         
         assert response.status_code == 201, f"Failed to create work item in document: {response.text}"
         
@@ -173,14 +173,14 @@ class TestWorkItems:
         # Clean up
         parts = created_id.split("/")
         delete_url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}"
-        requests.delete(delete_url, headers=auth_headers)
+        http_session.delete(delete_url, headers=auth_headers)
     
     @pytest.mark.integration
-    def test_query_workitems(self, api_base_url, auth_headers, test_env, mock_server_running):
+    def test_query_workitems(self, api_base_url, auth_headers, test_env, mock_server_running, http_session):
         """Test querying work items with filters."""
         # Query by type
         url = f"{api_base_url}/all/workitems?query=type:requirement"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         assert response.status_code == 200
         data = response.json()
@@ -195,7 +195,7 @@ class TestWorkItems:
         logger.info(f"[{test_env}] Query returned {len(data['data'])} work items")
     
     @pytest.mark.integration
-    def test_workitem_with_includes(self, api_base_url, auth_headers, test_env, mock_server_running):
+    def test_workitem_with_includes(self, api_base_url, auth_headers, test_env, mock_server_running, http_session):
         """Test including related resources."""
         if test_env == "mock":
             # Use known project with work items that have modules
@@ -203,7 +203,7 @@ class TestWorkItems:
         else:
             url = f"{api_base_url}/all/workitems?include=module&page[size]=5"
         
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         if response.status_code == 404:
             pytest.skip("Test project not found")
@@ -225,7 +225,7 @@ class TestWorkItems:
         logger.info(f"[{test_env}] Successfully tested includes")
     
     @pytest.mark.mock_only
-    def test_update_workitem(self, api_base_url, auth_headers, test_project_id):
+    def test_update_workitem(self, api_base_url, auth_headers, test_project_id, http_session):
         """Test updating a work item."""
         # First create a work item
         create_data = {
@@ -260,7 +260,7 @@ class TestWorkItems:
         }
         
         url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}"
-        response = requests.patch(url, headers=auth_headers, json=update_data)
+        response = http_session.patch(url, headers=auth_headers, json=update_data)
         
         assert response.status_code == 200, f"Failed to update work item: {response.text}"
         
@@ -275,7 +275,7 @@ class TestWorkItems:
         requests.delete(url, headers=auth_headers)
     
     @pytest.mark.mock_only
-    def test_move_workitem_to_document(self, api_base_url, auth_headers, test_project_id):
+    def test_move_workitem_to_document(self, api_base_url, auth_headers, test_project_id, http_session):
         """Test moving a work item to a document."""
         # Create a work item without document
         create_data = {
@@ -312,7 +312,7 @@ class TestWorkItems:
         
         # Clean up
         delete_url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}"
-        requests.delete(delete_url, headers=auth_headers)
+        http_session.delete(delete_url, headers=auth_headers)
     
     def _validate_workitem_structure(self, workitem: Dict[str, Any]):
         """Validate work item object structure."""

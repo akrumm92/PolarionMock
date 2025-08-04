@@ -18,7 +18,7 @@ class TestSimpleExamples:
     """Simple example tests for common operations."""
     
     @pytest.mark.integration
-    def test_list_all_projects(self, api_base_url, auth_headers, test_env, log_test_info, capture_api_calls):
+    def test_list_all_projects(self, api_base_url, auth_headers, test_env, log_test_info, capture_api_calls, http_session):
         """Simple test that lists all available projects."""
         log_test_info.info(f"Testing: List all projects in {test_env}")
         
@@ -26,7 +26,7 @@ class TestSimpleExamples:
         url = f"{api_base_url}/projects"
         log_test_info.debug(f"Request URL: {url}")
         
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         capture_api_calls(
             method="GET",
             url=url,
@@ -64,7 +64,7 @@ class TestSimpleExamples:
     
     @pytest.mark.mock_only
     @pytest.mark.integration
-    def test_create_workitem_with_full_data(self, api_base_url, auth_headers, log_test_info, capture_api_calls):
+    def test_create_workitem_with_full_data(self, api_base_url, auth_headers, log_test_info, capture_api_calls, http_session):
         """Create a work item with all required fields from WorkItemRequest.json example."""
         log_test_info.info("Testing: Create work item with full data structure")
         
@@ -121,7 +121,7 @@ class TestSimpleExamples:
         log_test_info.debug(f"Creating work item at: {url}")
         log_test_info.debug(f"Work item request data: {json.dumps(workitem_data, indent=2)}")
         
-        response = requests.post(url, headers=auth_headers, json=workitem_data)
+        response = http_session.post(url, headers=auth_headers, json=workitem_data)
         capture_api_calls(
             method="POST",
             url=url,
@@ -154,12 +154,12 @@ class TestSimpleExamples:
             parts = created_item["id"].split("/")
             delete_url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}"
             log_test_info.debug(f"Cleaning up: DELETE {delete_url}")
-            requests.delete(delete_url, headers=auth_headers)
+            http_session.delete(delete_url, headers=auth_headers)
         
         return created_item
     
     @pytest.mark.integration
-    def test_read_document_structure(self, api_base_url, auth_headers, test_env, log_test_info, capture_api_calls):
+    def test_read_document_structure(self, api_base_url, auth_headers, test_env, log_test_info, capture_api_calls, http_session):
         """Read a specific document and its chapter structure."""
         log_test_info.info(f"Testing: Read document structure in {test_env}")
         
@@ -176,7 +176,7 @@ class TestSimpleExamples:
         doc_url = f"{api_base_url}/documents/{document_id}"
         log_test_info.debug(f"Fetching document: {doc_url}")
         
-        response = requests.get(doc_url, headers=auth_headers)
+        response = http_session.get(doc_url, headers=auth_headers)
         capture_api_calls(
             method="GET",
             url=doc_url,
@@ -200,7 +200,7 @@ class TestSimpleExamples:
         parts_url = f"{api_base_url}/documents/{document_id}/parts"
         log_test_info.debug(f"Fetching document parts: {parts_url}")
         
-        parts_response = requests.get(parts_url, headers=auth_headers)
+        parts_response = http_session.get(parts_url, headers=auth_headers)
         capture_api_calls(
             method="GET",
             url=parts_url,
@@ -214,7 +214,7 @@ class TestSimpleExamples:
             
             # Try alternative: get work items in the document
             workitems_url = f"{api_base_url}/documents/{document_id}/workitems"
-            wi_response = requests.get(workitems_url, headers=auth_headers)
+            wi_response = http_session.get(workitems_url, headers=auth_headers)
             
             if wi_response.status_code == 200:
                 wi_data = wi_response.json()

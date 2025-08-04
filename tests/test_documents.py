@@ -17,10 +17,10 @@ class TestDocuments:
     """Test suite for Documents API endpoints."""
     
     @pytest.mark.integration
-    def test_list_all_documents(self, api_base_url, auth_headers, test_env, mock_server_running):
+    def test_list_all_documents(self, api_base_url, auth_headers, test_env, mock_server_running, http_session):
         """Test listing all documents."""
         url = f"{api_base_url}/all/documents"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         assert response.status_code == 200, f"Failed to list documents: {response.text}"
         
@@ -41,10 +41,10 @@ class TestDocuments:
         logger.info(f"[{test_env}] Found {len(data['data'])} documents")
     
     @pytest.mark.integration
-    def test_list_space_documents(self, api_base_url, auth_headers, test_project_id, test_env, mock_server_running):
+    def test_list_space_documents(self, api_base_url, auth_headers, test_project_id, test_env, mock_server_running, http_session):
         """Test listing documents in a specific space."""
         url = f"{api_base_url}/projects/{test_project_id}/spaces/_default/documents"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         # Check if project exists
         if response.status_code == 404:
@@ -59,11 +59,11 @@ class TestDocuments:
         logger.info(f"[{test_env}] Found {len(data['data'])} documents in space _default")
     
     @pytest.mark.integration
-    def test_get_document(self, api_base_url, auth_headers, test_env, mock_server_running):
+    def test_get_document(self, api_base_url, auth_headers, test_env, mock_server_running, http_session):
         """Test getting a specific document."""
         # First, list documents to find one
         url = f"{api_base_url}/all/documents?page[size]=1"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         if response.status_code != 200 or len(response.json()["data"]) == 0:
             pytest.skip("No documents found to test")
@@ -78,7 +78,7 @@ class TestDocuments:
         
         # Get specific document
         url = f"{api_base_url}/projects/{project_id}/spaces/{space_id}/documents/{doc_name}"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         assert response.status_code == 200, f"Failed to get document: {response.text}"
         
@@ -91,7 +91,7 @@ class TestDocuments:
         logger.info(f"[{test_env}] Successfully retrieved document: {document_id}")
     
     @pytest.mark.mock_only
-    def test_create_document(self, api_base_url, auth_headers):
+    def test_create_document(self, api_base_url, auth_headers, http_session):
         """Test creating a new document (mock only)."""
         document_data = {
             "data": [{
@@ -109,7 +109,7 @@ class TestDocuments:
         }
         
         url = f"{api_base_url}/projects/myproject/spaces/_default/documents"
-        response = requests.post(url, headers=auth_headers, json=document_data)
+        response = http_session.post(url, headers=auth_headers, json=document_data)
         
         assert response.status_code == 201, f"Failed to create document: {response.text}"
         
@@ -120,13 +120,13 @@ class TestDocuments:
         
         # Clean up - delete the document
         delete_url = f"{api_base_url}/projects/myproject/spaces/_default/documents/test_doc_001"
-        requests.delete(delete_url, headers=auth_headers)
+        http_session.delete(delete_url, headers=auth_headers)
     
     @pytest.mark.integration
-    def test_document_pagination(self, api_base_url, auth_headers, test_env, mock_server_running):
+    def test_document_pagination(self, api_base_url, auth_headers, test_env, mock_server_running, http_session):
         """Test pagination for documents listing."""
         url = f"{api_base_url}/all/documents?page[size]=2&page[number]=1"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         assert response.status_code == 200
         data = response.json()
@@ -164,7 +164,7 @@ class TestDocumentParts:
     """Test suite for Document Parts API endpoints."""
     
     @pytest.mark.integration  
-    def test_list_document_parts(self, api_base_url, auth_headers, test_env, mock_server_running):
+    def test_list_document_parts(self, api_base_url, auth_headers, test_env, mock_server_running, http_session):
         """Test listing document parts."""
         if test_env == "mock":
             # Use known document from dummy data
@@ -172,7 +172,7 @@ class TestDocumentParts:
         else:
             pytest.skip("Document parts test requires known document structure")
         
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         if response.status_code == 404:
             pytest.skip("Test document not found")
@@ -186,7 +186,7 @@ class TestDocumentParts:
         logger.info(f"[{test_env}] Found {len(data['data'])} document parts")
     
     @pytest.mark.mock_only
-    def test_add_workitem_to_document(self, api_base_url, auth_headers, test_project_id):
+    def test_add_workitem_to_document(self, api_base_url, auth_headers, test_project_id, http_session):
         """Test adding a work item to a document as a part."""
         # First create a work item
         workitem_data = {
@@ -205,7 +205,7 @@ class TestDocumentParts:
         
         # Create work item
         url = f"{api_base_url}/projects/{test_project_id}/workitems"
-        response = requests.post(url, headers=auth_headers, json=workitem_data)
+        response = http_session.post(url, headers=auth_headers, json=workitem_data)
         assert response.status_code == 201
         
         workitem_id = response.json()["data"][0]["id"]
@@ -229,7 +229,7 @@ class TestDocumentParts:
         }
         
         url = f"{api_base_url}/projects/myproject/spaces/_default/documents/user_stories/parts"
-        response = requests.post(url, headers=auth_headers, json=part_data)
+        response = http_session.post(url, headers=auth_headers, json=part_data)
         
         assert response.status_code == 201, f"Failed to add work item to document: {response.text}"
         
@@ -237,7 +237,7 @@ class TestDocumentParts:
         
         # Clean up - delete the work item
         delete_url = f"{api_base_url}/projects/{workitem_id}"
-        requests.delete(delete_url.replace("//", "/"), headers=auth_headers)
+        http_session.delete(delete_url.replace("//", "/"), headers=auth_headers)
 
 
 if __name__ == "__main__":

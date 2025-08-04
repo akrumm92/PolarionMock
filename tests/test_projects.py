@@ -18,7 +18,7 @@ class TestProjects:
     """Test suite for Projects API endpoints."""
     
     @pytest.mark.smoke
-    def test_api_availability(self, api_base_url, test_env, log_test_info, capture_api_calls):
+    def test_api_availability(self, api_base_url, test_env, log_test_info, capture_api_calls, http_session):
         """Test if API is available by checking projects endpoint."""
         log_test_info.info(f"Testing API availability at {api_base_url}")
         log_test_info.info(f"Environment: {test_env}")
@@ -27,7 +27,7 @@ class TestProjects:
         url = f"{api_base_url}/projects"
         log_test_info.debug(f"Making request to: {url}")
         
-        response = requests.get(url)
+        response = http_session.get(url)
         capture_api_calls(
             method="GET",
             url=url,
@@ -56,7 +56,7 @@ class TestProjects:
         log_test_info.info(f"✓ [{test_env}] API is available at {api_base_url}")
     
     @pytest.mark.integration
-    def test_list_projects(self, api_base_url, auth_headers, test_env, mock_server_running, log_test_info, capture_api_calls):
+    def test_list_projects(self, api_base_url, auth_headers, test_env, mock_server_running, log_test_info, capture_api_calls, http_session):
         """Test listing all projects."""
         log_test_info.info("Testing: List all projects")
         
@@ -64,7 +64,7 @@ class TestProjects:
         log_test_info.debug(f"Request URL: {url}")
         log_test_info.debug(f"Headers: {auth_headers}")
         
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         capture_api_calls(
             method="GET",
             url=url,
@@ -99,10 +99,10 @@ class TestProjects:
         return project_ids
     
     @pytest.mark.integration
-    def test_get_project_by_id(self, api_base_url, auth_headers, test_project_id, test_env, mock_server_running):
+    def test_get_project_by_id(self, api_base_url, auth_headers, test_project_id, test_env, mock_server_running, http_session):
         """Test getting a specific project by ID."""
         url = f"{api_base_url}/projects/{test_project_id}"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         # Check if project exists
         if response.status_code == 404:
@@ -121,11 +121,11 @@ class TestProjects:
         logger.info(f"[{test_env}] Successfully retrieved project: {test_project_id}")
     
     @pytest.mark.integration
-    def test_project_pagination(self, api_base_url, auth_headers, test_env, mock_server_running):
+    def test_project_pagination(self, api_base_url, auth_headers, test_env, mock_server_running, http_session):
         """Test pagination for projects listing."""
         # First request with page size 2
         url = f"{api_base_url}/projects?page[size]=2&page[number]=1"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         assert response.status_code == 200
         data = response.json()
@@ -149,10 +149,10 @@ class TestProjects:
         logger.info(f"[{test_env}] Pagination working correctly")
     
     @pytest.mark.integration
-    def test_project_sparse_fieldsets(self, api_base_url, auth_headers, test_project_id, test_env, mock_server_running):
+    def test_project_sparse_fieldsets(self, api_base_url, auth_headers, test_project_id, test_env, mock_server_running, http_session):
         """Test sparse fieldsets functionality."""
         url = f"{api_base_url}/projects/{test_project_id}?fields[projects]=name,created"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         if response.status_code == 404:
             pytest.skip(f"Test project '{test_project_id}' not found")
@@ -169,7 +169,7 @@ class TestProjects:
         logger.info(f"[{test_env}] Sparse fieldsets test completed")
     
     @pytest.mark.mock_only
-    def test_create_project(self, api_base_url, auth_headers):
+    def test_create_project(self, api_base_url, auth_headers, http_session):
         """Test creating a new project (mock only)."""
         project_data = {
             "data": {
@@ -187,7 +187,7 @@ class TestProjects:
         }
         
         url = f"{api_base_url}/projects"
-        response = requests.post(url, headers=auth_headers, json=project_data)
+        response = http_session.post(url, headers=auth_headers, json=project_data)
         
         assert response.status_code == 201, f"Failed to create project: {response.text}"
         
@@ -200,14 +200,14 @@ class TestProjects:
         
         # Clean up - delete the project
         delete_url = f"{api_base_url}/projects/test-project-001"
-        requests.delete(delete_url, headers=auth_headers)
+        http_session.delete(delete_url, headers=auth_headers)
     
     @pytest.mark.integration
-    def test_project_sorting(self, api_base_url, auth_headers, test_env, mock_server_running):
+    def test_project_sorting(self, api_base_url, auth_headers, test_env, mock_server_running, http_session):
         """Test sorting projects."""
         # Sort by name ascending
         url = f"{api_base_url}/projects?sort=name"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         assert response.status_code == 200
         data = response.json()
@@ -219,7 +219,7 @@ class TestProjects:
         
         # Sort by name descending
         url = f"{api_base_url}/projects?sort=-name"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         assert response.status_code == 200
         data = response.json()

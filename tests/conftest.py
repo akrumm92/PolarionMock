@@ -118,6 +118,30 @@ def test_project_id() -> str:
     return os.getenv("TEST_PROJECT_ID", "myproject")
 
 
+@pytest.fixture(scope="session")
+def verify_ssl() -> bool:
+    """Get SSL verification setting from environment."""
+    verify = os.getenv("POLARION_VERIFY_SSL", "true").lower()
+    return verify == "true"
+
+
+@pytest.fixture(scope="session")
+def http_session(verify_ssl):
+    """Create a requests session with SSL verification settings."""
+    import requests
+    import warnings
+    from urllib3.exceptions import InsecureRequestWarning
+    
+    session = requests.Session()
+    session.verify = verify_ssl
+    
+    # Suppress SSL warnings if verification is disabled
+    if not verify_ssl:
+        warnings.filterwarnings('ignore', category=InsecureRequestWarning)
+    
+    return session
+
+
 @pytest.fixture(autouse=True)
 def log_test_environment(request, test_logger):
     """Automatically log test environment for each test."""
@@ -129,18 +153,17 @@ def log_test_environment(request, test_logger):
 
 
 @pytest.fixture
-def mock_server_running(test_env, base_url, test_logger):
+def mock_server_running(test_env, base_url, test_logger, http_session):
     """Ensure mock server is running when testing against mock."""
     if test_env == "mock":
-        import requests
         try:
-            response = requests.get(f"{base_url}/health", timeout=2)
+            response = http_session.get(f"{base_url}/health", timeout=2)
             if response.status_code != 200:
                 test_logger.error(f"Mock server not responding at {base_url}")
                 pytest.skip("Mock server not responding at {base_url}")
             else:
                 test_logger.info(f"Mock server is running at {base_url}")
-        except requests.exceptions.RequestException as e:
+        except Exception as e:
             test_logger.error(f"Mock server not running at {base_url}: {str(e)}")
             pytest.skip(f"Mock server not running at {base_url}")
 

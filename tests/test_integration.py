@@ -18,7 +18,7 @@ class TestIntegrationWorkflows:
     
     @pytest.mark.mock_only
     @pytest.mark.integration
-    def test_complete_document_workflow(self, api_base_url, auth_headers, test_project_id):
+    def test_complete_document_workflow(self, api_base_url, auth_headers, test_project_id, http_session):
         """Test complete workflow: create document, add work items, query them."""
         
         # Step 1: Create a new document
@@ -39,7 +39,7 @@ class TestIntegrationWorkflows:
         }
         
         url = f"{api_base_url}/projects/{test_project_id}/spaces/_default/documents"
-        response = requests.post(url, headers=auth_headers, json=document_data)
+        response = http_session.post(url, headers=auth_headers, json=document_data)
         assert response.status_code == 201
         
         document_id = f"{test_project_id}/_default/test_workflow_doc"
@@ -92,7 +92,7 @@ class TestIntegrationWorkflows:
         }
         
         url = f"{api_base_url}/projects/{test_project_id}/workitems"
-        response = requests.post(url, headers=auth_headers, json=workitems_data)
+        response = http_session.post(url, headers=auth_headers, json=workitems_data)
         assert response.status_code == 201
         
         created_workitems = response.json()["data"]
@@ -103,7 +103,7 @@ class TestIntegrationWorkflows:
         # Step 3: Query work items in the document
         logger.info("Step 3: Querying work items in document")
         url = f"{api_base_url}/projects/{test_project_id}/workitems?query=module.id:{document_id}"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         assert response.status_code == 200
         
         data = response.json()
@@ -112,7 +112,7 @@ class TestIntegrationWorkflows:
         # Step 4: Get document parts
         logger.info("Step 4: Getting document parts")
         url = f"{api_base_url}/projects/{test_project_id}/spaces/_default/documents/test_workflow_doc/parts?include=workItem"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         assert response.status_code == 200
         
         parts_data = response.json()
@@ -138,7 +138,7 @@ class TestIntegrationWorkflows:
         }
         
         url = f"{api_base_url}/projects/{wi_parts[0]}/workitems/{wi_parts[1]}"
-        response = requests.patch(url, headers=auth_headers, json=update_data)
+        response = http_session.patch(url, headers=auth_headers, json=update_data)
         assert response.status_code == 200
         
         updated = response.json()["data"]
@@ -152,15 +152,15 @@ class TestIntegrationWorkflows:
         for wi_id in workitem_ids:
             parts = wi_id.split("/")
             url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}"
-            requests.delete(url, headers=auth_headers)
+            http_session.delete(url, headers=auth_headers)
         
         # Delete document
         url = f"{api_base_url}/projects/{test_project_id}/spaces/_default/documents/test_workflow_doc"
-        requests.delete(url, headers=auth_headers)
+        http_session.delete(url, headers=auth_headers)
     
     @pytest.mark.mock_only
     @pytest.mark.integration
-    def test_workitem_move_between_documents(self, api_base_url, auth_headers, test_project_id):
+    def test_workitem_move_between_documents(self, api_base_url, auth_headers, test_project_id, http_session):
         """Test moving work items between documents."""
         
         # Create two documents
@@ -179,7 +179,7 @@ class TestIntegrationWorkflows:
             }
             
             url = f"{api_base_url}/projects/{test_project_id}/spaces/_default/documents"
-            response = requests.post(url, headers=auth_headers, json=doc_data)
+            response = http_session.post(url, headers=auth_headers, json=doc_data)
             assert response.status_code == 201
         
         # Create work item in source document
@@ -203,7 +203,7 @@ class TestIntegrationWorkflows:
         }
         
         url = f"{api_base_url}/projects/{test_project_id}/workitems"
-        response = requests.post(url, headers=auth_headers, json=workitem_data)
+        response = http_session.post(url, headers=auth_headers, json=workitem_data)
         assert response.status_code == 201
         
         workitem_id = response.json()["data"][0]["id"]
@@ -216,12 +216,12 @@ class TestIntegrationWorkflows:
         }
         
         url = f"{api_base_url}/projects/{wi_parts[0]}/workitems/{wi_parts[1]}/actions/moveToDocument"
-        response = requests.post(url, headers=auth_headers, json=move_data)
+        response = http_session.post(url, headers=auth_headers, json=move_data)
         assert response.status_code == 200
         
         # Verify work item now belongs to target document
         url = f"{api_base_url}/projects/{wi_parts[0]}/workitems/{wi_parts[1]}"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         assert response.status_code == 200
         
         workitem = response.json()["data"]
@@ -233,22 +233,22 @@ class TestIntegrationWorkflows:
         logger.info("Cleaning up test data")
         # Delete work item
         url = f"{api_base_url}/projects/{wi_parts[0]}/workitems/{wi_parts[1]}"
-        requests.delete(url, headers=auth_headers)
+        http_session.delete(url, headers=auth_headers)
         
         # Delete documents
         for doc_name in ["source_doc", "target_doc"]:
             url = f"{api_base_url}/projects/{test_project_id}/spaces/_default/documents/{doc_name}"
-            requests.delete(url, headers=auth_headers)
+            http_session.delete(url, headers=auth_headers)
 
 
 @pytest.mark.integration
 class TestDataValidation:
     """Test data validation and error handling."""
     
-    def test_invalid_project_returns_404(self, api_base_url, auth_headers, test_env, mock_server_running):
+    def test_invalid_project_returns_404(self, api_base_url, auth_headers, test_env, mock_server_running, http_session):
         """Test that invalid project returns proper error."""
         url = f"{api_base_url}/projects/non_existent_project/workitems"
-        response = requests.get(url, headers=auth_headers)
+        response = http_session.get(url, headers=auth_headers)
         
         assert response.status_code == 404
         data = response.json()
@@ -256,7 +256,7 @@ class TestDataValidation:
         assert data["errors"][0]["status"] == "404"
     
     @pytest.mark.mock_only
-    def test_invalid_workitem_data(self, api_base_url, auth_headers, test_project_id):
+    def test_invalid_workitem_data(self, api_base_url, auth_headers, test_project_id, http_session):
         """Test creating work item with invalid data."""
         # Missing required title
         invalid_data = {
@@ -270,7 +270,7 @@ class TestDataValidation:
         }
         
         url = f"{api_base_url}/projects/{test_project_id}/workitems"
-        response = requests.post(url, headers=auth_headers, json=invalid_data)
+        response = http_session.post(url, headers=auth_headers, json=invalid_data)
         
         assert response.status_code == 400
         data = response.json()
