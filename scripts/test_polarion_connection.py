@@ -6,6 +6,7 @@ Test script to verify Polarion API connection using Personal Access Token
 import os
 import sys
 import requests
+import urllib3
 from dotenv import load_dotenv
 
 # Load environment variables

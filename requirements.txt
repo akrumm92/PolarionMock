@@ -23,6 +23,7 @@ PyJWT==2.8.0
 
 # HTTP clients and testing
 requests==2.31.0
+urllib3==2.1.0
 httpx==0.25.2
 responses==0.24.1
 
