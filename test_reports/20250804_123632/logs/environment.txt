@@ -1,0 +1,6 @@
+Test Environment: production
+Test Path: tests/test_workitems.py
+Timestamp: 2025-08-04 12:36:34.014057
+Python Version: 3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]
+
+Environment Variables:

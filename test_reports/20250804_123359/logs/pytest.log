@@ -1,0 +1,4 @@
+2025-08-04 12:33:59,407 [INFO] [__main__] Running tests against production environment
+2025-08-04 12:33:59,408 [INFO] [__main__] Command: C:\Users\E017093\gitRepos\PolarionMock\venv\Scripts\python.exe -m pytest --env production -v --html=test_reports\20250804_123359/report.html --self-contained-html --json-report-file=test_reports\20250804_123359/report.json --log-file=test_reports\20250804_123359\logs\pytest.log --log-file-level=DEBUG tests/ --tests tests\test_workitems.py
+2025-08-04 12:33:59,939 [INFO] [__main__] Test reports saved to: test_reports\20250804_123359
+2025-08-04 12:33:59,939 [INFO] [__main__] Logs saved to: test_reports\20250804_123359/logs/pytest.log
