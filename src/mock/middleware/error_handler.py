@@ -32,7 +32,11 @@ class ValidationError(APIError):
 class NotFoundError(APIError):
     """Resource not found error."""
     def __init__(self, resource_type: str, resource_id: str, **kwargs):
-        message = f"{resource_type} with id '{resource_id}' not found"
+        # Special message for projects to match Polarion
+        if resource_type == "projects":
+            message = f"Project id {resource_id} does not exist."
+        else:
+            message = f"{resource_type} with id '{resource_id}' not found"
         source = {'resource': {'type': resource_type, 'id': resource_id}}
         super().__init__(message, status_code=404, source=source, **kwargs)
 
@@ -62,6 +66,24 @@ def build_error_response(errors: List[Dict[str, Any]]) -> Dict[str, Any]:
 
 def error_to_dict(error: APIError) -> Dict[str, Any]:
     """Convert APIError to dictionary."""
+    # Special handling for NotFoundError to match Polarion format
+    if isinstance(error, NotFoundError) and error.status_code == 404:
+        # Projects have a specific format
+        if error.source and error.source.get('resource', {}).get('type') == 'projects':
+            return {
+                'status': '404',
+                'title': 'Not Found',
+                'detail': error.message
+            }
+        else:
+            # General 404 format
+            return {
+                'status': '404',
+                'title': 'Not Found',
+                'detail': None,
+                'source': None
+            }
+    
     error_dict = {
         'status': str(error.status_code),
         'title': error.__class__.__name__.replace('Error', ''),

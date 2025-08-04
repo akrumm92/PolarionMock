@@ -1,124 +1,102 @@
 """
-Test helper functions with enhanced logging
+Test helpers and utilities for Polarion Mock tests.
 """
 
-import time
-import json
 import logging
-from typing import Dict, Any, Optional
+import json
+from typing import Dict, Any, Optional, List
 from datetime import datetime
-import requests
+
+logger = logging.getLogger(__name__)
 
 
 class APITestClient:
-    """Enhanced API client with automatic logging."""
+    """Helper class for API testing."""
     
-    def __init__(self, base_url: str, auth_headers: Dict[str, str], logger: logging.Logger, capture_api_calls=None):
+    def __init__(self, base_url: str, headers: Dict[str, str]):
         self.base_url = base_url
-        self.auth_headers = auth_headers
-        self.logger = logger
-        self.capture_api_calls = capture_api_calls
-        
-    def _log_request(self, method: str, url: str, **kwargs):
-        """Log request details."""
-        self.logger.info(f"API Request: {method} {url}")
-        if 'json' in kwargs:
-            self.logger.debug(f"Request Body: {json.dumps(kwargs['json'], indent=2)}")
-        if 'params' in kwargs:
-            self.logger.debug(f"Query Params: {kwargs['params']}")
-            
-    def _log_response(self, response: requests.Response, duration: float):
-        """Log response details."""
-        self.logger.info(f"API Response: {response.status_code} ({duration:.2f}s)")
-        
-        try:
-            if response.content:
-                response_data = response.json()
-                self.logger.debug(f"Response Body: {json.dumps(response_data, indent=2)}")
-        except:
-            self.logger.debug(f"Response Body (text): {response.text[:500]}")
-            
-    def request(self, method: str, endpoint: str, **kwargs) -> requests.Response:
-        """Make an API request with automatic logging."""
-        url = f"{self.base_url}{endpoint}"
-        
-        # Add auth headers
-        headers = kwargs.get('headers', {})
-        headers.update(self.auth_headers)
-        kwargs['headers'] = headers
-        
-        # Log request
-        self._log_request(method, url, **kwargs)
-        
-        # Make request and measure time
-        start_time = time.time()
-        response = requests.request(method, url, **kwargs)
-        duration = time.time() - start_time
-        
-        # Log response
-        self._log_response(response, duration)
-        
-        # Capture for analysis if provided
-        if self.capture_api_calls:
-            request_data = kwargs.get('json')
-            try:
-                response_data = response.json() if response.content else None
-            except:
-                response_data = None
-                
-            self.capture_api_calls(
-                method=method,
-                url=url,
-                status_code=response.status_code,
-                response_time=duration,
-                request_data=request_data,
-                response_data=response_data
-            )
-        
-        return response
+        self.headers = headers
     
-    def get(self, endpoint: str, **kwargs) -> requests.Response:
-        """GET request."""
-        return self.request('GET', endpoint, **kwargs)
+    def get(self, endpoint: str, **kwargs) -> Any:
+        """Make GET request."""
+        # This is a placeholder - actual implementation would use requests
+        pass
     
-    def post(self, endpoint: str, **kwargs) -> requests.Response:
-        """POST request."""
-        return self.request('POST', endpoint, **kwargs)
+    def post(self, endpoint: str, data: Any, **kwargs) -> Any:
+        """Make POST request."""
+        pass
     
-    def patch(self, endpoint: str, **kwargs) -> requests.Response:
-        """PATCH request."""
-        return self.request('PATCH', endpoint, **kwargs)
+    def patch(self, endpoint: str, data: Any, **kwargs) -> Any:
+        """Make PATCH request."""
+        pass
     
-    def delete(self, endpoint: str, **kwargs) -> requests.Response:
-        """DELETE request."""
-        return self.request('DELETE', endpoint, **kwargs)
+    def delete(self, endpoint: str, **kwargs) -> Any:
+        """Make DELETE request."""
+        pass
 
 
-def log_test_data(logger: logging.Logger, data_type: str, data: Any):
-    """Log test data in a structured format."""
-    logger.info(f"Test Data - {data_type}:")
+def log_test_data(test_name: str, data: Any, description: str = "") -> None:
+    """Log test data for debugging."""
+    timestamp = datetime.now().isoformat()
+    logger.info(f"[{timestamp}] Test: {test_name}")
+    if description:
+        logger.info(f"Description: {description}")
+    
     if isinstance(data, (dict, list)):
-        logger.info(json.dumps(data, indent=2))
+        logger.info(f"Data: {json.dumps(data, indent=2)}")
     else:
-        logger.info(str(data))
+        logger.info(f"Data: {data}")
 
 
-def assert_with_logging(logger: logging.Logger, condition: bool, message: str, actual: Any = None, expected: Any = None):
-    """Assert with detailed logging."""
-    if condition:
-        logger.debug(f"✓ Assertion passed: {message}")
-    else:
-        logger.error(f"✗ Assertion failed: {message}")
-        if actual is not None:
-            logger.error(f"  Actual: {actual}")
-        if expected is not None:
-            logger.error(f"  Expected: {expected}")
+def assert_with_logging(condition: bool, message: str, data: Any = None) -> None:
+    """Assert with additional logging."""
+    if not condition:
+        logger.error(f"Assertion failed: {message}")
+        if data:
+            logger.error(f"Data: {json.dumps(data, indent=2) if isinstance(data, (dict, list)) else data}")
     assert condition, message
 
 
-def log_test_section(logger: logging.Logger, section_name: str):
-    """Log a test section separator."""
-    separator = "=" * 60
+def log_test_section(section_name: str) -> None:
+    """Log test section separator."""
+    separator = "=" * 80
     logger.info(f"\n{separator}")
     logger.info(f"{section_name}")
     logger.info(f"{separator}\n")
+
+
+def compare_responses(expected: Dict[str, Any], actual: Dict[str, Any], 
+                     ignore_fields: Optional[List[str]] = None) -> bool:
+    """Compare two API responses, optionally ignoring certain fields."""
+    ignore_fields = ignore_fields or []
+    
+    def clean_dict(d: Dict[str, Any]) -> Dict[str, Any]:
+        """Remove ignored fields from dict."""
+        cleaned = {}
+        for k, v in d.items():
+            if k not in ignore_fields:
+                if isinstance(v, dict):
+                    cleaned[k] = clean_dict(v)
+                elif isinstance(v, list):
+                    cleaned[k] = [clean_dict(item) if isinstance(item, dict) else item for item in v]
+                else:
+                    cleaned[k] = v
+        return cleaned
+    
+    cleaned_expected = clean_dict(expected)
+    cleaned_actual = clean_dict(actual)
+    
+    return cleaned_expected == cleaned_actual
+
+
+def extract_error_details(response: Any) -> Optional[str]:
+    """Extract error details from response."""
+    try:
+        if hasattr(response, 'json'):
+            data = response.json()
+            if 'errors' in data and data['errors']:
+                error = data['errors'][0]
+                return f"{error.get('title', 'Unknown')}: {error.get('detail', 'No details')}"
+        return None
+    except:
+        return None

@@ -37,86 +37,27 @@ def get_document_by_id(document_id: str):
 @bp.route('/all/documents', methods=['GET'])
 @require_auth
 def list_all_documents():
-    """List all documents across all projects."""
-    # Get query parameters
-    page_size = int(request.args.get('page[size]', 100))
-    page_number = int(request.args.get('page[number]', 1))
-    
-    # Get all documents
-    all_documents = list(data_store.documents.values())
-    
-    # Apply sorting
-    sort_param = request.args.get('sort')
-    if sort_param:
-        reverse = sort_param.startswith('-')
-        sort_field = sort_param.lstrip('-')
-        
-        if sort_field == 'created':
-            all_documents.sort(key=lambda d: d.attributes.created, reverse=reverse)
-        elif sort_field == 'title':
-            all_documents.sort(key=lambda d: d.attributes.title, reverse=reverse)
-        elif sort_field == 'name':
-            all_documents.sort(key=lambda d: d.attributes.name, reverse=reverse)
-    
-    # Pagination
-    total_count = len(all_documents)
-    start_idx = (page_number - 1) * page_size
-    end_idx = start_idx + page_size
-    documents_page = all_documents[start_idx:end_idx]
-    
-    # Convert to JSON:API format
-    resources = [doc.to_json_api() for doc in documents_page]
-    
-    # Build response
-    response = response_builder.build_collection_response(
-        resources=resources,
-        total_count=total_count,
-        page_number=page_number,
-        page_size=page_size
-    )
-    
-    logger.info(f"Listed {len(resources)} documents total")
-    return jsonify(response)
+    """
+    This endpoint does not exist in Polarion REST API v1.
+    Return 404 to match production behavior.
+    """
+    raise NotFoundError("endpoint", "/all/documents")
 
 
 @bp.route('/projects/<project_id>/spaces/<space_id>/documents', methods=['GET'])
 @require_auth
 def list_space_documents(project_id: str, space_id: str):
-    """List documents in a specific space."""
-    # Check if project exists
-    if not data_store.projects.get_by_id(project_id):
-        raise NotFoundError("projects", project_id)
-    
-    # Filter documents by project and space
-    space_prefix = f"{project_id}/{space_id}/"
-    space_documents = [
-        doc for doc in data_store.documents.values()
-        if doc.id.startswith(space_prefix)
-    ]
-    
-    # Get query parameters
-    page_size = int(request.args.get('page[size]', 100))
-    page_number = int(request.args.get('page[number]', 1))
-    
-    # Pagination
-    total_count = len(space_documents)
-    start_idx = (page_number - 1) * page_size
-    end_idx = start_idx + page_size
-    documents_page = space_documents[start_idx:end_idx]
-    
-    # Convert to JSON:API format
-    resources = [doc.to_json_api() for doc in documents_page]
-    
-    # Build response
-    response = response_builder.build_collection_response(
-        resources=resources,
-        total_count=total_count,
-        page_number=page_number,
-        page_size=page_size
-    )
-    
-    logger.info(f"Listed {len(resources)} documents in space {project_id}/{space_id}")
-    return jsonify(response)
+    """
+    GET requests to this endpoint are not allowed in Polarion.
+    Return 405 Method Not Allowed to match production behavior.
+    """
+    return jsonify({
+        'errors': [{
+            'status': '405',
+            'title': 'Method Not Allowed',
+            'detail': 'GET method is not allowed for this endpoint'
+        }]
+    }), 405
 
 
 @bp.route('/projects/<project_id>/spaces/<space_id>/documents/<document_id>', methods=['GET'])

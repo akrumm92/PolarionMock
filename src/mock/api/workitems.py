@@ -232,20 +232,34 @@ def update_workitem(project_id: str, workitem_id: str):
     # Update attributes
     if 'attributes' in item_data:
         for key, value in item_data['attributes'].items():
-            if hasattr(workitem.attributes, key):
+            # Handle special relationship fields in attributes
+            if key == 'parentWorkItemId':
+                # Convert to relationship format
+                if not workitem.relationships:
+                    workitem.relationships = {}
+                workitem.relationships['parent'] = {
+                    'data': {
+                        'type': 'workitems',
+                        'id': value
+                    }
+                }
+            elif hasattr(workitem.attributes, key):
                 setattr(workitem.attributes, key, value)
         
         workitem.attributes.updated = datetime.utcnow()
     
     # Update relationships
     if 'relationships' in item_data:
-        workitem.relationships = item_data['relationships']
+        if not workitem.relationships:
+            workitem.relationships = {}
+        
+        # Update each relationship
+        for rel_name, rel_data in item_data['relationships'].items():
+            workitem.relationships[rel_name] = rel_data
     
-    # Build response
-    response = response_builder.build_response(data=workitem.to_json_api())
-    
+    # Polarion returns 204 No Content for PATCH requests
     logger.info(f"Updated work item: {full_id}")
-    return jsonify(response)
+    return '', 204
 
 
 @bp.route('/projects/<project_id>/workitems/<workitem_id>', methods=['DELETE'])
@@ -327,3 +341,47 @@ def move_workitem_to_document(project_id: str, workitem_id: str):
     
     logger.info(f"Moved work item {full_id} to document {target_document}")
     return jsonify(response)
+
+
+@bp.route('/projects/<project_id>/workitems/<workitem_id>/actions/setParent', methods=['POST'])
+@require_auth
+def set_parent_workitem(project_id: str, workitem_id: str):
+    """Set parent work item through action endpoint."""
+    full_id = f"{project_id}/{workitem_id}"
+    
+    workitem = data_store.workitems.get(full_id)
+    if not workitem:
+        raise NotFoundError("workitems", full_id)
+    
+    # Validate request
+    if not request.is_json:
+        raise ValidationError("Request must be JSON")
+    
+    data = request.get_json()
+    parent_id = data.get('parentId')
+    
+    if not parent_id:
+        raise ValidationError("parentId is required")
+    
+    # Update relationship
+    if not workitem.relationships:
+        workitem.relationships = {}
+    
+    workitem.relationships['parent'] = {
+        'data': {
+            'type': 'workitems',
+            'id': parent_id
+        }
+    }
+    
+    logger.info(f"Set parent {parent_id} for work item: {full_id}")
+    return jsonify({
+        'data': {
+            'type': 'actions',
+            'id': 'setParent',
+            'attributes': {
+                'status': 'success',
+                'message': f'Parent work item set to {parent_id}'
+            }
+        }
+    })

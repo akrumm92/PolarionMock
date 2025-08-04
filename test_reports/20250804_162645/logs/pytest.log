@@ -1,0 +1,220 @@
+INFO     tests.session:conftest.py:226 ================================================================================
+INFO     tests.session:conftest.py:227 Test Session Started: 20250804_162646
+INFO     tests.session:conftest.py:228 Environment: mock
+INFO     tests.session:conftest.py:229 ================================================================================
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106c20d70>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (2): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106c25950>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (3): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106c25090>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (4): localhost:5001
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (5): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106c1dcd0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (6): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106bbb530>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (7): localhost:5001
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+INFO     tests.test_integration:test_integration.py:22 Step 1: Creating new document
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (8): localhost:5001
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+INFO     tests.test_integration:test_integration.py:164 Creating source and target documents
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (9): localhost:5001
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (10): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106c129c0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (11): localhost:5001
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+INFO     tests.session:conftest.py:241 
+============================================================
+INFO     tests.session:conftest.py:242 TEST START: test_api_availability
+INFO     tests.session:conftest.py:243 File: TestProjects
+INFO     tests.session:conftest.py:244 Time: 2025-08-04 16:26:46.376014
+INFO     tests.session:conftest.py:245 ============================================================
+
+INFO     tests.session:test_projects.py:23 Testing API availability at http://localhost:5001/polarion/rest/v1
+INFO     tests.session:test_projects.py:24 Environment: mock
+INFO     tests.session:test_projects.py:25 Auth disabled: false
+DEBUG    tests.session:test_projects.py:28 Making request to: http://localhost:5001/polarion/rest/v1/projects
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (12): localhost:5001
+INFO     tests.session:conftest.py:250 
+============================================================
+INFO     tests.session:conftest.py:251 TEST END: test_api_availability
+INFO     tests.session:conftest.py:252 ============================================================
+
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (13): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106cc17b0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (14): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106cc3df0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (15): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106d21150>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (16): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106d22470>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (17): localhost:5001
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (18): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106d22690>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: N/A
+INFO     tests.test_projects:test_projects.py:266 Project structure comparison test - would compare mock vs production responses
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+INFO     tests.session:conftest.py:241 
+============================================================
+INFO     tests.session:conftest.py:242 TEST START: test_list_all_projects
+INFO     tests.session:conftest.py:243 File: TestSimpleExamples
+INFO     tests.session:conftest.py:244 Time: 2025-08-04 16:26:46.483619
+INFO     tests.session:conftest.py:245 ============================================================
+
+INFO     tests.session:test_simple_examples.py:23 Testing: List all projects in mock
+DEBUG    tests.session:test_simple_examples.py:27 Request URL: http://localhost:5001/polarion/rest/v1/projects
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (19): localhost:5001
+INFO     tests.session:conftest.py:250 
+============================================================
+INFO     tests.session:conftest.py:251 TEST END: test_list_all_projects
+INFO     tests.session:conftest.py:252 ============================================================
+
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+INFO     tests.session:conftest.py:241 
+============================================================
+INFO     tests.session:conftest.py:242 TEST START: test_create_workitem_with_full_data
+INFO     tests.session:conftest.py:243 File: TestSimpleExamples
+INFO     tests.session:conftest.py:244 Time: 2025-08-04 16:26:46.532843
+INFO     tests.session:conftest.py:245 ============================================================
+
+INFO     tests.session:test_simple_examples.py:69 Testing: Create work item with full data structure
+DEBUG    tests.session:test_simple_examples.py:73 Using project ID: myproject
+DEBUG    tests.session:test_simple_examples.py:121 Creating work item at: http://localhost:5001/polarion/rest/v1/projects/myproject/workitems
+DEBUG    tests.session:test_simple_examples.py:122 Work item request data: {
+  "data": [
+    {
+      "type": "workitems",
+      "attributes": {
+        "title": "Test Work Item - Full Data",
+        "type": "requirement",
+        "description": {
+          "type": "text/html",
+          "value": "<p>This is a comprehensive test work item with all required fields</p>"
+        },
+        "status": "proposed",
+        "priority": "high",
+        "severity": "major",
+        "dueDate": "2025-12-31",
+        "initialEstimate": "5d",
+        "remainingEstimate": "3d",
+        "timeSpent": "2d",
+        "hyperlinks": [
+          {
+            "role": "ref_ext",
+            "uri": "https://example.com/reference"
+          }
+        ]
+      },
+      "relationships": {
+        "author": {
+          "data": {
+            "type": "users",
+            "id": "admin"
+          }
+        },
+        "assignee": {
+          "data": [
+            {
+              "type": "users",
+              "id": "john.doe"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (20): localhost:5001
+INFO     tests.session:conftest.py:250 
+============================================================
+INFO     tests.session:conftest.py:251 TEST END: test_create_workitem_with_full_data
+INFO     tests.session:conftest.py:252 ============================================================
+
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+INFO     tests.session:conftest.py:241 
+============================================================
+INFO     tests.session:conftest.py:242 TEST START: test_read_document_structure
+INFO     tests.session:conftest.py:243 File: TestSimpleExamples
+INFO     tests.session:conftest.py:244 Time: 2025-08-04 16:26:46.581912
+INFO     tests.session:conftest.py:245 ============================================================
+
+INFO     tests.session:test_simple_examples.py:164 Testing: Read document structure in mock
+DEBUG    tests.session:test_simple_examples.py:177 Fetching document: http://localhost:5001/polarion/rest/v1/documents/elibrary/_default/requirements
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (21): localhost:5001
+INFO     tests.session:conftest.py:250 
+============================================================
+INFO     tests.session:conftest.py:251 TEST END: test_read_document_structure
+INFO     tests.session:conftest.py:252 ============================================================
+
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (22): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106cc39b0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (23): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106cc0e20>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (24): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106c129c0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (25): localhost:5001
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (26): localhost:5001
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (27): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106cc38a0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (28): localhost:5001
+ERROR    tests.session:conftest.py:167 Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106d22580>: Failed to establish a new connection: [Errno 61] Connection refused'))
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (29): localhost:5001
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (30): localhost:5001
+2025-08-04 16:26:46,871 [INFO] [__main__] Test reports saved to: test_reports/20250804_162645
+2025-08-04 16:26:46,871 [INFO] [__main__] Logs saved to: test_reports/20250804_162645/logs/pytest.log

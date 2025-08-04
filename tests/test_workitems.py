@@ -282,9 +282,14 @@ class TestWorkItems:
         
         response = http_session.patch(workitem_url, headers=auth_headers, json=update_data)
         
-        assert response.status_code == 200, f"Failed to update work item: {response.text}"
+        # PATCH returns 204 No Content according to Polarion API specification
+        assert response.status_code == 204, f"Failed to update work item: {response.text}"
         
-        updated = response.json()["data"]
+        # Since PATCH returns no content, verify the update by fetching the work item
+        get_response = http_session.get(workitem_url, headers=auth_headers)
+        assert get_response.status_code == 200
+        
+        updated = get_response.json()["data"]
         assert updated["attributes"]["status"] == "in_progress"
         assert updated["attributes"]["priority"] == "high"
         assert updated["attributes"]["title"] == f"Updated Work Item Title {timestamp}"

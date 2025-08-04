@@ -27,6 +27,7 @@ class WorkItemAttributes(BaseModel):
     resolvedOn: Optional[datetime] = Field(default=None, description="Resolution date")
     outlineNumber: Optional[str] = Field(default=None, description="Outline number in document")
     hyperlinks: Optional[List[Dict[str, str]]] = Field(default=None, description="External links")
+    customFields: Optional[str] = Field(default=None, description="Custom fields as JSON string")
     
     class Config:
         json_encoders = {

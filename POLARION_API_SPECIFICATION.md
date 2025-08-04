@@ -98,9 +98,9 @@ Accept: */*
 - Funktioniert für existierende Projekte
 - Gibt leeres data Array zurück wenn keine Work Items vorhanden
 
-#### ❌ GET /polarion/rest/v1/all/workitems
-**Response**: 404 Not Found
-**WICHTIG**: Dieser Endpunkt existiert nicht in Polarion!
+#### ✅ GET /polarion/rest/v1/all/workitems
+**Response**: 200 OK
+**KORREKTUR**: Dieser Endpunkt funktioniert doch in Polarion (siehe Abschnitt 9.4)
 
 #### ❌ GET /polarion/rest/v1/projects/{projectId}/workitems/{workitemId}
 **Beispiel**: GET /polarion/rest/v1/projects/Python/workitems/WI-123
@@ -478,3 +478,54 @@ PROJECT_WORKITEM_TYPES = {
 
 **Empfehlung für Mock-Implementierung**:
 Der Mock sollte diese Standard Work Item Types für alle Projekte unterstützen. Projekt-spezifische Types können über Konfiguration erweitert werden.
+
+## 10. Mock-Implementierung Anpassungen (Stand: 04.08.2025)
+
+### 10.1 Header Validierung
+**Implementiert**: `src/mock/middleware/headers.py`
+- Accept Header Validierung: Muss `*/*` sein, sonst 406 Not Acceptable
+- Content-Type Validierung für POST/PUT/PATCH: Muss `application/json` sein
+
+### 10.2 Documents API Korrekturen
+**Angepasst in**: `src/mock/api/documents.py`
+- `/all/documents` GET → 404 Not Found (Endpunkt existiert nicht)
+- `/projects/{id}/spaces/{space}/documents` GET → 405 Method Not Allowed
+
+### 10.3 Work Items API Korrekturen
+**Angepasst in**: `src/mock/api/workitems.py`
+- PATCH `/projects/{id}/workitems/{id}` → 204 No Content (statt 200 mit Body)
+- `/all/workitems` bleibt bei 200 OK (funktioniert in Polarion)
+
+### 10.4 Weitere Implementierungen (04.08.2025 - Teil 2)
+**Angepasst in**: `src/mock/middleware/error_handler.py`
+- ✅ 404 Fehlerformat korrigiert: `detail: null, source: null` für allgemeine 404
+- ✅ Spezialformat für nicht existierende Projekte: `detail: "Project id X does not exist."`
+- ✅ jsonapi-Feld aus Responses entfernt (Polarion nutzt das nicht)
+
+**Angepasst in**: `src/mock/models/workitem.py`
+- ✅ customFields als Optional[str] hinzugefügt (JSON String statt Object)
+
+**Angepasst in**: `src/mock/utils/response_builder.py`
+- ✅ URL-Encoding für Pagination Links: `page%5Bnumber%5D` statt `page[number]`
+
+### 10.5 Finale Implementierungen (04.08.2025 - Teil 3)
+
+**Angepasst in**: `src/mock/middleware/response_padding.py`
+- ✅ Content-Length Simulation implementiert
+- ✅ Leere Collection-Responses werden auf ~2472 bytes gepadded
+- ✅ Padding wird als verstecktes `_padding` Feld in meta hinzugefügt
+
+**Angepasst in**: `src/mock/api/workitems.py`
+- ✅ Work Item Relationships Update unterstützt beide Formate:
+  - Format 1: `attributes.parentWorkItemId` → wird zu `relationships.parent` konvertiert
+  - Format 2: Direkte `relationships` Updates
+- ✅ Neue Action: `/actions/setParent` für Parent-Beziehungen
+- ✅ Bestehende Action: `/actions/moveToDocument` für Modul-Beziehungen
+
+### 10.6 Zusammenfassung
+Alle dokumentierten Abweichungen zwischen Mock und Polarion wurden behoben:
+- Header-Validierung (Accept: */*)
+- Korrekte HTTP Status Codes (204 für PATCH, 404/405 für nicht existierende Endpunkte)
+- Fehlerformate entsprechen Polarion
+- Response-Struktur und Größe simuliert Polarion-Verhalten
+- Relationship-Updates funktionieren in verschiedenen Formaten

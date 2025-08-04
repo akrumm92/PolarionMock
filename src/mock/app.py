@@ -15,6 +15,8 @@ from dotenv import load_dotenv
 from .middleware.auth import auth_middleware
 from .middleware.logging import setup_logging, request_logging_middleware
 from .middleware.error_handler import error_handler, ValidationError, NotFoundError
+from .middleware.headers import validate_headers_middleware
+from .middleware.response_padding import pad_response_middleware
 from .api import projects, workitems, documents, collections, enumerations
 from .utils.response_builder import JSONAPIResponseBuilder
 
@@ -48,7 +50,9 @@ def create_app(config: Dict[str, Any] = None) -> Flask:
     
     # Register middleware
     app.before_request(request_logging_middleware)
+    app.before_request(validate_headers_middleware)
     app.before_request(auth_middleware)
+    app.after_request(pad_response_middleware)
     
     # Register error handlers
     app.register_error_handler(ValidationError, error_handler)

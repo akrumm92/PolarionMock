@@ -1,0 +1,775 @@
+INFO     tests.session:conftest.py:226 ================================================================================
+INFO     tests.session:conftest.py:227 Test Session Started: 20250804_162732
+INFO     tests.session:conftest.py:228 Environment: mock
+INFO     tests.session:conftest.py:229 ================================================================================
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/all/documents HTTP/1.1" 404 128
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects/myproject/spaces/_default/documents HTTP/1.1" 405 156
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/all/documents?page%5Bsize%5D=1 HTTP/1.1" 404 128
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/myproject/spaces/_default/documents HTTP/1.1" 201 748
+INFO     tests.test_documents:test_documents.py:119 [mock] Successfully created test document
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "DELETE /polarion/rest/v1/projects/myproject/spaces/_default/documents/test_doc_001 HTTP/1.1" 204 0
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/all/documents?page%5Bsize%5D=2&page%5Bnumber%5D=1 HTTP/1.1" 404 128
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects/elibrary/spaces/_default/documents/requirements/parts HTTP/1.1" 200 663
+INFO     tests.test_documents:test_documents.py:186 [mock] Found 2 document parts
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1" 201 680
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/myproject/spaces/_default/documents/user_stories/parts HTTP/1.1" 201 341
+INFO     tests.test_documents:test_documents.py:236 [mock] Successfully added work item myproject/MP-4 to document
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+INFO     tests.test_integration:test_integration.py:22 Step 1: Creating new document
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/myproject/spaces/_default/documents HTTP/1.1" 201 781
+INFO     tests.test_integration:test_integration.py:45 Step 2: Creating work items in document
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1" 201 1707
+INFO     tests.test_integration:test_integration.py:101 Step 3: Querying work items in document
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects/myproject/workitems?query=module.id:myproject/_default/test_workflow_doc HTTP/1.1" 200 2209
+INFO     tests.test_integration:test_integration.py:110 Step 4: Getting document parts
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects/myproject/spaces/_default/documents/test_workflow_doc/parts?include=workItem HTTP/1.1" 200 2381
+INFO     tests.test_integration:test_integration.py:125 Step 5: Updating work item status
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "PATCH /polarion/rest/v1/projects/myproject/workitems/MP-5 HTTP/1.1" 204 0
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+INFO     tests.test_integration:test_integration.py:164 Creating source and target documents
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/myproject/spaces/_default/documents HTTP/1.1" 201 581
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/myproject/spaces/_default/documents HTTP/1.1" 201 581
+INFO     tests.test_integration:test_integration.py:183 Creating work item in source document
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1" 201 709
+INFO     tests.test_integration:test_integration.py:210 Moving work item to target document
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/myproject/workitems/MP-7/actions/moveToDocument HTTP/1.1" 200 206
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects/myproject/workitems/MP-7 HTTP/1.1" 200 651
+INFO     tests.test_integration:test_integration.py:227 Work item successfully moved between documents!
+INFO     tests.test_integration:test_integration.py:230 Cleaning up test data
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "DELETE /polarion/rest/v1/projects/myproject/workitems/MP-7 HTTP/1.1" 204 0
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "DELETE /polarion/rest/v1/projects/myproject/spaces/_default/documents/source_doc HTTP/1.1" 204 0
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "DELETE /polarion/rest/v1/projects/myproject/spaces/_default/documents/target_doc HTTP/1.1" 204 0
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects/non_existent_project/workitems HTTP/1.1" 404 151
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1" 400 203
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+INFO     tests.session:conftest.py:241 
+============================================================
+INFO     tests.session:conftest.py:242 TEST START: test_api_availability
+INFO     tests.session:conftest.py:243 File: TestProjects
+INFO     tests.session:conftest.py:244 Time: 2025-08-04 16:27:33.023523
+INFO     tests.session:conftest.py:245 ============================================================
+
+INFO     tests.session:test_projects.py:23 Testing API availability at http://localhost:5001/polarion/rest/v1
+INFO     tests.session:test_projects.py:24 Environment: mock
+INFO     tests.session:test_projects.py:25 Auth disabled: false
+DEBUG    tests.session:test_projects.py:28 Making request to: http://localhost:5001/polarion/rest/v1/projects
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects HTTP/1.1" 401 149
+DEBUG    tests.session:conftest.py:274 API Call: GET http://localhost:5001/polarion/rest/v1/projects -> 401
+DEBUG    tests.session:conftest.py:278 Response: {
+  "errors": [
+    {
+      "detail": "Authentication required. API is available.",
+      "status": "401",
+      "title": "Unauthorized"
+    }
+  ]
+}
+INFO     tests.session:test_projects.py:49 Auth enabled - expecting 401, got 401
+INFO     tests.session:test_projects.py:56 ✓ [mock] API is available at http://localhost:5001/polarion/rest/v1
+INFO     tests.session:conftest.py:284 Total API calls in test: 1
+INFO     tests.session:conftest.py:286   - GET http://localhost:5001/polarion/rest/v1/projects -> 401
+INFO     tests.session:conftest.py:250 
+============================================================
+INFO     tests.session:conftest.py:251 TEST END: test_api_availability
+INFO     tests.session:conftest.py:252 ============================================================
+
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+INFO     tests.session:conftest.py:241 
+============================================================
+INFO     tests.session:conftest.py:242 TEST START: test_list_projects
+INFO     tests.session:conftest.py:243 File: TestProjects
+INFO     tests.session:conftest.py:244 Time: 2025-08-04 16:27:33.026796
+INFO     tests.session:conftest.py:245 ============================================================
+
+INFO     tests.session:test_projects.py:61 Testing: List all projects
+DEBUG    tests.session:test_projects.py:64 Request URL: http://localhost:5001/polarion/rest/v1/projects
+DEBUG    tests.session:test_projects.py:65 Headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNzU0MzQxNDMxLCJpYXQiOjE3NTQyNTUwMzEsInBlcm1pc3Npb25zIjpbInJlYWQiLCJ3cml0ZSIsImFkbWluIl19.6Wr3ip6Pfu4Nti_hTvetJno4bT7F-emQ87ndwu4htAs', 'Content-Type': 'application/json', 'Accept': '*/*'}
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects HTTP/1.1" 200 3397
+DEBUG    tests.session:conftest.py:274 API Call: GET http://localhost:5001/polarion/rest/v1/projects -> 200
+DEBUG    tests.session:conftest.py:278 Response: {
+  "data": [
+    {
+      "attributes": {
+        "active": true,
+        "created": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "description": {
+          "type": "text/plain",
+          "value": "Electronic Library System"
+        },
+        "id": "elibrary",
+        "name": "eLibrary",
+        "trackerPrefix": "ELIB",
+        "updated": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "version": "1.0.0"
+      },
+      "id": "elibrary",
+      "links": {
+        "portal": "/polarion/#/project/elibrary",
+        "self": "/polarion/rest/v1/projects/elibrary"
+      },
+      "type": "projects"
+    },
+    {
+      "attributes": {
+        "active": true,
+        "created": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "description": {
+          "type": "text/plain",
+          "value": "Sample test project"
+        },
+        "id": "myproject",
+        "name": "My Project",
+        "trackerPrefix": "MP",
+        "updated": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "version": "1.0.0"
+      },
+      "id": "myproject",
+      "links": {
+        "portal": "/polarion/#/project/myproject",
+        "self": "/polarion/rest/v1/projects/myproject"
+      },
+      "type": "projects"
+    },
+    {
+      "attributes": {
+        "active": true,
+        "created": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "description": {
+          "type": "text/plain",
+          "value": "Project for testing purposes"
+        },
+        "id": "testing",
+        "name": "Testing Project",
+        "trackerPrefix": "TEST",
+        "updated": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "version": "1.0.0"
+      },
+      "id": "testing",
+      "links": {
+        "portal": "/polarion/#/project/testing",
+        "self": "/polarion/rest/v1/projects/testing"
+      },
+      "type": "projects"
+    },
+    {
+      "attributes": {
+        "active": true,
+        "created": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "description": {
+          "type": "text/plain",
+          "value": "Automotive safety requirements"
+        },
+        "id": "automotive",
+        "name": "Automotive Project",
+        "trackerPrefix": "AUTO",
+        "updated": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "version": "1.0.0"
+      },
+      "id": "automotive",
+      "links": {
+        "portal": "/polarion/#/project/automotive",
+        "self": "/polarion/rest/v1/projects/automotive"
+      },
+      "type": "projects"
+    },
+    {
+      "attributes": {
+        "active": true,
+        "created": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "description": {
+          "type": "text/plain",
+          "value": "Medical device compliance"
+        },
+        "id": "medical",
+        "name": "Medical Device Project",
+        "trackerPrefix": "MED",
+        "updated": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "version": "1.0.0"
+      },
+      "id": "medical",
+      "links": {
+        "portal": "/polarion/#/project/medical",
+        "self": "/polarion/rest/v1/projects/medical"
+      },
+      "type": "projects"
+    }
+  ],
+  "links": {
+    "first": "http://localhost:5001/polarion/rest/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=100",
+    "last": "http://localhost:5001/polarion/rest/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=100",
+    "self": "http://localhost:5001/polarion/rest/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=100"
+  },
+  "meta": {
+    "currentPage": 1,
+    "pageCount": 5,
+    "pageSize": 100,
+    "totalCount": 5,
+    "totalPages": 1
+  }
+}
+INFO     tests.session:test_projects.py:76 Response status: 200
+DEBUG    tests.session:test_projects.py:81 Response has 5 projects
+INFO     tests.test_projects:test_projects.py:95 [mock] Found 5 projects
+INFO     tests.session:conftest.py:284 Total API calls in test: 1
+INFO     tests.session:conftest.py:286   - GET http://localhost:5001/polarion/rest/v1/projects -> 200
+INFO     tests.session:conftest.py:250 
+============================================================
+INFO     tests.session:conftest.py:251 TEST END: test_list_projects
+INFO     tests.session:conftest.py:252 ============================================================
+
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects/myproject HTTP/1.1" 200 547
+INFO     tests.test_projects:test_projects.py:121 [mock] Successfully retrieved project: myproject
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects?page%5Bsize%5D=2&page%5Bnumber%5D=1 HTTP/1.1" 200 1710
+INFO     tests.test_projects:test_projects.py:149 [mock] Pagination working correctly
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects/myproject?fields%5Bprojects%5D=name,created HTTP/1.1" 200 294
+INFO     tests.test_projects:test_projects.py:169 [mock] Sparse fieldsets test completed
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects HTTP/1.1" 201 564
+INFO     tests.test_projects:test_projects.py:199 [mock] Successfully created test project
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "DELETE /polarion/rest/v1/projects/test-project-001 HTTP/1.1" 204 0
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects?sort=name HTTP/1.1" 200 3397
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects?sort=-name HTTP/1.1" 200 3397
+INFO     tests.test_projects:test_projects.py:231 [mock] Sorting functionality verified
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: N/A
+INFO     tests.test_projects:test_projects.py:266 Project structure comparison test - would compare mock vs production responses
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+INFO     tests.session:conftest.py:241 
+============================================================
+INFO     tests.session:conftest.py:242 TEST START: test_list_all_projects
+INFO     tests.session:conftest.py:243 File: TestSimpleExamples
+INFO     tests.session:conftest.py:244 Time: 2025-08-04 16:27:33.044465
+INFO     tests.session:conftest.py:245 ============================================================
+
+INFO     tests.session:test_simple_examples.py:23 Testing: List all projects in mock
+DEBUG    tests.session:test_simple_examples.py:27 Request URL: http://localhost:5001/polarion/rest/v1/projects
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects HTTP/1.1" 200 3397
+DEBUG    tests.session:conftest.py:274 API Call: GET http://localhost:5001/polarion/rest/v1/projects -> 200
+DEBUG    tests.session:conftest.py:278 Response: {
+  "data": [
+    {
+      "attributes": {
+        "active": true,
+        "created": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "description": {
+          "type": "text/plain",
+          "value": "Electronic Library System"
+        },
+        "id": "elibrary",
+        "name": "eLibrary",
+        "trackerPrefix": "ELIB",
+        "updated": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "version": "1.0.0"
+      },
+      "id": "elibrary",
+      "links": {
+        "portal": "/polarion/#/project/elibrary",
+        "self": "/polarion/rest/v1/projects/elibrary"
+      },
+      "type": "projects"
+    },
+    {
+      "attributes": {
+        "active": true,
+        "created": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "description": {
+          "type": "text/plain",
+          "value": "Sample test project"
+        },
+        "id": "myproject",
+        "name": "My Project",
+        "trackerPrefix": "MP",
+        "updated": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "version": "1.0.0"
+      },
+      "id": "myproject",
+      "links": {
+        "portal": "/polarion/#/project/myproject",
+        "self": "/polarion/rest/v1/projects/myproject"
+      },
+      "type": "projects"
+    },
+    {
+      "attributes": {
+        "active": true,
+        "created": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "description": {
+          "type": "text/plain",
+          "value": "Project for testing purposes"
+        },
+        "id": "testing",
+        "name": "Testing Project",
+        "trackerPrefix": "TEST",
+        "updated": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "version": "1.0.0"
+      },
+      "id": "testing",
+      "links": {
+        "portal": "/polarion/#/project/testing",
+        "self": "/polarion/rest/v1/projects/testing"
+      },
+      "type": "projects"
+    },
+    {
+      "attributes": {
+        "active": true,
+        "created": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "description": {
+          "type": "text/plain",
+          "value": "Automotive safety requirements"
+        },
+        "id": "automotive",
+        "name": "Automotive Project",
+        "trackerPrefix": "AUTO",
+        "updated": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "version": "1.0.0"
+      },
+      "id": "automotive",
+      "links": {
+        "portal": "/polarion/#/project/automotive",
+        "self": "/polarion/rest/v1/projects/automotive"
+      },
+      "type": "projects"
+    },
+    {
+      "attributes": {
+        "active": true,
+        "created": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "description": {
+          "type": "text/plain",
+          "value": "Medical device compliance"
+        },
+        "id": "medical",
+        "name": "Medical Device Project",
+        "trackerPrefix": "MED",
+        "updated": "Mon, 04 Aug 2025 14:27:32 GMT",
+        "version": "1.0.0"
+      },
+      "id": "medical",
+      "links": {
+        "portal": "/polarion/#/project/medical",
+        "self": "/polarion/rest/v1/projects/medical"
+      },
+      "type": "projects"
+    }
+  ],
+  "links": {
+    "first": "http://localhost:5001/polarion/rest/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=100",
+    "last": "http://localhost:5001/polarion/rest/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=100",
+    "self": "http://localhost:5001/polarion/rest/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=100"
+  },
+  "meta": {
+    "currentPage": 1,
+    "pageCount": 5,
+    "pageSize": 100,
+    "totalCount": 5,
+    "totalPages": 1
+  }
+}
+INFO     tests.session:test_simple_examples.py:39 ✓ Response status: 200
+INFO     tests.session:test_simple_examples.py:51 Found 5 projects: eLibrary, My Project, Testing Project, Automotive Project, Medical Device Project
+INFO     tests.session:conftest.py:284 Total API calls in test: 1
+INFO     tests.session:conftest.py:286   - GET http://localhost:5001/polarion/rest/v1/projects -> 200
+INFO     tests.session:conftest.py:250 
+============================================================
+INFO     tests.session:conftest.py:251 TEST END: test_list_all_projects
+INFO     tests.session:conftest.py:252 ============================================================
+
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+INFO     tests.session:conftest.py:241 
+============================================================
+INFO     tests.session:conftest.py:242 TEST START: test_create_workitem_with_full_data
+INFO     tests.session:conftest.py:243 File: TestSimpleExamples
+INFO     tests.session:conftest.py:244 Time: 2025-08-04 16:27:33.046777
+INFO     tests.session:conftest.py:245 ============================================================
+
+INFO     tests.session:test_simple_examples.py:69 Testing: Create work item with full data structure
+DEBUG    tests.session:test_simple_examples.py:73 Using project ID: myproject
+DEBUG    tests.session:test_simple_examples.py:121 Creating work item at: http://localhost:5001/polarion/rest/v1/projects/myproject/workitems
+DEBUG    tests.session:test_simple_examples.py:122 Work item request data: {
+  "data": [
+    {
+      "type": "workitems",
+      "attributes": {
+        "title": "Test Work Item - Full Data",
+        "type": "requirement",
+        "description": {
+          "type": "text/html",
+          "value": "<p>This is a comprehensive test work item with all required fields</p>"
+        },
+        "status": "proposed",
+        "priority": "high",
+        "severity": "major",
+        "dueDate": "2025-12-31",
+        "initialEstimate": "5d",
+        "remainingEstimate": "3d",
+        "timeSpent": "2d",
+        "hyperlinks": [
+          {
+            "role": "ref_ext",
+            "uri": "https://example.com/reference"
+          }
+        ]
+      },
+      "relationships": {
+        "author": {
+          "data": {
+            "type": "users",
+            "id": "admin"
+          }
+        },
+        "assignee": {
+          "data": [
+            {
+              "type": "users",
+              "id": "john.doe"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1" 201 1043
+DEBUG    tests.session:conftest.py:274 API Call: POST http://localhost:5001/polarion/rest/v1/projects/myproject/workitems -> 201
+DEBUG    tests.session:conftest.py:276 Request: {
+  "data": [
+    {
+      "type": "workitems",
+      "attributes": {
+        "title": "Test Work Item - Full Data",
+        "type": "requirement",
+        "description": {
+          "type": "text/html",
+          "value": "<p>This is a comprehensive test work item with all required fields</p>"
+        },
+        "status": "proposed",
+        "priority": "high",
+        "severity": "major",
+        "dueDate": "2025-12-31",
+        "initialEstimate": "5d",
+        "remainingEstimate": "3d",
+        "timeSpent": "2d",
+        "hyperlinks": [
+          {
+            "role": "ref_ext",
+            "uri": "https://example.com/reference"
+          }
+        ]
+      },
+      "relationships": {
+        "author": {
+          "data": {
+            "type": "users",
+            "id": "admin"
+          }
+        },
+        "assignee": {
+          "data": [
+            {
+              "type": "users",
+              "id": "john.doe"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+DEBUG    tests.session:conftest.py:278 Response: {
+  "data": [
+    {
+      "attributes": {
+        "author": "admin",
+        "created": "Mon, 04 Aug 2025 14:27:33 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>This is a comprehensive test work item with all required fields</p>"
+        },
+        "priority": "high",
+        "severity": "major",
+        "status": "proposed",
+        "title": "Test Work Item - Full Data",
+        "type": "requirement",
+        "updated": "Mon, 04 Aug 2025 14:27:33 GMT"
+      },
+      "id": "myproject/MP-8",
+      "links": {
+        "portal": "/polarion/#/project/myproject/workitem?id=MP-8",
+        "self": "/polarion/rest/v1/projects/myproject/workitems/MP-8"
+      },
+      "relationships": {
+        "assignee": {
+          "data": [
+            {
+              "id": "john.doe",
+              "type": "users"
+            }
+          ]
+        },
+        "author": {
+          "data": {
+            "id": "admin",
+            "type": "users"
+          }
+        }
+      },
+      "type": "workitems"
+    }
+  ]
+}
+INFO     tests.session:test_simple_examples.py:135 ✓ Work item created successfully
+INFO     tests.session:test_simple_examples.py:142 Created work item: myproject/MP-8
+DEBUG    tests.session:test_simple_examples.py:156 Cleaning up: DELETE http://localhost:5001/polarion/rest/v1/projects/myproject/workitems/MP-8
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "DELETE /polarion/rest/v1/projects/myproject/workitems/MP-8 HTTP/1.1" 204 0
+INFO     tests.session:conftest.py:284 Total API calls in test: 1
+INFO     tests.session:conftest.py:286   - POST http://localhost:5001/polarion/rest/v1/projects/myproject/workitems -> 201
+INFO     tests.session:conftest.py:250 
+============================================================
+INFO     tests.session:conftest.py:251 TEST END: test_create_workitem_with_full_data
+INFO     tests.session:conftest.py:252 ============================================================
+
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+INFO     tests.session:conftest.py:241 
+============================================================
+INFO     tests.session:conftest.py:242 TEST START: test_read_document_structure
+INFO     tests.session:conftest.py:243 File: TestSimpleExamples
+INFO     tests.session:conftest.py:244 Time: 2025-08-04 16:27:33.050324
+INFO     tests.session:conftest.py:245 ============================================================
+
+INFO     tests.session:test_simple_examples.py:164 Testing: Read document structure in mock
+DEBUG    tests.session:test_simple_examples.py:177 Fetching document: http://localhost:5001/polarion/rest/v1/documents/elibrary/_default/requirements
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/documents/elibrary/_default/requirements HTTP/1.1" 200 723
+DEBUG    tests.session:conftest.py:274 API Call: GET http://localhost:5001/polarion/rest/v1/documents/elibrary/_default/requirements -> 200
+DEBUG    tests.session:conftest.py:278 Response: {
+  "data": {
+    "attributes": {
+      "created": "Mon, 04 Aug 2025 14:27:32 GMT",
+      "homePageContent": {
+        "type": "text/html",
+        "value": "<h1>Requirements Specification</h1><p>Requirements document for eLibrary system</p>"
+      },
+      "name": "requirements",
+      "status": "draft",
+      "structureLinkRole": "parent",
+      "title": "Requirements Specification",
+      "type": "generic",
+      "updated": "Mon, 04 Aug 2025 14:27:32 GMT"
+    },
+    "id": "elibrary/_default/requirements",
+    "links": {
+      "portal": "/polarion/#/project/elibrary/wiki/requirements",
+      "self": "/polarion/rest/v1/projects/elibrary/spaces/_default/documents/requirements"
+    },
+    "type": "documents"
+  }
+}
+INFO     tests.session:test_simple_examples.py:191 ✓ Document fetched successfully
+INFO     tests.session:test_simple_examples.py:197 Document: Requirements Specification
+DEBUG    tests.session:test_simple_examples.py:201 Fetching document parts: http://localhost:5001/polarion/rest/v1/documents/elibrary/_default/requirements/parts
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/documents/elibrary/_default/requirements/parts HTTP/1.1" 404 128
+DEBUG    tests.session:conftest.py:274 API Call: GET http://localhost:5001/polarion/rest/v1/documents/elibrary/_default/requirements/parts -> 404
+DEBUG    tests.session:conftest.py:278 Response: {
+  "errors": [
+    {
+      "detail": null,
+      "source": null,
+      "status": "404",
+      "title": "Not Found"
+    }
+  ]
+}
+WARNING  tests.session:test_simple_examples.py:213 Document parts endpoint not implemented yet
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/documents/elibrary/_default/requirements/workitems HTTP/1.1" 200 2392
+INFO     tests.session:test_simple_examples.py:221 Document contains 2 work items
+DEBUG    tests.session:test_simple_examples.py:226   - User Authentication
+DEBUG    tests.session:test_simple_examples.py:226   - Book Search
+INFO     tests.session:conftest.py:284 Total API calls in test: 2
+INFO     tests.session:conftest.py:286   - GET http://localhost:5001/polarion/rest/v1/documents/elibrary/_default/requirements -> 200
+INFO     tests.session:conftest.py:286   - GET http://localhost:5001/polarion/rest/v1/documents/elibrary/_default/requirements/parts -> 404
+INFO     tests.session:conftest.py:250 
+============================================================
+INFO     tests.session:conftest.py:251 TEST END: test_read_document_structure
+INFO     tests.session:conftest.py:252 ============================================================
+
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects/myproject/workitems HTTP/1.1" 200 5368
+INFO     tests.test_workitems:test_workitems.py:46 [mock] Found 6 work items in project myproject
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/all/workitems HTTP/1.1" 200 10407
+INFO     tests.test_workitems:test_workitems.py:60 [mock] Found 12 work items total
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects/myproject/workitems?page%5Bsize%5D=1 HTTP/1.1" 200 1518
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects/myproject/workitems/MP-1 HTTP/1.1" 200 833
+INFO     tests.test_workitems:test_workitems.py:95 [mock] Successfully retrieved work item: myproject/MP-1
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1" 201 679
+INFO     tests.test_workitems:test_workitems.py:129 [mock] Successfully created work item: myproject/MP-9
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "DELETE /polarion/rest/v1/projects/myproject/workitems/MP-9 HTTP/1.1" 204 0
+INFO     tests.test_workitems:test_workitems.py:142 [mock] Cleanup delete response: 204
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1" 201 852
+INFO     tests.test_workitems:test_workitems.py:183 [mock] Successfully created work item in document: myproject/MP-10
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "DELETE /polarion/rest/v1/projects/myproject/workitems/MP-10 HTTP/1.1" 204 0
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/all/workitems?query=type:requirement HTTP/1.1" 200 5733
+INFO     tests.test_workitems:test_workitems.py:207 [mock] Query returned 6 work items
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /health HTTP/1.1" 200 117
+INFO     tests.session:conftest.py:165 Mock server is running at http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "GET /polarion/rest/v1/projects/elibrary/workitems?include=module&page%5Bsize%5D=5 HTTP/1.1" 200 5305
+INFO     tests.test_workitems:test_workitems.py:237 [mock] Successfully tested includes
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1" 201 551
+INFO     tests.test_workitems:test_workitems.py:261 [mock] Created work item for update test: myproject/MP-11
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "PATCH /polarion/rest/v1/projects/myproject/workitems/MP-11 HTTP/1.1" 204 0
+DEBUG    tests.session:conftest.py:151 Test environment: mock
+DEBUG    tests.session:conftest.py:152 Base URL: http://localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1" 201 752
+INFO     tests.test_workitems:test_workitems.py:340 [mock] Successfully created functional safety requirement: myproject/MP-12
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "DELETE /polarion/rest/v1/projects/myproject/workitems/MP-12 HTTP/1.1" 204 0
+INFO     tests.test_workitems:test_workitems.py:350 [mock] Cleanup delete response: 204
+2025-08-04 16:27:33,107 [INFO] [__main__] Test reports saved to: test_reports/20250804_162732
+2025-08-04 16:27:33,108 [INFO] [__main__] Logs saved to: test_reports/20250804_162732/logs/pytest.log
+2025-08-04 16:27:33,108 [INFO] [__main__] Stopping mock server...

@@ -37,7 +37,7 @@ def start_mock_server():
     """Start the mock server if not already running."""
     import requests
     
-    mock_url = os.getenv("MOCK_URL", "http://localhost:5000")
+    mock_url = os.getenv("MOCK_URL", "http://localhost:5001")
     try:
         response = requests.get(f"{mock_url}/health", timeout=2)
         if response.status_code == 200:

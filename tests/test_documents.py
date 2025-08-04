@@ -18,27 +18,18 @@ class TestDocuments:
     
     @pytest.mark.integration
     def test_list_all_documents(self, api_base_url, auth_headers, test_env, mock_server_running, http_session):
-        """Test listing all documents."""
+        """Test listing all documents - endpoint should not exist."""
         url = f"{api_base_url}/all/documents"
         response = http_session.get(url, headers=auth_headers)
         
-        assert response.status_code == 200, f"Failed to list documents: {response.text}"
+        # According to POLARION_API_SPECIFICATION.md, this endpoint doesn't exist
+        assert response.status_code == 404, f"Expected 404 for non-existent endpoint, got {response.status_code}"
         
-        # Validate JSON:API response structure
+        # For a 404 error, we expect an error response
         data = response.json()
-        assert "data" in data
-        assert isinstance(data["data"], list)
+        assert "errors" in data
         
-        # Check meta information
-        assert "meta" in data
-        assert "totalCount" in data["meta"]
-        
-        # If documents exist, validate structure
-        if len(data["data"]) > 0:
-            document = data["data"][0]
-            self._validate_document_structure(document)
-        
-        logger.info(f"[{test_env}] Found {len(data['data'])} documents")
+        logger.info(f"[{test_env}] Correctly received 404 for non-existent /all/documents endpoint")
     
     @pytest.mark.integration
     def test_list_space_documents(self, api_base_url, auth_headers, test_project_id, test_env, mock_server_running, http_session):
@@ -46,35 +37,27 @@ class TestDocuments:
         url = f"{api_base_url}/projects/{test_project_id}/spaces/_default/documents"
         response = http_session.get(url, headers=auth_headers)
         
-        # Check if project exists
-        if response.status_code == 404:
-            pytest.skip(f"Project '{test_project_id}' not found in {test_env}")
+        # According to POLARION_API_SPECIFICATION.md, GET is not allowed on this endpoint
+        assert response.status_code == 405, f"Expected 405 Method Not Allowed, got {response.status_code}"
         
-        assert response.status_code == 200, f"Failed to list space documents: {response.text}"
-        
+        # For a 405 error, we expect an error response
         data = response.json()
-        assert "data" in data
-        assert isinstance(data["data"], list)
+        assert "errors" in data
         
-        logger.info(f"[{test_env}] Found {len(data['data'])} documents in space _default")
+        logger.info(f"[{test_env}] Correctly received 405 for GET on space documents endpoint")
     
     @pytest.mark.integration
     def test_get_document(self, api_base_url, auth_headers, test_env, mock_server_running, http_session):
         """Test getting a specific document."""
-        # First, list documents to find one
-        url = f"{api_base_url}/all/documents?page[size]=1"
-        response = http_session.get(url, headers=auth_headers)
-        
-        if response.status_code != 200 or len(response.json()["data"]) == 0:
-            pytest.skip("No documents found to test")
-        
-        document_id = response.json()["data"][0]["id"]
-        # Parse document ID to get components
-        parts = document_id.split("/")
-        if len(parts) != 3:
-            pytest.skip(f"Invalid document ID format: {document_id}")
-        
-        project_id, space_id, doc_name = parts
+        # Since /all/documents doesn't exist, we need a known document ID
+        if test_env == "mock":
+            # Use a known document from mock data
+            project_id = "elibrary"
+            space_id = "_default"
+            doc_name = "requirements"
+            document_id = f"{project_id}/{space_id}/{doc_name}"
+        else:
+            pytest.skip("Production test requires known document ID")
         
         # Get specific document
         url = f"{api_base_url}/projects/{project_id}/spaces/{space_id}/documents/{doc_name}"
@@ -122,7 +105,7 @@ class TestDocuments:
         delete_url = f"{api_base_url}/projects/myproject/spaces/_default/documents/test_doc_001"
         http_session.delete(delete_url, headers=auth_headers)
     
-    @pytest.mark.integration
+    @pytest.mark.production_only  # /all/documents doesn't exist
     def test_document_pagination(self, api_base_url, auth_headers, test_env, mock_server_running, http_session):
         """Test pagination for documents listing."""
         url = f"{api_base_url}/all/documents?page[size]=2&page[number]=1"

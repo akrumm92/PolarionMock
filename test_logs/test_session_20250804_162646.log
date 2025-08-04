@@ -1,0 +1,185 @@
+2025-08-04 16:26:46,107 - tests.session - INFO - ================================================================================
+2025-08-04 16:26:46,107 - tests.session - INFO - Test Session Started: 20250804_162646
+2025-08-04 16:26:46,107 - tests.session - INFO - Environment: mock
+2025-08-04 16:26:46,107 - tests.session - INFO - ================================================================================
+2025-08-04 16:26:46,107 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,107 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,112 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106c20d70>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,114 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,114 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,115 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106c25950>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,116 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,116 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,116 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106c25090>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,117 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,117 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,175 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,175 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,176 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106c1dcd0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,177 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,177 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,178 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106bbb530>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,179 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,179 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,227 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,227 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,276 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,276 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,323 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,323 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,324 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106c129c0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,325 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,325 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,375 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,375 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,375 - tests.session - INFO - 
+============================================================
+2025-08-04 16:26:46,375 - tests.session - INFO - TEST START: test_api_availability
+2025-08-04 16:26:46,375 - tests.session - INFO - File: TestProjects
+2025-08-04 16:26:46,376 - tests.session - INFO - Time: 2025-08-04 16:26:46.376014
+2025-08-04 16:26:46,376 - tests.session - INFO - ============================================================
+
+2025-08-04 16:26:46,376 - tests.session - INFO - Testing API availability at http://localhost:5001/polarion/rest/v1
+2025-08-04 16:26:46,376 - tests.session - INFO - Environment: mock
+2025-08-04 16:26:46,376 - tests.session - INFO - Auth disabled: false
+2025-08-04 16:26:46,376 - tests.session - DEBUG - Making request to: http://localhost:5001/polarion/rest/v1/projects
+2025-08-04 16:26:46,423 - tests.session - INFO - 
+============================================================
+2025-08-04 16:26:46,423 - tests.session - INFO - TEST END: test_api_availability
+2025-08-04 16:26:46,423 - tests.session - INFO - ============================================================
+
+2025-08-04 16:26:46,423 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,424 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,424 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106cc17b0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,425 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,425 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,426 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106cc3df0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,427 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,427 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,428 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106d21150>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,428 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,428 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,429 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106d22470>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,430 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,430 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,480 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,480 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,481 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106d22690>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,482 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,482 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 16:26:46,483 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,483 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,483 - tests.session - INFO - 
+============================================================
+2025-08-04 16:26:46,483 - tests.session - INFO - TEST START: test_list_all_projects
+2025-08-04 16:26:46,483 - tests.session - INFO - File: TestSimpleExamples
+2025-08-04 16:26:46,483 - tests.session - INFO - Time: 2025-08-04 16:26:46.483619
+2025-08-04 16:26:46,483 - tests.session - INFO - ============================================================
+
+2025-08-04 16:26:46,483 - tests.session - INFO - Testing: List all projects in mock
+2025-08-04 16:26:46,483 - tests.session - DEBUG - Request URL: http://localhost:5001/polarion/rest/v1/projects
+2025-08-04 16:26:46,532 - tests.session - INFO - 
+============================================================
+2025-08-04 16:26:46,532 - tests.session - INFO - TEST END: test_list_all_projects
+2025-08-04 16:26:46,532 - tests.session - INFO - ============================================================
+
+2025-08-04 16:26:46,532 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,532 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,532 - tests.session - INFO - 
+============================================================
+2025-08-04 16:26:46,532 - tests.session - INFO - TEST START: test_create_workitem_with_full_data
+2025-08-04 16:26:46,532 - tests.session - INFO - File: TestSimpleExamples
+2025-08-04 16:26:46,532 - tests.session - INFO - Time: 2025-08-04 16:26:46.532843
+2025-08-04 16:26:46,532 - tests.session - INFO - ============================================================
+
+2025-08-04 16:26:46,532 - tests.session - INFO - Testing: Create work item with full data structure
+2025-08-04 16:26:46,533 - tests.session - DEBUG - Using project ID: myproject
+2025-08-04 16:26:46,533 - tests.session - DEBUG - Creating work item at: http://localhost:5001/polarion/rest/v1/projects/myproject/workitems
+2025-08-04 16:26:46,533 - tests.session - DEBUG - Work item request data: {
+  "data": [
+    {
+      "type": "workitems",
+      "attributes": {
+        "title": "Test Work Item - Full Data",
+        "type": "requirement",
+        "description": {
+          "type": "text/html",
+          "value": "<p>This is a comprehensive test work item with all required fields</p>"
+        },
+        "status": "proposed",
+        "priority": "high",
+        "severity": "major",
+        "dueDate": "2025-12-31",
+        "initialEstimate": "5d",
+        "remainingEstimate": "3d",
+        "timeSpent": "2d",
+        "hyperlinks": [
+          {
+            "role": "ref_ext",
+            "uri": "https://example.com/reference"
+          }
+        ]
+      },
+      "relationships": {
+        "author": {
+          "data": {
+            "type": "users",
+            "id": "admin"
+          }
+        },
+        "assignee": {
+          "data": [
+            {
+              "type": "users",
+              "id": "john.doe"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+2025-08-04 16:26:46,581 - tests.session - INFO - 
+============================================================
+2025-08-04 16:26:46,581 - tests.session - INFO - TEST END: test_create_workitem_with_full_data
+2025-08-04 16:26:46,581 - tests.session - INFO - ============================================================
+
+2025-08-04 16:26:46,581 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,581 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,581 - tests.session - INFO - 
+============================================================
+2025-08-04 16:26:46,581 - tests.session - INFO - TEST START: test_read_document_structure
+2025-08-04 16:26:46,581 - tests.session - INFO - File: TestSimpleExamples
+2025-08-04 16:26:46,581 - tests.session - INFO - Time: 2025-08-04 16:26:46.581912
+2025-08-04 16:26:46,581 - tests.session - INFO - ============================================================
+
+2025-08-04 16:26:46,582 - tests.session - INFO - Testing: Read document structure in mock
+2025-08-04 16:26:46,582 - tests.session - DEBUG - Fetching document: http://localhost:5001/polarion/rest/v1/documents/elibrary/_default/requirements
+2025-08-04 16:26:46,631 - tests.session - INFO - 
+============================================================
+2025-08-04 16:26:46,631 - tests.session - INFO - TEST END: test_read_document_structure
+2025-08-04 16:26:46,631 - tests.session - INFO - ============================================================
+
+2025-08-04 16:26:46,631 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,632 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,633 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106cc39b0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,634 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,634 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,634 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106cc0e20>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,635 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,635 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,636 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106c129c0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,637 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,637 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,687 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,688 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,739 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,740 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,741 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106cc38a0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,742 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,742 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,742 - tests.session - ERROR - Mock server not running at http://localhost:5001: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x106d22580>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-04 16:26:46,743 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,743 - tests.session - DEBUG - Base URL: http://localhost:5001
+2025-08-04 16:26:46,792 - tests.session - DEBUG - Test environment: mock
+2025-08-04 16:26:46,792 - tests.session - DEBUG - Base URL: http://localhost:5001

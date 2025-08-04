@@ -1,0 +1,2 @@
+2025-08-04 16:15:48,534 [INFO] [__main__] Test reports saved to: test_reports/20250804_161548
+2025-08-04 16:15:48,534 [INFO] [__main__] Logs saved to: test_reports/20250804_161548/logs/pytest.log

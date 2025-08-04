@@ -1,1 +1,1 @@
-# Test utilities
+# Make utils a Python package

@@ -104,11 +104,11 @@ def auth_headers(auth_token, test_env) -> Dict[str, str]:
             "Accept": "*/*"
         }
     else:
-        # Mock server can handle standard JSON
+        # Mock server now requires same headers as production Polarion
         return {
             "Authorization": f"Bearer {auth_token}",
             "Content-Type": "application/json",
-            "Accept": "application/json"
+            "Accept": "*/*"
         }
 
 

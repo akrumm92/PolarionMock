@@ -95,10 +95,9 @@ class JSONAPIResponseBuilder:
         if links:
             response['links'] = links
         
-        if jsonapi:
-            response['jsonapi'] = jsonapi
-        else:
-            response['jsonapi'] = {'version': '1.0'}
+        # Polarion doesn't include jsonapi field in responses
+        # if jsonapi:
+        #     response['jsonapi'] = jsonapi
         
         return response
     
@@ -148,19 +147,20 @@ class JSONAPIResponseBuilder:
         total_pages: int,
         page_size: int
     ) -> Dict[str, str]:
-        """Build pagination links."""
+        """Build pagination links with proper URL encoding."""
         base_url = request.base_url
+        # Use %5B and %5D for [ and ] to match Polarion
         links = {
-            'self': f"{base_url}?page[number]={page_number}&page[size]={page_size}",
-            'first': f"{base_url}?page[number]=1&page[size]={page_size}",
-            'last': f"{base_url}?page[number]={total_pages}&page[size]={page_size}"
+            'self': f"{base_url}?page%5Bnumber%5D={page_number}&page%5Bsize%5D={page_size}",
+            'first': f"{base_url}?page%5Bnumber%5D=1&page%5Bsize%5D={page_size}",
+            'last': f"{base_url}?page%5Bnumber%5D={total_pages}&page%5Bsize%5D={page_size}"
         }
         
         if page_number > 1:
-            links['prev'] = f"{base_url}?page[number]={page_number - 1}&page[size]={page_size}"
+            links['prev'] = f"{base_url}?page%5Bnumber%5D={page_number - 1}&page%5Bsize%5D={page_size}"
         
         if page_number < total_pages:
-            links['next'] = f"{base_url}?page[number]={page_number + 1}&page[size]={page_size}"
+            links['next'] = f"{base_url}?page%5Bnumber%5D={page_number + 1}&page%5Bsize%5D={page_size}"
         
         return links
     
