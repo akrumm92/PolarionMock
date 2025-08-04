@@ -20,14 +20,23 @@ else:
     print(f"Warning: .env file not found at {env_path}")
 
 # Configuration from environment
-base_url = os.getenv('POLARION_BASE_URL')
-if not base_url or base_url == 'https://polarion.example.com':
-    # Use the correct URL from the test logs
-    base_url = 'https://polarion-d.claas.local'
+env = os.getenv('POLARION_ENV', 'production')
+if env == 'mock':
+    base_url = 'http://localhost:5001'
+else:
+    base_url = os.getenv('POLARION_BASE_URL')
+    if not base_url or base_url == 'https://polarion.example.com':
+        # Use the correct URL from the test logs
+        base_url = 'https://polarion-d.claas.local'
 
 rest_path = os.getenv('POLARION_REST_V1_PATH', '/polarion/rest/v1')
 api_url = f"{base_url}{rest_path}"
-token = os.getenv('POLARION_PERSONAL_ACCESS_TOKEN', '')
+
+if env == 'mock':
+    token = os.getenv('MOCK_AUTH_TOKEN', '')
+else:
+    token = os.getenv('POLARION_PERSONAL_ACCESS_TOKEN', '')
+
 verify_ssl = os.getenv('POLARION_VERIFY_SSL', 'false').lower() == 'true'
 project_id = 'Python'  # Use the Python project as shown in the logs
 

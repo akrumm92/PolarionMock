@@ -4,10 +4,7 @@ Tests creating documents with work items
 """
 
 import pytest
-import requests
 import logging
-import os
-from typing import Dict, Any
 from tests.utils.test_helpers import APITestClient, log_test_data, assert_with_logging, log_test_section
 
 logger = logging.getLogger(__name__)
@@ -245,7 +242,7 @@ class TestIntegrationWorkflows:
 class TestDataValidation:
     """Test data validation and error handling."""
     
-    def test_invalid_project_returns_404(self, api_base_url, auth_headers, test_env, mock_server_running, http_session):
+    def test_invalid_project_returns_404(self, api_base_url, auth_headers, test_env, mock_server_running, http_session):  # noqa: ARG002
         """Test that invalid project returns proper error."""
         url = f"{api_base_url}/projects/non_existent_project/workitems"
         response = http_session.get(url, headers=auth_headers)
