@@ -93,13 +93,23 @@ def auth_token(test_env) -> str:
 
 
 @pytest.fixture
-def auth_headers(auth_token) -> Dict[str, str]:
+def auth_headers(auth_token, test_env) -> Dict[str, str]:
     """Get authorization headers."""
-    return {
-        "Authorization": f"Bearer {auth_token}",
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-    }
+    # Check if we're testing against production Polarion
+    if test_env == 'production':
+        # Production Polarion requires wildcard Accept header
+        return {
+            "Authorization": f"Bearer {auth_token}",
+            "Content-Type": "application/json",
+            "Accept": "*/*"
+        }
+    else:
+        # Mock server can handle standard JSON
+        return {
+            "Authorization": f"Bearer {auth_token}",
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }
 
 
 @pytest.fixture(scope="session")

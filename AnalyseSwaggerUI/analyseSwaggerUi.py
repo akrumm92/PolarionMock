@@ -33,7 +33,7 @@ def fetch_swagger_spec():
     # Headers with Personal Access Token
     headers = {
         'Authorization': f'Bearer {pat}',
-        'Accept': 'application/json'
+        'Accept': '*/*'  # Polarion requires wildcard Accept header
     }
     
     # Common Swagger/OpenAPI URLs to try

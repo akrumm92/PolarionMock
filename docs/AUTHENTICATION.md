@@ -4,6 +4,32 @@
 
 PolarionMock uses JWT (JSON Web Token) based authentication to simulate Polarion's security model, while the real Polarion uses Personal Access Tokens (PAT). This guide explains the differences and how to configure authentication.
 
+## Important: Polarion API Endpoints and Headers
+
+### Polarion has two different API endpoints:
+
+1. **Legacy API** (`/polarion/api`): 
+   - Used for basic operations and authentication testing
+   - Returns HTML responses (not JSON)
+   - Works with standard headers
+
+2. **REST API v1** (`/polarion/rest/v1`):
+   - The main REST API for all operations
+   - Returns JSON:API formatted responses
+   - **REQUIRES Accept: `*/*` header** (not `application/json` or `application/vnd.api+json`)
+   - Returns 406 "Not Acceptable" with other Accept headers
+
+### Critical Header Requirements:
+
+```python
+# Correct headers for Polarion REST API v1
+headers = {
+    'Authorization': f'Bearer {pat}',
+    'Accept': '*/*',  # MUST use wildcard!
+    'Content-Type': 'application/json'
+}
+```
+
 ## Key Differences: Mock vs Production
 
 ### Production Polarion

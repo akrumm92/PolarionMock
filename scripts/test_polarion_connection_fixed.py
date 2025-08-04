@@ -42,11 +42,11 @@ def test_polarion_connection():
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         print("⚠️  SSL verification disabled")
     
-    # Prepare headers - Polarion typically uses Bearer authentication
+    # Prepare headers - Polarion requires specific headers
     headers = {
         'Authorization': f'Bearer {pat}',
-        'Accept': 'application/vnd.api+json',  # JSON:API format
-        'Content-Type': 'application/vnd.api+json'
+        'Accept': '*/*',  # Polarion REST API v1 requires wildcard Accept header
+        'Content-Type': 'application/json'
     }
     
     # Configure session for potential proxy support

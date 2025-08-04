@@ -198,14 +198,37 @@ When writing tests:
 
 ```bash
 POLARION_ENV=mock|production  # Target environment for tests
-POLARION_API_ENDPOINT        # Full Polarion REST API endpoint (e.g., https://polarion.example.com/polarion/api)
+POLARION_BASE_URL            # Base URL for Polarion (e.g., https://polarion.example.com)
+POLARION_REST_V1_PATH=/polarion/rest/v1  # Path to REST API v1 (default shown)
+POLARION_API_PATH=/polarion/api          # Path to legacy API (default shown)
 POLARION_PERSONAL_ACCESS_TOKEN  # Personal Access Token for API authentication
+POLARION_VERIFY_SSL=true|false  # SSL certificate verification (false for self-signed)
 MOCK_PORT=5001              # Port for mock server (5001 to avoid macOS AirPlay conflicts)
 ENABLE_WEBSOCKET=true       # Enable WebSocket support
 DISABLE_AUTH=true|false     # Disable authentication for development (default: false)
 JWT_SECRET_KEY              # Secret key for signing JWT tokens (any string)
 MOCK_AUTH_TOKEN            # JWT token for mock API authentication
 ```
+
+## Critical Polarion API Information
+
+### Headers Required for Polarion REST API v1:
+```python
+headers = {
+    'Authorization': f'Bearer {pat}',
+    'Accept': '*/*',  # MUST use wildcard - Polarion returns 406 with other values!
+    'Content-Type': 'application/json'
+}
+```
+
+### Two Different Endpoints:
+1. `/polarion/api` - Legacy API, returns HTML, used for auth testing
+2. `/polarion/rest/v1` - Main REST API, returns JSON:API format
+
+### Common Issues:
+- **406 Not Acceptable**: You're not using `Accept: */*` header
+- **SSL Certificate errors**: Set `POLARION_VERIFY_SSL=false`
+- **Connection refused**: Check if REST API is enabled in Polarion
 
 ## Authentication
 

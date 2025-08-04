@@ -34,6 +34,7 @@ Input/
    - Korrekte Response-Formate (JSON:API)
    - Error-Handling und Status-Codes
    - Pagination und Filtering
+   - **WICHTIG**: Accept-Header muss `*/*` sein für REST API v1
 
 2. **Realistische Datenstrukturen**
    - Work Item Typen mit allen Feldern
@@ -80,14 +81,21 @@ Die API-Beschreibung wird direkt im Input-Ordner bereitgestellt:
    - Schema-Definitionen für alle Datentypen
    - Endpoint-Dokumentation mit Beispielen
    - Response-Format Spezifikationen
+   
+2. **Kritische Polarion API Details**
+   - REST API v1 Endpoint: `/polarion/rest/v1`
+   - Legacy API Endpoint: `/polarion/api` (für Auth-Tests)
+   - **Accept-Header MUSS `*/*` sein** - sonst 406 Error
+   - Authentifizierung: Bearer Token mit PAT
+   - Response-Format: JSON:API Spezifikation
 
-2. **Mock-Generierung aus API-Spec**
+3. **Mock-Generierung aus API-Spec**
    - Automatische Endpoint-Generierung
    - Schema-basierte Validierung
    - Response-Builder aus Spezifikation
    - Beispieldaten-Generierung
 
-3. **Test-Generierung aus API-Spec**
+4. **Test-Generierung aus API-Spec**
    - Contract-Tests für alle Endpoints
    - Schema-Validierungs-Tests
    - Parametrisierte Test-Suites

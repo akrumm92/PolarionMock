@@ -57,7 +57,7 @@ def test_polarion_connection():
     # Prepare headers with PAT
     headers = {
         'Authorization': f'Bearer {pat}',
-        'Accept': 'application/json',  # Polarion uses standard JSON, not JSON:API
+        'Accept': '*/*',  # Polarion requires wildcard Accept header
         'Content-Type': 'application/json'
     }
     
