@@ -1,0 +1,38 @@
+2025-08-04 20:35:11,670 - tests.session - INFO - ================================================================================
+2025-08-04 20:35:11,670 - tests.session - INFO - Test Session Started: 20250804_203511
+2025-08-04 20:35:11,670 - tests.session - INFO - Environment: mock
+2025-08-04 20:35:11,670 - tests.session - INFO - ================================================================================
+2025-08-04 20:35:11,670 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:35:11,670 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:35:17,792 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:35:17,792 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:35:23,893 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:35:23,893 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:35:29,995 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:35:29,995 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:35:36,094 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:35:36,094 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:35:42,202 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:35:42,202 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:35:48,311 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:35:48,311 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:35:54,420 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:35:54,420 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:36:00,509 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:36:00,509 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:36:06,604 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:36:06,604 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:36:12,716 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:36:12,716 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:36:18,825 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:36:18,825 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:36:24,840 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:36:24,840 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:36:30,930 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:36:30,930 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:36:37,033 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:36:37,033 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:36:43,137 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:36:43,137 - tests.session - DEBUG - Base URL: N/A
+2025-08-04 20:36:43,137 - tests.session - DEBUG - Test environment: mock
+2025-08-04 20:36:43,138 - tests.session - DEBUG - Base URL: N/A

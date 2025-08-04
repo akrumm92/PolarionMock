@@ -370,12 +370,16 @@ class TestDocumentsMixin:
         with patch.object(polarion_client, '_request') as mock_request:
             mock_request.return_value.json.return_value = {"data": {"id": doc_id}}
             
-            polarion_client.get_document(doc_id)
+            # Test with save_output=True to generate output file
+            result = polarion_client.get_document(doc_id, save_output=True)
             
             # Check that the correct endpoint was called
             expected_endpoint = "/projects/myproject/spaces/_default/documents/mydoc"
             mock_request.assert_called_once()
             assert expected_endpoint in mock_request.call_args[0][1]
+            
+            # Verify the response
+            assert result == {"data": {"id": doc_id}}
     
     @pytest.mark.integration
     def test_error_handling(self, polarion_client):
