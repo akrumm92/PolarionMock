@@ -1,0 +1,47 @@
+[
+  {
+    "attributes": {
+      "moduleName": "requirements_specification",
+      "title": "System Requirements Specification",
+      "type": "req_specification",
+      "homePageContent": {
+        "type": "text/html",
+        "value": "<h1>System Requirements Specification</h1><p>This document contains all system requirements.</p><h2>Contents</h2><ul><li>Functional Requirements</li><li>Non-Functional Requirements</li><li>Interface Requirements</li></ul>"
+      },
+      "status": "draft",
+      "structureLink": true,
+      "customFields": {
+        "documentVersion": "1.0",
+        "reviewStatus": "pending"
+      }
+    }
+  },
+  {
+    "attributes": {
+      "moduleName": "test_specification",
+      "title": "System Test Specification",
+      "type": "test_specification",
+      "homePageContent": {
+        "type": "text/html",
+        "value": "<h1>Test Specification</h1><p>Test cases for system validation.</p>"
+      },
+      "status": "draft"
+    }
+  },
+  {
+    "attributes": {
+      "moduleName": "design_document",
+      "title": "Software Design Document",
+      "type": "generic",
+      "homePageContent": {
+        "type": "text/html",
+        "value": "<h1>Software Design</h1><section><h2>Architecture Overview</h2><p>System architecture description.</p></section>"
+      },
+      "status": "in_review",
+      "customFields": {
+        "confidentiality": "internal",
+        "targetRelease": "2025.1"
+      }
+    }
+  }
+]

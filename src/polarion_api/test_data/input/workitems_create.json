@@ -1,0 +1,59 @@
+[
+  {
+    "attributes": {
+      "title": "Test Requirement",
+      "type": "requirement",
+      "description": {
+        "type": "text/html",
+        "value": "<p>This is a test requirement created from input file.</p>"
+      },
+      "status": "draft",
+      "priority": "high",
+      "severity": "major",
+      "dueDate": "2025-12-31",
+      "initialEstimate": "5d",
+      "hyperlinks": [
+        {
+          "role": "ref_ext",
+          "uri": "https://example.com/reference"
+        }
+      ]
+    },
+    "relationships": {
+      "assignee": {
+        "data": [
+          {
+            "type": "users",
+            "id": "test.user"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "attributes": {
+      "title": "Test Task",
+      "type": "task",
+      "description": {
+        "type": "text/plain",
+        "value": "This is a simple task created from input file."
+      },
+      "status": "open",
+      "priority": "medium"
+    }
+  },
+  {
+    "attributes": {
+      "title": "Test Defect",
+      "type": "defect",
+      "description": {
+        "type": "text/html",
+        "value": "<p>Bug description with <strong>formatting</strong></p>"
+      },
+      "status": "new",
+      "priority": "critical",
+      "severity": "blocker",
+      "resolution": "unresolved"
+    }
+  }
+]

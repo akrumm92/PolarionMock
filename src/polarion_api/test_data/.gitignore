@@ -1,0 +1,4 @@
+# Ignore output files but keep input examples
+output/
+!input/
+!input/*.json

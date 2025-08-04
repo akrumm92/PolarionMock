@@ -1,0 +1,30 @@
+{
+  "attributes": {
+    "title": "Functional Safety Requirement",
+    "type": "functionalSafetyRequirement",
+    "description": {
+      "type": "text/html",
+      "value": "<h2>Safety Requirement</h2><p>This requirement ensures system safety according to ISO 26262.</p><ul><li>ASIL Level: D</li><li>Safety Goal: Prevent unintended acceleration</li></ul>"
+    },
+    "status": "approved",
+    "priority": "critical",
+    "severity": "safety_critical",
+    "customFields": {
+      "asilLevel": "ASIL-D",
+      "safetyGoal": "SG-001",
+      "verificationMethod": "Testing + Analysis",
+      "fmea_reference": "FMEA-2024-001"
+    },
+    "categories": ["safety", "iso26262", "automotive"]
+  },
+  "relationships": {
+    "verifiedBy": {
+      "data": [
+        {
+          "type": "testcases",
+          "id": "TC-SAFETY-001"
+        }
+      ]
+    }
+  }
+}

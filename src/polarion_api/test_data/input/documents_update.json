@@ -1,0 +1,15 @@
+{
+  "attributes": {
+    "title": "Updated Document Title",
+    "status": "approved",
+    "homePageContent": {
+      "type": "text/html",
+      "value": "<h1>Updated Content</h1><p>This document has been reviewed and approved.</p><p><strong>Approval Date:</strong> 2025-01-15</p>"
+    },
+    "customFields": {
+      "reviewStatus": "approved",
+      "approvedBy": "project.manager",
+      "approvalDate": "2025-01-15"
+    }
+  }
+}

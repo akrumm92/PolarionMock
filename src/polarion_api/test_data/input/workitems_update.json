@@ -1,0 +1,13 @@
+{
+  "attributes": {
+    "status": "in_progress",
+    "priority": "critical",
+    "assignee": "john.doe",
+    "resolution": "fixed",
+    "verifiedIn": "Release 2.0",
+    "customFields": {
+      "reviewStatus": "approved",
+      "testCoverage": "100%"
+    }
+  }
+}
