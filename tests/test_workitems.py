@@ -94,6 +94,7 @@ class TestWorkItems:
         
         logger.info(f"[{test_env}] Successfully retrieved work item: {workitem_id}")
     
+    @pytest.mark.destructive
     def test_create_workitem(self, api_base_url, auth_headers, test_project_id, http_session, test_env):
         """Test creating a new work item."""
         import time
@@ -141,7 +142,7 @@ class TestWorkItems:
         delete_response = http_session.delete(delete_url, headers=auth_headers)
         logger.info(f"[{test_env}] Cleanup delete response: {delete_response.status_code}")
     
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     def test_create_workitem_in_document(self, api_base_url, auth_headers, test_project_id, http_session):
         """Test creating a work item with document relationship."""
         workitem_data = {
@@ -236,6 +237,7 @@ class TestWorkItems:
         
         logger.info(f"[{test_env}] Successfully tested includes")
     
+    @pytest.mark.destructive
     def test_update_workitem(self, api_base_url, auth_headers, test_project_id, http_session, test_env):
         """Test updating a work item."""
         timestamp = int(time.time())
@@ -300,6 +302,7 @@ class TestWorkItems:
         delete_response = http_session.delete(workitem_url, headers=auth_headers)
         logger.info(f"[{test_env}] Cleanup delete response: {delete_response.status_code}")
     
+    @pytest.mark.destructive
     def test_create_functional_safety_requirement(self, api_base_url, auth_headers, test_project_id, http_session, test_env):
         """Test creating a Functional Safety Requirement work item."""
         timestamp = int(time.time())

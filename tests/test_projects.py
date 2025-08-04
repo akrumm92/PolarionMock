@@ -168,7 +168,7 @@ class TestProjects:
             
         logger.info(f"[{test_env}] Sparse fieldsets test completed")
     
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     def test_create_project(self, api_base_url, auth_headers, http_session):
         """Test creating a new project (mock only)."""
         project_data = {

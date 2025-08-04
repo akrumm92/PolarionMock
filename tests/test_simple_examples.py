@@ -62,7 +62,7 @@ class TestSimpleExamples:
             
         return data["data"]
     
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     @pytest.mark.integration
     def test_create_workitem_with_full_data(self, api_base_url, auth_headers, log_test_info, capture_api_calls, http_session):
         """Create a work item with all required fields from WorkItemRequest.json example."""

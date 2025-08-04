@@ -336,7 +336,7 @@ class TestDocumentsMixin:
             pytest.skip(f"Creating document parts not supported: {e}")
     
     @pytest.mark.integration
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     def test_convenience_methods(self, polarion_client, test_project_id,
                                unique_suffix, created_documents):
         """Test convenience methods for creating specific document types."""

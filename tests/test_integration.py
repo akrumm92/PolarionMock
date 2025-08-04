@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 class TestIntegrationWorkflows:
     """Test complete workflows across multiple API endpoints."""
     
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     @pytest.mark.integration
     def test_complete_document_workflow(self, api_base_url, auth_headers, test_project_id, http_session):
         """Test complete workflow: create document, add work items, query them."""
@@ -155,7 +155,7 @@ class TestIntegrationWorkflows:
         url = f"{api_base_url}/projects/{test_project_id}/spaces/_default/documents/test_workflow_doc"
         http_session.delete(url, headers=auth_headers)
     
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     @pytest.mark.integration
     def test_workitem_move_between_documents(self, api_base_url, auth_headers, test_project_id, http_session):
         """Test moving work items between documents."""
@@ -252,7 +252,7 @@ class TestDataValidation:
         assert "errors" in data
         assert data["errors"][0]["status"] == "404"
     
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     def test_invalid_workitem_data(self, api_base_url, auth_headers, test_project_id, http_session):
         """Test creating work item with invalid data."""
         # Missing required title

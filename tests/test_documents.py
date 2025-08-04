@@ -73,7 +73,7 @@ class TestDocuments:
         
         logger.info(f"[{test_env}] Successfully retrieved document: {document_id}")
     
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     def test_create_document(self, api_base_url, auth_headers, http_session):
         """Test creating a new document (mock only)."""
         document_data = {
@@ -168,7 +168,7 @@ class TestDocumentParts:
         
         logger.info(f"[{test_env}] Found {len(data['data'])} document parts")
     
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     def test_add_workitem_to_document(self, api_base_url, auth_headers, test_project_id, http_session):
         """Test adding a work item to a document as a part."""
         # First create a work item
