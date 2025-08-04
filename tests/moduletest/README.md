@@ -34,6 +34,7 @@ tests/moduletest/
 ### Umgebungsspezifische Tests
 - `@pytest.mark.mock_only`: Nur gegen Mock-Server
 - `@pytest.mark.production_only`: Nur gegen echtes Polarion
+- `@pytest.mark.destructive`: Tests die Ressourcen erstellen/ändern/löschen (werden in Production übersprungen außer ALLOW_DESTRUCTIVE_TESTS=true)
 
 ## Ausführen der Tests
 
@@ -87,6 +88,8 @@ POLARION_BASE_URL=https://polarion.example.com
 POLARION_PERSONAL_ACCESS_TOKEN=your-pat-token
 POLARION_VERIFY_SSL=false
 TEST_PROJECT_ID=myproject
+# VORSICHT: Erlaubt destruktive Tests (create/update/delete) in Production
+ALLOW_DESTRUCTIVE_TESTS=false  # Auf true setzen nur wenn sicher!
 ```
 
 ### Test-Fixtures

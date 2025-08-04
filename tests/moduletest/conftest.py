@@ -127,15 +127,19 @@ def created_documents(polarion_client) -> Generator[list, None, None]:
 def pytest_collection_modifyitems(config, items):
     """Skip tests based on environment."""
     env = os.getenv("POLARION_ENV", "mock")
+    allow_destructive = os.getenv("ALLOW_DESTRUCTIVE_TESTS", "false").lower() == "true"
     
     skip_mock = pytest.mark.skip(reason="Test only for production environment")
     skip_prod = pytest.mark.skip(reason="Test only for mock environment")
+    skip_destructive = pytest.mark.skip(reason="Destructive tests not allowed in production (set ALLOW_DESTRUCTIVE_TESTS=true to enable)")
     
     for item in items:
         if env == "mock" and "production_only" in item.keywords:
             item.add_marker(skip_mock)
         elif env == "production" and "mock_only" in item.keywords:
             item.add_marker(skip_prod)
+        elif env == "production" and "destructive" in item.keywords and not allow_destructive:
+            item.add_marker(skip_destructive)
 
 
 # Custom markers
@@ -145,3 +149,4 @@ def pytest_configure(config):
     config.addinivalue_line("markers", "production_only: test only runs against production")
     config.addinivalue_line("markers", "integration: integration tests requiring API access")
     config.addinivalue_line("markers", "unit: unit tests not requiring API access")
+    config.addinivalue_line("markers", "destructive: tests that create, update, or delete resources")

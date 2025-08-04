@@ -106,6 +106,7 @@ class TestWorkItemsMixin:
         assert isinstance(results["data"], list)
     
     @pytest.mark.integration
+    @pytest.mark.destructive
     def test_create_work_item(self, polarion_client, test_project_id, 
                              test_work_item_data, created_work_items):
         """Test creating a work item."""
@@ -124,6 +125,7 @@ class TestWorkItemsMixin:
         created_work_items.append(work_item["id"])
     
     @pytest.mark.integration
+    @pytest.mark.destructive
     def test_create_work_item_from_file(self, polarion_client, test_project_id, created_work_items):
         """Test creating a work item from input file."""
         work_item = polarion_client.create_work_item(
@@ -147,6 +149,7 @@ class TestWorkItemsMixin:
             file.unlink()
     
     @pytest.mark.integration
+    @pytest.mark.destructive
     def test_create_work_item_with_relationships(self, polarion_client, test_project_id,
                                                 unique_suffix, created_work_items):
         """Test creating a work item with relationships."""
@@ -165,6 +168,7 @@ class TestWorkItemsMixin:
             assert isinstance(work_item["relationships"], dict)
     
     @pytest.mark.integration
+    @pytest.mark.destructive
     def test_create_work_items_batch(self, polarion_client, test_project_id,
                                     unique_suffix, created_work_items):
         """Test creating multiple work items in batch."""
@@ -194,6 +198,7 @@ class TestWorkItemsMixin:
             created_work_items.append(item["id"])
     
     @pytest.mark.integration
+    @pytest.mark.destructive
     def test_create_work_items_batch_from_file(self, polarion_client, test_project_id, created_work_items):
         """Test creating multiple work items from file."""
         result = polarion_client.create_work_items_batch(
@@ -236,6 +241,7 @@ class TestWorkItemsMixin:
         assert work_item["data"]["attributes"]["title"] == test_work_item_data["title"]
     
     @pytest.mark.integration
+    @pytest.mark.destructive
     def test_update_work_item(self, polarion_client, test_project_id,
                              test_work_item_data, created_work_items):
         """Test updating a work item."""
@@ -259,6 +265,7 @@ class TestWorkItemsMixin:
         assert updated["data"]["attributes"]["priority"] == "critical"
     
     @pytest.mark.integration
+    @pytest.mark.destructive
     def test_update_work_item_from_file(self, polarion_client, test_project_id,
                                        test_work_item_data, created_work_items):
         """Test updating a work item from input file."""
@@ -281,6 +288,7 @@ class TestWorkItemsMixin:
         assert updated["data"]["attributes"]["priority"] == "critical"
     
     @pytest.mark.integration
+    @pytest.mark.destructive
     def test_update_work_item_relationships(self, polarion_client, test_project_id,
                                           unique_suffix, created_work_items):
         """Test updating work item relationships."""
@@ -310,6 +318,7 @@ class TestWorkItemsMixin:
             pytest.skip(f"Relationship updates not supported: {e}")
     
     @pytest.mark.integration
+    @pytest.mark.destructive
     def test_delete_work_item(self, polarion_client, test_project_id, test_work_item_data):
         """Test deleting a work item."""
         # Create work item
@@ -357,7 +366,6 @@ class TestWorkItemsMixin:
         created_work_items.append(defect["id"])
     
     @pytest.mark.integration
-    @pytest.mark.mock_only
     def test_get_work_items_in_document(self, polarion_client):
         """Test getting work items in a document (mock only)."""
         # This typically requires a known document with work items

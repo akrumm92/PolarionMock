@@ -99,7 +99,7 @@ class TestDocumentsMixin:
                 raise
     
     @pytest.mark.integration
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     def test_create_document(self, polarion_client, test_project_id,
                            test_document_data, created_documents):
         """Test creating a document."""
@@ -119,7 +119,7 @@ class TestDocumentsMixin:
         created_documents.append(document["id"])
     
     @pytest.mark.integration
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     def test_create_document_from_file(self, polarion_client, test_project_id, created_documents):
         """Test creating a document from input file."""
         document = polarion_client.create_document(
@@ -143,7 +143,7 @@ class TestDocumentsMixin:
             file.unlink()
     
     @pytest.mark.integration
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     def test_create_document_with_content(self, polarion_client, test_project_id,
                                         unique_suffix, created_documents):
         """Test creating a document with HTML content."""
@@ -162,7 +162,7 @@ class TestDocumentsMixin:
         created_documents.append(document["id"])
     
     @pytest.mark.integration
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     def test_update_document(self, polarion_client, test_project_id,
                            test_document_data, created_documents):
         """Test updating a document."""
@@ -188,7 +188,7 @@ class TestDocumentsMixin:
             assert updated["data"]["attributes"]["status"] == "approved"
     
     @pytest.mark.integration
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     def test_update_document_from_file(self, polarion_client, test_project_id,
                                      test_document_data, created_documents):
         """Test updating a document from input file."""
@@ -212,7 +212,7 @@ class TestDocumentsMixin:
         assert updated["data"]["attributes"]["status"] == "approved"
     
     @pytest.mark.integration
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     def test_delete_document(self, polarion_client, test_project_id, test_document_data):
         """Test deleting a document."""
         # Create document
@@ -278,7 +278,7 @@ class TestDocumentsMixin:
             pytest.skip("Document parts not available")
     
     @pytest.mark.integration
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     def test_add_work_item_to_document(self, polarion_client, test_project_id,
                                      test_work_item_data, test_document_data,
                                      created_work_items, created_documents):
@@ -310,7 +310,7 @@ class TestDocumentsMixin:
             pytest.skip(f"Adding work items to documents not supported: {e}")
     
     @pytest.mark.integration
-    @pytest.mark.mock_only
+    @pytest.mark.destructive
     def test_create_document_part(self, polarion_client, test_project_id,
                                 test_document_data, unique_suffix, created_documents):
         """Test creating a document part."""
