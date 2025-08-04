@@ -43,34 +43,72 @@ headers = {
 }
 
 def get_project_types():
-    """Get work item types for a specific project"""
-    url = f"{api_url}/projects/{project_id}/workitemtypes"
+    """Get work item types for a specific project
     
-    print(f"Fetching work item types from: {url}")
+    Note: The /workitemtypes endpoint doesn't exist in Polarion REST API v1.
+    This function now extracts types from existing work items.
+    """
+    print(f"\nNote: The /projects/{project_id}/workitemtypes endpoint doesn't exist in Polarion REST API v1")
+    print("Extracting work item types from existing work items instead...\n")
+    
+    # Get work items and extract unique types
+    url = f"{api_url}/projects/{project_id}/workitems?page[size]=100"
+    
+    print(f"Fetching work items from: {url}")
     
     response = requests.get(url, headers=headers, verify=verify_ssl)
     
     if response.status_code == 200:
         data = response.json()
-        print(f"\nWork Item Types in project '{project_id}':")
-        print("=" * 50)
         
-        if 'data' in data:
-            for item_type in data['data']:
-                type_id = item_type.get('id', 'N/A')
-                attributes = item_type.get('attributes', {})
-                name = attributes.get('name', 'N/A')
-                print(f"- ID: {type_id}")
-                print(f"  Name: {name}")
-                if 'description' in attributes:
-                    print(f"  Description: {attributes['description']}")
-                print()
+        # Extract unique types from work items
+        types_found = set()
+        
+        if 'data' in data and len(data['data']) > 0:
+            for item in data['data']:
+                if 'attributes' in item and 'type' in item['attributes']:
+                    types_found.add(item['attributes']['type'])
+            
+            print(f"\nWork Item Types found in project '{project_id}':")
+            print("=" * 50)
+            
+            for item_type in sorted(types_found):
+                print(f"- {item_type}")
+            
+            print(f"\nTotal unique types found: {len(types_found)}")
         else:
-            print("No work item types found")
+            print(f"No work items found in project '{project_id}'")
             
     else:
         print(f"Error: {response.status_code}")
         print(response.text)
+        
+    # Also try to get types from all workitems to see more variety
+    print(f"\n\nFetching work item types from all projects...")
+    url = f"{api_url}/all/workitems?page[size]=100"
+    
+    response = requests.get(url, headers=headers, verify=verify_ssl)
+    
+    if response.status_code == 200:
+        data = response.json()
+        
+        # Extract unique types from all work items
+        all_types = set()
+        
+        if 'data' in data and len(data['data']) > 0:
+            for item in data['data']:
+                if 'attributes' in item and 'type' in item['attributes']:
+                    all_types.add(item['attributes']['type'])
+            
+            print(f"\nAll Work Item Types found across all projects:")
+            print("=" * 50)
+            
+            for item_type in sorted(all_types):
+                print(f"- {item_type}")
+            
+            print(f"\nTotal unique types found: {len(all_types)}")
+    else:
+        print(f"Error fetching all workitems: {response.status_code}")
 
 def get_workitem_examples():
     """Get example work items to see their structure"""
