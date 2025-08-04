@@ -37,7 +37,7 @@ def pytest_addoption(parser):
     parser.addoption(
         "--polarion-endpoint",
         action="store",
-        default=os.getenv("POLARION_API_ENDPOINT", "https://polarion.example.com/polarion/rest/v1"),
+        default=os.getenv("POLARION_BASE_URL", "https://polarion.example.com") + os.getenv("POLARION_REST_V1_PATH", "/polarion/rest/v1"),
         help="Production Polarion REST API endpoint"
     )
 
