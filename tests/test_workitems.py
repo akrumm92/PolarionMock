@@ -295,6 +295,60 @@ class TestWorkItems:
         delete_response = http_session.delete(workitem_url, headers=auth_headers)
         logger.info(f"[{test_env}] Cleanup delete response: {delete_response.status_code}")
     
+    def test_create_functional_safety_requirement(self, api_base_url, auth_headers, test_project_id, http_session, test_env):
+        """Test creating a Functional Safety Requirement 1 work item."""
+        timestamp = int(time.time())
+        
+        workitem_data = {
+            "data": [{
+                "type": "workitems",
+                "attributes": {
+                    "title": f"Functional Safety Requirement {timestamp}",
+                    "type": "Functional Safety Requirement 1",
+                    "description": {
+                        "type": "text/html",
+                        "value": f"<p>This is a functional safety requirement created at {timestamp}</p>"
+                    },
+                    "priority": "high",
+                    "status": "draft",
+                    "severity": "critical",
+                    "customFields": {
+                        "asil": "ASIL-D",
+                        "safetyRelevant": True
+                    }
+                }
+            }]
+        }
+        
+        url = f"{api_base_url}/projects/{test_project_id}/workitems"
+        response = http_session.post(url, headers=auth_headers, json=workitem_data)
+        
+        # Log the response for debugging if it fails
+        if response.status_code != 201:
+            logger.error(f"[{test_env}] Failed to create functional safety requirement. Status: {response.status_code}")
+            logger.error(f"[{test_env}] Response: {response.text}")
+        
+        assert response.status_code == 201, f"Failed to create functional safety requirement: {response.text}"
+        
+        data = response.json()
+        assert "data" in data, f"Response missing 'data' field: {data}"
+        assert len(data["data"]) == 1
+        assert data["data"][0]["attributes"]["title"] == f"Functional Safety Requirement {timestamp}"
+        assert data["data"][0]["attributes"]["type"] == "Functional Safety Requirement 1"
+        
+        created_id = data["data"][0]["id"]
+        logger.info(f"[{test_env}] Successfully created functional safety requirement: {created_id}")
+        
+        # Clean up - delete the work item
+        if "/" in created_id:
+            parts = created_id.split("/")
+            delete_url = f"{api_base_url}/projects/{parts[0]}/workitems/{parts[1]}"
+        else:
+            delete_url = f"{api_base_url}/projects/{test_project_id}/workitems/{created_id}"
+        
+        delete_response = http_session.delete(delete_url, headers=auth_headers)
+        logger.info(f"[{test_env}] Cleanup delete response: {delete_response.status_code}")
+
     def test_workitem_relationships(self, api_base_url, auth_headers, test_project_id, http_session, test_env):
         """Test updating work item relationships (e.g., parent/child, linked items)."""
         timestamp = int(time.time())
