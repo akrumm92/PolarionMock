@@ -301,3 +301,81 @@ POLARION_PERSONAL_ACCESS_TOKEN=<token>
 - 404 für nicht existierende Projekte/Ressourcen
 - 405 für nicht unterstützte HTTP-Methoden
 - Fehler immer im JSON:API Error Format zurückgeben
+
+## 9. Neue Erkenntnisse aus Tests (Stand: 04.08.2025)
+
+### 9.1 CustomFields Format
+**Problem**: Die `customFields` Eigenschaft erwartet einen STRING, nicht ein Objekt.
+
+**Fehlermeldung**:
+```json
+{
+  "errors": [{
+    "status": "400",
+    "title": "Bad Request",
+    "detail": "Unexpected token, STRING expected, but was : BEGIN_OBJECT",
+    "source": {
+      "pointer": "$.data[0].attributes.customFields",
+      "parameter": null,
+      "resource": null
+    }
+  }]
+}
+```
+
+**Status**: Format noch unklar - möglicherweise JSON-String oder einfacher String-Wert
+
+### 9.2 Work Item Types
+**Bestätigte Standard-Typen**:
+- `requirement` - Funktioniert in allen Tests
+- `task` - Funktioniert für Child-Items
+
+**Hinweise**:
+- Custom-Typen wie "Functional Safety Requirement 1" existieren möglicherweise nicht in allen Projekten
+- Typ-Verfügbarkeit ist projektspezifisch
+- Endpunkt für verfügbare Typen: `/projects/{id}/workitemtypes`
+
+### 9.3 Beziehungs-Updates (Relationships)
+**Problem**: PATCH-Requests für Beziehungs-Updates geben 400 Bad Request zurück
+
+**Getestete Formate** (alle fehlgeschlagen):
+```json
+// Format 1: Relationships-Objekt
+{
+  "data": {
+    "type": "workitems",
+    "id": "Python/PYTH-123",
+    "relationships": {
+      "parent": {
+        "data": {
+          "type": "workitems",
+          "id": "Python/PYTH-122"
+        }
+      }
+    }
+  }
+}
+
+// Format 2: Als Attribut
+{
+  "data": {
+    "type": "workitems",
+    "id": "Python/PYTH-123",
+    "attributes": {
+      "parentWorkItemId": "Python/PYTH-122"
+    }
+  }
+}
+```
+
+**Status**: Korrektes Format für Beziehungs-Updates muss noch ermittelt werden
+
+### 9.4 Korrigierte Endpunkt-Informationen
+**Funktionierende Endpunkte** (Korrektur zu Abschnitt 8.1):
+- `/polarion/rest/v1/all/workitems` - Funktioniert tatsächlich (200 OK)
+- Wird für projektübergreifende Queries verwendet: `/all/workitems?query=type:requirement`
+
+**Mock sollte implementieren**:
+```python
+@app.route('/polarion/rest/v1/all/workitems', methods=['GET'])  # Funktioniert doch!
+```

@@ -1,0 +1,6 @@
+2025-08-04 13:08:07,886 - tests.session - INFO - ================================================================================
+2025-08-04 13:08:07,886 - tests.session - INFO - Test Session Started: 20250804_130807
+2025-08-04 13:08:07,886 - tests.session - INFO - Environment: mock
+2025-08-04 13:08:07,886 - tests.session - INFO - ================================================================================
+2025-08-04 13:08:07,886 - tests.session - DEBUG - Test environment: mock
+2025-08-04 13:08:07,886 - tests.session - DEBUG - Base URL: http://localhost:5001

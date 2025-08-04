@@ -1,0 +1,6 @@
+Test Environment: production
+Test Path: tests/test_workitems.py::TestWorkItems::test_create_functional_safety_requirement
+Timestamp: 2025-08-04 13:08:30.522465
+Python Version: 3.13.3 (main, Apr  8 2025, 13:54:08) [Clang 16.0.0 (clang-1600.0.26.6)]
+
+Environment Variables:
