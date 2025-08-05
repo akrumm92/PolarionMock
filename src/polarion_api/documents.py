@@ -378,10 +378,10 @@ class DocumentsMixin:
     def get_project_spaces(self, project_id: str) -> List[str]:
         """Get list of available spaces in a project.
         
-        Since there's no direct API to list spaces, we'll use multiple approaches:
-        1. Query for documents across all spaces and extract unique space IDs
-        2. Try common space names
-        3. Check work items for space references
+        This method discovers spaces dynamically without relying on predefined lists:
+        1. Query ALL work items in the project and extract unique space IDs
+        2. Parse module URIs from work items to find document spaces
+        3. Query for documents with module relationships
         
         Args:
             project_id: The project ID
@@ -390,86 +390,183 @@ class DocumentsMixin:
             List of found space IDs
         """
         found_spaces = set()
+        logger.info(f"Starting dynamic space discovery for project: {project_id}")
         
-        # Approach 1: Query documents to find spaces
+        # Strategy 1: Query ALL work items and extract space IDs
+        # Work item IDs have format: projectId/spaceId/workItemType/workItemId
         try:
-            # Search for all documents in the project
-            query = f"project.id:{project_id}"
-            endpoint = "/all/documents"
+            page_number = 1
+            page_size = 100
+            has_more = True
+            
+            while has_more:
+                endpoint = f"/projects/{project_id}/workitems"
+                params = {
+                    "page[size]": page_size,
+                    "page[number]": page_number,
+                    "fields[workitems]": "id,moduleURI"
+                }
+                
+                response = self._request("GET", endpoint, params=params)
+                if response.status_code == 200:
+                    data = response.json()
+                    items = data.get("data", [])
+                    
+                    if not items:
+                        has_more = False
+                        break
+                    
+                    for item in items:
+                        # Extract space from work item ID
+                        work_item_id = item.get("id", "")
+                        id_parts = work_item_id.split("/")
+                        
+                        # Format: projectId/spaceId/workItemType/workItemId
+                        if len(id_parts) >= 2:
+                            # The second part is always the space ID
+                            space_id = id_parts[1]
+                            if space_id:
+                                found_spaces.add(space_id)
+                                logger.debug(f"Found space from work item ID: {space_id} (from {work_item_id})")
+                        
+                        # Also check moduleURI for document spaces
+                        attrs = item.get("attributes", {})
+                        module_uri = attrs.get("moduleURI", "")
+                        if module_uri:
+                            # Parse module URI to extract space
+                            # Common formats:
+                            # - subterra:data-service:objects:default/projectId_spaceId$documentId
+                            # - subterra:data-service:objects:default/projectId/spaceId/documentId
+                            if "default/" in module_uri:
+                                try:
+                                    uri_part = module_uri.split("default/")[1]
+                                    
+                                    # Handle format with $
+                                    if "$" in uri_part:
+                                        uri_part = uri_part.split("$")[0]
+                                    
+                                    # Parse different formats
+                                    if "_" in uri_part:
+                                        # Format: projectId_spaceId
+                                        parts = uri_part.split("_", 1)
+                                        if len(parts) == 2 and parts[0] == project_id:
+                                            found_spaces.add(parts[1])
+                                            logger.debug(f"Found space from moduleURI underscore format: {parts[1]}")
+                                    elif "/" in uri_part:
+                                        # Format: projectId/spaceId/documentId
+                                        parts = uri_part.split("/")
+                                        if len(parts) >= 2 and parts[0] == project_id:
+                                            found_spaces.add(parts[1])
+                                            logger.debug(f"Found space from moduleURI slash format: {parts[1]}")
+                                except Exception as e:
+                                    logger.debug(f"Failed to parse moduleURI: {module_uri}, error: {e}")
+                    
+                    # Check if there are more pages
+                    meta = data.get("meta", {})
+                    total_count = meta.get("totalCount", 0)
+                    
+                    if page_number * page_size >= total_count:
+                        has_more = False
+                    else:
+                        page_number += 1
+                        logger.debug(f"Fetching page {page_number} of work items...")
+                else:
+                    logger.warning(f"Failed to fetch work items page {page_number}: {response.status_code}")
+                    has_more = False
+                    
+        except Exception as e:
+            logger.error(f"Failed to query work items for space discovery: {e}")
+        
+        # Strategy 2: Query work items that have module relationships (documents)
+        # This can find additional spaces that might not have regular work items
+        try:
+            # Query for work items with module URIs
+            query = f"project.id:{project_id} AND HAS_VALUE:moduleURI"
+            endpoint = f"/projects/{project_id}/workitems"
             params = {
                 "query": query,
                 "page[size]": 100,
-                "fields[documents]": "id"
+                "fields[workitems]": "id,moduleURI",
+                "include": "module"
             }
             
             response = self._request("GET", endpoint, params=params)
             if response.status_code == 200:
                 data = response.json()
-                if "data" in data:
-                    for doc in data["data"]:
-                        # Document IDs have format: projectId/spaceId/documentId
-                        doc_id = doc.get("id", "")
-                        parts = doc_id.split("/")
-                        if len(parts) >= 3 and parts[0] == project_id:
-                            found_spaces.add(parts[1])
+                
+                # Check included modules for space information
+                included = data.get("included", [])
+                for inc_item in included:
+                    if inc_item.get("type") == "documents":
+                        doc_id = inc_item.get("id", "")
+                        # Document ID format: projectId/spaceId/documentId
+                        doc_parts = doc_id.split("/")
+                        if len(doc_parts) >= 2 and doc_parts[0] == project_id:
+                            space_id = doc_parts[1]
+                            if space_id:
+                                found_spaces.add(space_id)
+                                logger.debug(f"Found space from included document: {space_id}")
+                        
+                        # Also check document attributes for space
+                        doc_attrs = inc_item.get("attributes", {})
+                        if "spaceId" in doc_attrs:
+                            found_spaces.add(doc_attrs["spaceId"])
+                            logger.debug(f"Found space from document attribute: {doc_attrs['spaceId']}")
+                            
         except Exception as e:
-            logger.debug(f"Failed to query documents for spaces: {e}")
+            logger.debug(f"Failed to query work items with modules: {e}")
         
-        # Approach 2: Query work items to find document spaces
-        try:
-            # Search for work items with document references
-            query = f"project.id:{project_id} AND HAS_VALUE:moduleURI"
-            endpoint = "/all/workitems"
-            params = {
-                "query": query,
-                "page[size]": 50,
-                "fields[workitems]": "moduleURI"
-            }
-            
-            response = self._request("GET", endpoint, params=params)
-            if response.status_code == 200:
-                data = response.json()
-                if "data" in data:
-                    for item in data["data"]:
-                        attrs = item.get("attributes", {})
-                        module_uri = attrs.get("moduleURI", "")
-                        # Extract space from module URI
-                        # Format: subterra:data-service:objects:default/projectId_spaceId$documentId
-                        if "default/" in module_uri and "_" in module_uri:
-                            try:
-                                # Extract projectId_spaceId part
-                                proj_space = module_uri.split("default/")[1].split("$")[0]
-                                if "_" in proj_space:
-                                    # Split by last underscore to separate project and space
-                                    parts = proj_space.rsplit("_", 1)
-                                    if len(parts) == 2 and parts[0] == project_id:
-                                        found_spaces.add(parts[1])
-                            except Exception:
-                                pass
-        except Exception as e:
-            logger.debug(f"Failed to query work items for spaces: {e}")
-        
-        # Approach 3: Try common space names
-        common_spaces = ["_default", "Default", "default", "Requirements", 
-                        "TestCases", "Documents", "Specifications", "Tests",
-                        "Design", "Implementation", "Maintenance"]
-        
-        for space in common_spaces:
-            if space not in found_spaces:
-                try:
-                    # Try to access the space
-                    endpoint = f"/projects/{project_id}/spaces/{space}/documents"
-                    response = self._request("HEAD", endpoint)
-                    if response.status_code < 400:
-                        found_spaces.add(space)
-                except Exception:
-                    pass
+        # Strategy 3: If we have found some spaces, try to discover related spaces
+        # by checking if there are documents in slightly modified space names
+        if found_spaces:
+            # Create variations of found spaces
+            additional_spaces = set()
+            for space in list(found_spaces):
+                # Check for underscore/hyphen variations
+                if "_" in space:
+                    additional_spaces.add(space.replace("_", "-"))
+                    additional_spaces.add(space.replace("_", ""))
+                if "-" in space:
+                    additional_spaces.add(space.replace("-", "_"))
+                    additional_spaces.add(space.replace("-", ""))
+                if " " in space:
+                    additional_spaces.add(space.replace(" ", "_"))
+                    additional_spaces.add(space.replace(" ", "-"))
+                    additional_spaces.add(space.replace(" ", ""))
+                    
+            # Quick check for these variations
+            for space_variant in additional_spaces:
+                if space_variant not in found_spaces:
+                    try:
+                        # Quick query to check if space exists
+                        query = f'project.id:{project_id} AND space:"{space_variant}"'
+                        endpoint = f"/projects/{project_id}/workitems"
+                        params = {
+                            "query": query,
+                            "page[size]": 1,
+                            "fields[workitems]": "id"
+                        }
+                        response = self._request("GET", endpoint, params=params)
+                        if response.status_code == 200:
+                            data = response.json()
+                            if data.get("meta", {}).get("totalCount", 0) > 0:
+                                found_spaces.add(space_variant)
+                                logger.info(f"Found space variant: {space_variant}")
+                    except Exception:
+                        pass
         
         # Convert to sorted list
         result = sorted(list(found_spaces))
         
-        # Always return at least _default if nothing found
-        return result or ["_default"]
+        # Log discovery results
+        if result:
+            logger.info(f"Space discovery completed. Found {len(result)} spaces: {result}")
+        else:
+            logger.warning(f"No spaces found for project {project_id}. This might indicate an empty project or an API issue.")
+            # Don't assume _default exists - return empty list if nothing found
+            result = []
+        
+        return result
     
     def list_documents_in_space(self, project_id: str, space_id: str = "_default",
                                fields: Optional[List[str]] = None,
