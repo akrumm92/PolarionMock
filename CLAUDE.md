@@ -13,6 +13,13 @@ PolarionMock is a comprehensive test and development framework for Siemens Polar
 
 This is currently a greenfield project with a detailed specification in PROJECT_SPECIFICATION.md. Implementation has not yet begun.
 
+## Important Testing Note
+
+**Polarion is NOT running on this Mac development machine.** All test results with the production Polarion instance are executed on a different Windows computer that has access to the internal Polarion server (polarion-d.claas.local). Test reports are then transferred to this repository for analysis. When analyzing test failures, remember that:
+- The test execution happens remotely
+- Network/firewall issues may affect test results
+- The Polarion REST API may have different availability on the test machine
+
 ## Development Philosophy
 
 ### Core Principles
