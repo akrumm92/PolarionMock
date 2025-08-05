@@ -54,6 +54,14 @@ def polarion_client(test_config) -> Generator[PolarionClient, None, None]:
 @pytest.fixture(scope="session")
 def test_project_id() -> str:
     """Get test project ID."""
+    # For production, use real project ID
+    if os.getenv("POLARION_ENV") == "production":
+        # Try to load from production config
+        try:
+            from .test_config_production import PRODUCTION_PROJECTS
+            return PRODUCTION_PROJECTS.get("default", os.getenv("TEST_PROJECT_ID", "Python"))
+        except ImportError:
+            pass
     return os.getenv("TEST_PROJECT_ID", "myproject")
 
 
@@ -140,6 +148,34 @@ def pytest_collection_modifyitems(config, items):
             item.add_marker(skip_prod)
         elif env == "production" and "destructive" in item.keywords and not allow_destructive:
             item.add_marker(skip_destructive)
+
+
+@pytest.fixture
+def test_document_id(test_env):
+    """Get test document ID based on environment."""
+    if test_env == "production":
+        # Use environment variable or skip test
+        doc_id = os.getenv("TEST_DOCUMENT_ID")
+        if not doc_id:
+            pytest.skip("TEST_DOCUMENT_ID not set for production testing")
+        return doc_id
+    else:
+        # Mock environment - use default test data
+        return "elibrary/_default/requirements"
+
+
+@pytest.fixture  
+def test_work_item_id(test_env, test_project_id):
+    """Get test work item ID based on environment."""
+    if test_env == "production":
+        # Use environment variable or skip test
+        wi_id = os.getenv("TEST_WORK_ITEM_ID")
+        if not wi_id:
+            pytest.skip("TEST_WORK_ITEM_ID not set for production testing")
+        return wi_id
+    else:
+        # Mock environment - use default test data
+        return f"{test_project_id}/WI-001"
 
 
 # Custom markers

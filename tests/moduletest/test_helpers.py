@@ -9,7 +9,8 @@ from functools import wraps
 from typing import Any, Dict, Optional
 
 
-OUTPUT_DIR = Path(__file__).parent / "outputdata"
+# Use absolute path to ensure correct location
+OUTPUT_DIR = Path(__file__).parent.absolute() / "outputdata"
 
 
 def save_response_to_json(filename: str, data: Any) -> None:

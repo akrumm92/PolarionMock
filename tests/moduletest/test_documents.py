@@ -15,20 +15,16 @@ class TestDocumentsMixin:
     """Test the DocumentsMixin methods."""
     
     @pytest.mark.integration
-    @pytest.mark.mock_only
-    def test_get_document(self, polarion_client):
+    def test_get_document(self, polarion_client, test_document_id):
         """Test getting a specific document."""
-        # Use known document from mock data
-        document_id = "elibrary/_default/requirements"
-        
         try:
-            document = polarion_client.get_document(document_id)
+            document = polarion_client.get_document(test_document_id)
             
             # Save response to JSON
             save_response_to_json("documents_get_document", document)
             
             assert "data" in document
-            assert document["data"]["id"] == document_id
+            assert document["data"]["id"] == test_document_id
             assert document["data"]["type"] == "documents"
             assert "attributes" in document["data"]
             
@@ -36,17 +32,15 @@ class TestDocumentsMixin:
             attrs = document["data"]["attributes"]
             assert "title" in attrs or "name" in attrs
         except PolarionNotFoundError:
-            pytest.skip("Test document not found")
+            pytest.skip(f"Test document '{test_document_id}' not found")
     
     @pytest.mark.integration
     @pytest.mark.mock_only
-    def test_get_document_with_output(self, polarion_client):
+    def test_get_document_with_output(self, polarion_client, test_document_id):
         """Test getting document and saving output."""
-        document_id = "elibrary/_default/requirements"
-        
         try:
             document = polarion_client.get_document(
-                document_id=document_id,
+                document_id=test_document_id,
                 save_output=True
             )
             
@@ -63,13 +57,11 @@ class TestDocumentsMixin:
             pytest.skip("Test document not found")
     
     @pytest.mark.integration
-    def test_get_document_with_include(self, polarion_client):
+    def test_get_document_with_include(self, polarion_client, test_document_id):
         """Test getting document with included resources."""
-        document_id = "elibrary/_default/requirements"
-        
         try:
             document = polarion_client.get_document(
-                document_id=document_id,
+                document_id=test_document_id,
                 include="author,project"
             )
             
@@ -248,12 +240,10 @@ class TestDocumentsMixin:
     
     @pytest.mark.integration
     @pytest.mark.mock_only
-    def test_get_document_parts(self, polarion_client):
+    def test_get_document_parts(self, polarion_client, test_document_id):
         """Test getting document parts."""
-        document_id = "elibrary/_default/requirements"
-        
         try:
-            parts = polarion_client.get_document_parts(document_id)
+            parts = polarion_client.get_document_parts(test_document_id)
             
             # Save response to JSON
             save_response_to_json("documents_get_document_parts", parts)
@@ -275,13 +265,11 @@ class TestDocumentsMixin:
     
     @pytest.mark.integration
     @pytest.mark.mock_only
-    def test_get_document_parts_with_output(self, polarion_client):
+    def test_get_document_parts_with_output(self, polarion_client, test_document_id):
         """Test getting document parts and saving output."""
-        document_id = "elibrary/_default/requirements"
-        
         try:
             parts = polarion_client.get_document_parts(
-                document_id=document_id,
+                document_id=test_document_id,
                 save_output=True
             )
             

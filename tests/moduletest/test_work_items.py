@@ -395,13 +395,10 @@ class TestWorkItemsMixin:
         created_work_items.append(defect["id"])
     
     @pytest.mark.integration
-    def test_get_work_items_in_document(self, polarion_client):
+    def test_get_work_items_in_document(self, polarion_client, test_document_id):
         """Test getting work items in a document (mock only)."""
-        # This typically requires a known document with work items
-        document_id = "elibrary/_default/requirements"
-        
         try:
-            work_items = polarion_client.get_work_items_in_document(document_id)
+            work_items = polarion_client.get_work_items_in_document(test_document_id)
             
             # Save response to JSON
             save_response_to_json("workitems_get_in_document", work_items)
