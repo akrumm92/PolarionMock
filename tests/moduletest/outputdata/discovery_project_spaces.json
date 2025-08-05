@@ -1,0 +1,10 @@
+{
+  "project_id": "myproject",
+  "spaces": [
+    "_default"
+  ],
+  "meta": {
+    "total_spaces": 1,
+    "note": "Spaces discovered by checking common space names"
+  }
+}
