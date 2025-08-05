@@ -13,93 +13,63 @@ class TestDiscovery:
     
     @pytest.mark.integration
     def test_discover_project_spaces(self, polarion_client, test_project_id):
-        """Discover all spaces in a project."""
+        """Discover all spaces in a project using the new method."""
         try:
-            # Try to get project info first
-            project_endpoint = f"/projects/{test_project_id}"
-            response = polarion_client._request("GET", project_endpoint)
-            project_info = response.json()
+            # Use the new get_project_spaces method
+            spaces = polarion_client.get_project_spaces(test_project_id)
             
-            save_response_to_json("discovery_project_info", project_info)
-            
-            # Try to list spaces (this endpoint might not exist)
-            spaces_endpoint = f"/projects/{test_project_id}/spaces"
-            try:
-                response = polarion_client._request("GET", spaces_endpoint)
-                spaces = response.json()
-                save_response_to_json("discovery_project_spaces", spaces)
-            except Exception as e:
-                # If spaces endpoint doesn't exist, try default space
-                default_space = {
-                    "data": [{
-                        "type": "spaces",
-                        "id": "_default",
-                        "attributes": {
-                            "name": "Default Space"
-                        }
-                    }],
-                    "meta": {
-                        "note": "Spaces endpoint not available, showing default space only"
-                    }
+            discovery_data = {
+                "project_id": test_project_id,
+                "spaces": spaces,
+                "meta": {
+                    "total_spaces": len(spaces),
+                    "note": "Spaces discovered by checking common space names"
                 }
-                save_response_to_json("discovery_project_spaces", default_space)
+            }
+            
+            save_response_to_json("discovery_project_spaces", discovery_data)
+            
+            if not spaces:
+                pytest.skip("No spaces found in project")
                 
         except Exception as e:
-            pytest.skip(f"Could not discover project info: {e}")
+            pytest.skip(f"Could not discover project spaces: {e}")
     
     @pytest.mark.integration
     def test_discover_documents_in_default_space(self, polarion_client, test_project_id):
-        """Discover documents in the default space."""
+        """Discover documents in the default space using the new method."""
         try:
-            # Try different approaches to get documents
+            # Use the new list_documents_in_space method
+            documents = polarion_client.list_documents_in_space(
+                project_id=test_project_id,
+                space_id="_default",
+                page_size=100
+            )
             
-            # Approach 1: Direct documents endpoint
-            try:
-                endpoint = f"/projects/{test_project_id}/spaces/_default/documents"
-                response = polarion_client._request("GET", endpoint)
-                documents = response.json()
-                save_response_to_json("discovery_documents_default_space", documents)
-                return
-            except Exception:
-                pass
+            # Extract document IDs and names
+            doc_list = []
+            for doc in documents.get("data", []):
+                doc_info = {
+                    "id": doc.get("id"),
+                    "type": doc.get("type"),
+                    "moduleName": doc.get("attributes", {}).get("moduleName"),
+                    "title": doc.get("attributes", {}).get("title", ""),
+                    "spaceId": doc.get("attributes", {}).get("spaceId", "_default")
+                }
+                doc_list.append(doc_info)
             
-            # Approach 2: Try query endpoint
-            try:
-                # Use query to find documents
-                query_params = {
-                    "query": f"project.id:{test_project_id}",
-                    "page[size]": 100
-                }
-                documents = polarion_client.query_work_items(**query_params)
-                
-                # Filter for documents (if work items include document references)
-                discovery_data = {
-                    "data": [],
-                    "meta": {
-                        "note": "Documents discovered via work item query",
-                        "total_work_items": len(documents.get("data", []))
-                    }
-                }
-                
-                # Extract unique modules/documents from work items
-                modules = set()
-                for item in documents.get("data", []):
-                    if "relationships" in item and "module" in item["relationships"]:
-                        module_data = item["relationships"]["module"].get("data", {})
-                        if module_data.get("id"):
-                            modules.add(module_data["id"])
-                
-                discovery_data["data"] = [{"type": "documents", "id": doc_id} for doc_id in sorted(modules)]
-                discovery_data["meta"]["unique_documents"] = len(modules)
-                
-                save_response_to_json("discovery_documents_via_workitems", discovery_data)
-                
-            except Exception as e:
-                error_data = {
-                    "error": str(e),
-                    "suggestion": "Try using specific document IDs or check API permissions"
-                }
-                save_response_to_json("discovery_documents_error", error_data)
+            discovery_data = {
+                "project_id": test_project_id,
+                "space_id": "_default",
+                "documents": doc_list,
+                "meta": documents.get("meta", {}),
+                "total_documents": len(doc_list)
+            }
+            
+            save_response_to_json("discovery_documents_in_space", discovery_data)
+            
+            if not doc_list:
+                pytest.skip("No documents found in default space")
                 
         except Exception as e:
             pytest.skip(f"Could not discover documents: {e}")
@@ -228,3 +198,65 @@ class TestDiscovery:
         
         if not discovered_docs:
             pytest.skip("No documents found with common naming patterns")
+    
+    @pytest.mark.integration
+    def test_discover_all_documents_in_all_spaces(self, polarion_client, test_project_id):
+        """Discover all documents across all spaces in a project."""
+        try:
+            # First get all spaces
+            spaces = polarion_client.get_project_spaces(test_project_id)
+            
+            all_documents = {}
+            total_doc_count = 0
+            
+            # For each space, get documents
+            for space_id in spaces:
+                try:
+                    documents = polarion_client.list_documents_in_space(
+                        project_id=test_project_id,
+                        space_id=space_id,
+                        page_size=200
+                    )
+                    
+                    doc_ids = []
+                    for doc in documents.get("data", []):
+                        doc_ids.append({
+                            "id": doc.get("id"),
+                            "moduleName": doc.get("attributes", {}).get("moduleName", ""),
+                            "title": doc.get("attributes", {}).get("title", "")[:100]  # Truncate long titles
+                        })
+                    
+                    all_documents[space_id] = {
+                        "document_count": len(doc_ids),
+                        "documents": doc_ids
+                    }
+                    total_doc_count += len(doc_ids)
+                    
+                except Exception as e:
+                    all_documents[space_id] = {
+                        "error": str(e),
+                        "document_count": 0,
+                        "documents": []
+                    }
+            
+            discovery_data = {
+                "project_id": test_project_id,
+                "spaces_checked": spaces,
+                "total_spaces": len(spaces),
+                "total_documents": total_doc_count,
+                "documents_by_space": all_documents,
+                "meta": {
+                    "note": "Complete document discovery across all project spaces"
+                }
+            }
+            
+            save_response_to_json("discovery_all_documents_all_spaces", discovery_data)
+            
+            print(f"\nDiscovery Summary for {test_project_id}:")
+            print(f"- Found {len(spaces)} space(s)")
+            print(f"- Found {total_doc_count} document(s) total")
+            for space, info in all_documents.items():
+                print(f"  - Space '{space}': {info['document_count']} documents")
+                
+        except Exception as e:
+            pytest.skip(f"Could not complete full document discovery: {e}")

@@ -21,6 +21,15 @@ python run_tests.py --env production --test tests/moduletest/test_discovery.py::
 
 # Discover work item types in your project
 python run_tests.py --env production --test tests/moduletest/test_discovery.py::TestDiscovery::test_discover_work_item_types
+
+# NEW: Discover all spaces in your project
+python run_tests.py --env production --test tests/moduletest/test_discovery.py::TestDiscovery::test_discover_project_spaces
+
+# NEW: List all documents in default space
+python run_tests.py --env production --test tests/moduletest/test_discovery.py::TestDiscovery::test_discover_documents_in_default_space
+
+# NEW: Complete discovery - all documents in all spaces
+python run_tests.py --env production --test tests/moduletest/test_discovery.py::TestDiscovery::test_discover_all_documents_in_all_spaces
 ```
 
 ### Check Discovery Results
@@ -33,6 +42,15 @@ cat tests/moduletest/outputdata/discovery_sample_documents.json
 
 # View work item types and sample IDs
 cat tests/moduletest/outputdata/discovery_work_item_types.json
+
+# NEW: View discovered spaces
+cat tests/moduletest/outputdata/discovery_project_spaces.json
+
+# NEW: View documents in default space
+cat tests/moduletest/outputdata/discovery_documents_in_space.json
+
+# NEW: View all documents across all spaces
+cat tests/moduletest/outputdata/discovery_all_documents_all_spaces.json
 ```
 
 ## Quick Start

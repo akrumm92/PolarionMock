@@ -372,3 +372,144 @@ class DocumentsMixin:
             project_id, space_id, module_name, title,
             document_type="test_specification", **kwargs
         )
+    
+    # Discovery methods
+    
+    def get_project_spaces(self, project_id: str) -> List[str]:
+        """Get all spaces in a project.
+        
+        Args:
+            project_id: Project ID
+            
+        Returns:
+            List of space IDs
+            
+        Note:
+            Most Polarion instances only have the default space "_default".
+            This method attempts to discover spaces but may return only the default.
+        """
+        # There's no direct endpoint to list spaces in the REST API
+        # We'll try common space names and see what exists
+        common_spaces = ["_default", "Default", "default"]
+        found_spaces = []
+        
+        for space in common_spaces:
+            try:
+                # Try to access the space by attempting to list documents
+                endpoint = f"/projects/{project_id}/spaces/{space}/documents"
+                # Use HEAD request to check if endpoint exists without getting data
+                response = self._request("HEAD", endpoint)
+                if response.status_code < 400:
+                    found_spaces.append(space)
+            except Exception:
+                # Space doesn't exist or not accessible
+                pass
+        
+        # If no spaces found, assume at least _default exists
+        if not found_spaces:
+            found_spaces = ["_default"]
+            
+        return found_spaces
+    
+    def list_documents_in_space(self, project_id: str, space_id: str = "_default",
+                               fields: Optional[List[str]] = None,
+                               include: Optional[str] = None,
+                               page_size: int = 100,
+                               page_number: int = 1) -> Dict[str, Any]:
+        """List all documents in a project space.
+        
+        Args:
+            project_id: Project ID
+            space_id: Space ID (default: "_default")
+            fields: List of fields to include
+            include: Comma-separated list of related resources to include
+            page_size: Number of results per page
+            page_number: Page number to retrieve
+            
+        Returns:
+            Dictionary containing:
+            - data: List of document resources
+            - meta: Metadata including total count
+            - links: Pagination links
+            
+        Note:
+            The GET endpoint might return 404 or 405. If so, this method
+            will attempt alternative approaches to discover documents.
+        """
+        try:
+            # First try the direct endpoint
+            endpoint = f"/projects/{project_id}/spaces/{space_id}/documents"
+            params = {
+                "page[size]": page_size,
+                "page[number]": page_number
+            }
+            
+            if fields:
+                params["fields[documents]"] = ",".join(fields)
+            if include:
+                params["include"] = include
+                
+            query_string = build_query_params(params)
+            response = self._request("GET", f"{endpoint}{query_string}")
+            return parse_json_api_response(response.json())
+            
+        except Exception as e:
+            logger.warning(f"Direct document listing failed: {e}")
+            
+            # Alternative: Try POST with empty body (some APIs support this)
+            try:
+                endpoint = f"/projects/{project_id}/spaces/{space_id}/documents"
+                response = self._request("POST", endpoint, json={"data": []})
+                return parse_json_api_response(response.json())
+            except:
+                pass
+            
+            # Alternative: Use work items to discover documents
+            try:
+                from .work_items import WorkItemsMixin
+                # Query work items and extract unique documents
+                wi_response = self.query_work_items(
+                    query=f"project.id:{project_id}",
+                    page_size=1000
+                )
+                
+                documents = set()
+                for item in wi_response.get("data", []):
+                    if "relationships" in item and "module" in item["relationships"]:
+                        module_data = item["relationships"]["module"].get("data", {})
+                        doc_id = module_data.get("id")
+                        if doc_id and space_id in doc_id:
+                            documents.add(doc_id)
+                
+                # Format as document list response
+                doc_list = []
+                for doc_id in sorted(documents):
+                    parts = doc_id.split("/")
+                    if len(parts) >= 3:
+                        doc_list.append({
+                            "type": "documents",
+                            "id": doc_id,
+                            "attributes": {
+                                "moduleName": parts[-1],
+                                "spaceId": parts[-2] if len(parts) > 2 else "_default"
+                            }
+                        })
+                
+                return {
+                    "data": doc_list,
+                    "meta": {
+                        "totalCount": len(doc_list),
+                        "note": "Documents discovered via work item relationships"
+                    }
+                }
+                
+            except Exception as e:
+                logger.error(f"All document discovery methods failed: {e}")
+                # Return empty result
+                return {
+                    "data": [],
+                    "meta": {
+                        "totalCount": 0,
+                        "error": str(e)
+                    }
+                }
