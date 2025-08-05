@@ -1,0 +1,23 @@
+DEBUG    tests.moduletest.conftest:conftest.py:25 Loaded .env from C:\Users\E017093\gitRepos\PolarionMock\.env
+INFO     tests.session:conftest.py:231 ================================================================================
+INFO     tests.session:conftest.py:232 Test Session Started: 20250805_210220
+INFO     tests.session:conftest.py:233 Environment: production
+INFO     tests.session:conftest.py:234 ================================================================================
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: N/A
+INFO     polarion_api.client:client.py:60 Initialized Polarion client for https://polarion-d.claas.local
+INFO     polarion_api.documents:documents.py:393 Starting dynamic space discovery for project: Python
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/workitems
+DEBUG    urllib3.connectionpool:connectionpool.py:1049 Starting new HTTPS connection (1): polarion-d.claas.local:443
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/workitems?page%5Bsize%5D=100&page%5Bnumber%5D=1&fields%5Bworkitems%5D=id%2CmoduleURI HTTP/1.1" 404 139
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/workitems] is not available"}]}...
+ERROR    polarion_api.documents:documents.py:478 Failed to query work items for space discovery: Unexpected error: [404] Python with ID 'workitems?page%5Bsize%5D=100&page%5Bnumber%5D=1&fields%5Bworkitems%5D=id%2CmoduleURI' not found
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/workitems
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/workitems?query=project.id%3APython+AND+HAS_VALUE%3AmoduleURI&page%5Bsize%5D=100&fields%5Bworkitems%5D=id%2CmoduleURI&include=module HTTP/1.1" 404 139
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/workitems] is not available"}]}...
+DEBUG    polarion_api.documents:documents.py:517 Failed to query work items with modules: Unexpected error: [404] Python with ID 'workitems?query=project.id%3APython+AND+HAS_VALUE%3AmoduleURI&page%5Bsize%5D=100&fields%5Bworkitems%5D=id%2CmoduleURI&include=module' not found
+WARNING  polarion_api.documents:documents.py:565 No spaces found for project Python. This might indicate an empty project or an API issue.
+2025-08-05 21:02:20,728 [INFO] [__main__] Test reports saved to: test_reports\20250805_210219
+2025-08-05 21:02:20,728 [INFO] [__main__] Logs saved to: test_reports\20250805_210219/logs/pytest.log

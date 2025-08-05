@@ -1,16 +1,9 @@
-                                                                                                       {
+{
   "project_id": "Python",
-  "spaces_checked": [
-    "_default"
-  ],
-  "total_spaces": 1,
+  "spaces_checked": [],
+  "total_spaces": 0,
   "total_documents": 0,
-  "documents_by_space": {
-    "_default": {
-      "document_count": 0,
-      "documents": []
-    }
-  },
+  "documents_by_space": {},
   "meta": {
     "note": "Complete document discovery across all project spaces"
   }
