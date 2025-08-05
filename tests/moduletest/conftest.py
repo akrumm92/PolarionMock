@@ -17,11 +17,19 @@ from polarion_api import PolarionClient
 from polarion_api.config import PolarionConfig
 
 # Load environment variables
-load_dotenv()
+from pathlib import Path
+env_path = Path(__file__).parent.parent.parent / '.env'
+if env_path.exists():
+    load_dotenv(env_path)
+    logger = logging.getLogger(__name__)
+    logger.debug(f"Loaded .env from {env_path}")
+else:
+    load_dotenv()  # Try to load from current directory
+    logger = logging.getLogger(__name__)
+    logger.warning(f"No .env file found at {env_path}, using system environment")
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 
 @pytest.fixture(scope="session")
@@ -54,15 +62,23 @@ def polarion_client(test_config) -> Generator[PolarionClient, None, None]:
 @pytest.fixture(scope="session")
 def test_project_id() -> str:
     """Get test project ID."""
-    # For production, use real project ID
+    # Always check environment variable first
+    env_project_id = os.getenv("TEST_PROJECT_ID")
+    
+    if env_project_id:
+        return env_project_id
+    
+    # For production, try to load from config file
     if os.getenv("POLARION_ENV") == "production":
-        # Try to load from production config
         try:
             from .test_config_production import PRODUCTION_PROJECTS
-            return PRODUCTION_PROJECTS.get("default", os.getenv("TEST_PROJECT_ID", "Python"))
+            return PRODUCTION_PROJECTS.get("default", "myproject")
         except ImportError:
-            pass
-    return os.getenv("TEST_PROJECT_ID", "myproject")
+            # If no TEST_PROJECT_ID is set in production, skip the test
+            pytest.skip("TEST_PROJECT_ID environment variable not set for production testing")
+    
+    # Default for mock environment
+    return "myproject"
 
 
 @pytest.fixture
