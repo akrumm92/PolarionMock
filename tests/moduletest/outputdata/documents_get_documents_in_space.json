@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "type": "documents",
+      "id": "project/_default/doc1",
+      "attributes": {
+        "title": "Document 1",
+        "type": "req_specification"
+      }
+    },
+    {
+      "type": "documents", 
+      "id": "project/_default/doc2",
+      "attributes": {
+        "title": "Document 2",
+        "type": "test_specification"
+      }
+    }
+  ]
+}

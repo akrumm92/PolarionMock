@@ -1,0 +1,30 @@
+{
+  "type": "workitems",
+  "id": "myproject/WI-456",
+  "attributes": {
+    "title": "Test Work Item 20241205_140000",
+    "type": "requirement",
+    "status": "open",
+    "priority": "high",
+    "severity": "major",
+    "description": {
+      "type": "text/html",
+      "value": "<p>Test work item created at 20241205_140000</p>"
+    },
+    "created": "2024-12-05T14:00:00Z"
+  },
+  "relationships": {
+    "author": {
+      "data": {
+        "type": "users",
+        "id": "testuser"
+      }
+    },
+    "project": {
+      "data": {
+        "type": "projects",
+        "id": "myproject"
+      }
+    }
+  }
+}

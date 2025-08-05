@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "type": "workitems",
+      "id": "myproject/WI-001",
+      "attributes": {
+        "title": "First Work Item",
+        "type": "requirement",
+        "status": "open",
+        "priority": "high"
+      }
+    },
+    {
+      "type": "workitems",
+      "id": "myproject/WI-002",
+      "attributes": {
+        "title": "Second Work Item",
+        "type": "task",
+        "status": "in_progress",
+        "priority": "medium"
+      }
+    }
+  ],
+  "meta": {
+    "totalCount": 2
+  }
+}

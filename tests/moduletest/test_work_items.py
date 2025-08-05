@@ -8,6 +8,7 @@ from pathlib import Path
 from unittest.mock import Mock, patch
 from polarion_api.exceptions import PolarionNotFoundError, PolarionValidationError
 from polarion_api.utils import DEFAULT_OUTPUT_DIR
+from .test_helpers import save_response_to_json
 
 
 class TestWorkItemsMixin:
@@ -17,6 +18,9 @@ class TestWorkItemsMixin:
     def test_get_work_items_all(self, polarion_client):
         """Test getting all work items."""
         work_items = polarion_client.get_work_items()
+        
+        # Save response to JSON
+        save_response_to_json("workitems_get_all", work_items)
         
         assert "data" in work_items
         assert isinstance(work_items["data"], list)
@@ -54,6 +58,9 @@ class TestWorkItemsMixin:
         try:
             work_items = polarion_client.get_work_items(project_id=test_project_id)
             
+            # Save response to JSON
+            save_response_to_json("workitems_get_by_project", work_items)
+            
             assert "data" in work_items
             assert isinstance(work_items["data"], list)
             
@@ -71,6 +78,9 @@ class TestWorkItemsMixin:
             "page[number]": 1
         })
         
+        # Save response to JSON
+        save_response_to_json("workitems_get_with_pagination", work_items)
+        
         assert "data" in work_items
         assert len(work_items["data"]) <= 5
         
@@ -84,6 +94,9 @@ class TestWorkItemsMixin:
             project_id=test_project_id,
             include="author,module"
         )
+        
+        # Save response to JSON
+        save_response_to_json("workitems_get_with_include", work_items)
         
         assert "data" in work_items
         
@@ -102,6 +115,9 @@ class TestWorkItemsMixin:
             **{"page[size]": 10}
         )
         
+        # Save response to JSON
+        save_response_to_json("workitems_query", results)
+        
         assert "data" in results
         assert isinstance(results["data"], list)
     
@@ -114,6 +130,9 @@ class TestWorkItemsMixin:
             project_id=test_project_id,
             **test_work_item_data
         )
+        
+        # Save response to JSON
+        save_response_to_json("workitems_create", work_item)
         
         assert "id" in work_item
         assert "type" in work_item
@@ -190,6 +209,9 @@ class TestWorkItemsMixin:
             work_items=items_data
         )
         
+        # Save response to JSON
+        save_response_to_json("workitems_create_batch", result)
+        
         assert "data" in result
         assert len(result["data"]) == 2
         
@@ -236,6 +258,9 @@ class TestWorkItemsMixin:
         # Get the work item
         work_item = polarion_client.get_work_item(created["id"])
         
+        # Save response to JSON
+        save_response_to_json("workitems_get_single", work_item)
+        
         assert "data" in work_item
         assert work_item["data"]["id"] == created["id"]
         assert work_item["data"]["attributes"]["title"] == test_work_item_data["title"]
@@ -261,6 +286,10 @@ class TestWorkItemsMixin:
         
         # Verify update
         updated = polarion_client.get_work_item(created["id"])
+        
+        # Save updated work item response to JSON
+        save_response_to_json("workitems_get_updated", updated)
+        
         assert updated["data"]["attributes"]["status"] == "in_progress"
         assert updated["data"]["attributes"]["priority"] == "critical"
     
@@ -373,6 +402,9 @@ class TestWorkItemsMixin:
         
         try:
             work_items = polarion_client.get_work_items_in_document(document_id)
+            
+            # Save response to JSON
+            save_response_to_json("workitems_get_in_document", work_items)
             
             assert "data" in work_items
             assert isinstance(work_items["data"], list)

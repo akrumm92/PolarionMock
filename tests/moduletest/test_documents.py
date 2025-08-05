@@ -8,6 +8,7 @@ from pathlib import Path
 from unittest.mock import Mock, patch
 from polarion_api.exceptions import PolarionNotFoundError, PolarionError
 from polarion_api.utils import DEFAULT_OUTPUT_DIR
+from .test_helpers import save_response_to_json, capture_response
 
 
 class TestDocumentsMixin:
@@ -22,6 +23,9 @@ class TestDocumentsMixin:
         
         try:
             document = polarion_client.get_document(document_id)
+            
+            # Save response to JSON
+            save_response_to_json("documents_get_document", document)
             
             assert "data" in document
             assert document["data"]["id"] == document_id
@@ -69,6 +73,9 @@ class TestDocumentsMixin:
                 include="author,project"
             )
             
+            # Save response to JSON
+            save_response_to_json("documents_get_document_with_include", document)
+            
             assert "data" in document
             
             # Check if includes are present when relationships exist
@@ -89,6 +96,9 @@ class TestDocumentsMixin:
                 space_id="_default"
             )
             
+            # Save response to JSON
+            save_response_to_json("documents_get_documents_in_space", documents)
+            
             assert "data" in documents
             assert isinstance(documents["data"], list)
         except PolarionError as e:
@@ -108,6 +118,9 @@ class TestDocumentsMixin:
             space_id="_default",
             **test_document_data
         )
+        
+        # Save response to JSON
+        save_response_to_json("documents_create_document", document)
         
         assert "id" in document
         assert "type" in document
@@ -183,6 +196,10 @@ class TestDocumentsMixin:
         
         # Verify update
         updated = polarion_client.get_document(created["id"])
+        
+        # Save updated document response to JSON
+        save_response_to_json("documents_get_updated_document", updated)
+        
         assert updated["data"]["attributes"]["title"] == "Updated Document Title"
         if "status" in updated["data"]["attributes"]:
             assert updated["data"]["attributes"]["status"] == "approved"
@@ -237,6 +254,9 @@ class TestDocumentsMixin:
         
         try:
             parts = polarion_client.get_document_parts(document_id)
+            
+            # Save response to JSON
+            save_response_to_json("documents_get_document_parts", parts)
             
             assert "data" in parts
             assert isinstance(parts["data"], list)
@@ -305,6 +325,9 @@ class TestDocumentsMixin:
                 work_item_id=work_item["id"]
             )
             
+            # Save response to JSON
+            save_response_to_json("documents_add_work_item_to_document", result)
+            
             assert "data" in result or "id" in result
         except PolarionError as e:
             pytest.skip(f"Adding work items to documents not supported: {e}")
@@ -330,6 +353,9 @@ class TestDocumentsMixin:
                 content=f"<h2>Section {unique_suffix}</h2>",
                 level=2
             )
+            
+            # Save response to JSON
+            save_response_to_json("documents_create_document_part", part)
             
             assert "data" in part or "id" in part
         except PolarionError as e:

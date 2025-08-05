@@ -1,0 +1,18 @@
+{
+  "data": {
+    "type": "workitems",
+    "id": "myproject/WI-123",
+    "attributes": {
+      "title": "Test Work Item 20241205_140000",
+      "type": "requirement",
+      "status": "in_progress",
+      "priority": "critical",
+      "severity": "major",
+      "description": {
+        "type": "text/html",
+        "value": "<p>Test work item created at 20241205_140000</p>"
+      },
+      "updated": "2024-12-05T14:05:00Z"
+    }
+  }
+}

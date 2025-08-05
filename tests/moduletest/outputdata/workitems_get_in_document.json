@@ -1,0 +1,38 @@
+{
+  "data": [
+    {
+      "type": "workitems",
+      "id": "elibrary/REQ-101",
+      "attributes": {
+        "title": "Library shall support authentication",
+        "type": "requirement",
+        "status": "approved"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "type": "documents",
+            "id": "elibrary/_default/requirements"
+          }
+        }
+      }
+    },
+    {
+      "type": "workitems",
+      "id": "elibrary/REQ-102",
+      "attributes": {
+        "title": "Library shall provide encryption",
+        "type": "requirement",
+        "status": "approved"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "type": "documents",
+            "id": "elibrary/_default/requirements"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "data": {
+    "type": "documents",
+    "id": "elibrary/_default/requirements",
+    "attributes": {
+      "title": "Example Requirements Document",
+      "status": "published",
+      "type": "req_specification"
+    }
+  }
+}

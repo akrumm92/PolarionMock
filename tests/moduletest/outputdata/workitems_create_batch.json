@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "type": "workitems",
+      "id": "myproject/WI-789",
+      "attributes": {
+        "title": "Batch Item 1 20241205_140000",
+        "type": "requirement",
+        "status": "open"
+      }
+    },
+    {
+      "type": "workitems",
+      "id": "myproject/WI-790",
+      "attributes": {
+        "title": "Batch Item 2 20241205_140000",
+        "type": "task",
+        "status": "open"
+      }
+    }
+  ]
+}
