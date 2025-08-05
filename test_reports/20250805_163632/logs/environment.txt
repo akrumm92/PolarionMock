@@ -1,0 +1,6 @@
+Test Environment: production
+Test Path: tests/moduletest/test_discovery.py
+Timestamp: 2025-08-05 16:36:36.801935
+Python Version: 3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]
+
+Environment Variables:

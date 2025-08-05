@@ -1,0 +1,110 @@
+INFO     tests.session:conftest.py:231 ================================================================================
+INFO     tests.session:conftest.py:232 Test Session Started: 20250805_162627
+INFO     tests.session:conftest.py:233 Environment: production
+INFO     tests.session:conftest.py:234 ================================================================================
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: N/A
+INFO     polarion_api.client:client.py:60 Initialized Polarion client for https://polarion-d.claas.local
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python
+DEBUG    urllib3.connectionpool:connectionpool.py:1049 Starting new HTTPS connection (1): polarion-d.claas.local:443
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python HTTP/1.1" 404 131
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python] is not available"}]}...
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: N/A
+INFO     polarion_api.client:client.py:60 Initialized Polarion client for https://polarion-d.claas.local
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/_default/documents
+DEBUG    urllib3.connectionpool:connectionpool.py:1049 Starting new HTTPS connection (1): polarion-d.claas.local:443
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/_default/documents HTTP/1.1" 404 148
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/_default/documents] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/all/workitems?page%5Bsize%5D=100&query=project.id%3APython
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/all/workitems?page%5Bsize%5D=100&query=project.id%3APython HTTP/1.1" 404 129
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/all/workitems] is not available"}]}...
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: N/A
+INFO     polarion_api.client:client.py:60 Initialized Polarion client for https://polarion-d.claas.local
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/workitems?page%5Bsize%5D=50
+DEBUG    urllib3.connectionpool:connectionpool.py:1049 Starting new HTTPS connection (1): polarion-d.claas.local:443
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/workitems?page%5Bsize%5D=50 HTTP/1.1" 404 139
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/workitems] is not available"}]}...
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: N/A
+INFO     polarion_api.client:client.py:60 Initialized Polarion client for https://polarion-d.claas.local
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects
+DEBUG    urllib3.connectionpool:connectionpool.py:1049 Starting new HTTPS connection (1): polarion-d.claas.local:443
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects HTTP/1.1" 404 126
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects] is not available"}]}...
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: N/A
+INFO     polarion_api.client:client.py:60 Initialized Polarion client for https://polarion-d.claas.local
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/_default/documents/requirements
+DEBUG    urllib3.connectionpool:connectionpool.py:1049 Starting new HTTPS connection (1): polarion-d.claas.local:443
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/_default/documents/requirements HTTP/1.1" 404 156
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/_default/documents/requirements] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/Default/documents/requirements
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/Default/documents/requirements HTTP/1.1" 404 155
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/Default/documents/requirements] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/_default/documents/specification
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/_default/documents/specification HTTP/1.1" 404 157
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/_default/documents/specification] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/Default/documents/specification
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/Default/documents/specification HTTP/1.1" 404 156
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/Default/documents/specification] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/_default/documents/test
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/_default/documents/test HTTP/1.1" 404 150
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/_default/documents/test] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/Default/documents/test
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/Default/documents/test HTTP/1.1" 404 150
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/Default/documents/test] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/_default/documents/design
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/_default/documents/design HTTP/1.1" 404 154
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/_default/documents/design] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/Default/documents/design
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/Default/documents/design HTTP/1.1" 404 152
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/Default/documents/design] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/_default/documents/architecture
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/_default/documents/architecture HTTP/1.1" 404 156
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/_default/documents/architecture] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/Default/documents/architecture
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/Default/documents/architecture HTTP/1.1" 404 155
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/Default/documents/architecture] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/_default/documents/manual
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/_default/documents/manual HTTP/1.1" 404 153
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/_default/documents/manual] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/Default/documents/manual
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/Default/documents/manual HTTP/1.1" 404 151
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/Default/documents/manual] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/_default/documents/guide
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/_default/documents/guide HTTP/1.1" 404 152
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/_default/documents/guide] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/Default/documents/guide
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/Default/documents/guide HTTP/1.1" 404 151
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/Default/documents/guide] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/_default/documents/readme
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/_default/documents/readme HTTP/1.1" 404 153
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/_default/documents/readme] is not available"}]}...
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python/spaces/Default/documents/readme
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python/spaces/Default/documents/readme HTTP/1.1" 404 151
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python/spaces/Default/documents/readme] is not available"}]}...
+2025-08-05 16:26:30,224 [INFO] [__main__] Test reports saved to: test_reports\20250805_162626
+2025-08-05 16:26:30,224 [INFO] [__main__] Logs saved to: test_reports\20250805_162626/logs/pytest.log
