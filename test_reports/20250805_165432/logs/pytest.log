@@ -1,0 +1,14 @@
+INFO     tests.session:conftest.py:231 ================================================================================
+INFO     tests.session:conftest.py:232 Test Session Started: 20250805_165433
+INFO     tests.session:conftest.py:233 Environment: production
+INFO     tests.session:conftest.py:234 ================================================================================
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: N/A
+INFO     polarion_api.client:client.py:60 Initialized Polarion client for https://polarion-d.claas.local
+DEBUG    polarion_api.client:client.py:107 GET https://polarion-d.claas.local/polarion/rest/projects/Python
+DEBUG    urllib3.connectionpool:connectionpool.py:1049 Starting new HTTPS connection (1): polarion-d.claas.local:443
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "GET /polarion/rest/projects/Python HTTP/1.1" 404 131
+DEBUG    polarion_api.client:client.py:115 Response status: 404
+DEBUG    polarion_api.client:client.py:117 Response body: {"errors":[{"status":"404","title":"Not Found","detail":"The requested resource [/polarion/rest/projects/Python] is not available"}]}...
+2025-08-05 16:54:34,203 [INFO] [__main__] Test reports saved to: test_reports\20250805_165432
+2025-08-05 16:54:34,203 [INFO] [__main__] Logs saved to: test_reports\20250805_165432/logs/pytest.log
