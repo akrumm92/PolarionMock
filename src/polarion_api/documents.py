@@ -376,40 +376,100 @@ class DocumentsMixin:
     # Discovery methods
     
     def get_project_spaces(self, project_id: str) -> List[str]:
-        """Get all spaces in a project.
+        """Get list of available spaces in a project.
+        
+        Since there's no direct API to list spaces, we'll use multiple approaches:
+        1. Query for documents across all spaces and extract unique space IDs
+        2. Try common space names
+        3. Check work items for space references
         
         Args:
-            project_id: Project ID
+            project_id: The project ID
             
         Returns:
-            List of space IDs
-            
-        Note:
-            Most Polarion instances only have the default space "_default".
-            This method attempts to discover spaces but may return only the default.
+            List of found space IDs
         """
-        # There's no direct endpoint to list spaces in the REST API
-        # We'll try common space names and see what exists
-        common_spaces = ["_default", "Default", "default"]
-        found_spaces = []
+        found_spaces = set()
+        
+        # Approach 1: Query documents to find spaces
+        try:
+            # Search for all documents in the project
+            query = f"project.id:{project_id}"
+            endpoint = "/all/documents"
+            params = {
+                "query": query,
+                "page[size]": 100,
+                "fields[documents]": "id"
+            }
+            
+            response = self._request("GET", endpoint, params=params)
+            if response.status_code == 200:
+                data = response.json()
+                if "data" in data:
+                    for doc in data["data"]:
+                        # Document IDs have format: projectId/spaceId/documentId
+                        doc_id = doc.get("id", "")
+                        parts = doc_id.split("/")
+                        if len(parts) >= 3 and parts[0] == project_id:
+                            found_spaces.add(parts[1])
+        except Exception as e:
+            logger.debug(f"Failed to query documents for spaces: {e}")
+        
+        # Approach 2: Query work items to find document spaces
+        try:
+            # Search for work items with document references
+            query = f"project.id:{project_id} AND HAS_VALUE:moduleURI"
+            endpoint = "/all/workitems"
+            params = {
+                "query": query,
+                "page[size]": 50,
+                "fields[workitems]": "moduleURI"
+            }
+            
+            response = self._request("GET", endpoint, params=params)
+            if response.status_code == 200:
+                data = response.json()
+                if "data" in data:
+                    for item in data["data"]:
+                        attrs = item.get("attributes", {})
+                        module_uri = attrs.get("moduleURI", "")
+                        # Extract space from module URI
+                        # Format: subterra:data-service:objects:default/projectId_spaceId$documentId
+                        if "default/" in module_uri and "_" in module_uri:
+                            try:
+                                # Extract projectId_spaceId part
+                                proj_space = module_uri.split("default/")[1].split("$")[0]
+                                if "_" in proj_space:
+                                    # Split by last underscore to separate project and space
+                                    parts = proj_space.rsplit("_", 1)
+                                    if len(parts) == 2 and parts[0] == project_id:
+                                        found_spaces.add(parts[1])
+                            except Exception:
+                                pass
+        except Exception as e:
+            logger.debug(f"Failed to query work items for spaces: {e}")
+        
+        # Approach 3: Try common space names
+        common_spaces = ["_default", "Default", "default", "Requirements", 
+                        "TestCases", "Documents", "Specifications", "Tests",
+                        "Design", "Implementation", "Maintenance"]
         
         for space in common_spaces:
-            try:
-                # Try to access the space by attempting to list documents
-                endpoint = f"/projects/{project_id}/spaces/{space}/documents"
-                # Use HEAD request to check if endpoint exists without getting data
-                response = self._request("HEAD", endpoint)
-                if response.status_code < 400:
-                    found_spaces.append(space)
-            except Exception:
-                # Space doesn't exist or not accessible
-                pass
+            if space not in found_spaces:
+                try:
+                    # Try to access the space
+                    endpoint = f"/projects/{project_id}/spaces/{space}/documents"
+                    response = self._request("HEAD", endpoint)
+                    if response.status_code < 400:
+                        found_spaces.add(space)
+                except Exception:
+                    pass
         
-        # If no spaces found, assume at least _default exists
-        if not found_spaces:
-            found_spaces = ["_default"]
-            
-        return found_spaces
+        # Convert to sorted list
+        result = sorted(list(found_spaces))
+        
+        # Always return at least _default if nothing found
+        return result or ["_default"]
     
     def list_documents_in_space(self, project_id: str, space_id: str = "_default",
                                fields: Optional[List[str]] = None,
