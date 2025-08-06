@@ -1,0 +1,4 @@
+2025-08-06 11:21:16,288 [INFO] [__main__] Running tests against production environment
+2025-08-06 11:21:16,289 [INFO] [__main__] Command: C:\Users\E017093\gitRepos\PolarionMock\venv\Scripts\python.exe -m pytest --env production -v --html=test_reports\20250806_112116/report.html --self-contained-html --json-report-file=test_reports\20250806_112116/report.json --log-file=test_reports\20250806_112116\logs\pytest.log --log-file-level=DEBUG tests/moduletest/test_document_discovery.py::TestDocumentDiscovery::test_discover_all_documents_and_spaces --xvs
+2025-08-06 11:21:16,912 [INFO] [__main__] Test reports saved to: test_reports\20250806_112116
+2025-08-06 11:21:16,913 [INFO] [__main__] Logs saved to: test_reports\20250806_112116/logs/pytest.log

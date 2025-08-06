@@ -1,0 +1,6 @@
+2025-08-06 11:21:32,681 - tests.session - INFO - ================================================================================
+2025-08-06 11:21:32,681 - tests.session - INFO - Test Session Started: 20250806_112132
+2025-08-06 11:21:32,682 - tests.session - INFO - Environment: production
+2025-08-06 11:21:32,682 - tests.session - INFO - ================================================================================
+2025-08-06 11:21:32,682 - tests.session - DEBUG - Test environment: production
+2025-08-06 11:21:32,683 - tests.session - DEBUG - Base URL: N/A
