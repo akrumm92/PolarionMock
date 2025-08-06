@@ -1,0 +1,16 @@
+2025-08-06 22:08:07,265 - tests.session - INFO - ================================================================================
+2025-08-06 22:08:07,265 - tests.session - INFO - Test Session Started: 20250806_220807
+2025-08-06 22:08:07,265 - tests.session - INFO - Environment: production
+2025-08-06 22:08:07,265 - tests.session - INFO - ================================================================================
+2025-08-06 22:08:07,265 - tests.session - DEBUG - Test environment: production
+2025-08-06 22:08:07,266 - tests.session - DEBUG - Base URL: N/A
+2025-08-06 22:08:13,562 - tests.session - DEBUG - Test environment: production
+2025-08-06 22:08:13,563 - tests.session - DEBUG - Base URL: N/A
+2025-08-06 22:08:19,557 - tests.session - DEBUG - Test environment: production
+2025-08-06 22:08:19,558 - tests.session - DEBUG - Base URL: N/A
+2025-08-06 22:08:29,910 - tests.session - DEBUG - Test environment: production
+2025-08-06 22:08:29,910 - tests.session - DEBUG - Base URL: N/A
+2025-08-06 22:08:35,790 - tests.session - DEBUG - Test environment: production
+2025-08-06 22:08:35,791 - tests.session - DEBUG - Base URL: N/A
+2025-08-06 22:08:41,753 - tests.session - DEBUG - Test environment: production
+2025-08-06 22:08:41,753 - tests.session - DEBUG - Base URL: N/A
