@@ -20,6 +20,13 @@ This is currently a greenfield project with a detailed specification in PROJECT_
 - Network/firewall issues may affect test results
 - The Polarion REST API may have different availability on the test machine
 
+### Configuration Files - CRITICAL
+- **On Windows test machine**: Uses `.env` file for ALL configuration
+- **`.env.PolarionConfig` in this repo**: ONLY for documentation/reference - shows what the Windows .env SHOULD contain
+- **IMPORTANT**: The `.env.PolarionConfig` file is NOT used during test execution!
+- **To fix configuration issues**: The `.env` file on the Windows machine must be updated directly
+- **DO NOT** modify conftest.py to load `.env.PolarionConfig` - tests MUST use the standard `.env` file
+
 ## Development Philosophy
 
 ### Core Principles

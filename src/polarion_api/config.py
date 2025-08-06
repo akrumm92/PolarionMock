@@ -23,6 +23,16 @@ class PolarionConfig:
         self.rest_path = os.getenv("POLARION_REST_V1_PATH", "/polarion/rest/v1")
         self.api_path = os.getenv("POLARION_API_PATH", "/polarion/api")
         
+        # Log the loaded configuration for debugging
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.debug(f"Loaded config: base_url={self.base_url}, rest_path={self.rest_path}")
+        
+        # Warn if rest_path doesn't contain /v1
+        if "/v1" not in self.rest_path:
+            logger.warning(f"POLARION_REST_V1_PATH doesn't contain '/v1': {self.rest_path}")
+            logger.warning("This might cause API calls to fail. Expected: /polarion/rest/v1")
+        
         # Authentication
         self.personal_access_token = os.getenv("POLARION_PERSONAL_ACCESS_TOKEN")
         
@@ -45,7 +55,11 @@ class PolarionConfig:
     @property
     def rest_api_url(self) -> str:
         """Get full REST API v1 URL."""
-        return f"{self.base_url}{self.rest_path}"
+        # Ensure trailing slash for proper urljoin behavior
+        url = f"{self.base_url}{self.rest_path}"
+        if not url.endswith('/'):
+            url += '/'
+        return url
     
     @property
     def legacy_api_url(self) -> str:
