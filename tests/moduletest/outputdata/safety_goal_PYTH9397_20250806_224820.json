@@ -1,0 +1,24 @@
+{
+  "safety_goal_id": "Python/PYTH-9643",
+  "type": "safetygoal",
+  "title": "Safety Goal SG-20250806_224820",
+  "parent_header": {
+    "id": "Python/PYTH-9397",
+    "title": "Risk 1",
+    "outlineNumber": "4.1"
+  },
+  "integration_status": {
+    "step1_create": "success",
+    "step2_add_to_document": "success",
+    "document_id": "Python/_default/Functional Concept - Template",
+    "visible_in_document": true
+  },
+  "link_result": {
+    "status": "success",
+    "child": "Python/PYTH-9643",
+    "parent": "Python/PYTH-9397",
+    "message": "Parent-child relationship created"
+  },
+  "timestamp": "20250806_224820",
+  "document": "Python/_default/Functional Concept - Template"
+}

@@ -1,0 +1,15 @@
+{
+  "work_item_id": "Python/PYTH-9642",
+  "target_header": {
+    "id": "Python/PYTH-9388",
+    "title": "Operation",
+    "outlineNumber": "3.1"
+  },
+  "integration_status": {
+    "step1_create": "success",
+    "step2_add_to_document": "success",
+    "document_id": "Python/_default/Functional Concept - Template",
+    "visible_in_document": true
+  },
+  "timestamp": "20250806_224819"
+}

@@ -1,0 +1,17 @@
+{
+  "parent_header": {
+    "id": "Python/PYTH-9388",
+    "title": "Operation",
+    "outlineNumber": "3.1"
+  },
+  "child_workitem": {
+    "id": "Python/PYTH-9640",
+    "title": "Child Requirement 20250806_224808"
+  },
+  "link_result": {
+    "status": "success",
+    "child": "Python/PYTH-9640",
+    "parent": "Python/PYTH-9388",
+    "message": "Parent-child relationship created"
+  }
+}
