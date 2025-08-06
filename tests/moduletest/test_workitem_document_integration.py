@@ -141,10 +141,10 @@ class TestWorkItemDocumentIntegration:
         if integration["visible_in_document"]:
             logger.info(f"Verifying WorkItem {work_item_id} has outlineNumber...")
             
-            # Fetch the created WorkItem
+            # Fetch the created WorkItem with correct parameter format
             fetched = polarion_client.get_work_item(
                 work_item_id,
-                fields={"workitems": "@all"}
+                **{"fields[workitems]": "@all"}
             )
             
             if "data" in fetched:
@@ -267,13 +267,27 @@ class TestWorkItemDocumentIntegration:
         if not target_doc or "structure" not in target_doc:
             pytest.skip("Could not find document structure")
         
-        # Get first header with outline number
+        # Try to find "Operation" header or similar in Functional Architecture section
         headers = target_doc["structure"].get("headers", [])
         parent_header = None
-        for header in headers:
-            if header.get("outlineNumber"):  # Skip root headers without number
-                parent_header = header
+        
+        # Look for specific headers mentioned in the spec
+        preferred_headers = ["Operation", "Functional Architecture", "Introduction"]
+        for pref_title in preferred_headers:
+            for header in headers:
+                if pref_title.lower() in header.get("title", "").lower() and header.get("outlineNumber"):
+                    parent_header = header
+                    logger.info(f"Found preferred header: {header['title']}")
+                    break
+            if parent_header:
                 break
+        
+        # Fallback to first header with outline number
+        if not parent_header:
+            for header in headers:
+                if header.get("outlineNumber"):  # Skip root headers without number
+                    parent_header = header
+                    break
         
         if not parent_header:
             pytest.skip("No suitable header found in document")
@@ -379,7 +393,7 @@ class TestWorkItemDocumentIntegration:
         # Verify outline number
         if checklist["workitem_created"]:
             work_item_id = result["id"]
-            fetched = polarion_client.get_work_item(work_item_id, fields={"workitems": "@all"})
+            fetched = polarion_client.get_work_item(work_item_id, **{"fields[workitems]": "@all"})
             
             if "data" in fetched:
                 attrs = fetched["data"].get("attributes", {})
@@ -426,3 +440,130 @@ class TestWorkItemDocumentIntegration:
         assert success_count >= 3, f"Integration test failed: only {success_count}/{total_count} checks passed"
         
         return checklist_result
+    
+    def test_create_workitem_under_operation_header(self, polarion_client, test_document):
+        """Test creating a WorkItem specifically under the Operation header.
+        
+        This test targets the "Operation" section in Functional Architecture
+        as mentioned in the specification.
+        """
+        logger.info("Testing WorkItem creation under Operation header")
+        
+        # Discover document structure
+        discovery_result = polarion_client.discover_all_documents_and_spaces(
+            project_id=test_document["project"],
+            save_output=False,
+            extract_structure=True
+        )
+        
+        # Find the test document
+        target_doc = None
+        for doc in discovery_result.get("documents", []):
+            if doc["id"] == test_document["full_id"]:
+                target_doc = doc
+                break
+        
+        if not target_doc or "structure" not in target_doc:
+            pytest.skip("Could not find document structure")
+        
+        # Find headers related to Operation or Functional Architecture
+        headers = target_doc["structure"].get("headers", [])
+        operation_header = None
+        functional_arch_header = None
+        
+        for header in headers:
+            title = header.get("title", "")
+            if "operation" in title.lower():
+                operation_header = header
+                logger.info(f"Found Operation header: {title} ({header.get('outlineNumber', 'no number')})")
+            elif "functional architecture" in title.lower():
+                functional_arch_header = header
+                logger.info(f"Found Functional Architecture header: {title} ({header.get('outlineNumber', 'no number')})")
+        
+        # Use Operation header if found, otherwise Functional Architecture
+        target_header = operation_header or functional_arch_header
+        
+        if not target_header:
+            logger.warning("No Operation or Functional Architecture header found, using first available header")
+            for header in headers:
+                if header.get("outlineNumber", "").startswith("2"):  # Section 2 is usually main content
+                    target_header = header
+                    break
+        
+        if not target_header:
+            pytest.skip("Could not find suitable header for test")
+        
+        logger.info(f"Using header: {target_header['title']} (outline: {target_header.get('outlineNumber', 'N/A')})")
+        
+        # Create WorkItem in document
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        title = f"Operation Requirement {timestamp}"
+        
+        result = polarion_client.create_work_item_in_document(
+            project_id=test_document["project"],
+            space_id=test_document["space"],
+            document_name=test_document["document"],
+            title=title,
+            work_item_type="requirement",
+            description=f"Requirement for {target_header['title']} section",
+            status="draft",
+            severity="should_have",
+            priority="75.0"
+        )
+        
+        if "error" in result:
+            pytest.fail(f"Failed to create WorkItem: {result['error']}")
+        
+        work_item_id = result["id"]
+        logger.info(f"Created WorkItem: {work_item_id}")
+        
+        # Link to the target header
+        if target_header.get("id"):
+            link_result = polarion_client.link_workitem_to_header(
+                project_id=test_document["project"],
+                child_workitem_id=work_item_id,
+                parent_header_id=target_header["id"]
+            )
+            
+            if link_result["status"] == "success":
+                logger.info(f"✅ Successfully linked WorkItem to {target_header['title']}")
+            else:
+                logger.warning(f"Could not link to header: {link_result.get('error')}")
+        
+        # Verify placement
+        logger.info("Verifying WorkItem placement in document...")
+        
+        # Fetch the WorkItem to check outline number
+        fetched = polarion_client.get_work_item(work_item_id, **{"fields[workitems]": "@all"})
+        
+        if "data" in fetched:
+            attrs = fetched["data"].get("attributes", {})
+            outline_num = attrs.get("outlineNumber", "")
+            
+            if outline_num:
+                logger.info(f"✅ WorkItem has outline number: {outline_num}")
+                
+                # Check if it's under the target section
+                target_outline = target_header.get("outlineNumber", "")
+                if target_outline and outline_num.startswith(target_outline):
+                    logger.info(f"✅ WorkItem is correctly placed under {target_header['title']} section")
+                else:
+                    logger.info(f"WorkItem outline ({outline_num}) doesn't match target section ({target_outline})")
+            else:
+                logger.warning("WorkItem has no outline number yet (may need time to process)")
+        
+        # Save result
+        test_result = {
+            "work_item_id": work_item_id,
+            "target_header": {
+                "id": target_header.get("id"),
+                "title": target_header.get("title"),
+                "outlineNumber": target_header.get("outlineNumber")
+            },
+            "integration_status": result.get("document_integration"),
+            "timestamp": timestamp
+        }
+        
+        save_response_to_json(f"operation_workitem_{timestamp}", test_result)
+        
+        return test_result
