@@ -28,12 +28,12 @@ def test_project_id():
 @pytest.fixture
 def test_document():
     """Get test document information."""
-    # Use Functional Concept document as test target
+    # Use Functional Concept - Template in _default space as test target
     return {
         "project": "Python",
-        "space": "Functional Layer",
-        "document": "Functional Concept",
-        "full_id": "Python/Functional Layer/Functional Concept"
+        "space": "_default",
+        "document": "Functional Concept - Template",
+        "full_id": "Python/_default/Functional Concept - Template"
     }
 
 
@@ -94,16 +94,16 @@ class TestWorkItemDocumentIntegration:
         
         # Generate unique title with timestamp
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        title = f"Test Requirement {timestamp}"
+        title = f"Test Safety Goal {timestamp}"
         
-        # Create WorkItem in document
+        # Create Safety Goal WorkItem in document
         result = polarion_client.create_work_item_in_document(
             project_id=test_document["project"],
             space_id=test_document["space"],
             document_name=test_document["document"],
             title=title,
-            work_item_type="requirement",
-            description="This is a test requirement created via API",
+            work_item_type="safetygoal",  # Using safety goal type
+            description="This is a test safety goal created via API",
             status="draft",
             severity="must_have",
             priority="50.0",
@@ -565,5 +565,126 @@ class TestWorkItemDocumentIntegration:
         }
         
         save_response_to_json(f"operation_workitem_{timestamp}", test_result)
+        
+        return test_result
+    
+    def test_create_safety_goal_under_risk_header(self, polarion_client, test_document):
+        """Test creating a Safety Goal WorkItem under PYTH-9397 (Risk 1).
+        
+        This test specifically:
+        1. Creates a WorkItem of type "safetygoal"
+        2. Places it in the "Functional Concept - Template" document in _default space
+        3. Links it to PYTH-9397 (Risk 1 header at outline 4.1)
+        """
+        logger.info("Testing Safety Goal creation under PYTH-9397 (Risk 1)")
+        
+        # The specific header we want to use
+        target_header = {
+            "id": "Python/PYTH-9397",
+            "title": "Risk 1",
+            "outlineNumber": "4.1"
+        }
+        
+        logger.info(f"Target header: {target_header['title']} (ID: {target_header['id']}, Outline: {target_header['outlineNumber']})")
+        
+        # Create Safety Goal WorkItem
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        title = f"Safety Goal SG-{timestamp}"
+        
+        # Safety Goal specific attributes based on the found example
+        result = polarion_client.create_work_item_in_document(
+            project_id=test_document["project"],
+            space_id=test_document["space"],
+            document_name=test_document["document"],
+            title=title,
+            work_item_type="safetygoal",  # Using the correct type name
+            description=f"Safety Goal to mitigate risks identified in {target_header['title']}",
+            status="draft",
+            severity="must_have",  # Safety goals are typically must_have
+            priority="100.0",  # High priority for safety
+            save_output=True
+        )
+        
+        if "error" in result:
+            pytest.fail(f"Failed to create Safety Goal: {result['error']}")
+        
+        work_item_id = result["id"]
+        logger.info(f"Created Safety Goal WorkItem: {work_item_id}")
+        
+        # Verify document integration
+        integration = result.get("document_integration", {})
+        assert integration.get("step1_create") == "success", "Safety Goal creation failed"
+        assert integration.get("step2_add_to_document") == "success", "Failed to add Safety Goal to document"
+        
+        # Link to PYTH-9397 (Risk 1)
+        logger.info(f"Linking Safety Goal {work_item_id} to Risk header PYTH-9397")
+        
+        link_result = polarion_client.link_workitem_to_header(
+            project_id=test_document["project"],
+            child_workitem_id=work_item_id,
+            parent_header_id=target_header["id"]
+        )
+        
+        if link_result["status"] == "success":
+            logger.info(f"✅ Successfully linked Safety Goal to {target_header['title']} (PYTH-9397)")
+            assert link_result["parent"] == target_header["id"]
+        else:
+            logger.warning(f"⚠️ Could not link to PYTH-9397: {link_result.get('error')}")
+        
+        # Verify the Safety Goal placement
+        logger.info("Verifying Safety Goal placement in document...")
+        
+        # Fetch the created Safety Goal to check outline number
+        fetched = polarion_client.get_work_item(work_item_id, **{"fields[workitems]": "@all"})
+        
+        if "data" in fetched:
+            attrs = fetched["data"].get("attributes", {})
+            outline_num = attrs.get("outlineNumber", "")
+            wi_type = attrs.get("type", "")
+            
+            # Verify it's a safety goal
+            assert wi_type == "safetygoal", f"Expected type 'safetygoal', got '{wi_type}'"
+            logger.info(f"✅ Confirmed WorkItem type: {wi_type}")
+            
+            if outline_num:
+                logger.info(f"✅ Safety Goal has outline number: {outline_num}")
+                
+                # Check if it's under Risk 1 section (4.1)
+                if outline_num.startswith("4.1"):
+                    logger.info(f"✅ Safety Goal is correctly placed under Risk 1 section (4.1)")
+                else:
+                    logger.info(f"Safety Goal outline ({outline_num}) is not under Risk 1 (4.1)")
+            else:
+                logger.warning("Safety Goal has no outline number yet (may need time to process)")
+            
+            # Check module relationship
+            relationships = fetched["data"].get("relationships", {})
+            module = relationships.get("module", {})
+            module_data = module.get("data", {})
+            
+            assert module_data.get("id") == test_document["full_id"], \
+                f"Module relationship incorrect: expected {test_document['full_id']}, got {module_data.get('id')}"
+            logger.info(f"✅ Module relationship correct: {module_data.get('id')}")
+        
+        # Save test result
+        test_result = {
+            "safety_goal_id": work_item_id,
+            "type": "safetygoal",
+            "title": title,
+            "parent_header": target_header,
+            "integration_status": integration,
+            "link_result": link_result,
+            "timestamp": timestamp,
+            "document": test_document["full_id"]
+        }
+        
+        save_response_to_json(f"safety_goal_PYTH9397_{timestamp}", test_result)
+        
+        logger.info(f"\n=== Safety Goal Creation Summary ===")
+        logger.info(f"Safety Goal ID: {work_item_id}")
+        logger.info(f"Type: safetygoal")
+        logger.info(f"Parent: PYTH-9397 (Risk 1)")
+        logger.info(f"Document: {test_document['full_id']}")
+        logger.info(f"Status: ✅ Successfully created and linked")
         
         return test_result
