@@ -831,6 +831,101 @@ class DocumentsMixin:
             }
         }
     
+    def get_document_structure(self, project_id: str, space_id: str, document_name: str, 
+                              all_workitems: list = None) -> Dict[str, Any]:
+        """Extract document structure with headers from Polarion Document Parts API.
+        
+        Args:
+            project_id: The project ID
+            space_id: The space ID
+            document_name: The document name
+            all_workitems: Optional list of all work items (for header details)
+            
+        Returns:
+            Dictionary containing document structure with headers
+        """
+        from urllib.parse import quote
+        
+        # URL encode space and document names (wichtig bei Spaces mit Leerzeichen!)
+        space_encoded = quote(space_id, safe='')
+        doc_encoded = quote(document_name, safe='')
+        
+        endpoint = f"projects/{project_id}/spaces/{space_encoded}/documents/{doc_encoded}/parts"
+        
+        try:
+            response = self._request("GET", endpoint)
+            
+            if response.status_code != 200:
+                logger.warning(f"Document parts API returned {response.status_code} for {project_id}/{space_id}/{document_name}")
+                return {"header_workitem_ids": [], "headers": [], "error": f"HTTP {response.status_code}"}
+            
+            parts_data = response.json()
+            
+            header_workitem_ids = []
+            
+            if "data" in parts_data:
+                for part in parts_data["data"]:
+                    part_id = part.get("id", "")
+                    
+                    # Extract the last part of the ID (e.g., "heading_FCTS-9183")
+                    if "/" in part_id:
+                        part_suffix = part_id.split("/")[-1]
+                        
+                        # Check if this is a heading
+                        if part_suffix.startswith("heading_"):
+                            # Extract the workitem ID (e.g., "FCTS-9183")
+                            workitem_id_part = part_suffix.replace("heading_", "")
+                            # Construct full workitem ID with project prefix
+                            workitem_id = f"{project_id}/{workitem_id_part}"
+                            header_workitem_ids.append(workitem_id)
+            
+            # Extract header details from work items if provided
+            headers_in_doc = []
+            if all_workitems and header_workitem_ids:
+                for wi_id in header_workitem_ids:
+                    # Find this workitem in all_workitems to get title and details
+                    for wi in all_workitems:
+                        if wi.get("id") == wi_id:
+                            attrs = wi.get("attributes", {})
+                            headers_in_doc.append({
+                                "id": wi_id,
+                                "title": attrs.get("title", ""),
+                                "outlineNumber": attrs.get("outlineNumber", ""),
+                                "type": "heading",
+                                "children": []
+                            })
+                            break
+                
+                # Sort headers by outline number for proper document structure
+                headers_in_doc.sort(key=lambda x: x.get("outlineNumber", ""))
+            
+            # Create structure summary
+            structure_summary = []
+            for header in headers_in_doc:
+                outline_num = header.get("outlineNumber", "")
+                title = header.get("title", "")
+                
+                # Determine indentation based on outline number depth
+                if outline_num:
+                    depth = outline_num.count(".")
+                    indent = "  " * depth
+                    line = f"{indent}{outline_num} {title}"
+                else:
+                    line = f" {title}"  # Root headers without outline number
+                
+                structure_summary.append(line)
+            
+            return {
+                "header_workitem_ids": header_workitem_ids,
+                "headers": headers_in_doc,
+                "total_headers": len(headers_in_doc),
+                "structure_summary": structure_summary
+            }
+            
+        except Exception as e:
+            logger.error(f"Error fetching document structure for {project_id}/{space_id}/{document_name}: {e}")
+            return {"header_workitem_ids": [], "headers": [], "error": str(e)}
+    
     @tested(
         status=TestStatus.PRODUCTION_VALIDATED,
         test_file="tests/moduletest/test_document_discovery.py",
@@ -840,23 +935,25 @@ class DocumentsMixin:
     )
     def discover_all_documents_and_spaces(self, project_id: str, 
                                          save_output: bool = True,
-                                         output_dir: str = "tests/moduletest/outputdata") -> Dict[str, Any]:
+                                         output_dir: str = "tests/moduletest/outputdata",
+                                         extract_structure: bool = True) -> Dict[str, Any]:
         """Discover all documents and spaces in a project via work items.
         
         Since /projects/{projectId}/documents doesn't exist in Polarion REST API v1,
         this method fetches all work items and extracts document information from
-        their module relationships.
+        their module relationships. Optionally extracts document structure with headers.
         
         Args:
             project_id: The project ID to discover
             save_output: Whether to save JSON files (default: True)
             output_dir: Directory to save output files
+            extract_structure: Whether to extract document structure with headers (default: True)
             
         Returns:
             Dictionary containing:
             - project: Project ID
             - spaces: List of unique space names
-            - documents: List of document details
+            - documents: List of document details (with structure if extracted)
             - statistics: Summary statistics
         """
         import os
@@ -976,6 +1073,41 @@ class DocumentsMixin:
         spaces_list = sorted(list(spaces))
         documents = sorted(documents, key=lambda d: d["id"])
         
+        # Step 3: Extract document structure for each discovered document (if requested)
+        if extract_structure and documents:
+            logger.info(f"Extracting document structure for {len(documents)} documents...")
+            
+            for doc in documents:
+                doc_id = doc["id"]
+                project = doc["project"]
+                space = doc["space"]
+                doc_name = doc["name"]
+                
+                logger.info(f"Extracting structure for document: {doc_id}")
+                
+                # Get document structure with headers
+                structure = self.get_document_structure(project, space, doc_name, all_workitems)
+                
+                # Add structure to document
+                doc["structure"] = {
+                    "headers": structure.get("headers", []),
+                    "total_headers": structure.get("total_headers", 0),
+                    "structure_summary": structure.get("structure_summary", [])
+                }
+                
+                if structure.get("error"):
+                    doc["structure"]["error"] = structure["error"]
+                    logger.warning(f"Could not extract structure for {doc_id}: {structure['error']}")
+                else:
+                    # Log first few headers for debugging
+                    summary_lines = structure.get("structure_summary", [])
+                    if summary_lines:
+                        logger.info(f"  Document structure for {doc_id}:")
+                        for line in summary_lines[:10]:  # Show first 10 headers
+                            logger.info(f"    {line}")
+                        if len(summary_lines) > 10:
+                            logger.info(f"    ... and {len(summary_lines) - 10} more headers")
+        
         # Create final result
         result = {
             "project": project_id,
@@ -986,7 +1118,8 @@ class DocumentsMixin:
                 "total_documents": len(documents),
                 "workitems_processed": len(all_workitems),
                 "workitems_with_modules": workitems_with_modules,
-                "workitems_without_modules": workitems_without_modules
+                "workitems_without_modules": workitems_without_modules,
+                "documents_with_structure": sum(1 for d in documents if "structure" in d and not d["structure"].get("error"))
             }
         }
         
@@ -995,7 +1128,27 @@ class DocumentsMixin:
             discovered_file = os.path.join(output_dir, "discovered_documents.json")
             with open(discovered_file, "w", encoding="utf-8") as f:
                 json.dump(result, f, indent=2, ensure_ascii=False)
-            logger.info(f"Saved discovered documents to {discovered_file}")
+            logger.info(f"Saved discovered documents with structure to {discovered_file}")
+            
+            # Also save a separate file with just document structures for easier analysis
+            if extract_structure:
+                structure_file = os.path.join(output_dir, "document_structures.json")
+                structures_data = {
+                    "project": project_id,
+                    "timestamp": datetime.now().isoformat(),
+                    "document_structures": [
+                        {
+                            "id": doc["id"],
+                            "space": doc["space"],
+                            "name": doc["name"],
+                            "structure": doc.get("structure", {})
+                        }
+                        for doc in documents if "structure" in doc
+                    ]
+                }
+                with open(structure_file, "w", encoding="utf-8") as f:
+                    json.dump(structures_data, f, indent=2, ensure_ascii=False)
+                logger.info(f"Saved document structures to {structure_file}")
         
         # Log summary
         logger.info(f"Discovery complete:")

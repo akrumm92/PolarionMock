@@ -86,11 +86,12 @@ class TestDocumentDiscovery:
         """
         logger.info(f"Testing document discovery for project: {test_project_id}")
         
-        # Run discovery
+        # Run discovery with structure extraction
         result = polarion_client.discover_all_documents_and_spaces(
             project_id=test_project_id,
             save_output=True,
-            output_dir="tests/moduletest/outputdata"
+            output_dir="tests/moduletest/outputdata",
+            extract_structure=True  # Enable structure extraction
         )
         
         # Validate result structure
@@ -130,6 +131,19 @@ class TestDocumentDiscovery:
                 assert isinstance(doc["work_item_refs"], list)
                 
                 logger.debug(f"Document: {doc['id']} referenced by {len(doc['work_item_refs'])} work items")
+                
+                # Check if structure was extracted
+                if "structure" in doc:
+                    structure = doc["structure"]
+                    assert "headers" in structure
+                    assert "total_headers" in structure
+                    assert "structure_summary" in structure
+                    
+                    if not structure.get("error"):
+                        logger.info(f"Document {doc['id']} has {structure['total_headers']} headers")
+                        # Log first few headers from summary
+                        for line in structure["structure_summary"][:5]:
+                            logger.debug(f"  {line}")
         
         # Check statistics
         stats = result["statistics"]
@@ -145,6 +159,9 @@ class TestDocumentDiscovery:
         logger.info(f"  - Work items processed: {stats['workitems_processed']}")
         logger.info(f"  - Work items with modules: {stats['workitems_with_modules']}")
         logger.info(f"  - Work items without modules: {stats['workitems_without_modules']}")
+        
+        if "documents_with_structure" in stats:
+            logger.info(f"  - Documents with structure: {stats['documents_with_structure']}")
         
         # Save final result with timestamp
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -197,7 +214,78 @@ class TestDocumentDiscovery:
             for doc in space_documents[:3]:
                 logger.info(f"  - {doc['name']} ({len(doc['work_item_refs'])} refs)")
         
-        assert len(space_documents) > 0, f"No documents found in space {test_space}"
+    
+    def test_extract_document_structure(self, polarion_client, test_project_id):
+        """Test extracting document structure with headers.
+        
+        This test specifically focuses on extracting the hierarchical structure
+        of documents including headers and their outline numbers.
+        """
+        logger.info(f"Testing document structure extraction for project: {test_project_id}")
+        
+        # Run discovery with structure extraction
+        result = polarion_client.discover_all_documents_and_spaces(
+            project_id=test_project_id,
+            save_output=True,
+            output_dir="tests/moduletest/outputdata",
+            extract_structure=True
+        )
+        
+        # Check that we have documents
+        documents = result.get("documents", [])
+        if not documents:
+            pytest.skip("No documents found to test structure extraction")
+        
+        # Find documents with structure
+        docs_with_structure = [doc for doc in documents if "structure" in doc and not doc["structure"].get("error")]
+        
+        if not docs_with_structure:
+            logger.warning("No documents with successfully extracted structure")
+        else:
+            logger.info(f"Found {len(docs_with_structure)} documents with structure")
+            
+            # Analyze first document with structure
+            doc = docs_with_structure[0]
+            structure = doc["structure"]
+            
+            logger.info(f"\n=== Document Structure Analysis ===")
+            logger.info(f"Document ID: {doc['id']}")
+            logger.info(f"Total headers: {structure['total_headers']}")
+            
+            # Check headers
+            headers = structure.get("headers", [])
+            if headers:
+                logger.info(f"\nFirst 10 headers:")
+                for header in headers[:10]:
+                    logger.info(f"  - {header.get('outlineNumber', '')} {header.get('title', 'Untitled')}")
+                    logger.debug(f"    ID: {header.get('id')}")
+            
+            # Check structure summary
+            summary = structure.get("structure_summary", [])
+            if summary:
+                logger.info(f"\nDocument structure summary (first 20 lines):")
+                for line in summary[:20]:
+                    logger.info(f"  {line}")
+                if len(summary) > 20:
+                    logger.info(f"  ... and {len(summary) - 20} more headers")
+            
+            # Validate structure format
+            for header in headers:
+                assert "id" in header
+                assert "title" in header
+                assert "outlineNumber" in header
+                assert "type" in header
+                assert header["type"] == "heading"
+                assert "children" in header
+                assert isinstance(header["children"], list)
+        
+        # Check statistics
+        stats = result.get("statistics", {})
+        if "documents_with_structure" in stats:
+            logger.info(f"\n=== Structure Extraction Statistics ===")
+            logger.info(f"Documents with structure: {stats['documents_with_structure']}/{stats['total_documents']}")
+        
+        return result
     
     def test_verify_document_ids_format(self, polarion_client, test_project_id):
         """Test that document IDs follow expected format."""

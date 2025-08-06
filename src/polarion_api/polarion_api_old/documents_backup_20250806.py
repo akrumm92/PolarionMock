@@ -5,7 +5,7 @@ Documents API methods for Polarion client.
 from typing import Dict, Any, Optional, List, Union
 import logging
 
-from .utils import (
+from ..utils import (
     build_query_params,
     extract_id_parts,
     format_json_api_request,
@@ -16,7 +16,7 @@ from .utils import (
     prepare_test_data,
     load_test_data_batch
 )
-from .models import DocumentCreate, TextContent
+from ..models import DocumentCreate, TextContent
 
 logger = logging.getLogger(__name__)
 
@@ -627,7 +627,7 @@ class DocumentsMixin:
             
             # Alternative: Use work items to discover documents
             try:
-                from .work_items import WorkItemsMixin
+                from ..work_items import WorkItemsMixin
                 # Query work items and extract unique documents
                 wi_response = self.query_work_items(
                     query=f"project.id:{project_id}",
