@@ -380,11 +380,9 @@ class DocumentsMixin:
                                             max_pages: Optional[int] = None) -> Dict[str, Any]:
         """Get all documents in a project and extract unique spaces.
         
-        This implementation tries to use the /projects/{projectId}/documents endpoint
-        with proper REST v1 path. If it doesn't exist (404), falls back to alternative methods.
-        
-        Document IDs in Polarion follow the pattern: projectId/spaceId/documentId
-        By fetching documents, we can extract the space IDs.
+        Since Polarion REST API has no direct endpoint for listing spaces,
+        we extract them from document IDs which follow the pattern:
+        projectId/spaceId/documentId
         
         Args:
             project_id: The project ID
@@ -404,19 +402,18 @@ class DocumentsMixin:
         page_number = 1
         total_pages_fetched = 0
         
-        # Try the correct REST v1 endpoint path
-        base_endpoint = f"/projects/{project_id}/documents"
-        
         while True:
             try:
+                # Build the endpoint URL - this should work according to API spec
+                endpoint = f"/projects/{project_id}/documents"
                 params = {
-                    "page[size]": min(page_size, 100),
+                    "page[size]": min(page_size, 100),  # Polarion max is usually 100
                     "page[number]": page_number,
-                    "fields[documents]": "id,title,type"  # Minimal fields for efficiency
+                    "fields[documents]": "id,title,type,moduleURI,spaceId"  # Request minimal fields
                 }
                 
                 logger.debug(f"Fetching documents page {page_number} for project {project_id}")
-                response = self._request("GET", base_endpoint, params=params)
+                response = self._request("GET", endpoint, params=params)
                 
                 if response.status_code == 200:
                     data = response.json()
@@ -441,6 +438,13 @@ class DocumentsMixin:
                                         doc_info["space_id"] = space_id
                                         logger.debug(f"Found space '{space_id}' from document '{parts[2]}'")
                             
+                            # Also check if spaceId is in attributes
+                            if "attributes" in doc and "spaceId" in doc["attributes"]:
+                                space_id = doc["attributes"]["spaceId"]
+                                if space_id:
+                                    spaces.add(space_id)
+                                    doc_info["space_id"] = space_id
+                            
                             all_documents.append(doc_info)
                         
                         total_pages_fetched += 1
@@ -459,10 +463,11 @@ class DocumentsMixin:
                         break
                         
                 elif response.status_code == 404:
+                    # The endpoint might not exist, try alternative approach
                     logger.warning(f"Documents endpoint returned 404 for project {project_id}")
-                    logger.info("The /projects/{projectId}/documents endpoint doesn't exist in this Polarion version")
                     
-                    # Fallback: Try alternative discovery methods
+                    # Alternative: Try to get documents by querying with specific spaces
+                    # This is a fallback if the main endpoint doesn't work
                     spaces, all_documents = self._fallback_space_discovery(project_id)
                     break
                     
@@ -472,12 +477,8 @@ class DocumentsMixin:
                         raise Exception("Not authorized - check access token")
                     elif response.status_code == 403:
                         raise Exception("Access denied - check permissions")
-                    elif response.status_code == 406:
-                        raise Exception("Not Acceptable - ensure Accept header is '*/*'")
                     elif response.status_code == 429:
                         raise Exception("Rate limit reached - implement retry logic")
-                    # Try fallback for any other error
-                    spaces, all_documents = self._fallback_space_discovery(project_id)
                     break
                     
             except Exception as e:
@@ -507,8 +508,7 @@ class DocumentsMixin:
     def _fallback_space_discovery(self, project_id: str) -> tuple:
         """Fallback method to discover spaces when main endpoint fails.
         
-        Since /projects/{id}/spaces/{space}/documents does NOT exist,
-        we try to access specific documents to verify if a space exists.
+        Tries known space names and checks if documents exist.
         """
         logger.info("Using fallback space discovery method")
         
@@ -525,38 +525,35 @@ class DocumentsMixin:
             "Product-Layer", "product-layer"
         ]
         
-        # Common document names that might exist
-        test_doc_names = ["_project", "index", "readme", "overview"]
-        
         for space in potential_spaces:
-            for doc_name in test_doc_names:
-                try:
-                    # Try to get a specific document
-                    doc_id = f"{project_id}/{space}/{doc_name}"
-                    endpoint = f"/projects/{project_id}/spaces/{space}/documents/{doc_name}"
+            try:
+                # Try to get documents in this space
+                endpoint = f"/projects/{project_id}/spaces/{space}/documents"
+                params = {
+                    "page[size]": 10,
+                    "fields[documents]": "id,title"
+                }
+                
+                response = self._request("GET", endpoint, params=params)
+                
+                if response.status_code == 200:
+                    spaces.add(space)
+                    data = response.json()
                     
-                    response = self._request("GET", endpoint)
+                    for doc in data.get("data", []):
+                        doc_info = {
+                            "id": doc.get("id", ""),
+                            "space_id": space,
+                            "type": "documents",
+                            "attributes": doc.get("attributes", {})
+                        }
+                        all_documents.append(doc_info)
                     
-                    if response.status_code == 200:
-                        spaces.add(space)
-                        data = response.json()
-                        
-                        if "data" in data:
-                            doc_info = {
-                                "id": data["data"].get("id", doc_id),
-                                "space_id": space,
-                                "document_name": doc_name,
-                                "type": "documents",
-                                "attributes": data["data"].get("attributes", {})
-                            }
-                            all_documents.append(doc_info)
-                        
-                        logger.info(f"Found space '{space}' via document '{doc_name}'")
-                        break  # Space found, no need to test other documents
-                        
-                except Exception as e:
-                    logger.debug(f"Document '{doc_name}' in space '{space}' not accessible: {e}")
-                    continue
+                    logger.info(f"Found space '{space}' with {len(data.get('data', []))} documents")
+                    
+            except Exception as e:
+                logger.debug(f"Space '{space}' not accessible: {e}")
+                continue
         
         return spaces, all_documents
     
@@ -580,56 +577,42 @@ class DocumentsMixin:
                                include: Optional[str] = None,
                                page_size: int = 100,
                                page_number: int = 1) -> Dict[str, Any]:
-        """Try to list documents in a space.
-        
-        IMPORTANT: Polarion has NO bulk endpoint for listing documents!
-        The endpoint /projects/{id}/spaces/{space}/documents does NOT exist.
-        
-        This method tries common document names and returns what it finds.
+        """List all documents in a project space.
         
         Args:
             project_id: Project ID
             space_id: Space ID (default: "_default")
-            fields: Ignored (kept for API compatibility)
-            include: Ignored (kept for API compatibility)
-            page_size: Ignored (kept for API compatibility)
-            page_number: Ignored (kept for API compatibility)
+            fields: List of fields to include
+            include: Comma-separated list of related resources to include
+            page_size: Number of results per page
+            page_number: Page number to retrieve
             
         Returns:
-            Dictionary containing found documents
+            Dictionary containing:
+            - data: List of document resources
+            - meta: Metadata including total count
+            - links: Pagination links
+            
+        Note:
+            The GET endpoint might return 404 or 405. If so, this method
+            will attempt alternative approaches to discover documents.
         """
-        logger.info(f"Attempting to list documents in space: {project_id}/{space_id}")
-        
-        documents = []
-        
-        # Extended list of common document names to try
-        doc_names_to_try = [
-            "_project", "index", "readme", "overview", "home",
-            "requirements", "specifications", "test", "main",
-            "introduction", "getting-started", "guide", "manual",
-            "architecture", "design", "implementation", "api"
-        ]
-        
-        for doc_name in doc_names_to_try:
-            try:
-                doc_id = f"{project_id}/{space_id}/{doc_name}"
-                doc = self.get_document(doc_id)
-                
-                if doc and "data" in doc:
-                    documents.append(doc["data"])
-                    logger.debug(f"Found document: {doc_id}")
-                    
-            except Exception as e:
-                logger.debug(f"Document {doc_name} not found in space {space_id}: {e}")
-                continue
-        
-        return {
-            "data": documents,
-            "meta": {
-                "total": len(documents),
-                "note": "Limited results - no bulk endpoint available"
+        try:
+            # First try the direct endpoint
+            endpoint = f"/projects/{project_id}/spaces/{space_id}/documents"
+            params = {
+                "page[size]": page_size,
+                "page[number]": page_number
             }
-        }
+            
+            if fields:
+                params["fields[documents]"] = ",".join(fields)
+            if include:
+                params["include"] = include
+                
+            query_string = build_query_params(params)
+            response = self._request("GET", f"{endpoint}{query_string}")
+            return parse_json_api_response(response.json())
             
         except Exception as e:
             logger.warning(f"Direct document listing failed: {e}")
