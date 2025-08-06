@@ -1,0 +1,17 @@
+{
+  "parent_header": {
+    "id": "Python/FCTS-9184",
+    "title": "Introduction",
+    "outlineNumber": "1"
+  },
+  "child_workitem": {
+    "id": "Python/PYTH-9631",
+    "title": "Child Requirement 20250806_222739"
+  },
+  "link_result": {
+    "status": "success",
+    "child": "Python/PYTH-9631",
+    "parent": "Python/FCTS-9184",
+    "message": "Parent-child relationship created"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "workitems",
+  "id": "Python/PYTH-9629",
+  "links": {
+    "self": "https://polarion-d.claas.local/polarion/rest/v1/projects/Python/workitems/PYTH-9629",
+    "portal": "https://polarion-d.claas.local/polarion/redirect/project/Python/workitem?id=PYTH-9629"
+  },
+  "document_integration": {
+    "step1_create": "success",
+    "step2_add_to_document": "success",
+    "document_id": "Python/Functional Layer/Functional Concept",
+    "visible_in_document": true
+  }
+}
