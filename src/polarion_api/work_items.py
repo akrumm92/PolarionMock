@@ -295,6 +295,297 @@ class WorkItemsMixin:
         
         logger.info(f"Updated work item: {work_item_id}")
     
+    def create_work_item_in_document(self, project_id: str, 
+                                    space_id: str,
+                                    document_name: str,
+                                    title: str,
+                                    work_item_type: str = "requirement",
+                                    description: Optional[Union[str, Dict[str, str]]] = None,
+                                    status: str = "draft",
+                                    save_output: bool = False,
+                                    **attributes) -> Dict[str, Any]:
+        """Create a new work item and add it to a document (two-step process).
+        
+        This method implements the mandatory two-step process for creating WorkItems
+        that are visible in Polarion documents:
+        1. Create WorkItem with module relationship
+        2. Add WorkItem to document content via Document Parts API
+        
+        Args:
+            project_id: Project ID
+            space_id: Space ID containing the document
+            document_name: Document name
+            title: Work item title
+            work_item_type: Type (e.g., "requirement", "task", "defect")
+            description: Optional description (string or TextContent dict)
+            status: Work item status (default: "draft")
+            save_output: Whether to save response to output directory
+            **attributes: Additional attributes (priority, severity, etc.)
+            
+        Returns:
+            Created work item resource with document integration status
+        """
+        from urllib.parse import quote
+        
+        # Step 1: Create WorkItem with module relationship
+        logger.info(f"Step 1: Creating WorkItem with module relationship to {project_id}/{space_id}/{document_name}")
+        
+        # Build document ID
+        document_id = f"{project_id}/{space_id}/{document_name}"
+        
+        # Build attributes
+        attrs = {
+            "title": title,
+            "type": work_item_type,
+            "status": status
+        }
+        
+        # Handle description
+        if description:
+            if isinstance(description, str):
+                attrs["description"] = {
+                    "type": "text/html",
+                    "value": f"<p>{description}</p>"
+                }
+            else:
+                attrs["description"] = description
+        
+        # Add other attributes
+        attrs.update(attributes)
+        
+        # Build relationships with module
+        relationships = {
+            "module": {
+                "data": {
+                    "type": "documents",
+                    "id": document_id
+                }
+            }
+        }
+        
+        # Format request
+        request_data = {
+            "data": [{
+                "type": "workitems",
+                "attributes": attrs,
+                "relationships": relationships
+            }]
+        }
+        
+        # Send request
+        endpoint = f"/projects/{project_id}/workitems"
+        response = self._request("POST", endpoint, json=request_data)
+        
+        if response.status_code != 201:
+            logger.error(f"Failed to create WorkItem: {response.status_code}")
+            return {"error": f"Failed to create WorkItem: {response.status_code}"}
+        
+        result = parse_json_api_response(response.json())
+        
+        # Extract the created work item
+        if "data" in result and isinstance(result["data"], list) and result["data"]:
+            created_item = result["data"][0]
+        else:
+            created_item = result.get("data", result)
+        
+        work_item_id = created_item.get("id")
+        logger.info(f"Created WorkItem: {work_item_id}")
+        
+        # Step 2: Add WorkItem to Document Content (CRITICAL!)
+        logger.info(f"Step 2: Adding WorkItem to document content via Document Parts API")
+        
+        # URL encode space and document names
+        space_encoded = quote(space_id, safe='')
+        doc_encoded = quote(document_name, safe='')
+        
+        # Build document parts request
+        parts_data = {
+            "data": [{
+                "type": "document_parts",
+                "attributes": {
+                    "type": "workitem"
+                },
+                "relationships": {
+                    "workItem": {
+                        "data": {
+                            "type": "workitems",
+                            "id": work_item_id
+                        }
+                    }
+                }
+            }]
+        }
+        
+        # Send request to Document Parts API
+        parts_endpoint = f"projects/{project_id}/spaces/{space_encoded}/documents/{doc_encoded}/parts"
+        parts_response = self._request("POST", parts_endpoint, json=parts_data)
+        
+        # Add integration status to result
+        created_item["document_integration"] = {
+            "step1_create": "success",
+            "step2_add_to_document": "success" if parts_response.status_code == 201 else "failed",
+            "document_id": document_id,
+            "visible_in_document": parts_response.status_code == 201
+        }
+        
+        if parts_response.status_code == 201:
+            logger.info(f"✅ WorkItem {work_item_id} is now visible in the document!")
+        else:
+            logger.warning(f"⚠️ WorkItem created but not added to document: {parts_response.status_code}")
+            created_item["document_integration"]["error"] = f"Document Parts API returned {parts_response.status_code}"
+        
+        # Save output if requested
+        if save_output:
+            save_api_response(created_item, "workitems", "create_in_document")
+        
+        return created_item
+    
+    def add_work_item_to_document(self, project_id: str,
+                                 work_item_id: str,
+                                 space_id: str,
+                                 document_name: str,
+                                 previous_part_id: Optional[str] = None) -> Dict[str, Any]:
+        """Add an existing WorkItem to a document's content.
+        
+        This is Step 2 of the WorkItem-Document integration process.
+        Without this step, WorkItems remain in the document's "Recycle Bin".
+        
+        Args:
+            project_id: Project ID
+            work_item_id: WorkItem ID (full format: "ProjectId/WORKITEM-ID")
+            space_id: Space ID containing the document
+            document_name: Document name
+            previous_part_id: Optional ID of document part to insert after
+            
+        Returns:
+            Operation result
+        """
+        from urllib.parse import quote
+        
+        logger.info(f"Adding WorkItem {work_item_id} to document {project_id}/{space_id}/{document_name}")
+        
+        # URL encode space and document names
+        space_encoded = quote(space_id, safe='')
+        doc_encoded = quote(document_name, safe='')
+        
+        # Build document parts request
+        parts_data = {
+            "data": [{
+                "type": "document_parts",
+                "attributes": {
+                    "type": "workitem"
+                },
+                "relationships": {
+                    "workItem": {
+                        "data": {
+                            "type": "workitems",
+                            "id": work_item_id
+                        }
+                    }
+                }
+            }]
+        }
+        
+        # Add positioning if specified
+        if previous_part_id:
+            parts_data["data"][0]["relationships"]["previousPart"] = {
+                "data": {
+                    "type": "document_parts",
+                    "id": previous_part_id
+                }
+            }
+        
+        # Send request to Document Parts API
+        endpoint = f"projects/{project_id}/spaces/{space_encoded}/documents/{doc_encoded}/parts"
+        response = self._request("POST", endpoint, json=parts_data)
+        
+        if response.status_code == 201:
+            logger.info(f"✅ WorkItem {work_item_id} successfully added to document")
+            return {
+                "status": "success",
+                "work_item_id": work_item_id,
+                "document": f"{project_id}/{space_id}/{document_name}",
+                "message": "WorkItem is now visible in the document"
+            }
+        else:
+            logger.error(f"Failed to add WorkItem to document: {response.status_code}")
+            return {
+                "status": "error",
+                "work_item_id": work_item_id,
+                "document": f"{project_id}/{space_id}/{document_name}",
+                "error": f"Document Parts API returned {response.status_code}",
+                "response": response.text if response.text else None
+            }
+    
+    def link_workitem_to_header(self, project_id: str,
+                               child_workitem_id: str,
+                               parent_header_id: str) -> Dict[str, Any]:
+        """Create a parent-child relationship between a WorkItem and a header WorkItem.
+        
+        This links a WorkItem to appear under a specific header in the document structure.
+        Note: This is separate from document positioning - the WorkItem must still be
+        added to the document via add_work_item_to_document().
+        
+        Args:
+            project_id: Project ID
+            child_workitem_id: Child WorkItem ID (e.g., "PYTH-1234" or "Python/PYTH-1234")
+            parent_header_id: Parent header WorkItem ID (e.g., "FCTS-9187" or "Python/FCTS-9187")
+            
+        Returns:
+            Operation result
+        """
+        logger.info(f"Linking WorkItem {child_workitem_id} to header {parent_header_id}")
+        
+        # Extract short IDs if full format provided
+        if "/" in child_workitem_id:
+            child_short_id = child_workitem_id.split("/")[-1]
+        else:
+            child_short_id = child_workitem_id
+            
+        # Ensure parent_header_id is in full format
+        if "/" not in parent_header_id:
+            parent_header_id = f"{project_id}/{parent_header_id}"
+        
+        # Build linked work items request
+        link_data = {
+            "data": [{
+                "type": "linkedworkitems",
+                "attributes": {
+                    "role": "parent"
+                },
+                "relationships": {
+                    "workItem": {
+                        "data": {
+                            "type": "workitems",
+                            "id": parent_header_id
+                        }
+                    }
+                }
+            }]
+        }
+        
+        # Send request - use POST to linkedworkitems, NOT PATCH to relationships
+        endpoint = f"projects/{project_id}/workitems/{child_short_id}/linkedworkitems"
+        response = self._request("POST", endpoint, json=link_data)
+        
+        if response.status_code in [200, 201, 204]:
+            logger.info(f"✅ Successfully linked {child_workitem_id} to parent {parent_header_id}")
+            return {
+                "status": "success",
+                "child": child_workitem_id,
+                "parent": parent_header_id,
+                "message": "Parent-child relationship created"
+            }
+        else:
+            logger.error(f"Failed to create parent-child link: {response.status_code}")
+            return {
+                "status": "error",
+                "child": child_workitem_id,
+                "parent": parent_header_id,
+                "error": f"API returned {response.status_code}",
+                "response": response.text if response.text else None
+            }
+    
     def update_work_item_relationships(self, work_item_id: str, **relationships) -> None:
         """Update work item relationships.
         

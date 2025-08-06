@@ -269,44 +269,9 @@ class DocumentsMixin:
         
         return result
     
-    def add_work_item_to_document(self, document_id: str, work_item_id: str,
-                                 part_type: str = "workitem") -> Dict[str, Any]:
-        """Add a work item to a document as a part.
-        
-        Args:
-            document_id: Document ID
-            work_item_id: Work item ID to add
-            part_type: Part type (default: "workitem")
-            
-        Returns:
-            Created document part
-        """
-        parts = extract_id_parts(document_id)
-        
-        if not all(k in parts for k in ["project_id", "space_id", "document_id"]):
-            raise ValueError(f"Invalid document ID format: {document_id}")
-        
-        # Format request
-        part_data = {
-            "data": [{
-                "type": "document_parts",
-                "attributes": {
-                    "type": part_type
-                },
-                "relationships": {
-                    "workItem": {
-                        "data": {
-                            "type": "workitems",
-                            "id": work_item_id
-                        }
-                    }
-                }
-            }]
-        }
-        
-        endpoint = f"/projects/{parts['project_id']}/spaces/{parts['space_id']}/documents/{parts['document_id']}/parts"
-        response = self._request("POST", endpoint, json=part_data)
-        return parse_json_api_response(response.json())
+    # DEPRECATED: Use work_items.add_work_item_to_document() instead
+    # This method was moved to work_items.py with improved implementation
+    # that follows the two-step process required by Polarion
     
     def create_document_part(self, document_id: str, part_type: str,
                            content: Optional[Union[str, Dict[str, str]]] = None,
@@ -831,6 +796,13 @@ class DocumentsMixin:
             }
         }
     
+    @tested(
+        status=TestStatus.PRODUCTION_VALIDATED,
+        test_file="tests/moduletest/test_document_discovery.py",
+        test_method="TestDocumentDiscovery.test_extract_document_structure",
+        date="2025-08-06",
+        notes="Successfully extracts document structure with headers using Document Parts API. Tested with Python project documents."
+    )
     def get_document_structure(self, project_id: str, space_id: str, document_name: str, 
                               all_workitems: list = None) -> Dict[str, Any]:
         """Extract document structure with headers from Polarion Document Parts API.
@@ -931,7 +903,7 @@ class DocumentsMixin:
         test_file="tests/moduletest/test_document_discovery.py",
         test_method="TestDocumentDiscovery.test_discover_all_documents_and_spaces",
         date="2025-08-06",
-        notes="Successfully tested with Python project. Found 4 spaces (Component Layer, Domain Layer, Functional Layer, Product Layer) and 4 documents."
+        notes="Successfully tested with Python project. Found 4 spaces and 4 documents. Now includes document structure extraction with headers via Document Parts API."
     )
     def discover_all_documents_and_spaces(self, project_id: str, 
                                          save_output: bool = True,
