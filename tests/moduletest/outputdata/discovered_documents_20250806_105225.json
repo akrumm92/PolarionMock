@@ -1,0 +1,12 @@
+{
+  "project": "myproject",
+  "spaces": [],
+  "documents": [],
+  "statistics": {
+    "total_spaces": 0,
+    "total_documents": 0,
+    "workitems_processed": 0,
+    "workitems_with_modules": 0,
+    "workitems_without_modules": 0
+  }
+}

@@ -822,3 +822,174 @@ class DocumentsMixin:
                 "note": "Limited results - no bulk endpoint available"
             }
         }
+    
+    def discover_all_documents_and_spaces(self, project_id: str, 
+                                         save_output: bool = True,
+                                         output_dir: str = "tests/moduletest/outputdata") -> Dict[str, Any]:
+        """Discover all documents and spaces in a project via work items.
+        
+        Since /projects/{projectId}/documents doesn't exist in Polarion REST API v1,
+        this method fetches all work items and extracts document information from
+        their module relationships.
+        
+        Args:
+            project_id: The project ID to discover
+            save_output: Whether to save JSON files (default: True)
+            output_dir: Directory to save output files
+            
+        Returns:
+            Dictionary containing:
+            - project: Project ID
+            - spaces: List of unique space names
+            - documents: List of document details
+            - statistics: Summary statistics
+        """
+        import os
+        import json
+        from datetime import datetime
+        
+        logger.info(f"Starting comprehensive document and space discovery for project: {project_id}")
+        
+        # Step 1: Fetch all work items with module relationships
+        all_workitems = []
+        page_number = 1
+        total_pages = 0
+        
+        while True:
+            try:
+                params = {
+                    "page[size]": 100,
+                    "page[number]": page_number,
+                    "fields[workitems]": "@all",
+                    "fields[documents]": "@all"
+                }
+                
+                logger.info(f"Fetching work items page {page_number}")
+                response = self._request("GET", f"/projects/{project_id}/workitems", params=params)
+                
+                if response.status_code != 200:
+                    logger.error(f"Failed to fetch work items: {response.status_code}")
+                    break
+                
+                data = response.json()
+                
+                # Add work items from this page
+                work_items = data.get("data", [])
+                if work_items:
+                    all_workitems.extend(work_items)
+                    total_pages += 1
+                    logger.info(f"Page {page_number}: Found {len(work_items)} work items")
+                
+                # Check for next page
+                links = data.get("links", {})
+                if "next" in links and links["next"]:
+                    page_number += 1
+                else:
+                    logger.info("No more pages available")
+                    break
+                    
+            except Exception as e:
+                logger.error(f"Error fetching work items: {e}")
+                break
+        
+        logger.info(f"Fetched {len(all_workitems)} work items across {total_pages} pages")
+        
+        # Save raw work items response if requested
+        if save_output:
+            os.makedirs(output_dir, exist_ok=True)
+            workitems_file = os.path.join(output_dir, "workitems_response.json")
+            with open(workitems_file, "w", encoding="utf-8") as f:
+                json.dump({
+                    "data": all_workitems,
+                    "meta": {
+                        "total": len(all_workitems),
+                        "pages": total_pages,
+                        "timestamp": datetime.now().isoformat()
+                    }
+                }, f, indent=2, ensure_ascii=False)
+            logger.info(f"Saved raw work items to {workitems_file}")
+        
+        # Step 2: Extract documents and spaces from module relationships
+        spaces = set()
+        documents_map = {}  # Use map to deduplicate by ID
+        workitems_with_modules = 0
+        workitems_without_modules = 0
+        
+        for wi in all_workitems:
+            wi_id = wi.get("id", "unknown")
+            relationships = wi.get("relationships", {})
+            module = relationships.get("module", {})
+            module_data = module.get("data")
+            
+            if module_data and isinstance(module_data, dict):
+                doc_id = module_data.get("id")
+                if doc_id:
+                    workitems_with_modules += 1
+                    
+                    # Parse document ID (format: project/space/document)
+                    if "/" in doc_id:
+                        parts = doc_id.split("/", 2)  # Split max 2 times
+                        if len(parts) >= 3:
+                            project = parts[0]
+                            space = parts[1]
+                            doc_name = parts[2]
+                            
+                            # Add space
+                            spaces.add(space)
+                            
+                            # Add document (deduplicated by ID)
+                            if doc_id not in documents_map:
+                                documents_map[doc_id] = {
+                                    "id": doc_id,
+                                    "project": project,
+                                    "space": space,
+                                    "name": doc_name,
+                                    "work_item_refs": [wi_id]
+                                }
+                            else:
+                                # Add work item reference
+                                documents_map[doc_id]["work_item_refs"].append(wi_id)
+                            
+                            logger.debug(f"Work item {wi_id} -> Document: {doc_id}")
+            else:
+                workitems_without_modules += 1
+        
+        # Convert documents map to list
+        documents = list(documents_map.values())
+        
+        # Sort for consistency
+        spaces_list = sorted(list(spaces))
+        documents = sorted(documents, key=lambda d: d["id"])
+        
+        # Create final result
+        result = {
+            "project": project_id,
+            "spaces": spaces_list,
+            "documents": documents,
+            "statistics": {
+                "total_spaces": len(spaces_list),
+                "total_documents": len(documents),
+                "workitems_processed": len(all_workitems),
+                "workitems_with_modules": workitems_with_modules,
+                "workitems_without_modules": workitems_without_modules
+            }
+        }
+        
+        # Save discovered structure if requested
+        if save_output:
+            discovered_file = os.path.join(output_dir, "discovered_documents.json")
+            with open(discovered_file, "w", encoding="utf-8") as f:
+                json.dump(result, f, indent=2, ensure_ascii=False)
+            logger.info(f"Saved discovered documents to {discovered_file}")
+        
+        # Log summary
+        logger.info(f"Discovery complete:")
+        logger.info(f"  - Spaces found: {len(spaces_list)}")
+        if spaces_list:
+            logger.info(f"  - Space names: {', '.join(spaces_list[:10])}" + 
+                       (" ..." if len(spaces_list) > 10 else ""))
+        logger.info(f"  - Documents found: {len(documents)}")
+        logger.info(f"  - Work items with modules: {workitems_with_modules}")
+        logger.info(f"  - Work items without modules: {workitems_without_modules}")
+        
+        return result
