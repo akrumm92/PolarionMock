@@ -5,6 +5,7 @@ Documents API methods for Polarion client.
 from typing import Dict, Any, Optional, List, Union
 import logging
 
+from .validation_status import tested, TestStatus
 from .utils import (
     build_query_params,
     extract_id_parts,
@@ -505,6 +506,13 @@ class DocumentsMixin:
         
         return result
     
+    @tested(
+        status=TestStatus.PRODUCTION_VALIDATED,
+        test_file="tests/moduletest/test_document_discovery.py",
+        test_method="TestDocumentDiscovery.test_discover_all_documents_and_spaces",
+        date="2025-08-06",
+        notes="Helper method for discover_all_documents_and_spaces. Tested as part of main discovery."
+    )
     def _discover_via_workitems(self, project_id: str, max_pages: Optional[int] = None) -> tuple:
         """Discover documents and spaces via work item module relationships.
         
@@ -823,6 +831,13 @@ class DocumentsMixin:
             }
         }
     
+    @tested(
+        status=TestStatus.PRODUCTION_VALIDATED,
+        test_file="tests/moduletest/test_document_discovery.py",
+        test_method="TestDocumentDiscovery.test_discover_all_documents_and_spaces",
+        date="2025-08-06",
+        notes="Successfully tested with Python project. Found 4 spaces (Component Layer, Domain Layer, Functional Layer, Product Layer) and 4 documents."
+    )
     def discover_all_documents_and_spaces(self, project_id: str, 
                                          save_output: bool = True,
                                          output_dir: str = "tests/moduletest/outputdata") -> Dict[str, Any]:

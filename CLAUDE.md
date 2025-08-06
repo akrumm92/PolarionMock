@@ -67,6 +67,48 @@ This is currently a greenfield project with a detailed specification in PROJECT_
 - **API Format**: JSON:API specification
 - **Documentation**: OpenAPI/Swagger
 
+## Test Validation Tracking System
+
+The project uses a decorator-based system to track which methods have been tested and validated against production Polarion.
+
+### Using the @tested Decorator
+```python
+from polarion_api.validation_status import tested, TestStatus
+
+@tested(
+    status=TestStatus.PRODUCTION_VALIDATED,
+    test_file="tests/moduletest/test_document_discovery.py",
+    test_method="test_discover_all_documents_and_spaces",
+    date="2025-08-06",
+    notes="Successfully tested with Python project"
+)
+def my_method():
+    pass
+```
+
+### Validation Status Levels
+- `NOT_TESTED`: Method not tested yet
+- `MOCK_TESTED`: Only tested against mock
+- `PRODUCTION_TESTED`: Tested against production but not fully validated
+- `PRODUCTION_VALIDATED`: Fully tested and validated against production ✓
+- `DEPRECATED`: Method is deprecated
+- `BLOCKED`: Testing blocked due to dependencies/issues
+
+### Generate Validation Report
+```bash
+# Show validation report in console
+python generate_validation_report.py --format console
+
+# Export to JSON
+python generate_validation_report.py --format json
+
+# Both console and JSON
+python generate_validation_report.py --format both
+
+# Run validation status tests
+pytest tests/moduletest/test_validation_status.py
+```
+
 ## Development Commands
 
 ```bash
@@ -100,6 +142,12 @@ export POLARION_ENV=mock && pytest
 # Run tests against production
 export POLARION_ENV=production && pytest
 # Alternative: python run_tests.py --env production
+
+# Document Discovery Test (primary test for spaces/documents)
+python run_tests.py --env production --test tests/moduletest/test_document_discovery.py::TestDocumentDiscovery::test_discover_all_documents_and_spaces
+
+# Extract from existing JSON (no API connection needed)
+python tests/moduletest/test_extract_from_swagger_response.py
 
 # Generate coverage report
 python run_tests.py --coverage --html
@@ -239,18 +287,47 @@ headers = {
 1. `/polarion/api` - Legacy API, returns HTML, used for auth testing
 2. `/polarion/rest/v1` - Main REST API, returns JSON:API format
 
-### Space Discovery - IMPORTANT:
-**Polarion REST API has NO direct endpoint for listing spaces!** Spaces must be discovered indirectly:
-- Extract from document IDs which follow pattern: `projectId/spaceId/documentId`
-- Use `/projects/{projectId}/documents` endpoint with pagination
-- Fallback to trying known space names if main endpoint returns 404
-- Many expected endpoints like `/projects/{projectId}/workitems` (GET) don't exist
+### Space and Document Discovery - CRITICAL:
+**Polarion REST API has NO direct endpoint for listing documents or spaces!** 
+
+#### How to discover documents and spaces:
+1. **Primary method**: Use Work Items API with module relationships
+   ```python
+   # Fetch work items from /projects/{projectId}/workitems
+   # Extract document IDs from module.data.id
+   # Format: "projectId/spaceId/documentId"
+   ```
+2. **The `/projects/{projectId}/documents` endpoint does NOT exist**
+3. **Use the `discover_all_documents_and_spaces()` method in `documents.py`**
+
+#### Successfully tested discovery (August 2025):
+- **Python project**: Found 4 spaces and 4 documents
+  - Spaces: Component Layer, Domain Layer, Functional Layer, Product Layer
+  - Documents: Component/Domain/Functional Requirement Specifications
+  - 100% of work items had module relationships
+
+### URL Building Bug Fix (CRITICAL):
+**Problem**: `urljoin()` behavior with absolute paths
+- When endpoint starts with `/`, urljoin treats it as absolute and replaces the entire path
+- **Solution**: Ensure `rest_api_url` ends with `/` (implemented in `config.py:55-62`)
+- **Example of the bug**:
+  ```python
+  # WRONG - loses /polarion/rest/v1
+  urljoin('https://host/polarion/rest/v1', '/projects/id/workitems')
+  # Result: https://host/projects/id/workitems ❌
+  
+  # CORRECT - preserves full path
+  urljoin('https://host/polarion/rest/v1/', 'projects/id/workitems')
+  # Result: https://host/polarion/rest/v1/projects/id/workitems ✅
+  ```
 
 ### Common Issues:
 - **406 Not Acceptable**: You're not using `Accept: */*` header
 - **SSL Certificate errors**: Set `POLARION_VERIFY_SSL=false`
 - **Connection refused**: Check if REST API is enabled in Polarion
 - **404 on bulk endpoints**: Many bulk query endpoints don't exist in Polarion
+- **404 on /polarion/rest/projects/{id}/workitems**: Check if POLARION_REST_V1_PATH includes `/v1`
+- **Empty work items response**: Verify project ID is correct and work items exist
 
 ## Authentication
 
@@ -302,9 +379,27 @@ headers = {
 5. **Test with logging**: Use `python run_single_test.py <test_file>` for detailed logs
 6. **Check reports**: HTML reports in `test_reports/*/report.html` show test results visually
 
+## Key Implementation Files
+
+### Document and Space Discovery
+- **`src/polarion_api/documents.py:826-995`**: `discover_all_documents_and_spaces()` method
+  - Fetches all work items with pagination
+  - Extracts document IDs from module relationships
+  - Saves `workitems_response.json` and `discovered_documents.json`
+- **`tests/moduletest/test_document_discovery.py`**: Comprehensive test suite
+- **`tests/moduletest/test_extract_from_swagger_response.py`**: Standalone extractor for saved JSON
+
+### Configuration
+- **`src/polarion_api/config.py`**: Configuration loading and URL building
+  - CRITICAL: `rest_api_url` must end with `/` for proper urljoin behavior
+- **`src/polarion_api/client.py`**: HTTP client with retry logic
+  - Uses `urljoin()` to build URLs - be careful with leading slashes!
+
 ## Resources
 
 - Polarion REST API Docs: `Input/docs/` (PDFs)
 - Test examples: `tests/integration/`
 - Mock implementation: `src/mock/`
 - Response examples: `src/mock/mock_data/`
+- **Mock Implementation Requirements**: `MOCK_IMPLEMENTATION_REQUIREMENTS.md` - Detailed requirements based on actual API behavior
+- **Real API Responses**: `test_reports/20250806_101810/SwaggerUiResponse.json` - Actual Polarion responses
