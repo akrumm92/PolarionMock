@@ -460,10 +460,11 @@ class DocumentsMixin:
                         
                 elif response.status_code == 404:
                     logger.warning(f"Documents endpoint returned 404 for project {project_id}")
-                    logger.info("The /projects/{projectId}/documents endpoint doesn't exist in this Polarion version")
+                    logger.info("The /projects/{projectId}/documents endpoint doesn't exist")
+                    logger.info("Using work items discovery as primary method")
                     
-                    # Fallback: Try alternative discovery methods
-                    spaces, all_documents = self._fallback_space_discovery(project_id)
+                    # Primary method: Discover via work items
+                    spaces, all_documents = self._discover_via_workitems(project_id, max_pages)
                     break
                     
                 else:
@@ -476,14 +477,14 @@ class DocumentsMixin:
                         raise Exception("Not Acceptable - ensure Accept header is '*/*'")
                     elif response.status_code == 429:
                         raise Exception("Rate limit reached - implement retry logic")
-                    # Try fallback for any other error
-                    spaces, all_documents = self._fallback_space_discovery(project_id)
+                    # Try work items discovery for any other error
+                    spaces, all_documents = self._discover_via_workitems(project_id, max_pages)
                     break
                     
             except Exception as e:
                 logger.error(f"Error during document discovery: {e}")
-                # Try fallback method
-                spaces, all_documents = self._fallback_space_discovery(project_id)
+                # Try work items discovery
+                spaces, all_documents = self._discover_via_workitems(project_id, max_pages)
                 break
         
         # Prepare result
@@ -503,6 +504,122 @@ class DocumentsMixin:
             logger.info(f"Spaces found: {sorted(list(spaces))}")
         
         return result
+    
+    def _discover_via_workitems(self, project_id: str, max_pages: Optional[int] = None) -> tuple:
+        """Discover documents and spaces via work item module relationships.
+        
+        This is the primary discovery method when /projects/{id}/documents doesn't exist.
+        
+        Args:
+            project_id: The project ID
+            max_pages: Maximum number of pages to fetch
+            
+        Returns:
+            Tuple of (spaces set, documents list)
+        """
+        logger.info("Using work item module discovery method")
+        
+        spaces = set()
+        all_documents = []
+        page_number = 1
+        pages_fetched = 0
+        
+        while True:
+            try:
+                params = {
+                    "page[size]": 100,
+                    "page[number]": page_number,
+                    "include": "module",
+                    "query": "HAS_VALUE:module",
+                    "fields[workitems]": "id",
+                    "fields[documents]": "id,title,type"
+                }
+                
+                response = self._request("GET", f"/projects/{project_id}/workitems", params=params)
+                
+                if response.status_code != 200:
+                    logger.warning(f"Work items query failed: {response.status_code}")
+                    break
+                
+                data = response.json()
+                work_items = data.get("data", [])
+                included = data.get("included", [])
+                
+                if not work_items:
+                    break
+                
+                # Process work items for module relationships
+                for wi in work_items:
+                    relationships = wi.get("relationships", {})
+                    module = relationships.get("module", {})
+                    module_data = module.get("data")
+                    
+                    if module_data and isinstance(module_data, dict):
+                        doc_id = module_data.get("id")
+                        if doc_id:
+                            # Add to documents list
+                            doc_info = {
+                                "id": doc_id,
+                                "type": "documents",
+                                "source": "work_item_module"
+                            }
+                            
+                            # Extract space from document ID
+                            if "/" in doc_id:
+                                parts = doc_id.split("/")
+                                if len(parts) >= 3:
+                                    space_id = parts[1]
+                                    spaces.add(space_id)
+                                    doc_info["space_id"] = space_id
+                            
+                            all_documents.append(doc_info)
+                
+                # Also process included documents
+                for resource in included:
+                    if resource.get("type") == "documents":
+                        doc_id = resource.get("id")
+                        if doc_id:
+                            doc_info = {
+                                "id": doc_id,
+                                "type": "documents",
+                                "attributes": resource.get("attributes", {}),
+                                "source": "included"
+                            }
+                            
+                            # Extract space
+                            if "/" in doc_id:
+                                parts = doc_id.split("/")
+                                if len(parts) >= 3:
+                                    spaces.add(parts[1])
+                                    doc_info["space_id"] = parts[1]
+                            
+                            # Check if already added
+                            if not any(d["id"] == doc_id for d in all_documents):
+                                all_documents.append(doc_info)
+                
+                pages_fetched += 1
+                
+                # Check pagination
+                if "links" not in data or "next" not in data["links"]:
+                    break
+                
+                if max_pages and pages_fetched >= max_pages:
+                    logger.info(f"Reached max pages limit ({max_pages})")
+                    break
+                
+                page_number += 1
+                
+            except Exception as e:
+                logger.error(f"Error in work item discovery: {e}")
+                break
+        
+        logger.info(f"Work item discovery found {len(spaces)} spaces and {len(all_documents)} documents")
+        
+        # If no results from work items, try fallback
+        if not spaces and not all_documents:
+            return self._fallback_space_discovery(project_id)
+        
+        return spaces, all_documents
     
     def _fallback_space_discovery(self, project_id: str) -> tuple:
         """Fallback method to discover spaces when main endpoint fails.
@@ -563,8 +680,9 @@ class DocumentsMixin:
     def get_project_spaces(self, project_id: str) -> List[str]:
         """Get list of available spaces in a project.
         
-        This is a convenience method that calls get_all_project_documents_and_spaces
-        and returns only the spaces list.
+        Since /projects/{id}/documents doesn't exist, this method tries:
+        1. Work Items with module relationships (primary method)
+        2. Testing known document names (fallback)
         
         Args:
             project_id: The project ID
@@ -572,8 +690,82 @@ class DocumentsMixin:
         Returns:
             List of found space IDs
         """
+        # First try via work items (most reliable)
+        try:
+            spaces = self._discover_spaces_via_workitems(project_id)
+            if spaces:
+                return spaces
+        except Exception as e:
+            logger.debug(f"Work item discovery failed: {e}")
+        
+        # Fallback to old method
         result = self.get_all_project_documents_and_spaces(project_id, max_pages=10)
         return result.get("spaces", [])
+    
+    def _discover_spaces_via_workitems(self, project_id: str) -> List[str]:
+        """Discover spaces through work item module relationships.
+        
+        Args:
+            project_id: The project ID
+            
+        Returns:
+            List of unique space IDs
+        """
+        logger.info(f"Discovering spaces via work items for project: {project_id}")
+        
+        spaces = set()
+        page_number = 1
+        max_pages = 5  # Limit for performance
+        
+        while page_number <= max_pages:
+            try:
+                # Query work items with module relationships
+                params = {
+                    "page[size]": 100,
+                    "page[number]": page_number,
+                    "include": "module",
+                    "query": "HAS_VALUE:module"  # Only get items with modules
+                }
+                
+                response = self._request("GET", f"/projects/{project_id}/workitems", params=params)
+                
+                if response.status_code != 200:
+                    break
+                
+                data = response.json()
+                work_items = data.get("data", [])
+                
+                if not work_items:
+                    break
+                
+                # Extract document IDs from module relationships
+                for wi in work_items:
+                    relationships = wi.get("relationships", {})
+                    module = relationships.get("module", {})
+                    module_data = module.get("data")
+                    
+                    if module_data and isinstance(module_data, dict):
+                        doc_id = module_data.get("id")
+                        if doc_id and "/" in doc_id:
+                            parts = doc_id.split("/")
+                            if len(parts) >= 3:
+                                spaces.add(parts[1])
+                
+                # Check for more pages
+                if "links" not in data or "next" not in data["links"]:
+                    break
+                
+                page_number += 1
+                
+            except Exception as e:
+                logger.error(f"Error in work item discovery: {e}")
+                break
+        
+        spaces_list = sorted(list(spaces))
+        if spaces_list:
+            logger.info(f"Found {len(spaces_list)} spaces via work items: {spaces_list}")
+        
+        return spaces_list
     
     def list_documents_in_space(self, project_id: str, space_id: str = "_default",
                                fields: Optional[List[str]] = None,
@@ -630,64 +822,3 @@ class DocumentsMixin:
                 "note": "Limited results - no bulk endpoint available"
             }
         }
-            
-        except Exception as e:
-            logger.warning(f"Direct document listing failed: {e}")
-            
-            # Alternative: Try POST with empty body (some APIs support this)
-            try:
-                endpoint = f"/projects/{project_id}/spaces/{space_id}/documents"
-                response = self._request("POST", endpoint, json={"data": []})
-                return parse_json_api_response(response.json())
-            except:
-                pass
-            
-            # Alternative: Use work items to discover documents
-            try:
-                from .work_items import WorkItemsMixin
-                # Query work items and extract unique documents
-                wi_response = self.query_work_items(
-                    query=f"project.id:{project_id}",
-                    page_size=1000
-                )
-                
-                documents = set()
-                for item in wi_response.get("data", []):
-                    if "relationships" in item and "module" in item["relationships"]:
-                        module_data = item["relationships"]["module"].get("data", {})
-                        doc_id = module_data.get("id")
-                        if doc_id and space_id in doc_id:
-                            documents.add(doc_id)
-                
-                # Format as document list response
-                doc_list = []
-                for doc_id in sorted(documents):
-                    parts = doc_id.split("/")
-                    if len(parts) >= 3:
-                        doc_list.append({
-                            "type": "documents",
-                            "id": doc_id,
-                            "attributes": {
-                                "moduleName": parts[-1],
-                                "spaceId": parts[-2] if len(parts) > 2 else "_default"
-                            }
-                        })
-                
-                return {
-                    "data": doc_list,
-                    "meta": {
-                        "totalCount": len(doc_list),
-                        "note": "Documents discovered via work item relationships"
-                    }
-                }
-                
-            except Exception as e:
-                logger.error(f"All document discovery methods failed: {e}")
-                # Return empty result
-                return {
-                    "data": [],
-                    "meta": {
-                        "totalCount": 0,
-                        "error": str(e)
-                    }
-                }
