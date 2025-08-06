@@ -232,10 +232,18 @@ headers = {
 1. `/polarion/api` - Legacy API, returns HTML, used for auth testing
 2. `/polarion/rest/v1` - Main REST API, returns JSON:API format
 
+### Space Discovery - IMPORTANT:
+**Polarion REST API has NO direct endpoint for listing spaces!** Spaces must be discovered indirectly:
+- Extract from document IDs which follow pattern: `projectId/spaceId/documentId`
+- Use `/projects/{projectId}/documents` endpoint with pagination
+- Fallback to trying known space names if main endpoint returns 404
+- Many expected endpoints like `/projects/{projectId}/workitems` (GET) don't exist
+
 ### Common Issues:
 - **406 Not Acceptable**: You're not using `Accept: */*` header
 - **SSL Certificate errors**: Set `POLARION_VERIFY_SSL=false`
 - **Connection refused**: Check if REST API is enabled in Polarion
+- **404 on bulk endpoints**: Many bulk query endpoints don't exist in Polarion
 
 ## Authentication
 

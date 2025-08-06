@@ -13,24 +13,39 @@ class TestDiscovery:
     
     @pytest.mark.integration
     def test_discover_project_spaces(self, polarion_client, test_project_id):
-        """Discover all spaces in a project using the new method."""
+        """Discover all spaces in a project using document-based discovery."""
         try:
-            # Use the new get_project_spaces method
-            spaces = polarion_client.get_project_spaces(test_project_id)
+            # Use the new document-based space discovery method
+            result = polarion_client.get_all_project_documents_and_spaces(
+                project_id=test_project_id,
+                max_pages=5  # Limit for testing
+            )
+            
+            spaces = result.get("spaces", [])
+            documents = result.get("documents", [])
+            meta = result.get("meta", {})
             
             discovery_data = {
                 "project_id": test_project_id,
                 "spaces": spaces,
+                "document_count": len(documents),
                 "meta": {
                     "total_spaces": len(spaces),
-                    "note": "Spaces discovered by checking common space names"
-                }
+                    "total_documents": len(documents),
+                    "pages_fetched": meta.get("pages_fetched", 0),
+                    "note": "Spaces extracted from document IDs (projectId/spaceId/documentId pattern)"
+                },
+                "sample_documents": documents[:5] if documents else []  # First 5 documents as sample
             }
             
-            save_response_to_json("discovery_project_spaces", discovery_data)
+            save_response_to_json("discovery_project_spaces_and_documents", discovery_data)
+            
+            # Log the results
+            print(f"\nDiscovered {len(spaces)} spaces: {spaces}")
+            print(f"Found {len(documents)} documents across all spaces")
             
             if not spaces:
-                pytest.skip("No spaces found in project")
+                pytest.skip("No spaces found in project (might be empty project)")
                 
         except Exception as e:
             pytest.skip(f"Could not discover project spaces: {e}")
