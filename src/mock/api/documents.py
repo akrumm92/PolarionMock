@@ -41,7 +41,55 @@ def list_all_documents():
     This endpoint does not exist in Polarion REST API v1.
     Return 404 to match production behavior.
     """
-    raise NotFoundError("endpoint", "/all/documents")
+    return jsonify({
+        "errors": [{
+            "status": "404",
+            "title": "Not Found",
+            "detail": "The requested resource [/polarion/rest/v1/all/documents] is not available"
+        }]
+    }), 404
+
+
+@bp.route('/projects/<project_id>/documents', methods=['GET'])
+@require_auth
+def list_project_documents(project_id: str):
+    """
+    CRITICAL: This endpoint DOES NOT EXIST in Polarion REST API v1.
+    Documents are discovered through work item module relationships.
+    Return 404 to match production behavior.
+    
+    From MOCK_IMPLEMENTATION_REQUIREMENTS.md:
+    - GET /projects/{projectId}/documents DOES NOT EXIST
+    - Documents are discovered via work items' module relationships
+    """
+    return jsonify({
+        "errors": [{
+            "status": "404",
+            "title": "Not Found",
+            "detail": f"The requested resource [/polarion/rest/v1/projects/{project_id}/documents] is not available"
+        }]
+    }), 404
+
+
+@bp.route('/projects/<project_id>/spaces', methods=['GET'])
+@require_auth
+def list_project_spaces(project_id: str):
+    """
+    CRITICAL: This endpoint DOES NOT EXIST in Polarion REST API v1.
+    Spaces are discovered through work item module relationships.
+    Return 404 to match production behavior.
+    
+    From MOCK_IMPLEMENTATION_REQUIREMENTS.md:
+    - GET /projects/{projectId}/spaces DOES NOT EXIST
+    - Spaces are discovered via work items' module relationships
+    """
+    return jsonify({
+        "errors": [{
+            "status": "404",
+            "title": "Not Found",
+            "detail": f"The requested resource [/polarion/rest/v1/projects/{project_id}/spaces] is not available"
+        }]
+    }), 404
 
 
 @bp.route('/projects/<project_id>/spaces/<space_id>/documents', methods=['GET'])

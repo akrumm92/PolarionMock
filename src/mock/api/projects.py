@@ -36,9 +36,9 @@ def list_projects():
     - fields[projects]: Sparse fieldsets
     - sort: Sort criteria
     """
-    # Get pagination parameters
-    page_size = int(request.args.get('page[size]', 100))
-    page_number = int(request.args.get('page[number]', 1))
+    # Get pagination parameters (matching requirements)
+    page_size = min(int(request.args.get('page[size]', 100)), 100)  # Cap at 100
+    page_number = max(int(request.args.get('page[number]', 1)), 1)  # Min is 1
     
     # Get all projects
     all_projects = project_store.get_all()
@@ -71,13 +71,35 @@ def list_projects():
         field_list = response_builder.parse_sparse_fieldsets(fields)
         resources = [response_builder.apply_sparse_fieldsets(r, field_list) for r in resources]
     
+    # Build response with proper pagination links (as per requirements)
+    base_url = request.base_url
+    
+    # Calculate pagination info
+    total_pages = (total_count + page_size - 1) // page_size if total_count > 0 else 1
+    has_next = page_number < total_pages
+    has_prev = page_number > 1
+    
+    # Build links with all original query parameters
+    def build_page_url(page_num):
+        params = request.args.to_dict()
+        params['page[number]'] = str(page_num)
+        param_str = '&'.join(f"{k}={v}" for k, v in params.items())
+        return f"{base_url}?{param_str}"
+    
+    links = {
+        'self': request.url,
+        'first': build_page_url(1),
+        'last': build_page_url(total_pages),
+        'next': build_page_url(page_number + 1) if has_next else None,
+        'prev': build_page_url(page_number - 1) if has_prev else None,
+        'portal': 'https://polarion.example.com/polarion/#/projects'
+    }
+    
     # Build response
-    response = response_builder.build_collection_response(
-        resources=resources,
-        total_count=total_count,
-        page_number=page_number,
-        page_size=page_size
-    )
+    response = {
+        'links': links,
+        'data': resources
+    }
     
     logger.info(f"Listed {len(resources)} projects (page {page_number})")
     return jsonify(response)

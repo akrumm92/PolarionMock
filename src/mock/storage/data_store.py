@@ -45,8 +45,11 @@ class DataStore:
         self._create_dummy_users()
         
         # Create projects (already handled by ProjectStore)
-        # Add more test projects
+        # Add more test projects including Python project from requirements
         test_projects = [
+            Project.create_mock("Python", "Python Project",
+                              description="Python functional safety project",
+                              trackerPrefix="FCTS"),
             Project.create_mock("automotive", "Automotive Project",
                               description="Automotive safety requirements",
                               trackerPrefix="AUTO"),
@@ -85,8 +88,22 @@ class DataStore:
             self.users[user.id] = user
     
     def _create_dummy_documents(self):
-        """Create dummy documents."""
+        """Create dummy documents following real Polarion structure."""
         documents_data = [
+            # Python project documents (matching real data from requirements)
+            ("Python", "Component Layer", "Component Requirement Specification",
+             "Component Requirement Specification",
+             "Component requirements document"),
+            ("Python", "Domain Layer", "Software Requirement Specification",
+             "Software Requirement Specification",
+             "Software requirements document"),
+            ("Python", "Functional Layer", "Functional Concept",
+             "Functional Concept",
+             "Functional concept document"),
+            ("Python", "Product Layer", "Product Requirements Specification",
+             "Product Requirements Specification",
+             "Product requirements document"),
+            
             # eLibrary project documents
             ("elibrary", "_default", "requirements", "Requirements Specification",
              "Requirements document for eLibrary system"),
@@ -125,8 +142,14 @@ class DataStore:
             self.document_parts[doc.id] = []
     
     def _create_dummy_workitems(self):
-        """Create dummy work items with various types and states."""
+        """Create dummy work items with various types and states.
+        
+        IMPORTANT: Every work item MUST have a module relationship (100% as per requirements).
+        """
         workitems_data = [
+            # Python project work items (150+ for pagination testing)
+            *self._generate_python_workitems(),
+            
             # eLibrary work items
             ("elibrary", "ELIB-1", "requirement", "User Authentication",
              "Users shall be able to authenticate using email and password",
@@ -138,11 +161,11 @@ class DataStore:
             
             ("elibrary", "ELIB-3", "defect", "Login Button Not Responsive",
              "Login button does not respond on mobile devices",
-             "open", "critical", "major", None),
+             "open", "critical", "major", "elibrary/_default/requirements"),
             
             ("elibrary", "ELIB-4", "task", "Setup CI/CD Pipeline",
              "Configure automated build and deployment pipeline",
-             "done", "medium", None, None),
+             "done", "medium", None, "elibrary/_default/architecture"),
             
             # myproject work items
             ("myproject", "MP-1", "userstory", "As a user, I want to login",
@@ -151,11 +174,11 @@ class DataStore:
             
             ("myproject", "MP-2", "task", "Implement REST API",
              "Create RESTful API endpoints",
-             "in_progress", "high", None, None),
+             "in_progress", "high", None, "myproject/docs/api_spec"),
             
             ("myproject", "MP-3", "defect", "API returns 500 error",
              "POST /api/users returns internal server error",
-             "open", "high", "critical", None),
+             "open", "high", "critical", "myproject/docs/api_spec"),
             
             # automotive work items
             ("automotive", "AUTO-1", "requirement", "Emergency Braking",
@@ -175,10 +198,18 @@ class DataStore:
                 "type": w_type,
                 "status": status,
                 "priority": priority,
-                "description": description,
                 "author": "admin",
                 "assignee": ["john.doe"] if status != "done" else ["jane.smith"]
             }
+            
+            # Handle description format (can be string or object)
+            if isinstance(description, dict):
+                attrs["description"] = description
+            else:
+                attrs["description"] = {
+                    "type": "text/html",
+                    "value": description
+                }
             
             if severity:
                 attrs["severity"] = severity
@@ -206,6 +237,46 @@ class DataStore:
                 self._add_workitem_to_document(module_id, workitem.id)
             
             self.workitems[workitem.id] = workitem
+    
+    def _generate_python_workitems(self):
+        """Generate 150+ Python project work items for pagination testing."""
+        workitems = []
+        
+        # Document mapping for Python project
+        documents = [
+            ("Python/Component Layer/Component Requirement Specification", "componentrequirement"),
+            ("Python/Domain Layer/Software Requirement Specification", "softwarerequirement"),
+            ("Python/Functional Layer/Functional Concept", "functionalrequirement"),
+            ("Python/Product Layer/Product Requirements Specification", "technicalrequirement"),
+        ]
+        
+        # Status and priority options from real data
+        statuses = ["proposed", "approved", "implemented", "verified"]
+        priorities = ["50.0", "100.0", "150.0", "200.0"]
+        severities = ["not_applicable", "minor", "major", "critical"]
+        
+        # Generate 150+ work items
+        for i in range(1, 155):
+            doc_idx = i % len(documents)
+            doc_id, w_type = documents[doc_idx]
+            
+            # Create work item data
+            workitems.append((
+                "Python",
+                f"FCTS-{9000 + i}",
+                w_type,
+                f"Functional Safety Requirement {i}",
+                {
+                    "type": "text/html",
+                    "value": f"<p>Safety Attributes need to be filled out for requirement {i}</p>"
+                },
+                statuses[i % len(statuses)],
+                priorities[i % len(priorities)],
+                severities[i % len(severities)],
+                doc_id
+            ))
+        
+        return workitems
     
     def _create_dummy_collections(self):
         """Create dummy collections."""

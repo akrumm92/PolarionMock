@@ -52,7 +52,8 @@ def list_project_workitems(project_id: str):
         elif sort_field == 'title':
             workitems.sort(key=lambda w: w.attributes.title, reverse=reverse)
     
-    # Pagination
+    # Pagination - ensure page_size is capped at 100
+    page_size = min(page_size, 100)
     total_count = len(workitems)
     start_idx = (page_number - 1) * page_size
     end_idx = start_idx + page_size
@@ -70,16 +71,40 @@ def list_project_workitems(project_id: str):
                 if module_id in data_store.documents:
                     included.append(data_store.documents[module_id].to_json_api())
     
-    # Build response
-    response = response_builder.build_collection_response(
-        resources=resources,
-        total_count=total_count,
-        page_number=page_number,
-        page_size=page_size,
-        included=included if included else None
-    )
+    # Build response with proper pagination links
+    base_url = request.base_url
     
-    logger.info(f"Listed {len(resources)} work items for project {project_id}")
+    # Calculate pagination info
+    total_pages = (total_count + page_size - 1) // page_size if total_count > 0 else 1
+    has_next = page_number < total_pages
+    has_prev = page_number > 1
+    
+    # Build links with all original query parameters
+    def build_page_url(page_num):
+        params = request.args.to_dict()
+        params['page[number]'] = str(page_num)
+        param_str = '&'.join(f"{k}={v}" for k, v in params.items())
+        return f"{base_url}?{param_str}"
+    
+    links = {
+        'self': request.url,
+        'first': build_page_url(1),
+        'last': build_page_url(total_pages),
+        'next': build_page_url(page_number + 1) if has_next else None,
+        'prev': build_page_url(page_number - 1) if has_prev else None,
+        'portal': f"https://polarion.example.com/polarion/#/project/{project_id}/workitems"
+    }
+    
+    # Build response
+    response = {
+        'links': links,
+        'data': resources
+    }
+    
+    if included:
+        response['included'] = included
+    
+    logger.info(f"Listed {len(resources)} work items for project {project_id} (page {page_number}/{total_pages})")
     return jsonify(response)
 
 
@@ -95,7 +120,8 @@ def list_all_workitems():
     # Query all work items
     workitems = data_store.query_workitems(query=query)
     
-    # Pagination
+    # Pagination - ensure page_size is capped at 100
+    page_size = min(page_size, 100)
     total_count = len(workitems)
     start_idx = (page_number - 1) * page_size
     end_idx = start_idx + page_size

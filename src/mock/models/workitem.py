@@ -9,13 +9,21 @@ from .common import Description, BaseResource
 
 
 class WorkItemAttributes(BaseModel):
-    """Work Item attributes following Polarion API specification."""
+    """Work Item attributes following Polarion API specification.
+    
+    Based on real Polarion data from MOCK_IMPLEMENTATION_REQUIREMENTS.md:
+    - type: technicalrequirement, functionalrequirement, componentrequirement, softwarerequirement
+    - status: proposed, approved, implemented, verified
+    - priority: String with decimal (e.g., "50.0", "100.0")
+    - severity: not_applicable, minor, major, critical
+    """
+    id: Optional[str] = Field(default=None, description="Work item ID (without project prefix)")
     title: str = Field(description="Work item title")
     description: Optional[Description] = Field(default=None, description="Work item description")
-    type: str = Field(default="task", description="Work item type (task, requirement, defect, etc.)")
-    status: str = Field(default="open", description="Work item status")
-    priority: Optional[str] = Field(default="medium", description="Priority level")
-    severity: Optional[str] = Field(default=None, description="Severity level")
+    type: str = Field(default="task", description="Work item type")
+    status: str = Field(default="proposed", description="Work item status")
+    priority: Optional[str] = Field(default="50.0", description="Priority as decimal string")
+    severity: Optional[str] = Field(default="not_applicable", description="Severity level")
     created: datetime = Field(default_factory=datetime.utcnow, description="Creation timestamp")
     updated: datetime = Field(default_factory=datetime.utcnow, description="Last update timestamp")
     author: Optional[str] = Field(default=None, description="Author user ID")
@@ -64,14 +72,23 @@ class WorkItem(BaseResource):
     
     @classmethod
     def create_mock(cls, project_id: str, workitem_id: str, title: str, **kwargs) -> "WorkItem":
-        """Create a mock work item for testing."""
+        """Create a mock work item for testing.
+        
+        Ensures work item follows real Polarion format:
+        - ID format: project/workitem (e.g., "Python/FCTS-9345")
+        - Description is always an object with type and value
+        - Priority is a decimal string
+        """
         full_id = f"{project_id}/{workitem_id}"
         
-        # Handle description - can be string or dict
+        # Set work item ID attribute (without project prefix)
+        kwargs["id"] = workitem_id
+        
+        # Handle description - ensure it's always an object
         desc = kwargs.get("description")
         if desc:
             if isinstance(desc, str):
-                description = Description(type="text/plain", value=desc)
+                description = Description(type="text/html", value=desc)
             elif isinstance(desc, dict):
                 description = Description(**desc)
             else:

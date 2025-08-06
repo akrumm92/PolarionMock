@@ -1,0 +1,6 @@
+{"timestamp": "2025-08-06T10:23:00.857324+00:00", "level": null, "name": "src.mock.app", "message": "Polarion Mock Server initialized", "taskName": null}
+{"timestamp": "2025-08-06T10:23:00.857442+00:00", "level": null, "name": "src.mock.app", "message": "Starting Polarion Mock Server on 0.0.0.0:5001", "taskName": null}
+ * Serving Flask app 'src.mock.app'
+ * Debug mode: on
+Address already in use
+Port 5001 is in use by another program. Either identify and stop that program, or start the server with a different port.

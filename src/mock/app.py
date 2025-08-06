@@ -39,7 +39,7 @@ def create_app(config: Dict[str, Any] = None) -> Flask:
         app.config.update(
             DEBUG=os.getenv('MOCK_DEBUG', 'True').lower() == 'true',
             HOST=os.getenv('MOCK_HOST', '0.0.0.0'),
-            PORT=int(os.getenv('MOCK_PORT', 5000)),
+            PORT=int(os.getenv('MOCK_PORT', 5001)),  # Default 5001 to avoid macOS AirPlay
             SECRET_KEY=os.getenv('JWT_SECRET_KEY', 'dev-secret-key'),
             JSON_SORT_KEYS=False,
             JSONIFY_PRETTYPRINT_REGULAR=True
@@ -123,7 +123,7 @@ def run_server():
     """Run the Flask development server."""
     app = create_app()
     host = app.config.get('HOST', '0.0.0.0')
-    port = app.config.get('PORT', 5000)
+    port = app.config.get('PORT', 5001)  # Default 5001 to avoid macOS AirPlay
     debug = app.config.get('DEBUG', True)
     
     logger.info(f"Starting Polarion Mock Server on {host}:{port}")
