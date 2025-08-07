@@ -102,10 +102,11 @@ class TestWorkItemUpdatesAndLinks:
             project_id=test_document["project"],
             space_id=test_document["space"],
             document_name=test_document["document"],
+            previous_part_id="heading_PYTH-9397",  # Place under meaningful chapter
             **wi1_data
         )
         
-        assert result1.get("status") == "success", f"Failed to create first work item: {result1.get('error')}"
+        assert result1.get("document_integration", {}).get("visible_in_document") == True, f"Failed to create first work item: {result1}"
         wi1_id = result1["id"]
         logger.info(f"✅ Created first work item: {wi1_id}")
         
@@ -184,22 +185,24 @@ class TestWorkItemUpdatesAndLinks:
             project_id=test_document["project"],
             space_id=test_document["space"],
             document_name=test_document["document"],
+            previous_part_id="heading_PYTH-9397",  # Place under meaningful chapter
             **wi2_data
         )
         
-        if result2.get("status") != "success":
+        if not result2.get("document_integration", {}).get("visible_in_document"):
             # If testcase type doesn't exist, try with requirement type
             logger.warning("testcase type might not exist, trying with requirement type")
             wi2_data["work_item_type"] = "requirement"
             wi2_data["title"] = f"Test Requirement 2 {timestamp}"
             result2 = polarion_client.create_work_item_in_document(
                 project_id=test_document["project"],
-                document_space=test_document["space"],
+                space_id=test_document["space"],
                 document_name=test_document["document"],
+                previous_part_id="heading_PYTH-9397",  # Place under meaningful chapter
                 **wi2_data
             )
         
-        assert result2.get("status") == "success", f"Failed to create second work item: {result2.get('error')}"
+        assert result2.get("document_integration", {}).get("visible_in_document") == True, f"Failed to create second work item: {result2}"
         wi2_id = result2["id"]
         logger.info(f"✅ Created second work item: {wi2_id}")
         
@@ -232,10 +235,11 @@ class TestWorkItemUpdatesAndLinks:
             project_id=test_document["project"],
             space_id=test_document["space"],
             document_name=test_document["document"],
+            previous_part_id="heading_PYTH-9397",  # Place under meaningful chapter
             **wi3_data
         )
         
-        assert result3.get("status") == "success", f"Failed to create third work item: {result3.get('error')}"
+        assert result3.get("document_integration", {}).get("visible_in_document") == True, f"Failed to create third work item: {result3}"
         wi3_id = result3["id"]
         logger.info(f"✅ Created third work item: {wi3_id}")
         
@@ -421,10 +425,11 @@ class TestWorkItemUpdatesAndLinks:
             project_id=test_document["project"],
             space_id=test_document["space"],
             document_name=test_document["document"],
+            previous_part_id="heading_PYTH-9397",  # Place under meaningful chapter
             **wi_data
         )
         
-        assert result.get("status") == "success", f"Failed to create work item: {result.get('error')}"
+        assert result.get("document_integration", {}).get("visible_in_document") == True, f"Failed to create work item: {result}"
         wi_id = result["id"]
         logger.info(f"Created work item: {wi_id}")
         
