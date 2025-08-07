@@ -1,0 +1,13 @@
+{
+  "timestamp": "20250807_113735",
+  "checklist": {
+    "workitem_created": true,
+    "document_part_added": true,
+    "has_outline_number": true,
+    "visible_in_ui": true,
+    "parent_child_works": true,
+    "no_unmarked_warning": true
+  },
+  "success_rate": 100.0,
+  "work_item_id": "Python/PYTH-9685"
+}
