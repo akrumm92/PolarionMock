@@ -420,13 +420,15 @@ class WorkItemsMixin:
         
         # Add positioning if specified
         if previous_part_id:
+            # Format the full document part ID (critical for Polarion API)
+            full_part_id = f"{project_id}/{space_id}/{document_name}/{previous_part_id}"
             parts_data["data"][0]["relationships"]["previousPart"] = {
                 "data": {
                     "type": "document_parts",
-                    "id": previous_part_id
+                    "id": full_part_id
                 }
             }
-            logger.info(f"Positioning WorkItem after: {previous_part_id}")
+            logger.info(f"Positioning WorkItem after part: {previous_part_id} (full ID: {full_part_id})")
         
         # Send request to Document Parts API
         parts_endpoint = f"projects/{project_id}/spaces/{space_encoded}/documents/{doc_encoded}/parts"
@@ -500,12 +502,15 @@ class WorkItemsMixin:
         
         # Add positioning if specified
         if previous_part_id:
+            # Format the full document part ID (critical for Polarion API)
+            full_part_id = f"{project_id}/{space_id}/{document_name}/{previous_part_id}"
             parts_data["data"][0]["relationships"]["previousPart"] = {
                 "data": {
                     "type": "document_parts",
-                    "id": previous_part_id
+                    "id": full_part_id
                 }
             }
+            logger.info(f"Positioning WorkItem after part: {previous_part_id} (full ID: {full_part_id})")
         
         # Send request to Document Parts API
         endpoint = f"projects/{project_id}/spaces/{space_encoded}/documents/{doc_encoded}/parts"

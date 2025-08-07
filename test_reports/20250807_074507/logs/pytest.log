@@ -1,0 +1,58 @@
+DEBUG    polarion_api.config:config.py:29 Loaded config: base_url=https://polarion.example.com, rest_path=/polarion/rest/v1
+DEBUG    tests.moduletest.conftest:conftest.py:25 Loaded .env from /Users/alexanderkrumm/Git-Repos/PolarionMock/.env
+DEBUG    src.polarion_api.config:config.py:29 Loaded config: base_url=https://polarion.example.com, rest_path=/polarion/rest/v1
+INFO     tests.session:conftest.py:231 ================================================================================
+INFO     tests.session:conftest.py:232 Test Session Started: 20250807_074507
+INFO     tests.session:conftest.py:233 Environment: mock
+INFO     tests.session:conftest.py:234 ================================================================================
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: N/A
+INFO     tests.moduletest.test_workitem_document_integration:test_workitem_document_integration.py:52 Testing against: mock
+DEBUG    src.polarion_api.config:config.py:29 Loaded config: base_url=http://localhost:5001, rest_path=/polarion/rest/v1
+INFO     src.polarion_api.client:client.py:60 Initialized Polarion client for http://localhost:5001
+INFO     tests.moduletest.test_workitem_document_integration:test_workitem_document_integration.py:579 Testing Safety Goal creation under PYTH-9397 (Risk 1)
+INFO     tests.moduletest.test_workitem_document_integration:test_workitem_document_integration.py:588 Target header: Risk 1 (ID: Python/PYTH-9397, Outline: 4.1)
+INFO     src.polarion_api.work_items:work_items.py:333 Step 1: Creating WorkItem with module relationship to Python/_default/Functional Concept - Template
+DEBUG    src.polarion_api.client:client.py:107 POST http://localhost:5001/polarion/rest/v1/projects/Python/workitems
+DEBUG    src.polarion_api.client:client.py:109 Request body: {'data': [{'type': 'workitems', 'attributes': {'title': 'Safety Goal SG-20250807_074507', 'type': 'safetygoal', 'status': 'draft', 'description': {'type': 'text/html', 'value': '<p>Safety Goal to mitigate risks identified in Risk 1</p>'}, 'severity': 'must_have', 'priority': '100.0'}, 'relationships': {'module': {'data': {'type': 'documents', 'id': 'Python/_default/Functional Concept - Template'}}}}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:5001
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/Python/workitems HTTP/1.1" 201 961
+DEBUG    src.polarion_api.client:client.py:115 Response status: 201
+DEBUG    src.polarion_api.client:client.py:117 Response body: {
+  "data": [
+    {
+      "attributes": {
+        "author": "mock-user",
+        "created": "Thu, 07 Aug 2025 05:45:07 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Goal to mitigate risks identified in Risk 1</p>"
+        },
+        "id": "FCTS-9155",
+        "priority": "100.0",
+        "severity": "must_have",
+        "status": "draft",
+        "title": "Safety Goal SG-20250807_074507",
+        "type": "safetygoal",
+        "updated": "Thu, 07 Aug ...
+INFO     src.polarion_api.work_items:work_items.py:394 Created WorkItem: Python/FCTS-9155
+INFO     src.polarion_api.work_items:work_items.py:397 Step 2: Adding WorkItem to document content via Document Parts API
+INFO     src.polarion_api.work_items:work_items.py:431 Positioning WorkItem after: heading_PYTH-9397
+DEBUG    src.polarion_api.client:client.py:107 POST http://localhost:5001/polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts
+DEBUG    src.polarion_api.client:client.py:109 Request body: {'data': [{'type': 'document_parts', 'attributes': {'type': 'workitem'}, 'relationships': {'workItem': {'data': {'type': 'workitems', 'id': 'Python/FCTS-9155'}}, 'previousPart': {'data': {'type': 'document_parts', 'id': 'Python/_default/Functional Concept - Template/heading_PYTH-9397'}}}}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:289 Resetting dropped connection: localhost
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:5001 "POST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1" 404 128
+DEBUG    src.polarion_api.client:client.py:115 Response status: 404
+DEBUG    src.polarion_api.client:client.py:117 Response body: {
+  "errors": [
+    {
+      "detail": null,
+      "source": null,
+      "status": "404",
+      "title": "Not Found"
+    }
+  ]
+}
+...
+2025-08-07 07:45:07,464 [INFO] [__main__] Test reports saved to: test_reports/20250807_074507
+2025-08-07 07:45:07,465 [INFO] [__main__] Logs saved to: test_reports/20250807_074507/logs/pytest.log

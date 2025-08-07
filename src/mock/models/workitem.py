@@ -48,11 +48,16 @@ class WorkItem(BaseResource):
     type: Literal["workitems"] = Field(default="workitems")
     attributes: WorkItemAttributes = Field(description="Work item attributes")
     
-    # Mock-specific tracking fields (not exposed in API responses)
-    _is_in_document: bool = Field(default=False, exclude=True, description="Tracks if document part was created")
-    _document_position: Optional[int] = Field(default=None, exclude=True, description="Position in document")
-    _parent_workitem_id: Optional[str] = Field(default=None, exclude=True, description="Parent in hierarchy")
-    _in_recycle_bin: bool = Field(default=False, exclude=True, description="WorkItem in recycle bin state")
+    # Mock-specific tracking fields (not exposed in API responses) - using model_config
+    model_config = {"extra": "allow"}
+    
+    def __init__(self, **data):
+        super().__init__(**data)
+        # Mock-specific tracking fields (not part of Pydantic fields)
+        self._is_in_document: bool = False
+        self._document_position: Optional[int] = None
+        self._parent_workitem_id: Optional[str] = None
+        self._in_recycle_bin: bool = False
     
     def to_json_api(self) -> Dict[str, Any]:
         """Convert to JSON:API format."""
