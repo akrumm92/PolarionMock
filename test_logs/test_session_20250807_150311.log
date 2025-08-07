@@ -1,0 +1,16 @@
+2025-08-07 15:03:11,280 - tests.session - INFO - ================================================================================
+2025-08-07 15:03:11,281 - tests.session - INFO - Test Session Started: 20250807_150311
+2025-08-07 15:03:11,281 - tests.session - INFO - Environment: mock
+2025-08-07 15:03:11,281 - tests.session - INFO - ================================================================================
+2025-08-07 15:03:11,281 - tests.session - DEBUG - Test environment: mock
+2025-08-07 15:03:11,281 - tests.session - DEBUG - Base URL: N/A
+2025-08-07 15:03:11,294 - tests.session - DEBUG - Test environment: mock
+2025-08-07 15:03:11,294 - tests.session - DEBUG - Base URL: N/A
+2025-08-07 15:03:11,302 - tests.session - DEBUG - Test environment: mock
+2025-08-07 15:03:11,302 - tests.session - DEBUG - Base URL: N/A
+2025-08-07 15:03:11,309 - tests.session - DEBUG - Test environment: mock
+2025-08-07 15:03:11,309 - tests.session - DEBUG - Base URL: N/A
+2025-08-07 15:03:11,316 - tests.session - DEBUG - Test environment: mock
+2025-08-07 15:03:11,316 - tests.session - DEBUG - Base URL: N/A
+2025-08-07 15:03:11,323 - tests.session - DEBUG - Test environment: mock
+2025-08-07 15:03:11,323 - tests.session - DEBUG - Base URL: N/A

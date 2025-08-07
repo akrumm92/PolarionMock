@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "attributes": {
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 13:03:27 GMT",
+        "id": "MP-7",
+        "priority": "medium",
+        "status": "open",
+        "title": "Batch Item 1 20250807_150327_9772",
+        "type": "requirement",
+        "updated": "Thu, 07 Aug 2025 13:03:27 GMT"
+      },
+      "id": "myproject/MP-7",
+      "links": {
+        "portal": "/polarion/#/project/myproject/workitem?id=MP-7",
+        "self": "/polarion/rest/v1/projects/myproject/workitems/MP-7"
+      },
+      "type": "workitems"
+    },
+    {
+      "attributes": {
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 13:03:27 GMT",
+        "id": "MP-8",
+        "priority": "medium",
+        "status": "open",
+        "title": "Batch Item 2 20250807_150327_9772",
+        "type": "task",
+        "updated": "Thu, 07 Aug 2025 13:03:27 GMT"
+      },
+      "id": "myproject/MP-8",
+      "links": {
+        "portal": "/polarion/#/project/myproject/workitem?id=MP-8",
+        "self": "/polarion/rest/v1/projects/myproject/workitems/MP-8"
+      },
+      "type": "workitems"
+    }
+  ]
+}

@@ -666,7 +666,7 @@ class WorkItemsMixin:
         endpoint = f"projects/{project_id}/workitems/{item_id}"
         response = self._request("PATCH", endpoint, json=update_data)
         
-        if response.status_code in [200, 202]:
+        if response.status_code in [200, 202, 204]:  # 204 is also a success status
             logger.info(f"✅ Successfully updated WorkItem {project_id}/{item_id}")
             result = response.json() if response.text else {}
             return {

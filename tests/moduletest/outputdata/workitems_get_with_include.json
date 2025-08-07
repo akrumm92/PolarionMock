@@ -1,0 +1,248 @@
+{
+  "data": [
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "User story for authentication feature"
+        },
+        "id": "MP-1",
+        "priority": "high",
+        "severity": "not_applicable",
+        "status": "open",
+        "title": "As a user, I want to login",
+        "type": "userstory",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "myproject/MP-1",
+      "links": {
+        "portal": "/polarion/#/project/myproject/workitem?id=MP-1",
+        "self": "/polarion/rest/v1/projects/myproject/workitems/MP-1"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "myproject/_default/user_stories",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "attributes": {
+            "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+            "homePageContent": {
+              "type": "text/html",
+              "value": "<h1>User Stories</h1><p>Collection of user stories</p>"
+            },
+            "name": "user_stories",
+            "status": "draft",
+            "structureLinkRole": "parent",
+            "title": "User Stories",
+            "type": "generic",
+            "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+          },
+          "id": "myproject/_default/user_stories",
+          "links": {
+            "portal": "/polarion/#/project/myproject/wiki/user_stories",
+            "self": "/polarion/rest/v1/projects/myproject/spaces/_default/documents/user_stories"
+          },
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "Create RESTful API endpoints"
+        },
+        "id": "MP-2",
+        "priority": "high",
+        "severity": "not_applicable",
+        "status": "in_progress",
+        "title": "Implement REST API",
+        "type": "task",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "myproject/MP-2",
+      "links": {
+        "portal": "/polarion/#/project/myproject/workitem?id=MP-2",
+        "self": "/polarion/rest/v1/projects/myproject/workitems/MP-2"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "myproject/docs/api_spec",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "attributes": {
+            "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+            "homePageContent": {
+              "type": "text/html",
+              "value": "<h1>API Specification</h1><p>REST API specification document</p>"
+            },
+            "name": "api_spec",
+            "status": "draft",
+            "structureLinkRole": "parent",
+            "title": "API Specification",
+            "type": "generic",
+            "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+          },
+          "id": "myproject/docs/api_spec",
+          "links": {
+            "portal": "/polarion/#/project/myproject/wiki/api_spec",
+            "self": "/polarion/rest/v1/projects/myproject/spaces/docs/documents/api_spec"
+          },
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "POST /api/users returns internal server error"
+        },
+        "id": "MP-3",
+        "priority": "high",
+        "severity": "critical",
+        "status": "open",
+        "title": "API returns 500 error",
+        "type": "defect",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "myproject/MP-3",
+      "links": {
+        "portal": "/polarion/#/project/myproject/workitem?id=MP-3",
+        "self": "/polarion/rest/v1/projects/myproject/workitems/MP-3"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "myproject/docs/api_spec",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "attributes": {
+            "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+            "homePageContent": {
+              "type": "text/html",
+              "value": "<h1>API Specification</h1><p>REST API specification document</p>"
+            },
+            "name": "api_spec",
+            "status": "draft",
+            "structureLinkRole": "parent",
+            "title": "API Specification",
+            "type": "generic",
+            "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+          },
+          "id": "myproject/docs/api_spec",
+          "links": {
+            "portal": "/polarion/#/project/myproject/wiki/api_spec",
+            "self": "/polarion/rest/v1/projects/myproject/spaces/docs/documents/api_spec"
+          },
+          "type": "documents"
+        }
+      }
+    }
+  ],
+  "included": [
+    {
+      "attributes": {
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "homePageContent": {
+          "type": "text/html",
+          "value": "<h1>User Stories</h1><p>Collection of user stories</p>"
+        },
+        "name": "user_stories",
+        "status": "draft",
+        "structureLinkRole": "parent",
+        "title": "User Stories",
+        "type": "generic",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "myproject/_default/user_stories",
+      "links": {
+        "portal": "/polarion/#/project/myproject/wiki/user_stories",
+        "self": "/polarion/rest/v1/projects/myproject/spaces/_default/documents/user_stories"
+      },
+      "type": "documents"
+    },
+    {
+      "attributes": {
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "homePageContent": {
+          "type": "text/html",
+          "value": "<h1>API Specification</h1><p>REST API specification document</p>"
+        },
+        "name": "api_spec",
+        "status": "draft",
+        "structureLinkRole": "parent",
+        "title": "API Specification",
+        "type": "generic",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "myproject/docs/api_spec",
+      "links": {
+        "portal": "/polarion/#/project/myproject/wiki/api_spec",
+        "self": "/polarion/rest/v1/projects/myproject/spaces/docs/documents/api_spec"
+      },
+      "type": "documents"
+    },
+    {
+      "attributes": {
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "homePageContent": {
+          "type": "text/html",
+          "value": "<h1>API Specification</h1><p>REST API specification document</p>"
+        },
+        "name": "api_spec",
+        "status": "draft",
+        "structureLinkRole": "parent",
+        "title": "API Specification",
+        "type": "generic",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "myproject/docs/api_spec",
+      "links": {
+        "portal": "/polarion/#/project/myproject/wiki/api_spec",
+        "self": "/polarion/rest/v1/projects/myproject/spaces/docs/documents/api_spec"
+      },
+      "type": "documents"
+    }
+  ],
+  "links": {
+    "first": "http://localhost:5001/polarion/rest/v1/projects/myproject/workitems?include=author,module&page[number]=1",
+    "last": "http://localhost:5001/polarion/rest/v1/projects/myproject/workitems?include=author,module&page[number]=1",
+    "next": null,
+    "portal": "https://polarion.example.com/polarion/#/project/myproject/workitems",
+    "prev": null,
+    "self": "http://localhost:5001/polarion/rest/v1/projects/myproject/workitems?include=author,module"
+  }
+}

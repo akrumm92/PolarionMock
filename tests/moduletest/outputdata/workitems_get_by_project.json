@@ -32,7 +32,13 @@
           }
         }
       },
-      "type": "workitems"
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "myproject/_default/user_stories",
+          "type": "documents"
+        }
+      }
     },
     {
       "attributes": {
@@ -66,7 +72,13 @@
           }
         }
       },
-      "type": "workitems"
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "myproject/docs/api_spec",
+          "type": "documents"
+        }
+      }
     },
     {
       "attributes": {
@@ -100,12 +112,21 @@
           }
         }
       },
-      "type": "workitems"
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "myproject/docs/api_spec",
+          "type": "documents"
+        }
+      }
     }
   ],
-  "meta": {
-    "total": 3,
-    "pages": 1,
-    "timestamp": "2025-08-07T15:03:11.328206"
+  "links": {
+    "first": "http://localhost:5001/polarion/rest/v1/projects/myproject/workitems?page[number]=1",
+    "last": "http://localhost:5001/polarion/rest/v1/projects/myproject/workitems?page[number]=1",
+    "next": null,
+    "portal": "https://polarion.example.com/polarion/#/project/myproject/workitems",
+    "prev": null,
+    "self": "http://localhost:5001/polarion/rest/v1/projects/myproject/workitems"
   }
 }

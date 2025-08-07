@@ -1,0 +1,136 @@
+{
+  "data": [
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "Users shall be able to authenticate using email and password"
+        },
+        "id": "ELIB-1",
+        "priority": "high",
+        "severity": "not_applicable",
+        "status": "open",
+        "title": "User Authentication",
+        "type": "requirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "elibrary/ELIB-1",
+      "links": {
+        "portal": "/polarion/#/project/elibrary/workitem?id=ELIB-1",
+        "self": "/polarion/rest/v1/projects/elibrary/workitems/ELIB-1"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "elibrary/_default/requirements",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "elibrary/_default/requirements",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "Users shall be able to search books by title, author, or ISBN"
+        },
+        "id": "ELIB-2",
+        "priority": "high",
+        "severity": "not_applicable",
+        "status": "open",
+        "title": "Book Search",
+        "type": "requirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "elibrary/ELIB-2",
+      "links": {
+        "portal": "/polarion/#/project/elibrary/workitem?id=ELIB-2",
+        "self": "/polarion/rest/v1/projects/elibrary/workitems/ELIB-2"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "elibrary/_default/requirements",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "elibrary/_default/requirements",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "Login button does not respond on mobile devices"
+        },
+        "id": "ELIB-3",
+        "priority": "critical",
+        "severity": "major",
+        "status": "open",
+        "title": "Login Button Not Responsive",
+        "type": "defect",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "elibrary/ELIB-3",
+      "links": {
+        "portal": "/polarion/#/project/elibrary/workitem?id=ELIB-3",
+        "self": "/polarion/rest/v1/projects/elibrary/workitems/ELIB-3"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "elibrary/_default/requirements",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "elibrary/_default/requirements",
+          "type": "documents"
+        }
+      }
+    }
+  ],
+  "links": {
+    "first": "http://localhost:5001/polarion/rest/v1/documents/elibrary/_default/requirements/workitems?page%5Bnumber%5D=1&page%5Bsize%5D=100",
+    "last": "http://localhost:5001/polarion/rest/v1/documents/elibrary/_default/requirements/workitems?page%5Bnumber%5D=1&page%5Bsize%5D=100",
+    "self": "http://localhost:5001/polarion/rest/v1/documents/elibrary/_default/requirements/workitems?page%5Bnumber%5D=1&page%5Bsize%5D=100"
+  },
+  "meta": {
+    "currentPage": 1,
+    "pageCount": 3,
+    "pageSize": 100,
+    "totalCount": 3,
+    "totalPages": 1
+  }
+}

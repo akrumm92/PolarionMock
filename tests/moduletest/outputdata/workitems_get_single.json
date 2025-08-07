@@ -1,0 +1,25 @@
+{
+  "data": {
+    "attributes": {
+      "author": "admin",
+      "created": "Thu, 07 Aug 2025 13:03:27 GMT",
+      "description": {
+        "type": "text/html",
+        "value": "<p>Test work item created at 20250807_150327_9875</p>"
+      },
+      "id": "MP-12",
+      "priority": "high",
+      "severity": "major",
+      "status": "open",
+      "title": "Test Work Item 20250807_150327_9875",
+      "type": "requirement",
+      "updated": "Thu, 07 Aug 2025 13:03:27 GMT"
+    },
+    "id": "myproject/MP-12",
+    "links": {
+      "portal": "/polarion/#/project/myproject/workitem?id=MP-12",
+      "self": "/polarion/rest/v1/projects/myproject/workitems/MP-12"
+    },
+    "type": "workitems"
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "data": [
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 1</p>"
+        },
+        "id": "FCTS-9001",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 1",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9001",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9001",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9001"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 2</p>"
+        },
+        "id": "FCTS-9002",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 2",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9002",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9002",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9002"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 3</p>"
+        },
+        "id": "FCTS-9003",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 3",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9003",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9003",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9003"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 4</p>"
+        },
+        "id": "FCTS-9004",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 4",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9004",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9004",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9004"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 5</p>"
+        },
+        "id": "FCTS-9005",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 5",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9005",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9005",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9005"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    }
+  ],
+  "links": {
+    "first": "http://localhost:5001/polarion/rest/v1/all/workitems?page%5Bnumber%5D=1&page%5Bsize%5D=5",
+    "last": "http://localhost:5001/polarion/rest/v1/all/workitems?page%5Bnumber%5D=35&page%5Bsize%5D=5",
+    "next": "http://localhost:5001/polarion/rest/v1/all/workitems?page%5Bnumber%5D=2&page%5Bsize%5D=5",
+    "self": "http://localhost:5001/polarion/rest/v1/all/workitems?page%5Bnumber%5D=1&page%5Bsize%5D=5"
+  },
+  "meta": {
+    "currentPage": 1,
+    "pageCount": 5,
+    "pageSize": 5,
+    "totalCount": 175,
+    "totalPages": 35
+  }
+}

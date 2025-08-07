@@ -1,0 +1,4017 @@
+{
+  "data": [
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 1</p>"
+        },
+        "id": "FCTS-9001",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 1",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9001",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9001",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9001"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 2</p>"
+        },
+        "id": "FCTS-9002",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 2",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9002",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9002",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9002"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 3</p>"
+        },
+        "id": "FCTS-9003",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 3",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9003",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9003",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9003"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 4</p>"
+        },
+        "id": "FCTS-9004",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 4",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9004",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9004",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9004"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 5</p>"
+        },
+        "id": "FCTS-9005",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 5",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9005",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9005",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9005"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 6</p>"
+        },
+        "id": "FCTS-9006",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 6",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9006",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9006",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9006"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 7</p>"
+        },
+        "id": "FCTS-9007",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 7",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9007",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9007",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9007"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 8</p>"
+        },
+        "id": "FCTS-9008",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 8",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9008",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9008",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9008"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 9</p>"
+        },
+        "id": "FCTS-9009",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 9",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9009",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9009",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9009"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 10</p>"
+        },
+        "id": "FCTS-9010",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 10",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9010",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9010",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9010"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 11</p>"
+        },
+        "id": "FCTS-9011",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 11",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9011",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9011",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9011"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 12</p>"
+        },
+        "id": "FCTS-9012",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 12",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9012",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9012",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9012"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 13</p>"
+        },
+        "id": "FCTS-9013",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 13",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9013",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9013",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9013"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 14</p>"
+        },
+        "id": "FCTS-9014",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 14",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9014",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9014",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9014"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 15</p>"
+        },
+        "id": "FCTS-9015",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 15",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9015",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9015",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9015"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 16</p>"
+        },
+        "id": "FCTS-9016",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 16",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9016",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9016",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9016"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 17</p>"
+        },
+        "id": "FCTS-9017",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 17",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9017",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9017",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9017"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 18</p>"
+        },
+        "id": "FCTS-9018",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 18",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9018",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9018",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9018"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 19</p>"
+        },
+        "id": "FCTS-9019",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 19",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9019",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9019",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9019"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 20</p>"
+        },
+        "id": "FCTS-9020",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 20",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9020",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9020",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9020"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 21</p>"
+        },
+        "id": "FCTS-9021",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 21",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9021",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9021",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9021"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 22</p>"
+        },
+        "id": "FCTS-9022",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 22",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9022",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9022",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9022"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 23</p>"
+        },
+        "id": "FCTS-9023",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 23",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9023",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9023",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9023"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 24</p>"
+        },
+        "id": "FCTS-9024",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 24",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9024",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9024",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9024"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 25</p>"
+        },
+        "id": "FCTS-9025",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 25",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9025",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9025",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9025"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 26</p>"
+        },
+        "id": "FCTS-9026",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 26",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9026",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9026",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9026"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 27</p>"
+        },
+        "id": "FCTS-9027",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 27",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9027",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9027",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9027"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 28</p>"
+        },
+        "id": "FCTS-9028",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 28",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9028",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9028",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9028"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 29</p>"
+        },
+        "id": "FCTS-9029",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 29",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9029",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9029",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9029"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 30</p>"
+        },
+        "id": "FCTS-9030",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 30",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9030",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9030",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9030"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 31</p>"
+        },
+        "id": "FCTS-9031",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 31",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9031",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9031",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9031"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 32</p>"
+        },
+        "id": "FCTS-9032",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 32",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9032",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9032",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9032"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 33</p>"
+        },
+        "id": "FCTS-9033",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 33",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9033",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9033",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9033"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 34</p>"
+        },
+        "id": "FCTS-9034",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 34",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9034",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9034",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9034"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 35</p>"
+        },
+        "id": "FCTS-9035",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 35",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9035",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9035",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9035"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 36</p>"
+        },
+        "id": "FCTS-9036",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 36",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9036",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9036",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9036"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 37</p>"
+        },
+        "id": "FCTS-9037",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 37",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9037",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9037",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9037"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 38</p>"
+        },
+        "id": "FCTS-9038",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 38",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9038",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9038",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9038"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 39</p>"
+        },
+        "id": "FCTS-9039",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 39",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9039",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9039",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9039"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 40</p>"
+        },
+        "id": "FCTS-9040",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 40",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9040",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9040",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9040"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 41</p>"
+        },
+        "id": "FCTS-9041",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 41",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9041",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9041",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9041"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 42</p>"
+        },
+        "id": "FCTS-9042",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 42",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9042",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9042",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9042"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 43</p>"
+        },
+        "id": "FCTS-9043",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 43",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9043",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9043",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9043"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 44</p>"
+        },
+        "id": "FCTS-9044",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 44",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9044",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9044",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9044"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 45</p>"
+        },
+        "id": "FCTS-9045",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 45",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9045",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9045",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9045"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 46</p>"
+        },
+        "id": "FCTS-9046",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 46",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9046",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9046",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9046"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 47</p>"
+        },
+        "id": "FCTS-9047",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 47",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9047",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9047",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9047"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 48</p>"
+        },
+        "id": "FCTS-9048",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 48",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9048",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9048",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9048"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 49</p>"
+        },
+        "id": "FCTS-9049",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 49",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9049",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9049",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9049"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 50</p>"
+        },
+        "id": "FCTS-9050",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 50",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9050",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9050",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9050"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 51</p>"
+        },
+        "id": "FCTS-9051",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 51",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9051",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9051",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9051"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 52</p>"
+        },
+        "id": "FCTS-9052",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 52",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9052",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9052",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9052"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 53</p>"
+        },
+        "id": "FCTS-9053",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 53",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9053",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9053",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9053"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 54</p>"
+        },
+        "id": "FCTS-9054",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 54",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9054",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9054",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9054"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 55</p>"
+        },
+        "id": "FCTS-9055",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 55",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9055",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9055",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9055"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 56</p>"
+        },
+        "id": "FCTS-9056",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 56",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9056",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9056",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9056"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 57</p>"
+        },
+        "id": "FCTS-9057",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 57",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9057",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9057",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9057"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 58</p>"
+        },
+        "id": "FCTS-9058",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 58",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9058",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9058",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9058"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 59</p>"
+        },
+        "id": "FCTS-9059",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 59",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9059",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9059",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9059"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 60</p>"
+        },
+        "id": "FCTS-9060",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 60",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9060",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9060",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9060"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 61</p>"
+        },
+        "id": "FCTS-9061",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 61",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9061",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9061",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9061"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 62</p>"
+        },
+        "id": "FCTS-9062",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 62",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9062",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9062",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9062"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 63</p>"
+        },
+        "id": "FCTS-9063",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 63",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9063",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9063",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9063"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 64</p>"
+        },
+        "id": "FCTS-9064",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 64",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9064",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9064",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9064"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 65</p>"
+        },
+        "id": "FCTS-9065",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 65",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9065",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9065",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9065"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 66</p>"
+        },
+        "id": "FCTS-9066",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 66",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9066",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9066",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9066"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 67</p>"
+        },
+        "id": "FCTS-9067",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 67",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9067",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9067",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9067"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 68</p>"
+        },
+        "id": "FCTS-9068",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 68",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9068",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9068",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9068"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 69</p>"
+        },
+        "id": "FCTS-9069",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 69",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9069",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9069",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9069"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 70</p>"
+        },
+        "id": "FCTS-9070",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 70",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9070",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9070",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9070"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 71</p>"
+        },
+        "id": "FCTS-9071",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 71",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9071",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9071",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9071"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 72</p>"
+        },
+        "id": "FCTS-9072",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 72",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9072",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9072",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9072"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 73</p>"
+        },
+        "id": "FCTS-9073",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 73",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9073",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9073",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9073"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 74</p>"
+        },
+        "id": "FCTS-9074",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 74",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9074",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9074",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9074"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 75</p>"
+        },
+        "id": "FCTS-9075",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 75",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9075",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9075",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9075"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 76</p>"
+        },
+        "id": "FCTS-9076",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 76",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9076",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9076",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9076"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 77</p>"
+        },
+        "id": "FCTS-9077",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 77",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9077",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9077",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9077"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 78</p>"
+        },
+        "id": "FCTS-9078",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 78",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9078",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9078",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9078"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 79</p>"
+        },
+        "id": "FCTS-9079",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 79",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9079",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9079",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9079"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 80</p>"
+        },
+        "id": "FCTS-9080",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 80",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9080",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9080",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9080"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 81</p>"
+        },
+        "id": "FCTS-9081",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 81",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9081",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9081",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9081"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 82</p>"
+        },
+        "id": "FCTS-9082",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 82",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9082",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9082",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9082"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 83</p>"
+        },
+        "id": "FCTS-9083",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 83",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9083",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9083",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9083"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 84</p>"
+        },
+        "id": "FCTS-9084",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 84",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9084",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9084",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9084"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 85</p>"
+        },
+        "id": "FCTS-9085",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 85",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9085",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9085",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9085"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 86</p>"
+        },
+        "id": "FCTS-9086",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 86",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9086",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9086",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9086"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 87</p>"
+        },
+        "id": "FCTS-9087",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 87",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9087",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9087",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9087"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 88</p>"
+        },
+        "id": "FCTS-9088",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 88",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9088",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9088",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9088"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 89</p>"
+        },
+        "id": "FCTS-9089",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 89",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9089",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9089",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9089"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 90</p>"
+        },
+        "id": "FCTS-9090",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 90",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9090",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9090",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9090"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 91</p>"
+        },
+        "id": "FCTS-9091",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 91",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9091",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9091",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9091"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 92</p>"
+        },
+        "id": "FCTS-9092",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 92",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9092",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9092",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9092"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 93</p>"
+        },
+        "id": "FCTS-9093",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 93",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9093",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9093",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9093"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 94</p>"
+        },
+        "id": "FCTS-9094",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 94",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9094",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9094",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9094"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 95</p>"
+        },
+        "id": "FCTS-9095",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 95",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9095",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9095",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9095"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 96</p>"
+        },
+        "id": "FCTS-9096",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 96",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9096",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9096",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9096"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 97</p>"
+        },
+        "id": "FCTS-9097",
+        "priority": "100.0",
+        "severity": "minor",
+        "status": "approved",
+        "title": "Functional Safety Requirement 97",
+        "type": "softwarerequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9097",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9097",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9097"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Domain Layer/Software Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Domain Layer/Software Requirement Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 98</p>"
+        },
+        "id": "FCTS-9098",
+        "priority": "150.0",
+        "severity": "major",
+        "status": "implemented",
+        "title": "Functional Safety Requirement 98",
+        "type": "functionalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9098",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9098",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9098"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Functional Layer/Functional Concept",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Functional Layer/Functional Concept",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 99</p>"
+        },
+        "id": "FCTS-9099",
+        "priority": "200.0",
+        "severity": "critical",
+        "status": "verified",
+        "title": "Functional Safety Requirement 99",
+        "type": "technicalrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9099",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9099",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9099"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Product Layer/Product Requirements Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Product Layer/Product Requirements Specification",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Safety Attributes need to be filled out for requirement 100</p>"
+        },
+        "id": "FCTS-9100",
+        "priority": "50.0",
+        "severity": "not_applicable",
+        "status": "proposed",
+        "title": "Functional Safety Requirement 100",
+        "type": "componentrequirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "Python/FCTS-9100",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9100",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9100"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/Component Layer/Component Requirement Specification",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/Component Layer/Component Requirement Specification",
+          "type": "documents"
+        }
+      }
+    }
+  ],
+  "links": {
+    "first": "http://localhost:5001/polarion/rest/v1/all/workitems?page%5Bnumber%5D=1&page%5Bsize%5D=100",
+    "last": "http://localhost:5001/polarion/rest/v1/all/workitems?page%5Bnumber%5D=2&page%5Bsize%5D=100",
+    "next": "http://localhost:5001/polarion/rest/v1/all/workitems?page%5Bnumber%5D=2&page%5Bsize%5D=100",
+    "self": "http://localhost:5001/polarion/rest/v1/all/workitems?page%5Bnumber%5D=1&page%5Bsize%5D=100"
+  },
+  "meta": {
+    "currentPage": 1,
+    "pageCount": 100,
+    "pageSize": 100,
+    "totalCount": 175,
+    "totalPages": 2
+  }
+}

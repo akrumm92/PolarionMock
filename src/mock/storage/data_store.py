@@ -104,6 +104,11 @@ class DataStore:
              "Product Requirements Specification",
              "Product requirements document"),
             
+            # Python _default space document (for tests)
+            ("Python", "_default", "Functional Concept - Template",
+             "Functional Concept - Template",
+             "Template document for functional concepts"),
+            
             # eLibrary project documents
             ("elibrary", "_default", "requirements", "Requirements Specification",
              "Requirements document for eLibrary system"),

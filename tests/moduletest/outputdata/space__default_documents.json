@@ -1,0 +1,23 @@
+{
+  "project": "myproject",
+  "space": "_default",
+  "documents": [
+    {
+      "id": "myproject/_default/user_stories",
+      "project": "myproject",
+      "space": "_default",
+      "name": "user_stories",
+      "work_item_refs": [
+        "myproject/MP-1"
+      ],
+      "structure": {
+        "headers": [],
+        "total_headers": 0,
+        "structure_summary": []
+      }
+    }
+  ],
+  "statistics": {
+    "total_documents": 1
+  }
+}

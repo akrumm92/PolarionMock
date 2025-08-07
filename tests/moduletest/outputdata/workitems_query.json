@@ -1,0 +1,396 @@
+{
+  "data": [
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "Users shall be able to authenticate using email and password"
+        },
+        "id": "ELIB-1",
+        "priority": "high",
+        "severity": "not_applicable",
+        "status": "open",
+        "title": "User Authentication",
+        "type": "requirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "elibrary/ELIB-1",
+      "links": {
+        "portal": "/polarion/#/project/elibrary/workitem?id=ELIB-1",
+        "self": "/polarion/rest/v1/projects/elibrary/workitems/ELIB-1"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "elibrary/_default/requirements",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "elibrary/_default/requirements",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "Users shall be able to search books by title, author, or ISBN"
+        },
+        "id": "ELIB-2",
+        "priority": "high",
+        "severity": "not_applicable",
+        "status": "open",
+        "title": "Book Search",
+        "type": "requirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "elibrary/ELIB-2",
+      "links": {
+        "portal": "/polarion/#/project/elibrary/workitem?id=ELIB-2",
+        "self": "/polarion/rest/v1/projects/elibrary/workitems/ELIB-2"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "elibrary/_default/requirements",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "elibrary/_default/requirements",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "assignee": [
+          "john.doe"
+        ],
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:43 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "System shall engage emergency braking when obstacle detected"
+        },
+        "id": "AUTO-1",
+        "priority": "critical",
+        "severity": "not_applicable",
+        "status": "approved",
+        "title": "Emergency Braking",
+        "type": "requirement",
+        "updated": "Thu, 07 Aug 2025 12:31:43 GMT"
+      },
+      "id": "automotive/AUTO-1",
+      "links": {
+        "portal": "/polarion/#/project/automotive/workitem?id=AUTO-1",
+        "self": "/polarion/rest/v1/projects/automotive/workitems/AUTO-1"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "automotive/_default/safety_req",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "automotive/_default/safety_req",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:59 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Approved by team</p><p>Updated at 2025-08-07T14:31:59.985204</p>"
+        },
+        "id": "FCTS-9155",
+        "priority": "80.0",
+        "severity": "must_be",
+        "status": "Accepted by project",
+        "title": "Updated Requirement 20250807_143159 - Accepted by project",
+        "type": "requirement",
+        "updated": "Thu, 07 Aug 2025 12:31:59 GMT"
+      },
+      "id": "Python/FCTS-9155",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9155",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9155"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/_default/Functional Concept - Template",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/_default/Functional Concept - Template",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:31:59 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>This requirement blocks Python/FCTS-9155</p>"
+        },
+        "id": "FCTS-9157",
+        "priority": "90.0",
+        "severity": "must_be",
+        "status": "draft",
+        "title": "Blocking Requirement 20250807_143159",
+        "type": "requirement",
+        "updated": "Thu, 07 Aug 2025 12:31:59 GMT"
+      },
+      "id": "Python/FCTS-9157",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9157",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9157"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/_default/Functional Concept - Template",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/_default/Functional Concept - Template",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:32:00 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Testing severity updates</p>"
+        },
+        "id": "FCTS-9158",
+        "priority": "50.0",
+        "severity": "can_be",
+        "status": "draft",
+        "title": "Severity Test 20250807_143200",
+        "type": "requirement",
+        "updated": "Thu, 07 Aug 2025 12:32:00 GMT"
+      },
+      "id": "Python/FCTS-9158",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9158",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9158"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/_default/Functional Concept - Template",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/_default/Functional Concept - Template",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:32:00 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Source work item for link deletion test</p>"
+        },
+        "id": "FCTS-9159",
+        "priority": "50.0",
+        "severity": "must_have",
+        "status": "draft",
+        "title": "Link Test Source 20250807_143200",
+        "type": "requirement",
+        "updated": "Thu, 07 Aug 2025 12:32:00 GMT"
+      },
+      "id": "Python/FCTS-9159",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9159",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9159"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/_default/Functional Concept - Template",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/_default/Functional Concept - Template",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:32:00 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Target work item for link deletion test</p>"
+        },
+        "id": "FCTS-9160",
+        "priority": "50.0",
+        "severity": "must_have",
+        "status": "draft",
+        "title": "Link Test Target 20250807_143200",
+        "type": "requirement",
+        "updated": "Thu, 07 Aug 2025 12:32:00 GMT"
+      },
+      "id": "Python/FCTS-9160",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9160",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9160"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/_default/Functional Concept - Template",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/_default/Functional Concept - Template",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:32:08 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>Approved by team</p><p>Updated at 2025-08-07T14:32:08.318942</p>"
+        },
+        "id": "FCTS-9161",
+        "priority": "80.0",
+        "severity": "must_be",
+        "status": "Accepted by project",
+        "title": "Updated Requirement 20250807_143208 - Accepted by project",
+        "type": "requirement",
+        "updated": "Thu, 07 Aug 2025 12:32:08 GMT"
+      },
+      "id": "Python/FCTS-9161",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9161",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9161"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/_default/Functional Concept - Template",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/_default/Functional Concept - Template",
+          "type": "documents"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "author": "admin",
+        "created": "Thu, 07 Aug 2025 12:32:08 GMT",
+        "description": {
+          "type": "text/html",
+          "value": "<p>This requirement blocks Python/FCTS-9161</p>"
+        },
+        "id": "FCTS-9163",
+        "priority": "90.0",
+        "severity": "must_be",
+        "status": "draft",
+        "title": "Blocking Requirement 20250807_143208",
+        "type": "requirement",
+        "updated": "Thu, 07 Aug 2025 12:32:08 GMT"
+      },
+      "id": "Python/FCTS-9163",
+      "links": {
+        "portal": "/polarion/#/project/Python/workitem?id=FCTS-9163",
+        "self": "/polarion/rest/v1/projects/Python/workitems/FCTS-9163"
+      },
+      "relationships": {
+        "module": {
+          "data": {
+            "id": "Python/_default/Functional Concept - Template",
+            "type": "documents"
+          }
+        }
+      },
+      "type": "workitems",
+      "resolved_relationships": {
+        "module": {
+          "id": "Python/_default/Functional Concept - Template",
+          "type": "documents"
+        }
+      }
+    }
+  ],
+  "links": {
+    "first": "http://localhost:5001/polarion/rest/v1/all/workitems?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "http://localhost:5001/polarion/rest/v1/all/workitems?page%5Bnumber%5D=2&page%5Bsize%5D=10",
+    "next": "http://localhost:5001/polarion/rest/v1/all/workitems?page%5Bnumber%5D=2&page%5Bsize%5D=10",
+    "self": "http://localhost:5001/polarion/rest/v1/all/workitems?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  },
+  "meta": {
+    "currentPage": 1,
+    "pageCount": 10,
+    "pageSize": 10,
+    "totalCount": 13,
+    "totalPages": 2
+  }
+}

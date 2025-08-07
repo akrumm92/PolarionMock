@@ -319,6 +319,132 @@ def delete_workitem(project_id: str, workitem_id: str):
     return '', 204
 
 
+@bp.route('/projects/<project_id>/workitems/<workitem_id>/linkedworkitems', methods=['GET'])
+@require_auth
+def list_linked_workitems(project_id: str, workitem_id: str):
+    """List linked work items."""
+    full_id = f"{project_id}/{workitem_id}"
+    
+    # Check if work item exists
+    workitem = data_store.workitems.get(full_id)
+    if not workitem:
+        raise NotFoundError("workitems", full_id)
+    
+    # Get linked work items
+    linked_items = []
+    if hasattr(workitem, 'linkedWorkItems'):
+        linked_items = workitem.linkedWorkItems
+    
+    return jsonify({
+        'data': linked_items,
+        'links': {
+            'self': request.url
+        }
+    })
+
+
+@bp.route('/projects/<project_id>/workitems/<workitem_id>/linkedworkitems', methods=['POST'])
+@require_auth
+def create_linked_workitem(project_id: str, workitem_id: str):
+    """Create a link between work items."""
+    full_id = f"{project_id}/{workitem_id}"
+    
+    # Check if work item exists
+    workitem = data_store.workitems.get(full_id)
+    if not workitem:
+        raise NotFoundError("workitems", full_id)
+    
+    # Get request data
+    if not request.is_json:
+        raise ValidationError("Request must be JSON")
+    
+    data = request.get_json()
+    if 'data' not in data or not isinstance(data['data'], list):
+        raise ValidationError("Request must contain 'data' array")
+    
+    created_links = []
+    for link_data in data['data']:
+        if link_data.get('type') != 'linkedworkitems':
+            raise ValidationError("Invalid type, expected 'linkedworkitems'")
+        
+        # Get role and target work item
+        role = link_data.get('attributes', {}).get('role', 'relates_to')
+        target_wi = link_data.get('relationships', {}).get('workItem', {}).get('data', {})
+        target_id = target_wi.get('id')
+        
+        if not target_id:
+            raise ValidationError("Target work item ID is required")
+        
+        # Check if target work item exists
+        if target_id not in data_store.workitems:
+            raise NotFoundError("workitems", target_id)
+        
+        # Initialize linkedWorkItems if not exists
+        if not hasattr(workitem, 'linkedWorkItems'):
+            workitem.linkedWorkItems = []
+        
+        # Check if link already exists
+        existing_link = next((l for l in workitem.linkedWorkItems 
+                             if l.get('role') == role and 
+                             l.get('workItem', {}).get('id') == target_id), None)
+        
+        if existing_link:
+            raise ConflictError(f"Link with role '{role}' to {target_id} already exists")
+        
+        # Create the link
+        link = {
+            'type': 'linkedworkitems',
+            'id': f"{full_id}/{role}/{target_id}",
+            'attributes': {
+                'role': role,
+                'suspect': link_data.get('attributes', {}).get('suspect', False)
+            },
+            'relationships': {
+                'workItem': {
+                    'data': {
+                        'type': 'workitems',
+                        'id': target_id
+                    }
+                }
+            }
+        }
+        
+        workitem.linkedWorkItems.append(link)
+        created_links.append(link)
+        
+        logger.info(f"Created link: {full_id} --[{role}]--> {target_id}")
+    
+    return jsonify({'data': created_links}), 201
+
+
+@bp.route('/projects/<project_id>/workitems/<workitem_id>/linkedworkitems/<role>/<path:target_id>', methods=['DELETE'])
+@require_auth
+def delete_linked_workitem(project_id: str, workitem_id: str, role: str, target_id: str):
+    """Delete a link between work items."""
+    full_id = f"{project_id}/{workitem_id}"
+    
+    # Check if work item exists
+    workitem = data_store.workitems.get(full_id)
+    if not workitem:
+        raise NotFoundError("workitems", full_id)
+    
+    # Find and remove the link
+    if hasattr(workitem, 'linkedWorkItems'):
+        original_count = len(workitem.linkedWorkItems)
+        workitem.linkedWorkItems = [
+            l for l in workitem.linkedWorkItems
+            if not (l.get('attributes', {}).get('role') == role and
+                   l.get('relationships', {}).get('workItem', {}).get('data', {}).get('id') == target_id)
+        ]
+        
+        if len(workitem.linkedWorkItems) < original_count:
+            logger.info(f"Deleted link: {full_id} --[{role}]-X-> {target_id}")
+            return '', 204
+    
+    # Link not found
+    raise NotFoundError("linkedworkitems", f"{role}/{target_id}")
+
+
 @bp.route('/projects/<project_id>/workitems/<workitem_id>/actions/moveToDocument', methods=['POST'])
 @require_auth
 def move_workitem_to_document(project_id: str, workitem_id: str):

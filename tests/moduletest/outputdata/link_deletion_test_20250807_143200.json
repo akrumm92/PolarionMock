@@ -1,0 +1,38 @@
+{
+  "timestamp": "20250807_143200",
+  "work_items": {
+    "source": "Python/FCTS-9159",
+    "target": "Python/FCTS-9160"
+  },
+  "created_links": [
+    [
+      "Python/FCTS-9159",
+      "Python/FCTS-9160",
+      "relates_to"
+    ],
+    [
+      "Python/FCTS-9159",
+      "Python/FCTS-9160",
+      "depends_on"
+    ],
+    [
+      "Python/FCTS-9159",
+      "Python/FCTS-9160",
+      "blocks"
+    ]
+  ],
+  "deletion_results": [
+    {
+      "role": "relates_to",
+      "status": "success"
+    },
+    {
+      "role": "depends_on",
+      "status": "success"
+    },
+    {
+      "role": "blocks",
+      "status": "success"
+    }
+  ]
+}

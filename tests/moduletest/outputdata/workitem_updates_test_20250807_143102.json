@@ -1,0 +1,79 @@
+{
+  "timestamp": "20250807_143102",
+  "test": "complete_workitem_lifecycle",
+  "steps": [
+    {
+      "step": "create_workitem_1",
+      "status": "success",
+      "work_item_id": "Python/FCTS-9155"
+    },
+    {
+      "step": "update_status_proposed",
+      "status": "failed",
+      "error": "API returned 204"
+    },
+    {
+      "step": "update_status_ready_for_review",
+      "status": "failed",
+      "error": "API returned 204"
+    },
+    {
+      "step": "update_status_to_clarify",
+      "status": "failed",
+      "error": "API returned 204"
+    },
+    {
+      "step": "update_status_accepted_by_project",
+      "status": "failed",
+      "error": "API returned 204"
+    },
+    {
+      "step": "create_workitem_2",
+      "status": "success",
+      "work_item_id": "Python/FCTS-9156"
+    },
+    {
+      "step": "create_workitem_3",
+      "status": "success",
+      "work_item_id": "Python/FCTS-9157"
+    },
+    {
+      "step": "create_link_verifies",
+      "status": "success",
+      "source": "Python/FCTS-9156",
+      "target": "Python/FCTS-9155",
+      "role": "verifies"
+    },
+    {
+      "step": "create_link_depends_on",
+      "status": "success",
+      "source": "Python/FCTS-9155",
+      "target": "Python/FCTS-9157",
+      "role": "depends_on"
+    },
+    {
+      "step": "create_link_blocks",
+      "status": "success",
+      "source": "Python/FCTS-9157",
+      "target": "Python/FCTS-9155",
+      "role": "blocks"
+    },
+    {
+      "step": "create_link_relates_to",
+      "status": "success",
+      "source": "Python/FCTS-9155",
+      "target": "Python/FCTS-9156",
+      "role": "relates_to"
+    },
+    {
+      "step": "verify_updates",
+      "status": "success",
+      "work_item": {
+        "id": "Python/FCTS-9155",
+        "title": "Updated Requirement 20250807_143102 - Accepted by project",
+        "status": "Accepted by project",
+        "severity": "must_be"
+      }
+    }
+  ]
+}

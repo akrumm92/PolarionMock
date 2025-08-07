@@ -1,6 +1,200 @@
-{"timestamp": "2025-08-06T10:23:00.857324+00:00", "level": null, "name": "src.mock.app", "message": "Polarion Mock Server initialized", "taskName": null}
-{"timestamp": "2025-08-06T10:23:00.857442+00:00", "level": null, "name": "src.mock.app", "message": "Starting Polarion Mock Server on 0.0.0.0:5001", "taskName": null}
+{"timestamp": "2025-08-07T12:27:45.958511+00:00", "level": null, "name": "src.mock.app", "message": "Polarion Mock Server initialized", "taskName": null}
+{"timestamp": "2025-08-07T12:27:45.958611+00:00", "level": null, "name": "src.mock.app", "message": "Starting Polarion Mock Server on 0.0.0.0:5001", "taskName": null}
  * Serving Flask app 'src.mock.app'
  * Debug mode: on
-Address already in use
-Port 5001 is in use by another program. Either identify and stop that program, or start the server with a different port.
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.188.87:5001
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+{"timestamp": "2025-08-07T12:27:46.186677+00:00", "level": null, "name": "src.mock.app", "message": "Polarion Mock Server initialized", "taskName": null}
+{"timestamp": "2025-08-07T12:27:46.186762+00:00", "level": null, "name": "src.mock.app", "message": "Starting Polarion Mock Server on 0.0.0.0:5001", "taskName": null}
+ * Debugger is active!
+ * Debugger PIN: 147-508-407
+127.0.0.1 - - [07/Aug/2025 14:27:53] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 14:28:00] "[31m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 401 -
+Document Python/_default/Functional Concept - Template not found for work item Python/FCTS-9155
+127.0.0.1 - - [07/Aug/2025 14:28:44] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+API Error: documents with id 'Python/_default/Functional Concept - Template' not found
+127.0.0.1 - - [07/Aug/2025 14:28:44] "[33mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 404 -
+ * Detected change in '/Users/alexanderkrumm/Git-Repos/PolarionMock/src/mock/storage/data_store.py', reloading
+ * Restarting with stat
+{"timestamp": "2025-08-07T12:29:48.864420+00:00", "level": null, "name": "src.mock.app", "message": "Polarion Mock Server initialized", "taskName": null}
+{"timestamp": "2025-08-07T12:29:48.864508+00:00", "level": null, "name": "src.mock.app", "message": "Starting Polarion Mock Server on 0.0.0.0:5001", "taskName": null}
+ * Debugger is active!
+ * Debugger PIN: 147-508-407
+ * Detected change in '/Users/alexanderkrumm/Git-Repos/PolarionMock/src/mock/api/workitems.py', reloading
+ * Restarting with stat
+{"timestamp": "2025-08-07T12:30:46.655168+00:00", "level": null, "name": "src.mock.app", "message": "Polarion Mock Server initialized", "taskName": null}
+{"timestamp": "2025-08-07T12:30:46.655287+00:00", "level": null, "name": "src.mock.app", "message": "Starting Polarion Mock Server on 0.0.0.0:5001", "taskName": null}
+ * Debugger is active!
+ * Debugger PIN: 147-508-407
+127.0.0.1 - - [07/Aug/2025 14:31:02] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:02] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:02] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9155 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:31:02] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9155 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:31:02] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9155 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:31:02] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9155 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:31:02] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:02] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:02] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:02] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:02] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9156/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:02] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9155/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:02] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9157/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:02] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9155/linkedworkitems HTTP/1.1[0m" 201 -
+/Users/alexanderkrumm/Git-Repos/PolarionMock/venv/lib/python3.13/site-packages/pydantic/main.py:426: UserWarning: Pydantic serializer warnings:
+  Expected `Description` but got `dict` with value `{'type': 'text/html', 'va...07T14:31:02.282942</p>'}` - serialized value may not be as expected
+  return self.__pydantic_serializer__.to_python(
+127.0.0.1 - - [07/Aug/2025 14:31:02] "GET /polarion/rest/v1/projects/Python/workitems/FCTS-9155?fields[workitems]=@all&include=linkedWorkItems HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 14:31:12] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:12] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:12] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:12] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:12] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9158/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:12] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9158/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:12] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9158/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:12] "[35m[1mDELETE /polarion/rest/v1/projects/Python/workitems/FCTS-9158/linkedworkitems/relates_to/Python/FCTS-9159 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:31:12] "[35m[1mDELETE /polarion/rest/v1/projects/Python/workitems/FCTS-9158/linkedworkitems/depends_on/Python/FCTS-9159 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:31:12] "[35m[1mDELETE /polarion/rest/v1/projects/Python/workitems/FCTS-9158/linkedworkitems/blocks/Python/FCTS-9159 HTTP/1.1[0m" 204 -
+ * Detected change in '/Users/alexanderkrumm/Git-Repos/PolarionMock/src/polarion_api/work_items.py', reloading
+ * Restarting with stat
+{"timestamp": "2025-08-07T12:31:43.562494+00:00", "level": null, "name": "src.mock.app", "message": "Polarion Mock Server initialized", "taskName": null}
+{"timestamp": "2025-08-07T12:31:43.562591+00:00", "level": null, "name": "src.mock.app", "message": "Starting Polarion Mock Server on 0.0.0.0:5001", "taskName": null}
+ * Debugger is active!
+ * Debugger PIN: 147-508-407
+127.0.0.1 - - [07/Aug/2025 14:31:59] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:59] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:59] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9155 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:31:59] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9155 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:31:59] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9155 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:31:59] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9155 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:31:59] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:59] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:59] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:59] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:59] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9156/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:59] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9155/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:59] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9157/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:31:59] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9155/linkedworkitems HTTP/1.1[0m" 201 -
+/Users/alexanderkrumm/Git-Repos/PolarionMock/venv/lib/python3.13/site-packages/pydantic/main.py:426: UserWarning: Pydantic serializer warnings:
+  Expected `Description` but got `dict` with value `{'type': 'text/html', 'va...07T14:31:59.985204</p>'}` - serialized value may not be as expected
+  return self.__pydantic_serializer__.to_python(
+127.0.0.1 - - [07/Aug/2025 14:31:59] "GET /polarion/rest/v1/projects/Python/workitems/FCTS-9155?fields[workitems]=@all&include=linkedWorkItems HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9158 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9158 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9158 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9158 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9158 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9159/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9159/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9159/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mDELETE /polarion/rest/v1/projects/Python/workitems/FCTS-9159/linkedworkitems/relates_to/Python/FCTS-9160 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mDELETE /polarion/rest/v1/projects/Python/workitems/FCTS-9159/linkedworkitems/depends_on/Python/FCTS-9160 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:00] "[35m[1mDELETE /polarion/rest/v1/projects/Python/workitems/FCTS-9159/linkedworkitems/blocks/Python/FCTS-9160 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9161 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9161 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9161 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9161 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9162/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9161/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9163/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9161/linkedworkitems HTTP/1.1[0m" 201 -
+/Users/alexanderkrumm/Git-Repos/PolarionMock/venv/lib/python3.13/site-packages/pydantic/main.py:426: UserWarning: Pydantic serializer warnings:
+  Expected `Description` but got `dict` with value `{'type': 'text/html', 'va...07T14:32:08.318942</p>'}` - serialized value may not be as expected
+  return self.__pydantic_serializer__.to_python(
+127.0.0.1 - - [07/Aug/2025 14:32:08] "GET /polarion/rest/v1/projects/Python/workitems/FCTS-9161?fields[workitems]=@all&include=linkedWorkItems HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9164 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9164 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9164 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9164 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPATCH /polarion/rest/v1/projects/Python/workitems/FCTS-9164 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9165/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9165/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mPOST /polarion/rest/v1/projects/Python/workitems/FCTS-9165/linkedworkitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mDELETE /polarion/rest/v1/projects/Python/workitems/FCTS-9165/linkedworkitems/relates_to/Python/FCTS-9166 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mDELETE /polarion/rest/v1/projects/Python/workitems/FCTS-9165/linkedworkitems/depends_on/Python/FCTS-9166 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 14:32:08] "[35m[1mDELETE /polarion/rest/v1/projects/Python/workitems/FCTS-9165/linkedworkitems/blocks/Python/FCTS-9166 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:02:55] "GET /polarion/rest/v1/all/workitems HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:02:55] "GET /polarion/rest/v1/projects/myproject/workitems?page[size]=5 HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/workitems?page[size]=100&page[number]=1&fields[workitems]=@all&fields[documents]=@all HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/spaces/_default/documents/user_stories/parts HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/spaces/docs/documents/api_spec/parts HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/workitems?page[size]=100&page[number]=1&fields[workitems]=@all&fields[documents]=@all HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/spaces/_default/documents/user_stories/parts HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/spaces/docs/documents/api_spec/parts HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/workitems?page[size]=100&page[number]=1&fields[workitems]=@all&fields[documents]=@all HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/spaces/_default/documents/user_stories/parts HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/spaces/docs/documents/api_spec/parts HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/workitems?page[size]=100&page[number]=1&fields[workitems]=@all&fields[documents]=@all HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/spaces/_default/documents/user_stories/parts HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/spaces/docs/documents/api_spec/parts HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/workitems?page[size]=100&page[number]=1&fields[workitems]=@all&fields[documents]=@all HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/spaces/_default/documents/user_stories/parts HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/spaces/docs/documents/api_spec/parts HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/workitems?page[size]=100&page[number]=1&fields[workitems]=@all&fields[documents]=@all HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/spaces/_default/documents/user_stories/parts HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:11] "GET /polarion/rest/v1/projects/myproject/spaces/docs/documents/api_spec/parts HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "GET /polarion/rest/v1/all/workitems HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "GET /polarion/rest/v1/projects/myproject/workitems?page[size]=5 HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "GET /polarion/rest/v1/projects/myproject/workitems HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "GET /polarion/rest/v1/all/workitems?page[size]=5&page[number]=1 HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "GET /polarion/rest/v1/projects/myproject/workitems?include=author,module HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "GET /polarion/rest/v1/all/workitems?page[size]=10&query=type:requirement HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mPOST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-4 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mPOST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-5 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mPOST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-6 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mPOST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-7 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-8 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mPOST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-9 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-10 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-11 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mPOST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "GET /polarion/rest/v1/projects/myproject/workitems/MP-12 HTTP/1.1" 200 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-12 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mPOST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-13 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mPOST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 15:03:27] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-14 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:28] "[35m[1mPOST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 15:03:28] "[35m[1mPOST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 15:03:28] "[35m[1mPATCH /polarion/rest/v1/projects/myproject/workitems/MP-16 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:28] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-15 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:28] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-16 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:28] "[35m[1mPOST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 15:03:28] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-17 HTTP/1.1[0m" 204 -
+API Error: workitems with id 'myproject/MP-17' not found
+127.0.0.1 - - [07/Aug/2025 15:03:28] "[33mGET /polarion/rest/v1/projects/myproject/workitems/MP-17 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [07/Aug/2025 15:03:28] "[35m[1mPOST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 15:03:28] "[35m[1mPOST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 15:03:28] "[35m[1mPOST /polarion/rest/v1/projects/myproject/workitems HTTP/1.1[0m" 201 -
+127.0.0.1 - - [07/Aug/2025 15:03:28] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-18 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:28] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-19 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:28] "[35m[1mDELETE /polarion/rest/v1/projects/myproject/workitems/MP-20 HTTP/1.1[0m" 204 -
+127.0.0.1 - - [07/Aug/2025 15:03:28] "GET /polarion/rest/v1/documents/elibrary/_default/requirements/workitems HTTP/1.1" 200 -
+API Error: workitems with id 'nonexistent/FAKE-999' not found
+127.0.0.1 - - [07/Aug/2025 15:03:28] "[33mGET /polarion/rest/v1/projects/nonexistent/workitems/FAKE-999 HTTP/1.1[0m" 404 -
