@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option id="functional" name="Functional"/>
+   <option id="performance" name="Performance"/>
+   <option id="quality" name="Quality"/>
+   <option id="security" name="Security"/>
+   <option id="support" name="Support"/>
+   <option id="usability" name="Usability"/>
+</enumeration>

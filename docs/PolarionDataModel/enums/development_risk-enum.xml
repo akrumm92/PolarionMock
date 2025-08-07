@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option id="knowntechclaas"
+            name="Known technology and in use within CLAAS products"
+            sortOrder="1"/>
+   <option id="knowntechcompetitors"
+            name="Known technology and in use by competitors"
+            sortOrder="2"/>
+   <option id="knowntechpoc"
+            name="Known technology, PoC recommended"
+            sortOrder="3"/>
+   <option id="unknowntechcompetitors"
+            name="Unkown technology and in use by Competitors"
+            sortOrder="4"/>
+   <option id="unknownnotmarket"
+            name="Unkown technology and not on the market"
+            sortOrder="5"/>
+</enumeration>

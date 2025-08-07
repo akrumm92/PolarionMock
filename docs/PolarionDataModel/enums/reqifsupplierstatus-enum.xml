@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option description="The supplier accepts the requirement."
+            id="Agreed"
+            name="Agreed"
+            sortOrder="1"/>
+   <option description="The supplier does not accept the requirement. Details must be declared in ReqIF-WF.SupplierComment."
+            id="NotAgreed"
+            name="Not Agreed"
+            sortOrder="4"/>
+   <option description="The supplier accepts the requirement with restrictions. The restrictions are explained by the supplier in the comment attribute ReqIF-WF.SupplierComment."
+            id="AgreedWithComment"
+            name="Agreed with Comment"
+            sortOrder="2"/>
+   <option description="The supplier requires clarification. The supplier must actively clarify the matter with the customer. Details must be declared in ReqIF-WF.SupplierComment."
+            id="ToBeClarified"
+            name="To Be Clarified"
+            sortOrder="5"/>
+   <option description="The supplier confirms that he will not implement the discarded requirement."
+            id="DiscardDeployed"
+            name="Discard Deployed"
+            sortOrder="3"/>
+</enumeration>

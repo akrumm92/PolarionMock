@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option id="low" name="Low" sortOrder="1"/>
+   <option id="medium" name="Medium" sortOrder="2"/>
+   <option id="high" name="High" sortOrder="3"/>
+   <option id="review" name="Review" sortOrder="4"/>
+   <option id="external" name="External" sortOrder="5"/>
+   <option id="notestcase" name="No testcase" sortOrder="6"/>
+   <option id="nottestable" name="Not testable" sortOrder="7"/>
+</enumeration>

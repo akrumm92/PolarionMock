@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option id="functionalrequirement"
+            name="Functional Requirement"
+            sortOrder="1"/>
+   <option id="qualityrequirement" name="Quality Requirement" sortOrder="2"/>
+   <option id="constraint" name="Constraint" sortOrder="3"/>
+</enumeration>

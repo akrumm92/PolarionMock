@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option id="serie" name="Series" sortOrder="1"/>
+   <option id="option" name="Option" sortOrder="2"/>
+   <option id="retrofit" name="Retrofit" sortOrder="3"/>
+</enumeration>

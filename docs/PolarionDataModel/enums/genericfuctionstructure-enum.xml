@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F010&lt;/font&gt;&lt;/html&gt;"
+            name="L1 - F010 - Making the infrastructure available"
+            sortOrder="1"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F010.010&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F010.010 - Managing the internal combustion engine"
+            sortOrder="2"/>
+   <option description="Cooling / heating the units"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F010.020&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F010.020 - Managing the thermal energy"
+            sortOrder="3"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F010.030&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F010.030 - Managing the mechanical energy"
+            sortOrder="4"/>
+   <option description="Electric &#34;Power Management&#34;"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F010.040&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F010.040 - Managing electric energy"
+            sortOrder="5"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F010.050&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F010.050 - Managing hydraulic energy"
+            sortOrder="6"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F010.060&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F010.060 - Managing pneumatic energy"
+            sortOrder="7"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F010.070&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F010.070 - Managing data"
+            sortOrder="8"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F010.080&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F010.080 - Managing lubricants"
+            sortOrder="9"/>
+   <option description="All functions before moving and working with the machine, typically once before starting work"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F020&lt;/font&gt;&lt;/html&gt;"
+            name="L1 - F020 - Preparing the machine"
+            sortOrder="10"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F020.010&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F020.010 - Loading / shipping the machine"
+            sortOrder="11"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F020.020&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F020.020 - Putting the machine into operation for the first time"
+            sortOrder="12"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F020.030&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F020.030 - Accessing the machine"
+            sortOrder="13"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F020.040&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F020.040 - Setting up the driver's workplace"
+            sortOrder="14"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F020.050&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F020.050 - Moving the cab"
+            sortOrder="15"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F020.060&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F020.060 - Connecting / disconnecting front attachments / implements / vehicle-mounted implements / ancillary equipment / trailer"
+            sortOrder="16"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F020.070&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F020.070 - Preparing the machine for road travel / fieldwork"
+            sortOrder="17"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F030&lt;/font&gt;&lt;/html&gt;"
+            name="L1 - F030 - Moving the machine"
+            sortOrder="18"/>
+   <option description="Strategy in which the travel speed, the engine output or the throughput can be adapted while driving, as a function of the conditions of use"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F030.010&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F030.010 - Selecting the driving strategy"
+            sortOrder="19"/>
+   <option description="Selecting the forward gear / reverse gear"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F030.020&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F030.020 - Selecting the direction of travel"
+            sortOrder="20"/>
+   <option description="Shifting gears"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F030.030&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F030.030 - Shifting the transmission"
+            sortOrder="21"/>
+   <option description="This function also implements constant driving"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F030.040&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F030.040 - Driving off / accelerating / driving the machine"
+            sortOrder="22"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F030.045&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F030.045 - Decelerating / braking the machine"
+            sortOrder="23"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F030.050&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F030.050 - Steering the machine"
+            sortOrder="24"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F030.060&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F030.060 - Adapting the machine to the terrain"
+            sortOrder="25"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F030.070&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F030.070 - Ensuring machine traction"
+            sortOrder="26"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F030.080&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F030.080 - Towing the machine"
+            sortOrder="27"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F040&lt;/font&gt;&lt;/html&gt;"
+            name="L1 - F040 - Working with the machine"
+            sortOrder="28"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F040.010&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F040.010 - Crop pick-up"
+            sortOrder="29"/>
+   <option description="- Controlling the belt speed &#xA;- Adjusting / measuring / controlling / displaying the crop conveying process &#xA;- Monitoring the packer, measuring the packer load, adapting crop conveying to the lateral slope (e.g. slope controller for DISCO) &#xA;- Measuring the layer thickness &#xA;- Lifting / lowering the conveyor auger &#xA;- Adjusting the intake auger &#xA;- Adjusting the intake auger height &#xA;- Adjusting the intake auger speed &#xA;- Adjusting the intake auger scraper profiles"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F040.020&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F040.020 - Conveying / transporting crop"
+            sortOrder="30"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F040.030&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F040.030 - Crop processing"
+            sortOrder="31"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F040.040&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F040.040 - Collecting crop"
+            sortOrder="32"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F040.050&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F040.050 - Discharging the crop"
+            sortOrder="33"/>
+   <option description="- Adjusting the spreading width of the chaff / plant residues (e.g., adjusting the spreader plate) &#xA;- Adjusting the spreading direction of the crop / chaff / plant residues (also adapting chopping and spreading to the lateral slope)"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F040.055&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F040.055 - Depositing the plant residues"
+            sortOrder="34"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F040.060&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F040.060 - Assessing the quality of work"
+            sortOrder="35"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F040.070&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F040.070 - Using the implement / front loader / lift arms / telescopic arm"
+            sortOrder="36"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F040.080&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F040.080 - Detecting / removing clogging / overload"
+            sortOrder="37"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F050&lt;/font&gt;&lt;/html&gt;"
+            name="L1 - F050 - Making comfort and protective functions available"
+            sortOrder="38"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F050.010&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F050.010 - Air conditioning"
+            sortOrder="39"/>
+   <option description="- Making broadcast radio available &#xA;- Receiving a radio station &#xA;- Connecting / setting up a smartphone &#xA;- Making a handsfree car kit available"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F050.020&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F050.020 - Making multimedia available"
+            sortOrder="40"/>
+   <option description="- Filling / securing the storage space &#xA;- Making storage space for operating resources (e.g. baler twine) available &#xA;- Collecting waste (incl. ashtray) &#xA;- Making a tool box available"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F050.030&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F050.030 - Making storage space available"
+            sortOrder="41"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F050.040&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F050.040 - Ensuring perceptibility and visibility"
+            sortOrder="42"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F050.050&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F050.050 - Making protective functions available"
+            sortOrder="43"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F050.060&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F050.060 - Ensuring user ergonomics"
+            sortOrder="44"/>
+   <option id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F050.070&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F050.070 - Automating / optimising machine operation"
+            sortOrder="45"/>
+   <option description="Help, operator's manual, also wizard for support when making settings"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F050.080&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F050.080 - Documenting machine operation"
+            sortOrder="46"/>
+   <option description="Here only temporary connections are described."
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F060&lt;/font&gt;&lt;/html&gt;"
+            name="L1 - F060 - Making connectivity available"
+            sortOrder="47"/>
+   <option description="Downloading / installing a software update"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F060.020&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F060.020 - Updating the software"
+            sortOrder="48"/>
+   <option description="incl. calibration, parametrisation, configuration, writing data, writing / reading / comparing data, triggering routines, also developer's access to the machine"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F060.040&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F060.040 - Communicating with the diagnostics system (send / receive)"
+            sortOrder="49"/>
+   <option description="- Managing field operating data &#xA;- Using task management (planning / setting the machine / field / use data) &#xA;- Remote monitoring of machine (telemetry, position display) &#xA;- Making the infrastructure of interfaces available for exchange (non-permanent) &#xA;- Examples of operating data: machine condition, counter &#xA;- Examples of process data: CEMOS, sieve capacity utilisation, speed, unit settings, TELEMATICS"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F060.060&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F060.060 - Exchanging operating data / process data"
+            sortOrder="50"/>
+   <option description="M2X (Machine2X), fleets, using parallel tracking / driving, also communication of autonomous machines"
+            id="&lt;html&gt;&lt;font style=font-family:Aptos Narrow&gt;F060.080&lt;/font&gt;&lt;/html&gt;"
+            name="L2 - F060.080 - Communicating with other machines"
+            sortOrder="51"/>
+</enumeration>

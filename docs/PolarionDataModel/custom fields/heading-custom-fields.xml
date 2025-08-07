@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fields>
+   <field description="Specifies the level of hierarchy of a function of the Generic Functional Structure."
+           id="gfslevel"
+           name="Function Structure Level"
+           type="integer"/>
+   <field description="Specifies the ID of a function of the Generic Function Structure."
+           id="gfsid"
+           name="Function Structure ID"
+           type="string"/>
+   <field description="Specifies for which machine the function of the Generic Function Structure is valid."
+           id="gfsmachinetype"
+           multi="true"
+           name="Function Structure Machine Type"
+           type="enum:gfsmachinetype"/>
+</fields>

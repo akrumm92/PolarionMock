@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option id="notapplicable" name="Not applicable" sortOrder="1"/>
+   <option id="qm" name="QM" sortOrder="2"/>
+   <option id="agpl_a" name="AgPL a" sortOrder="3"/>
+   <option id="agpl_b" name="AgPL b" sortOrder="4"/>
+   <option id="agpl_c" name="AgPL c" sortOrder="5"/>
+   <option id="agpl_d" name="AgPL d" sortOrder="6"/>
+   <option id="agpl_e" name="AgPL e" sortOrder="7"/>
+</enumeration>

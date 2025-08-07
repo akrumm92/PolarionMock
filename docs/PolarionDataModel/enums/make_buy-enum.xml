@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option id="make" name="Make" sortOrder="1"/>
+   <option id="buy" name="Buy" sortOrder="2"/>
+   <option id="makebuy" name="Make and Buy" sortOrder="3"/>
+   <option id="undecided" name="Undecided" sortOrder="4"/>
+</enumeration>

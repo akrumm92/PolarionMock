@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option id="confidentiality" name="Confidentiality" sortOrder="2"/>
+   <option id="integrity" name="Integrity" sortOrder="3"/>
+   <option id="availability" name="Availability" sortOrder="1"/>
+</enumeration>

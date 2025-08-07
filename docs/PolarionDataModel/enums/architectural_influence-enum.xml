@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option id="primarydriver" name="Primary driver" sortOrder="1"/>
+   <option id="highresource"
+            name="Potential highly ressource consumption"
+            sortOrder="2"/>
+   <option id="notanalysable" name="Not analysable yet" sortOrder="3"/>
+   <option id="nodriver" name="No driver" sortOrder="4"/>
+</enumeration>

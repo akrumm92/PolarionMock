@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option id="SysTest" name="Sys Test" sortOrder="2"/>
+   <option id="SysIntTest" name="SysInt Test" sortOrder="3"/>
+   <option id="SWTest" name="SW Test" sortOrder="4"/>
+   <option id="SWIntTest" name="SWInt Test" sortOrder="5"/>
+   <option id="HWTest" name="HW Test" sortOrder="6"/>
+   <option id="HWIntTest" name="HWInt Test" sortOrder="7"/>
+   <option id="ModulTest" name="Module Test" sortOrder="8"/>
+   <option id="UnitTest" name="Unit Test" sortOrder="9"/>
+   <option id="FunctionTest" name="Function Test" sortOrder="13"/>
+   <option id="Durabilitytest" name="Durability Test" sortOrder="11"/>
+   <option id="Simulation" name="Simulation" sortOrder="19"/>
+   <option id="Testbench" name="Test Bench" sortOrder="20"/>
+   <option id="Homologation" name="Homologation" sortOrder="15"/>
+   <option id="Sampling" name="Sampling" sortOrder="18"/>
+   <option id="Heatchamber" name="Heat Chamber" sortOrder="14"/>
+   <option id="EMVtest" name="EMV Test" sortOrder="12"/>
+   <option id="CoolChamber" name="Cool Chamber" sortOrder="10"/>
+   <option id="HydraulicTest" name="Hydraulic Test" sortOrder="16"/>
+   <option id="PenTest" name="Penetration Test" sortOrder="17"/>
+   <option id="notapplicable" name="Not applicable" sortOrder="1"/>
+</enumeration>

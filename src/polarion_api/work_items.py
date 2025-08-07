@@ -614,6 +614,254 @@ class WorkItemsMixin:
                 "response": response.text if response.text else None
             }
     
+    def update_work_item(self, work_item_id: str, attributes: Dict[str, Any] = None, 
+                         relationships: Dict[str, Any] = None) -> Dict[str, Any]:
+        """Update a work item's attributes and/or relationships.
+        
+        Args:
+            work_item_id: Work item ID (e.g., "PYTH-1234" or "Python/PYTH-1234")
+            attributes: Dictionary of attributes to update (e.g., title, description, status, severity)
+            relationships: Dictionary of relationships to update (e.g., parent, linkedWorkItems)
+            
+        Returns:
+            Updated work item data
+            
+        Example:
+            # Update attributes
+            polarion_client.update_work_item(
+                "PYTH-123",
+                attributes={
+                    "title": "Updated Title",
+                    "description": {"type": "text/html", "value": "<p>New description</p>"},
+                    "status": "Ready for Review",
+                    "severity": "must_be"
+                }
+            )
+            
+            # Update relationships  
+            polarion_client.update_work_item(
+                "PYTH-123",
+                relationships={
+                    "parent": {
+                        "data": {"type": "workitems", "id": "Python/PYTH-456"}
+                    }
+                }
+            )
+        """
+        # Extract project and item IDs
+        if "/" in work_item_id:
+            project_id, item_id = work_item_id.split("/")
+        else:
+            # Assume it's for the current project if not specified
+            item_id = work_item_id
+            # Try to extract project from existing context or use a default
+            project_id = getattr(self, '_default_project_id', 'Python')
+            
+        logger.info(f"Updating WorkItem {project_id}/{item_id}")
+        
+        # Build update payload
+        update_data = {
+            "data": {
+                "type": "workitems",
+                "id": f"{project_id}/{item_id}"
+            }
+        }
+        
+        if attributes:
+            update_data["data"]["attributes"] = attributes
+            logger.debug(f"Updating attributes: {attributes}")
+            
+        if relationships:
+            # Format relationships properly
+            formatted_rels = {}
+            for rel_name, rel_data in relationships.items():
+                if isinstance(rel_data, str):
+                    # Simple ID provided - determine type based on relationship name
+                    rel_type = self._get_relationship_type(rel_name)
+                    formatted_rels[rel_name] = {
+                        "data": {
+                            "type": rel_type,
+                            "id": rel_data
+                        }
+                    }
+                else:
+                    formatted_rels[rel_name] = rel_data
+                    
+            update_data["data"]["relationships"] = formatted_rels
+            logger.debug(f"Updating relationships: {formatted_rels}")
+        
+        # Send PATCH request
+        endpoint = f"projects/{project_id}/workitems/{item_id}"
+        response = self._request("PATCH", endpoint, json=update_data)
+        
+        if response.status_code in [200, 202]:
+            logger.info(f"✅ Successfully updated WorkItem {project_id}/{item_id}")
+            result = response.json() if response.text else {}
+            return {
+                "status": "success",
+                "id": f"{project_id}/{item_id}",
+                "data": result.get("data", {})
+            }
+        else:
+            logger.error(f"Failed to update WorkItem: {response.status_code}")
+            return {
+                "status": "error",
+                "id": f"{project_id}/{item_id}",
+                "error": f"API returned {response.status_code}",
+                "response": response.text if response.text else None
+            }
+
+    def create_work_item_link(self, source_id: str, target_id: str, 
+                             role: str = "relates_to", suspect: bool = False) -> Dict[str, Any]:
+        """Create a link between two work items.
+        
+        Args:
+            source_id: Source work item ID (e.g., "PYTH-123" or "Python/PYTH-123")
+            target_id: Target work item ID (e.g., "PYTH-456" or "Python/PYTH-456")
+            role: Link role (e.g., "relates_to", "depends_on", "blocks", "duplicates", "verifies")
+            suspect: Whether the link is suspect (default: False)
+            
+        Returns:
+            Operation result
+            
+        Common link roles:
+            - relates_to: General relationship
+            - depends_on: Source depends on target
+            - blocks: Source blocks target
+            - duplicates: Source duplicates target
+            - verifies: Source verifies target (test case verifies requirement)
+            - parent: Parent-child relationship (use link_workitem_to_header for headers)
+        """
+        # Extract IDs
+        if "/" in source_id:
+            source_project, source_item = source_id.split("/")
+        else:
+            source_project = getattr(self, '_default_project_id', 'Python')
+            source_item = source_id
+            
+        if "/" not in target_id:
+            target_id = f"{source_project}/{target_id}"
+            
+        logger.info(f"Creating link: {source_id} --[{role}]--> {target_id}")
+        
+        # Build link data
+        link_data = {
+            "data": [{
+                "type": "linkedworkitems",
+                "attributes": {
+                    "role": role
+                }
+            }]
+        }
+        
+        # Add optional suspect flag
+        if suspect:
+            link_data["data"][0]["attributes"]["suspect"] = suspect
+            
+        # Add target work item
+        link_data["data"][0]["relationships"] = {
+            "workItem": {
+                "data": {
+                    "type": "workitems",
+                    "id": target_id
+                }
+            }
+        }
+        
+        # Send request
+        endpoint = f"projects/{source_project}/workitems/{source_item}/linkedworkitems"
+        response = self._request("POST", endpoint, json=link_data)
+        
+        if response.status_code in [200, 201, 204]:
+            logger.info(f"✅ Successfully created link: {source_id} --[{role}]--> {target_id}")
+            return {
+                "status": "success",
+                "source": source_id,
+                "target": target_id,
+                "role": role,
+                "message": f"Link created with role '{role}'"
+            }
+        elif response.status_code == 409:
+            logger.warning(f"Link already exists: {source_id} --[{role}]--> {target_id}")
+            return {
+                "status": "error",
+                "source": source_id,
+                "target": target_id,
+                "role": role,
+                "error": "Link already exists (409 Conflict)",
+                "response": response.text if response.text else None
+            }
+        else:
+            logger.error(f"Failed to create link: {response.status_code}")
+            return {
+                "status": "error",
+                "source": source_id,
+                "target": target_id,
+                "role": role,
+                "error": f"API returned {response.status_code}",
+                "response": response.text if response.text else None
+            }
+    
+    def delete_work_item_link(self, source_id: str, target_id: str, role: str) -> Dict[str, Any]:
+        """Delete a link between two work items.
+        
+        Args:
+            source_id: Source work item ID
+            target_id: Target work item ID  
+            role: Link role to delete
+            
+        Returns:
+            Operation result
+        """
+        # Extract IDs
+        if "/" in source_id:
+            source_project, source_item = source_id.split("/")
+        else:
+            source_project = getattr(self, '_default_project_id', 'Python')
+            source_item = source_id
+            
+        if "/" not in target_id:
+            target_id = f"{source_project}/{target_id}"
+            
+        logger.info(f"Deleting link: {source_id} --[{role}]-X-> {target_id}")
+        
+        # Build the link ID (format: source/role/target)
+        link_id = f"{source_project}/{source_item}/{role}/{target_id}"
+        
+        # Send DELETE request
+        endpoint = f"projects/{source_project}/workitems/{source_item}/linkedworkitems/{role}/{target_id}"
+        response = self._request("DELETE", endpoint)
+        
+        if response.status_code in [200, 204]:
+            logger.info(f"✅ Successfully deleted link: {source_id} --[{role}]-X-> {target_id}")
+            return {
+                "status": "success",
+                "source": source_id,
+                "target": target_id,
+                "role": role,
+                "message": f"Link with role '{role}' deleted"
+            }
+        elif response.status_code == 404:
+            logger.warning(f"Link not found: {source_id} --[{role}]-- {target_id}")
+            return {
+                "status": "error",
+                "source": source_id,
+                "target": target_id,
+                "role": role,
+                "error": "Link not found (404)",
+                "response": response.text if response.text else None
+            }
+        else:
+            logger.error(f"Failed to delete link: {response.status_code}")
+            return {
+                "status": "error",
+                "source": source_id,
+                "target": target_id,
+                "role": role,
+                "error": f"API returned {response.status_code}",
+                "response": response.text if response.text else None
+            }
+
     def update_work_item_relationships(self, work_item_id: str, **relationships) -> None:
         """Update work item relationships.
         

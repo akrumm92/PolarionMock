@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option id="notapplicable" name="Not applicable" sortOrder="1"/>
+   <option id="cat_b" name="B" sortOrder="2"/>
+   <option id="cat_1" name="1" sortOrder="3"/>
+   <option id="cat_2" name="2" sortOrder="4"/>
+   <option id="cat_3" name="3" sortOrder="5"/>
+   <option id="cat_4" name="4" sortOrder="6"/>
+</enumeration>

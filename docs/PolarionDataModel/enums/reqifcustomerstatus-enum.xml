@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option description="The requirement is relevant, but no evaluation is expected.&#xA; • Attribute can be set to this value during the first transmission&#xA; • Attribute can be changed to this value during the assessment process to indicate that a requirement must no longer be evaluated&#xA; • Supplier can react with SupplierStatus [ToBeClarified] if he has objections to the non-evaluation. Otherwise, the SupplierStatus remains [&lt;empty&gt;] and the workflow ends"
+            id="NotToEvaluate"
+            name="Not to evaluate"
+            sortOrder="1"/>
+   <option description="For the corresponding object an evaluation is expected by the supplier.&#xA; • Attribute can be set to this value during the first transmission&#xA; •  Attribute can be changed to this value during the assessment process to indicate that a requirement has been modified and must be re-evaluated"
+            id="ToEvaluate"
+            name="To evaluate"
+            sortOrder="2"/>
+   <option description="The supplier evaluation is accepted by the customer."
+            id="Accepted"
+            name="Accepted"
+            sortOrder="3"/>
+   <option description="The supplier evaluation is not accepted by the customer.&#xA; • Setting this status terminates the evaluation for this object. The conflict must be solved in the further project course outside of this workflow"
+            id="NotAccepted"
+            name="Not accepted"
+            sortOrder="4"/>
+   <option description="The requirement has to be clarified with the supplier. Details in ReqIF-WF.CustomerComment."
+            id="ToBeClarified"
+            name="To be clarified"
+            sortOrder="5"/>
+   <option description="The requirement is marked as invalid and has to be discarded.&#xA; NOTE: This value is OPTIONAL until the new ReqIF-WF process is well-established in industry."
+            id="ProposedToDiscard"
+            name="Proposed to discard"
+            sortOrder="6"/>
+   <option description="The requirement has been marked explicitly as discarded by the customer.&#xA; NOTE: Work Item Status must be set to &#34;Discarded by Project&#34;"
+            id="Discarded"
+            name="Discarded"
+            sortOrder="7"/>
+</enumeration>

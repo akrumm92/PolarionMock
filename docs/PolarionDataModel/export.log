@@ -1,0 +1,1790 @@
+2025-06-11 13:35:03,912 [CLAAS Polarion XML Exporter] CATIA Magic Version: 2022x Refresh2
+2025-06-11 13:35:03,913 [CLAAS Polarion XML Exporter] Export Plugin Name: CLAAS Polarion XML Exporter
+2025-06-11 13:35:03,913 [CLAAS Polarion XML Exporter] Export Plugin Version: 1.1
+2025-06-11 13:35:03,913 [CLAAS Polarion XML Exporter] MDZIP File: C:\Users\i012062\OneDrive - CLAAS KGaA mbH\Dokumente\Polarion Data Model\POLARION Data Model Rev12d.mdzip
+2025-06-11 13:35:03,913 [CLAAS Polarion XML Exporter] Date and Time of Export Start: 2025-06-11 13:35:03,913
+2025-06-11 13:35:03,913 [CLAAS Polarion XML Exporter] Export Path: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)
+2025-06-11 13:35:03,913 [CLAAS Polarion XML Exporter] Start Action...
+2025-06-11 13:35:03,914 [CLAAS Polarion XML Exporter] Diagram "Enumerations" found...
+2025-06-11 13:35:03,980 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\gfsmachinetype-enum.xml
+2025-06-11 13:35:03,985 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\speccomplexity-enum.xml
+2025-06-11 13:35:03,989 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\useracceptancetest-enum.xml
+2025-06-11 13:35:03,993 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\release-enum.xml
+2025-06-11 13:35:03,995 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\hwversion-enum.xml
+2025-06-11 13:35:04,001 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\modelseries-enum.xml
+2025-06-11 13:35:04,012 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\masterstructure-enum.xml
+2025-06-11 13:35:04,016 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\testcomplexity-enum.xml
+2025-06-11 13:35:04,023 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\modulestructure-enum.xml
+2025-06-11 13:35:04,029 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\reqifsupplierstatus-enum.xml
+2025-06-11 13:35:04,035 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\cat-enum.xml
+2025-06-11 13:35:04,041 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\nayesno-enum.xml
+2025-06-11 13:35:04,047 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\make_buy-enum.xml
+2025-06-11 13:35:04,054 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\severity-enum.xml
+2025-06-11 13:35:04,059 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\architectural_influence-enum.xml
+2025-06-11 13:35:04,064 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\srl-enum.xml
+2025-06-11 13:35:04,069 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\development_risk-enum.xml
+2025-06-11 13:35:04,081 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\genericfuctionstructure-enum.xml
+2025-06-11 13:35:04,092 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\reqifcustomerstatus-enum.xml
+2025-06-11 13:35:04,099 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\variance-enum.xml
+2025-06-11 13:35:04,106 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\safetyperformancelevel-enum.xml
+2025-06-11 13:35:04,114 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\testtype-enum.xml
+2025-06-11 13:35:04,122 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\requirementcategory-enum.xml
+2025-06-11 13:35:04,131 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\cia-enum.xml
+2025-06-11 13:35:04,138 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\requirementtype-enum.xml
+2025-06-11 13:35:04,144 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\\status-enum.xml
+2025-06-11 13:35:04,144 [CLAAS Polarion XML Exporter] Diagram "Work Item Types" found...
+2025-06-11 13:35:04,144 [CLAAS Polarion XML Exporter] Machine Architecture Artefact id: machinearchitectureartefact
+2025-06-11 13:35:04,145 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,145 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,145 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,145 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 	"Artefact Path"
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 		id : artefactpath
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,146 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,147 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,148 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,148 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,148 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,148 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,148 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,148 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,148 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,148 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,148 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,148 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,148 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,148 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,149 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,149 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,149 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,149 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,149 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,149 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,149 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,149 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,149 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,149 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,149 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,149 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 	"Artefact Type"
+2025-06-11 13:35:04,151 [CLAAS Polarion XML Exporter] 		id : artefacttype
+2025-06-11 13:35:04,152 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,152 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,152 [CLAAS Polarion XML Exporter] Component Architecture Artefact id: componentarchitectureartefact
+2025-06-11 13:35:04,152 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,152 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,152 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,152 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,153 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,153 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,153 [CLAAS Polarion XML Exporter] 	"Artefact Path"
+2025-06-11 13:35:04,153 [CLAAS Polarion XML Exporter] 		id : artefactpath
+2025-06-11 13:35:04,153 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,153 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,153 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,153 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,153 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,153 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,153 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,154 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,154 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,154 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,154 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,154 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,154 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,154 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,154 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,154 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,154 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,155 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,155 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,155 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,155 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,155 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,155 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,155 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,155 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,155 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,155 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,155 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,155 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,155 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,157 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,158 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,158 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,158 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,158 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,158 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,158 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,158 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,158 [CLAAS Polarion XML Exporter] 	"Artefact Type"
+2025-06-11 13:35:04,158 [CLAAS Polarion XML Exporter] 		id : artefacttype
+2025-06-11 13:35:04,158 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,158 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,158 [CLAAS Polarion XML Exporter] Cybersecurity Goal id: securitygoal
+2025-06-11 13:35:04,160 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,160 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,160 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,160 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,160 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,160 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,160 [CLAAS Polarion XML Exporter] 	"Cybersecurity Analysis ID"
+2025-06-11 13:35:04,160 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,160 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,160 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,160 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,160 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,160 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,160 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,161 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,161 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,161 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,161 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,161 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,161 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,161 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,161 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,161 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,161 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,161 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,161 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,161 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,161 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,162 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 	"Cybersecurity Property"
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,163 [CLAAS Polarion XML Exporter] 		id : cybersecurityproperty
+2025-06-11 13:35:04,165 [CLAAS Polarion XML Exporter] Functional Artefact id: functionalartefact
+2025-06-11 13:35:04,165 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,165 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,165 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,165 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,165 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,165 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,165 [CLAAS Polarion XML Exporter] 	"Artefact Path"
+2025-06-11 13:35:04,165 [CLAAS Polarion XML Exporter] 		id : artefactpath
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,166 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,167 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,167 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,167 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,167 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,167 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,167 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,167 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,167 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,167 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,167 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,167 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,167 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,167 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,167 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,167 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,168 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,169 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,169 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,169 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,169 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,169 [CLAAS Polarion XML Exporter] 	"Artefact Type"
+2025-06-11 13:35:04,169 [CLAAS Polarion XML Exporter] 		id : artefacttype
+2025-06-11 13:35:04,169 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,169 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,169 [CLAAS Polarion XML Exporter] User Story id: userstory
+2025-06-11 13:35:04,169 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,169 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,169 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,169 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,170 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,171 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,171 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,171 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,171 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,171 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,171 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,171 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,171 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,171 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,171 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,171 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,171 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,171 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,171 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,172 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] Component Requirement id: componentrequirement
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,173 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,175 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,175 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,175 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,175 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,175 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,175 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,175 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,175 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,175 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,175 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,175 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,175 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,175 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,175 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,175 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,176 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,177 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,177 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,177 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,177 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,177 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,177 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,177 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,177 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,177 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,177 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,177 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,177 [CLAAS Polarion XML Exporter] Safety Goal id: safetygoal
+2025-06-11 13:35:04,177 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,178 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,178 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,178 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,178 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,178 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,178 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,178 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,178 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,178 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,178 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,178 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,178 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,179 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,179 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,179 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,179 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,179 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,179 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,179 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,179 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,179 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,179 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,179 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,179 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,179 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,179 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,179 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,180 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,182 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,182 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,182 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,182 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,182 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,182 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,182 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,182 [CLAAS Polarion XML Exporter] System Requirement id: systemrequirement
+2025-06-11 13:35:04,182 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,182 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,182 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,182 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,182 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,182 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,183 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,184 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,184 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,184 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,184 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,184 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,184 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,184 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,184 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,184 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,184 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,184 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,184 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,184 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,184 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,184 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,185 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,186 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,186 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,186 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,186 [CLAAS Polarion XML Exporter] Technical Requirement id: technicalrequirement
+2025-06-11 13:35:04,186 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,186 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,186 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,186 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,186 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,186 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,186 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,186 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,186 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,186 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,187 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,188 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,190 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] Machine Requirement id: machinerequirement
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,191 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,192 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,193 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] System Architecture Artefact id: systemarchitectureartefact
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 	"Artefact Path"
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 		id : artefactpath
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,194 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,195 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,196 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,197 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,197 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,197 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,197 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,197 [CLAAS Polarion XML Exporter] 	"Artefact Type"
+2025-06-11 13:35:04,197 [CLAAS Polarion XML Exporter] 		id : artefacttype
+2025-06-11 13:35:04,197 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,197 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,197 [CLAAS Polarion XML Exporter] System of Systems Requirement id: sosrequirement
+2025-06-11 13:35:04,197 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,197 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,198 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,198 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,198 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,198 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,198 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,198 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,198 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,198 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,198 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,198 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,198 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,198 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,198 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,199 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,200 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,201 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,201 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,201 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,201 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,201 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,201 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,201 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,201 [CLAAS Polarion XML Exporter] Software Requirement id: swrequirement
+2025-06-11 13:35:04,201 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,202 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,203 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] Integrated System Architecture Artefact id: integratedsystemarchitectureartefact
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 	"Artefact Path"
+2025-06-11 13:35:04,205 [CLAAS Polarion XML Exporter] 		id : artefactpath
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,206 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,207 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,207 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,207 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,207 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,207 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,207 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,207 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,207 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,207 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,207 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,207 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,207 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,207 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,207 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 	"Artefact Type"
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 		id : artefacttype
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,208 [CLAAS Polarion XML Exporter] Integrated System Requirement id: integratedsystemrequirement
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,209 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,210 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] Product Requirement id: productrequirement
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 	"Take Rate"
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 		id : takerate
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,211 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 	"Masterprice"
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		id : masterprice
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 	"Volume Potential"
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		id : volumepotential
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,212 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 	"Variance"
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 		id : variance
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,213 [CLAAS Polarion XML Exporter] Safe State id: systemsafestate
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,214 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,215 [CLAAS Polarion XML Exporter] Mechanical Requirement id: mechrequirement
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,216 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,217 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,218 [CLAAS Polarion XML Exporter] System of Systems Architecture Artefact id: sosarchitectureartefact
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 	"Artefact Path"
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 		id : artefactpath
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,219 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,220 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 	"Artefact Type"
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 		id : artefacttype
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,221 [CLAAS Polarion XML Exporter] Hardware Requirement id: hwrequirement
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,222 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,223 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] Information id: information
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] Information has been exluded from export because it has no properties.
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] Use Case id: usecase
+2025-06-11 13:35:04,224 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,225 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] Software Architecture Artefact id: swarchitectureartefact
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,226 [CLAAS Polarion XML Exporter] 	"Artefact Path"
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		id : artefactpath
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,227 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,228 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] 	"Artefact Type"
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] 		id : artefacttype
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] Heading id: heading
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] 	"Function Structure Level"
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] 		id : gfslevel
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] 	"Function Structure ID"
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] 		id : gfsid
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] 	"Function Structure Machine Type"
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] 		id : gfsmachinetype
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,229 [CLAAS Polarion XML Exporter] Feature One Pager id: featureonepager
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 	"Functional Safety Analysis Needed"
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		id : functionalsafetyanalysisneeded
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 	"Take Rate"
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		id : takerate
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 	"Manufacturing Cost"
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		id : manufacturingcost
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 	"Masterprice"
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		id : masterprice
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 	"Cybersecurity Analysis Needed"
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		id : securityanalysisneeded
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 	"Volume Potential"
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		id : volumepotential
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 	"Architectural Influence"
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		id : architecturalinfluence
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,230 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 	"Development Risk"
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		id : developmentrisk
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 	"Make or Buy Recommendation"
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		id : recommendationmakeorbuy
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 	"Variance"
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		id : variance
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,231 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 	"External Dependency"
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : externaldependency
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] Mechanical Architecture Artefact id: mecharchitectureartefact
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 	"Artefact Path"
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : artefactpath
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,232 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,234 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,235 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,235 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,235 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,235 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,235 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,235 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,235 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,235 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,235 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,235 [CLAAS Polarion XML Exporter] 	"Artefact Type"
+2025-06-11 13:35:04,235 [CLAAS Polarion XML Exporter] 		id : artefacttype
+2025-06-11 13:35:04,235 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,235 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,235 [CLAAS Polarion XML Exporter] Hardware Architecture Artefact id: hwarchitectureartefact
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"Requirement Type"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : requirementtype
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"ADO ID"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : tfsid
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"Tag"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : tag
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"Artefact Path"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : artefactpath
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"Model Series"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : modelseries
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"Origin"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : origin
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"User Acceptance Test"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : useracceptancetest
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"SoftwareRequirementLevel"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : srl
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"Planned Release"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : plannedrelease
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"Release"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : release
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"Area Path"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : areapath
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"DC Percentage"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : dc_percent
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"Tag 2"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : tag2
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"MTTFD Years"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : mttfd_years
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"Test Type"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : testtype
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"Supplier Status"
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 		id : supplierstatus
+2025-06-11 13:35:04,236 [CLAAS Polarion XML Exporter] 	"Hardware Version"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : hardware_version
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 	"Generic Function Structure"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : gfs
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 	"Rationale"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : rational
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 	"Test Responsible"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : testresponsible
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 	"Supplier Comment"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : suppliercomment
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 	"Modulestructure CT"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : modulestructureCT
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 	"Safety Analysis ID"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : fmeaid
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 	"Test Criteria"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : testcriteria
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 	"CLAAS Status"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : customerstatus
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 	"CLAAS Comment"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : customercomment
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 	"Test Complexity"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : testcomplexity
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 	"Responsible"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : responsible
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 	"Agricultural Performance Level"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : safetyperformancelevel
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 	"Masterstructure"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		multi : true
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : masterstructure
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 	"Artefact Type"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : artefacttype
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 	"Hardware Category"
+2025-06-11 13:35:04,237 [CLAAS Polarion XML Exporter] 		id : cat
+2025-06-11 13:35:04,254 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\systemarchitectureartefact-custom-fields.xml
+2025-06-11 13:35:04,262 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\usecase-custom-fields.xml
+2025-06-11 13:35:04,268 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\componentrequirement-custom-fields.xml
+2025-06-11 13:35:04,275 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\swrequirement-custom-fields.xml
+2025-06-11 13:35:04,287 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\machinearchitectureartefact-custom-fields.xml
+2025-06-11 13:35:04,293 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\mechrequirement-custom-fields.xml
+2025-06-11 13:35:04,301 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\hwarchitectureartefact-custom-fields.xml
+2025-06-11 13:35:04,308 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\machinerequirement-custom-fields.xml
+2025-06-11 13:35:04,316 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\integratedsystemarchitectureartefact-custom-fields.xml
+2025-06-11 13:35:04,324 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\userstory-custom-fields.xml
+2025-06-11 13:35:04,331 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\functionalartefact-custom-fields.xml
+2025-06-11 13:35:04,339 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\featureonepager-custom-fields.xml
+2025-06-11 13:35:04,345 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\safetygoal-custom-fields.xml
+2025-06-11 13:35:04,352 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\hwrequirement-custom-fields.xml
+2025-06-11 13:35:04,358 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\heading-custom-fields.xml
+2025-06-11 13:35:04,367 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\securitygoal-custom-fields.xml
+2025-06-11 13:35:04,374 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\productrequirement-custom-fields.xml
+2025-06-11 13:35:04,380 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\sosrequirement-custom-fields.xml
+2025-06-11 13:35:04,388 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\technicalrequirement-custom-fields.xml
+2025-06-11 13:35:04,394 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\integratedsystemrequirement-custom-fields.xml
+2025-06-11 13:35:04,402 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\systemrequirement-custom-fields.xml
+2025-06-11 13:35:04,411 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\systemsafestate-custom-fields.xml
+2025-06-11 13:35:04,417 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\mecharchitectureartefact-custom-fields.xml
+2025-06-11 13:35:04,422 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\componentarchitectureartefact-custom-fields.xml
+2025-06-11 13:35:04,427 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\sosarchitectureartefact-custom-fields.xml
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\custom fields\\swarchitectureartefact-custom-fields.xml
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] systemarchitectureartefact
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] usecase
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] componentrequirement
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] swrequirement
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] machinearchitectureartefact
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] mechrequirement
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] hwarchitectureartefact
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] machinerequirement
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] integratedsystemarchitectureartefact
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] userstory
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] functionalartefact
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] featureonepager
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] safetygoal
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] hwrequirement
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] heading
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] securitygoal
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] productrequirement
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] sosrequirement
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] technicalrequirement
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] integratedsystemrequirement
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] systemrequirement
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] systemsafestate
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] mecharchitectureartefact
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] componentarchitectureartefact
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] sosarchitectureartefact
+2025-06-11 13:35:04,433 [CLAAS Polarion XML Exporter] swarchitectureartefact
+2025-06-11 13:35:04,443 [CLAAS Polarion XML Exporter] Datei erfolgreich erstellt: C:\Users\i012062\Downloads\Polarion Data Model Export (Model Rev12d - Plugin V1.0)\enums\workitem-type-enum.xml
+2025-06-11 13:35:04,443 [CLAAS Polarion XML Exporter] Logger closed.

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option name="Proposed"/>
+   <option name="Ready for Review"/>
+   <option name="To clarify"/>
+   <option name="Accepted by project"/>
+   <option name="Closed"/>
+   <option name="Discarded by project"/>
+</enumeration>

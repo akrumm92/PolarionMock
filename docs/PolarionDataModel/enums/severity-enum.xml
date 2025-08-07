@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option default="true" id="NA" name="Not applicable" sortOrder="1"/>
+   <option iconURL="/polarion/icons/default/enums/severity_blocker.gif"
+            id="must_be"
+            name="Must be"
+            sortOrder="2"/>
+   <option iconURL="/polarion/icons/default/enums/priority_high.gif"
+            id="usp"
+            name="USP"
+            sortOrder="3"/>
+   <option iconURL="/polarion/icons/default/enums/priority_highest.gif"
+            id="excitement_feature"
+            name="Excitement Feature"
+            sortOrder="4"/>
+   <option iconURL="/polarion/icons/default/enums/severity_minor.gif"
+            id="can_be"
+            name="Can be"
+            sortOrder="5"/>
+</enumeration>

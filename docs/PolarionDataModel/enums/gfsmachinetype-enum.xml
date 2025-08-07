@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option id="09" name="Software / Applications" sortOrder="9"/>
+   <option id="07" name="Miscellaneous" sortOrder="7"/>
+   <option id="04" name="Digital solutions" sortOrder="4"/>
+   <option id="06" name="Loader Wagons" sortOrder="6"/>
+   <option id="08" name="Mowers" sortOrder="8"/>
+   <option id="03" name="Combines" sortOrder="3"/>
+   <option id="01" name="Balers" sortOrder="1"/>
+   <option id="14" name="Wheel Loaders" sortOrder="14"/>
+   <option id="05" name="Forage Harvesters" sortOrder="5"/>
+   <option id="10" name="Swathers" sortOrder="10"/>
+   <option id="13" name="Tractors" sortOrder="13"/>
+   <option id="12" name="Telehandlers" sortOrder="12"/>
+   <option id="11" name="Tedders" sortOrder="11"/>
+   <option id="02" name="Cane Harvesters" sortOrder="2"/>
+</enumeration>

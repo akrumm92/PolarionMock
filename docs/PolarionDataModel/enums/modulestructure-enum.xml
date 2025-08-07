@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enumeration>
+   <option id="01" name="M01 Engine" sortOrder="1"/>
+   <option id="02-1" name="M02.1 CVT" sortOrder="2"/>
+   <option id="02-2" name="M02.2 Rear Axle" sortOrder="3"/>
+   <option id="03" name="M03 Wheels" sortOrder="4"/>
+   <option id="04-1" name="M04.1 Cab Structure" sortOrder="5"/>
+   <option id="04-2" name="M04.2 Cab Roof" sortOrder="6"/>
+   <option id="04-3" name="M04.3 Cab Interior Trims" sortOrder="7"/>
+   <option id="04-4" name="M04.4 Rear Fenders" sortOrder="8"/>
+   <option id="04-5" name="M04.5 HMI Front Console" sortOrder="9"/>
+   <option id="04-6" name="M04.6 HVAC" sortOrder="10"/>
+   <option id="04-7" name="M04.7 HMI" sortOrder="11"/>
+   <option id="04-8" name="M04.8 Driver Seat" sortOrder="12"/>
+   <option id="05" name="M05 Cab Suspensions" sortOrder="13"/>
+   <option id="06" name="M06 Front Axle" sortOrder="14"/>
+   <option id="07" name="M07 Front Chassis" sortOrder="15"/>
+   <option id="08" name="M08 Front Lift" sortOrder="16"/>
+   <option id="09" name="M09 Rear Lift" sortOrder="17"/>
+   <option id="10" name="M10 Cooling Package" sortOrder="18"/>
+   <option id="11" name="M11 Exhaust &amp; After Treatment" sortOrder="19"/>
+   <option id="12" name="M12 Bonnet" sortOrder="20"/>
+   <option id="13" name="M13 Right Environment" sortOrder="21"/>
+   <option id="14" name="M14 Left Environment" sortOrder="22"/>
+   <option id="15" name="M15 Front Loader" sortOrder="23"/>
+   <option id="16" name="M16 Steering" sortOrder="24"/>
+   <option id="17" name="M17 Braking" sortOrder="25"/>
+   <option id="18" name="M18 Hydraulics" sortOrder="26"/>
+   <option id="19" name="M19 Pneumatics" sortOrder="27"/>
+   <option id="20" name="M20 Electrical &amp; Wiring" sortOrder="28"/>
+   <option id="21" name="M21 Integration &amp; Diagnostic" sortOrder="29"/>
+   <option id="22" name="M22 Embedded Software &amp; ECU" sortOrder="30"/>
+</enumeration>
