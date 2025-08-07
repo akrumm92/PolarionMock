@@ -1,0 +1,5 @@
+DEBUG    polarion_api.config:config.py:29 Loaded config: base_url=https://polarion-d.claas.local, rest_path=/polarion/rest/v1
+DEBUG    tests.moduletest.conftest:conftest.py:25 Loaded .env from C:\Users\E017093\gitRepos\PolarionMock\.env
+DEBUG    src.polarion_api.config:config.py:29 Loaded config: base_url=https://polarion-d.claas.local, rest_path=/polarion/rest/v1
+2025-08-07 12:43:39,527 [INFO] [__main__] Test reports saved to: test_reports\20250807_124337
+2025-08-07 12:43:39,528 [INFO] [__main__] Logs saved to: test_reports\20250807_124337/logs/pytest.log
