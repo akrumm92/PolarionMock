@@ -19,7 +19,6 @@ import os
 from pathlib import Path
 
 from src.polarion_api.client import PolarionClient
-from src.polarion_api.work_items import WorkItemsAPI
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -89,7 +88,7 @@ class TestWorkItemUpdatesAndLinks:
         
         wi1_data = {
             "title": f"Test Requirement {timestamp}",
-            "type": "requirement",
+            "work_item_type": "requirement",
             "status": "draft",
             "description": {
                 "type": "text/html",
@@ -101,7 +100,7 @@ class TestWorkItemUpdatesAndLinks:
         
         result1 = polarion_client.create_work_item_in_document(
             project_id=test_document["project"],
-            document_space=test_document["space"],
+            space_id=test_document["space"],
             document_name=test_document["document"],
             **wi1_data
         )
@@ -171,7 +170,7 @@ class TestWorkItemUpdatesAndLinks:
         
         wi2_data = {
             "title": f"Test Case for Requirement {timestamp}",
-            "type": "testcase",
+            "work_item_type": "testcase",
             "status": "draft",
             "description": {
                 "type": "text/html",
@@ -183,7 +182,7 @@ class TestWorkItemUpdatesAndLinks:
         
         result2 = polarion_client.create_work_item_in_document(
             project_id=test_document["project"],
-            document_space=test_document["space"],
+            space_id=test_document["space"],
             document_name=test_document["document"],
             **wi2_data
         )
@@ -191,7 +190,7 @@ class TestWorkItemUpdatesAndLinks:
         if result2.get("status") != "success":
             # If testcase type doesn't exist, try with requirement type
             logger.warning("testcase type might not exist, trying with requirement type")
-            wi2_data["type"] = "requirement"
+            wi2_data["work_item_type"] = "requirement"
             wi2_data["title"] = f"Test Requirement 2 {timestamp}"
             result2 = polarion_client.create_work_item_in_document(
                 project_id=test_document["project"],
@@ -219,7 +218,7 @@ class TestWorkItemUpdatesAndLinks:
         
         wi3_data = {
             "title": f"Blocking Requirement {timestamp}",
-            "type": "requirement",
+            "work_item_type": "requirement",
             "status": "draft",
             "description": {
                 "type": "text/html",
@@ -231,7 +230,7 @@ class TestWorkItemUpdatesAndLinks:
         
         result3 = polarion_client.create_work_item_in_document(
             project_id=test_document["project"],
-            document_space=test_document["space"],
+            space_id=test_document["space"],
             document_name=test_document["document"],
             **wi3_data
         )
@@ -408,7 +407,7 @@ class TestWorkItemUpdatesAndLinks:
         # Create a work item
         wi_data = {
             "title": f"Severity Test {timestamp}",
-            "type": "requirement",
+            "work_item_type": "requirement",
             "status": "draft",
             "description": {
                 "type": "text/html",
@@ -420,7 +419,7 @@ class TestWorkItemUpdatesAndLinks:
         
         result = polarion_client.create_work_item_in_document(
             project_id=test_document["project"],
-            document_space=test_document["space"],
+            space_id=test_document["space"],
             document_name=test_document["document"],
             **wi_data
         )
