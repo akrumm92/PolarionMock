@@ -12,6 +12,7 @@ from datetime import datetime
 from typing import Dict, Any
 
 from src.polarion_api.client import PolarionClient
+from src.polarion_api.validation_status import tested, TestStatus
 
 logger = logging.getLogger(__name__)
 
@@ -82,6 +83,13 @@ def save_response_to_json(filename: str, data: Dict[str, Any], output_dir: str =
 class TestWorkItemDocumentIntegration:
     """Test suite for WorkItem-Document integration."""
     
+    @tested(
+        status=TestStatus.PRODUCTION_VALIDATED,
+        test_file="tests/moduletest/test_workitem_document_integration.py",
+        test_method="test_create_workitem_in_document",
+        date="2025-08-07",
+        notes="Successfully creates WorkItem with two-step process and verifies outline number assignment"
+    )
     def test_create_workitem_in_document(self, polarion_client, test_document):
         """Test the two-step process of creating a WorkItem in a document.
         
@@ -168,6 +176,13 @@ class TestWorkItemDocumentIntegration:
         
         return result
     
+    @tested(
+        status=TestStatus.PRODUCTION_VALIDATED,
+        test_file="tests/moduletest/test_workitem_document_integration.py",
+        test_method="test_add_existing_workitem_to_document",
+        date="2025-08-07",
+        notes="Successfully adds orphan WorkItem to document via Document Parts API"
+    )
     def test_add_existing_workitem_to_document(self, polarion_client, test_document):
         """Test adding an existing WorkItem to a document.
         
@@ -241,6 +256,13 @@ class TestWorkItemDocumentIntegration:
         
         return add_result
     
+    @tested(
+        status=TestStatus.PRODUCTION_VALIDATED,
+        test_file="tests/moduletest/test_workitem_document_integration.py",
+        test_method="test_link_workitem_to_header",
+        date="2025-08-07",
+        notes="Creates WorkItem under header and establishes parent-child relationship"
+    )
     def test_link_workitem_to_header(self, polarion_client, test_document):
         """Test linking a WorkItem to a header WorkItem.
         
@@ -568,6 +590,13 @@ class TestWorkItemDocumentIntegration:
         
         return test_result
     
+    @tested(
+        status=TestStatus.PRODUCTION_VALIDATED,
+        test_file="tests/moduletest/test_workitem_document_integration.py",
+        test_method="test_create_safety_goal_under_risk_header",
+        date="2025-08-07",
+        notes="Creates Safety Goal positioned after Risk 1 header using previous_part_id parameter"
+    )
     def test_create_safety_goal_under_risk_header(self, polarion_client, test_document):
         """Test creating a Safety Goal WorkItem under PYTH-9397 (Risk 1).
         
