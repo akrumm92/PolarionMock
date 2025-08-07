@@ -1,0 +1,59 @@
+DEBUG    polarion_api.config:config.py:29 Loaded config: base_url=https://polarion-d.claas.local, rest_path=/polarion/rest/v1
+DEBUG    tests.moduletest.conftest:conftest.py:25 Loaded .env from C:\Users\E017093\gitRepos\PolarionMock\.env
+DEBUG    src.polarion_api.config:config.py:29 Loaded config: base_url=https://polarion-d.claas.local, rest_path=/polarion/rest/v1
+INFO     tests.session:conftest.py:231 ================================================================================
+INFO     tests.session:conftest.py:232 Test Session Started: 20250807_131901
+INFO     tests.session:conftest.py:233 Environment: production
+INFO     tests.session:conftest.py:234 ================================================================================
+DEBUG    polarion_api.config:config.py:29 Loaded config: base_url=https://polarion-d.claas.local, rest_path=/polarion/rest/v1
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: N/A
+INFO     tests.moduletest.test_workitem_updates_and_links:test_workitem_updates_and_links.py:61 
+================================================================================
+INFO     tests.moduletest.test_workitem_updates_and_links:test_workitem_updates_and_links.py:62 Starting test: test_complete_workitem_lifecycle
+INFO     tests.moduletest.test_workitem_updates_and_links:test_workitem_updates_and_links.py:63 ================================================================================
+INFO     polarion_api.client:client.py:60 Initialized Polarion client for https://polarion-d.claas.local
+INFO     tests.moduletest.test_workitem_updates_and_links:test_workitem_updates_and_links.py:85 
+============================================================
+INFO     tests.moduletest.test_workitem_updates_and_links:test_workitem_updates_and_links.py:86 STEP 1: Creating first work item (requirement)
+INFO     tests.moduletest.test_workitem_updates_and_links:test_workitem_updates_and_links.py:87 ============================================================
+INFO     polarion_api.work_items:work_items.py:284 Step 1: Creating WorkItem with module relationship to Python/_default/Functional Concept - Template
+DEBUG    polarion_api.client:client.py:107 POST https://polarion-d.claas.local/polarion/rest/v1/projects/Python/workitems
+DEBUG    polarion_api.client:client.py:109 Request body: {'data': [{'type': 'workitems', 'attributes': {'title': 'Test Requirement 20250807_131901', 'type': 'requirement', 'status': 'draft', 'description': {'type': 'text/html', 'value': '<p>Initial requirement for testing updates</p>'}, 'severity': 'must_have', 'priority': '80.0'}, 'relationships': {'module': {'data': {'type': 'documents', 'id': 'Python/_default/Functional Concept - Template'}}}}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:1049 Starting new HTTPS connection (1): polarion-d.claas.local:443
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "POST /polarion/rest/v1/projects/Python/workitems HTTP/1.1" 201 162
+DEBUG    polarion_api.client:client.py:115 Response status: 201
+DEBUG    polarion_api.client:client.py:117 Response body: {"data":[{"type":"workitems","id":"Python/PYTH-9688","links":{"self":"https://polarion-d.claas.local/polarion/rest/v1/projects/Python/workitems/PYTH-9688","portal":"https://polarion-d.claas.local/polarion/redirect/project/Python/workitem?id=PYTH-9688"}}]}...
+INFO     polarion_api.work_items:work_items.py:345 Created WorkItem: Python/PYTH-9688
+INFO     polarion_api.work_items:work_items.py:348 Step 2: Adding WorkItem to document content via Document Parts API
+DEBUG    polarion_api.client:client.py:107 POST https://polarion-d.claas.local/polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts
+DEBUG    polarion_api.client:client.py:109 Request body: {'data': [{'type': 'document_parts', 'attributes': {'type': 'workitem'}, 'relationships': {'workItem': {'data': {'type': 'workitems', 'id': 'Python/PYTH-9688'}}}}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "POST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1" 201 206
+DEBUG    polarion_api.client:client.py:115 Response status: 201
+DEBUG    polarion_api.client:client.py:117 Response body: {"data":[{"type":"document_parts","id":"Python/_default/Functional Concept - Template/workitem_PYTH-9688","links":{"self":"https://polarion-d.claas.local/polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts/workitem_PYTH-9688"}}]}...
+INFO     polarion_api.work_items:work_items.py:397 ✅ WorkItem Python/PYTH-9688 is now visible in the document!
+DEBUG    tests.session:conftest.py:151 Test environment: production
+DEBUG    tests.session:conftest.py:152 Base URL: N/A
+INFO     tests.moduletest.test_workitem_updates_and_links:test_workitem_updates_and_links.py:61 
+================================================================================
+INFO     tests.moduletest.test_workitem_updates_and_links:test_workitem_updates_and_links.py:62 Starting test: test_update_work_item_severity
+INFO     tests.moduletest.test_workitem_updates_and_links:test_workitem_updates_and_links.py:63 ================================================================================
+INFO     polarion_api.client:client.py:60 Initialized Polarion client for https://polarion-d.claas.local
+INFO     tests.moduletest.test_workitem_updates_and_links:test_workitem_updates_and_links.py:405 Testing severity updates with valid enum values
+INFO     polarion_api.work_items:work_items.py:284 Step 1: Creating WorkItem with module relationship to Python/_default/Functional Concept - Template
+DEBUG    polarion_api.client:client.py:107 POST https://polarion-d.claas.local/polarion/rest/v1/projects/Python/workitems
+DEBUG    polarion_api.client:client.py:109 Request body: {'data': [{'type': 'workitems', 'attributes': {'title': 'Severity Test 20250807_131903', 'type': 'requirement', 'status': 'draft', 'description': {'type': 'text/html', 'value': '<p>Testing severity updates</p>'}, 'severity': 'must_be', 'priority': '50.0'}, 'relationships': {'module': {'data': {'type': 'documents', 'id': 'Python/_default/Functional Concept - Template'}}}}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:1049 Starting new HTTPS connection (1): polarion-d.claas.local:443
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "POST /polarion/rest/v1/projects/Python/workitems HTTP/1.1" 201 162
+DEBUG    polarion_api.client:client.py:115 Response status: 201
+DEBUG    polarion_api.client:client.py:117 Response body: {"data":[{"type":"workitems","id":"Python/PYTH-9689","links":{"self":"https://polarion-d.claas.local/polarion/rest/v1/projects/Python/workitems/PYTH-9689","portal":"https://polarion-d.claas.local/polarion/redirect/project/Python/workitem?id=PYTH-9689"}}]}...
+INFO     polarion_api.work_items:work_items.py:345 Created WorkItem: Python/PYTH-9689
+INFO     polarion_api.work_items:work_items.py:348 Step 2: Adding WorkItem to document content via Document Parts API
+DEBUG    polarion_api.client:client.py:107 POST https://polarion-d.claas.local/polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts
+DEBUG    polarion_api.client:client.py:109 Request body: {'data': [{'type': 'document_parts', 'attributes': {'type': 'workitem'}, 'relationships': {'workItem': {'data': {'type': 'workitems', 'id': 'Python/PYTH-9689'}}}}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 https://polarion-d.claas.local:443 "POST /polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts HTTP/1.1" 201 206
+DEBUG    polarion_api.client:client.py:115 Response status: 201
+DEBUG    polarion_api.client:client.py:117 Response body: {"data":[{"type":"document_parts","id":"Python/_default/Functional Concept - Template/workitem_PYTH-9689","links":{"self":"https://polarion-d.claas.local/polarion/rest/v1/projects/Python/spaces/_default/documents/Functional%20Concept%20-%20Template/parts/workitem_PYTH-9689"}}]}...
+INFO     polarion_api.work_items:work_items.py:397 ✅ WorkItem Python/PYTH-9689 is now visible in the document!
+2025-08-07 13:19:05,370 [INFO] [__main__] Test reports saved to: test_reports\20250807_131900
+2025-08-07 13:19:05,370 [INFO] [__main__] Logs saved to: test_reports\20250807_131900/logs/pytest.log
