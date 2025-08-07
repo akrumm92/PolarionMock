@@ -672,7 +672,15 @@ class TestWorkItemDocumentIntegration:
             logger.info(f"✅ Successfully linked Safety Goal to {target_header['title']} (PYTH-9397)")
             assert link_result["parent"] == target_header["id"]
         else:
-            logger.warning(f"⚠️ Could not link to PYTH-9397: {link_result.get('error')}")
+            # Check if it's a 409 Conflict (already linked)
+            error_msg = link_result.get('error', '')
+            response_text = link_result.get('response', '')
+            
+            if '409' in error_msg or 'already linked' in response_text.lower():
+                logger.info(f"ℹ️ PYTH-9397 already has existing links (409 Conflict) - this is expected if test ran before")
+                # This is acceptable - the WorkItem is still positioned correctly via previous_part_id
+            else:
+                logger.warning(f"⚠️ Could not link to PYTH-9397: {error_msg}")
         
         # Verify the Safety Goal placement
         logger.info("Verifying Safety Goal placement in document...")

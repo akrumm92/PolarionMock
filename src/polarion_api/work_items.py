@@ -593,6 +593,17 @@ class WorkItemsMixin:
                 "parent": parent_header_id,
                 "message": "Parent-child relationship created"
             }
+        elif response.status_code == 409:
+            # Conflict - likely already linked
+            logger.warning(f"Conflict when linking {child_workitem_id} to parent {parent_header_id}: {response.status_code}")
+            return {
+                "status": "error",
+                "child": child_workitem_id,
+                "parent": parent_header_id,
+                "error": f"API returned {response.status_code} Conflict",
+                "response": response.text if response.text else None,
+                "conflict": True
+            }
         else:
             logger.error(f"Failed to create parent-child link: {response.status_code}")
             return {
