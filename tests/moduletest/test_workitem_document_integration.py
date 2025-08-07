@@ -12,7 +12,19 @@ from datetime import datetime
 from typing import Dict, Any
 
 from src.polarion_api.client import PolarionClient
-from src.polarion_api.validation_status import tested, TestStatus
+
+# Try to import validation_status, but don't fail if it's not available
+try:
+    from src.polarion_api.validation_status import tested, TestStatus
+except ImportError:
+    # If validation_status is not available, create dummy decorator
+    def tested(**kwargs):
+        def decorator(func):
+            return func
+        return decorator
+    
+    class TestStatus:
+        PRODUCTION_VALIDATED = "production_validated"
 
 logger = logging.getLogger(__name__)
 
