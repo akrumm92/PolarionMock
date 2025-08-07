@@ -592,6 +592,7 @@ class TestWorkItemDocumentIntegration:
         title = f"Safety Goal SG-{timestamp}"
         
         # Safety Goal specific attributes based on the found example
+        # Position it after PYTH-9397 (Risk 1 header) using the document part ID
         result = polarion_client.create_work_item_in_document(
             project_id=test_document["project"],
             space_id=test_document["space"],
@@ -602,7 +603,8 @@ class TestWorkItemDocumentIntegration:
             status="draft",
             severity="must_have",  # Safety goals are typically must_have
             priority="100.0",  # High priority for safety
-            save_output=True
+            save_output=True,
+            previous_part_id=f"heading_{target_header['id'].split('/')[-1]}"  # Position after Risk 1 header
         )
         
         if "error" in result:
@@ -650,10 +652,15 @@ class TestWorkItemDocumentIntegration:
                 logger.info(f"✅ Safety Goal has outline number: {outline_num}")
                 
                 # Check if it's under Risk 1 section (4.1)
-                if outline_num.startswith("4.1"):
+                # The outline number should start with "4.1." for items under Risk 1
+                if outline_num.startswith("4.1.") or outline_num == "4.1-1":
                     logger.info(f"✅ Safety Goal is correctly placed under Risk 1 section (4.1)")
+                    assert True, "Safety Goal positioned correctly under Risk 1"
                 else:
-                    logger.info(f"Safety Goal outline ({outline_num}) is not under Risk 1 (4.1)")
+                    error_msg = f"Safety Goal outline ({outline_num}) is not under Risk 1 (4.1)"
+                    logger.error(f"❌ {error_msg}")
+                    # This is the actual bug we're fixing - Safety Goals should be under Risk headers
+                    pytest.fail(error_msg)
             else:
                 logger.warning("Safety Goal has no outline number yet (may need time to process)")
             

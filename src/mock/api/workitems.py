@@ -214,11 +214,16 @@ def create_workitems(project_id: str):
         if 'relationships' in item_data:
             workitem.relationships = item_data['relationships']
             
-            # If module relationship exists, add to document parts
+            # CRITICAL: Do NOT automatically add to document when module relationship exists
+            # This follows Polarion's two-step process - WorkItem goes to "Recycle Bin"
+            # Must use Document Parts API to make it visible
             if 'module' in item_data['relationships']:
                 module_id = item_data['relationships']['module']['data']['id']
                 if module_id in data_store.documents:
-                    data_store._add_workitem_to_document(module_id, workitem.id)
+                    # Mark as in recycle bin - has module but not in document
+                    workitem._in_recycle_bin = True
+                    workitem._is_in_document = False
+                    logger.info(f"Work item {workitem.id} linked to module {module_id} (in Recycle Bin)")
                 else:
                     logger.warning(f"Document {module_id} not found for work item {workitem.id}")
         

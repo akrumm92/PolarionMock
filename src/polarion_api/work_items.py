@@ -303,6 +303,7 @@ class WorkItemsMixin:
                                     description: Optional[Union[str, Dict[str, str]]] = None,
                                     status: str = "draft",
                                     save_output: bool = False,
+                                    previous_part_id: Optional[str] = None,
                                     **attributes) -> Dict[str, Any]:
         """Create a new work item and add it to a document (two-step process).
         
@@ -320,6 +321,7 @@ class WorkItemsMixin:
             description: Optional description (string or TextContent dict)
             status: Work item status (default: "draft")
             save_output: Whether to save response to output directory
+            previous_part_id: Optional ID of document part to insert after (e.g., "heading_PYTH-9397")
             **attributes: Additional attributes (priority, severity, etc.)
             
         Returns:
@@ -415,6 +417,16 @@ class WorkItemsMixin:
                 }
             }]
         }
+        
+        # Add positioning if specified
+        if previous_part_id:
+            parts_data["data"][0]["relationships"]["previousPart"] = {
+                "data": {
+                    "type": "document_parts",
+                    "id": previous_part_id
+                }
+            }
+            logger.info(f"Positioning WorkItem after: {previous_part_id}")
         
         # Send request to Document Parts API
         parts_endpoint = f"projects/{project_id}/spaces/{space_encoded}/documents/{doc_encoded}/parts"

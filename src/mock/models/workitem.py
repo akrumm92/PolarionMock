@@ -48,6 +48,12 @@ class WorkItem(BaseResource):
     type: Literal["workitems"] = Field(default="workitems")
     attributes: WorkItemAttributes = Field(description="Work item attributes")
     
+    # Mock-specific tracking fields (not exposed in API responses)
+    _is_in_document: bool = Field(default=False, exclude=True, description="Tracks if document part was created")
+    _document_position: Optional[int] = Field(default=None, exclude=True, description="Position in document")
+    _parent_workitem_id: Optional[str] = Field(default=None, exclude=True, description="Parent in hierarchy")
+    _in_recycle_bin: bool = Field(default=False, exclude=True, description="WorkItem in recycle bin state")
+    
     def to_json_api(self) -> Dict[str, Any]:
         """Convert to JSON:API format."""
         data = {
@@ -57,7 +63,14 @@ class WorkItem(BaseResource):
         
         # Convert attributes to dict using Pydantic's model_dump
         if self.attributes:
-            data["attributes"] = self.attributes.model_dump(exclude_none=True)
+            attrs = self.attributes.model_dump(exclude_none=True)
+            
+            # Critical: Only include outlineNumber if WorkItem is in document
+            # This replicates Polarion's behavior where WorkItems in "Recycle Bin" have no outline
+            if not self._is_in_document and "outlineNumber" in attrs:
+                del attrs["outlineNumber"]
+            
+            data["attributes"] = attrs
         
         if self.relationships:
             data["relationships"] = self.relationships
