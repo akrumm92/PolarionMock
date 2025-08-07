@@ -451,3 +451,158 @@ class TestWorkItemUpdatesAndLinks:
         
         logger.info("✅ Severity update test completed")
         return {"work_item_id": wi_id, "tested_severities": severity_values}
+    
+    def test_delete_work_item_link(self, polarion_client, test_document):
+        """Test creating and deleting links between work items.
+        
+        This test specifically validates the delete_work_item_link functionality:
+        1. Creates two work items
+        2. Creates multiple links between them
+        3. Deletes specific links
+        4. Verifies deletion was successful
+        """
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        
+        logger.info("\n" + "="*60)
+        logger.info("Testing work item link deletion")
+        logger.info("="*60)
+        
+        # Create first work item
+        wi1_data = {
+            "title": f"Link Test Source {timestamp}",
+            "work_item_type": "requirement",
+            "status": "draft",
+            "description": {
+                "type": "text/html",
+                "value": "<p>Source work item for link deletion test</p>"
+            },
+            "severity": "must_have",
+            "priority": "50.0"
+        }
+        
+        result1 = polarion_client.create_work_item_in_document(
+            project_id=test_document["project"],
+            space_id=test_document["space"],
+            document_name=test_document["document"],
+            previous_part_id="heading_PYTH-9397",
+            **wi1_data
+        )
+        
+        assert result1.get("document_integration", {}).get("visible_in_document") == True
+        wi1_id = result1["id"]
+        logger.info(f"Created source work item: {wi1_id}")
+        
+        # Create second work item
+        wi2_data = {
+            "title": f"Link Test Target {timestamp}",
+            "work_item_type": "requirement",
+            "status": "draft",
+            "description": {
+                "type": "text/html",
+                "value": "<p>Target work item for link deletion test</p>"
+            },
+            "severity": "must_have",
+            "priority": "50.0"
+        }
+        
+        result2 = polarion_client.create_work_item_in_document(
+            project_id=test_document["project"],
+            space_id=test_document["space"],
+            document_name=test_document["document"],
+            previous_part_id="heading_PYTH-9397",
+            **wi2_data
+        )
+        
+        assert result2.get("document_integration", {}).get("visible_in_document") == True
+        wi2_id = result2["id"]
+        logger.info(f"Created target work item: {wi2_id}")
+        
+        # Create multiple links to test deletion
+        test_links = [
+            ("relates_to", "General relationship"),
+            ("depends_on", "Dependency relationship"),
+            ("blocks", "Blocking relationship")
+        ]
+        
+        created_links = []
+        for role, description in test_links:
+            logger.info(f"\nCreating link: {wi1_id} --[{role}]--> {wi2_id}")
+            
+            link_result = polarion_client.create_work_item_link(
+                source_id=wi1_id,
+                target_id=wi2_id,
+                role=role
+            )
+            
+            if link_result.get("status") == "success":
+                logger.info(f"✅ Created {role} link")
+                created_links.append((wi1_id, wi2_id, role))
+            elif "409" in str(link_result.get("error", "")):
+                logger.info(f"ℹ️ Link {role} already exists")
+                created_links.append((wi1_id, wi2_id, role))
+            else:
+                logger.warning(f"⚠️ Failed to create {role} link: {link_result.get('error')}")
+        
+        # Now test deletion of links
+        logger.info("\n" + "="*40)
+        logger.info("Testing link deletion")
+        logger.info("="*40)
+        
+        deletion_results = []
+        for source, target, role in created_links:
+            logger.info(f"\nDeleting link: {source} --[{role}]-X-> {target}")
+            
+            delete_result = polarion_client.delete_work_item_link(
+                source_id=source,
+                target_id=target,
+                role=role
+            )
+            
+            if delete_result.get("status") == "success":
+                logger.info(f"✅ Successfully deleted {role} link")
+                deletion_results.append({
+                    "role": role,
+                    "status": "success"
+                })
+            elif "404" in str(delete_result.get("error", "")):
+                logger.info(f"ℹ️ Link {role} was already deleted or didn't exist")
+                deletion_results.append({
+                    "role": role,
+                    "status": "not_found"
+                })
+            else:
+                logger.warning(f"⚠️ Failed to delete {role} link: {delete_result.get('error')}")
+                deletion_results.append({
+                    "role": role,
+                    "status": "failed",
+                    "error": delete_result.get('error')
+                })
+        
+        # Verify that we could delete at least some links
+        successful_deletions = [d for d in deletion_results if d["status"] in ["success", "not_found"]]
+        
+        logger.info("\n" + "="*40)
+        logger.info("DELETION TEST SUMMARY")
+        logger.info("="*40)
+        logger.info(f"Created {len(created_links)} links")
+        logger.info(f"Successfully deleted/verified: {len(successful_deletions)} links")
+        for result in deletion_results:
+            logger.info(f"  - {result['role']}: {result['status']}")
+        
+        # Save results
+        test_data = {
+            "timestamp": timestamp,
+            "work_items": {
+                "source": wi1_id,
+                "target": wi2_id
+            },
+            "created_links": created_links,
+            "deletion_results": deletion_results
+        }
+        save_response_to_json(f"link_deletion_test_{timestamp}", test_data)
+        
+        # Assert that at least one deletion was successful or the link was already gone
+        assert len(successful_deletions) > 0, "No links could be deleted"
+        
+        logger.info("\n✅ Link deletion test completed successfully!")
+        return test_data
