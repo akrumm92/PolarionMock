@@ -18,6 +18,7 @@ from .utils import (
     load_test_data_batch
 )
 from .models import WorkItemCreate, WorkItemUpdate, TextContent
+from .validation_status import tested, TestStatus
 
 logger = logging.getLogger(__name__)
 
@@ -246,6 +247,13 @@ class WorkItemsMixin:
     
     # Update methods
     
+    @tested(
+        status=TestStatus.PRODUCTION_VALIDATED,
+        test_file="tests/moduletest/test_workitem_updates_and_links.py",
+        test_method="test_complete_workitem_lifecycle",
+        date="2025-08-07",
+        notes="Successfully creates WorkItems in documents with proper chapter placement"
+    )
     def create_work_item_in_document(self, project_id: str, 
                                     space_id: str,
                                     document_name: str,
@@ -565,6 +573,13 @@ class WorkItemsMixin:
                 "response": response.text if response.text else None
             }
     
+    @tested(
+        status=TestStatus.PRODUCTION_VALIDATED,
+        test_file="tests/moduletest/test_workitem_updates_and_links.py",
+        test_method="test_complete_workitem_lifecycle",
+        date="2025-08-07",
+        notes="Successfully tested updating title, description, status, and severity attributes"
+    )
     def update_work_item(self, work_item_id: str, attributes: Dict[str, Any] = None, 
                          relationships: Dict[str, Any] = None) -> Dict[str, Any]:
         """Update a work item's attributes and/or relationships.
@@ -668,6 +683,13 @@ class WorkItemsMixin:
                 "response": response.text if response.text else None
             }
 
+    @tested(
+        status=TestStatus.PRODUCTION_VALIDATED,
+        test_file="tests/moduletest/test_workitem_updates_and_links.py",
+        test_method="test_complete_workitem_lifecycle",
+        date="2025-08-07",
+        notes="Successfully tested creating links with roles: verifies, depends_on, blocks, relates_to"
+    )
     def create_work_item_link(self, source_id: str, target_id: str, 
                              role: str = "relates_to", suspect: bool = False) -> Dict[str, Any]:
         """Create a link between two work items.
@@ -764,6 +786,13 @@ class WorkItemsMixin:
                 "response": response.text if response.text else None
             }
     
+    @tested(
+        status=TestStatus.NOT_TESTED,
+        test_file="tests/moduletest/test_workitem_updates_and_links.py",
+        test_method="test_complete_workitem_lifecycle",
+        date="2025-08-07",
+        notes="Method implemented but deletion test commented out to preserve test data"
+    )
     def delete_work_item_link(self, source_id: str, target_id: str, role: str) -> Dict[str, Any]:
         """Delete a link between two work items.
         
