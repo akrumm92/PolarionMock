@@ -787,11 +787,11 @@ class WorkItemsMixin:
             }
     
     @tested(
-        status=TestStatus.NOT_TESTED,
+        status=TestStatus.PRODUCTION_VALIDATED,
         test_file="tests/moduletest/test_workitem_updates_and_links.py",
-        test_method="test_complete_workitem_lifecycle",
+        test_method="test_delete_work_item_link",
         date="2025-08-07",
-        notes="Method implemented but deletion test commented out to preserve test data"
+        notes="Successfully tested deletion of links with roles: relates_to, depends_on, blocks"
     )
     def delete_work_item_link(self, source_id: str, target_id: str, role: str) -> Dict[str, Any]:
         """Delete a link between two work items.
