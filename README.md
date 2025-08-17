@@ -232,3 +232,47 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Built for Polarion ALM testing and development
 - Inspired by best practices in API mocking and testing
 - Powered by Flask, pytest, and the Python ecosystem
+
+
+flowchart LR
+  %% ==== Externe Systeme ====
+  subgraph EXT[Externe Systeme]
+    SRC[(PDF-Quelle\nFS / S3 / Share)]
+    POL[Polarion\n(Project/WorkItems)]
+  end
+
+  %% ==== Pipeline (Luigi Task / Dagster Asset) ====
+  subgraph PIPE[Pipeline (Luigi/Dagster)]
+    INJ[Ingest PDFs]:::proc
+    OCR[Text/OCR Extract]:::proc
+    PARSE[Requirement Parser]:::proc
+    NORM[Normalize & Split\n(ID, Title, Text, Priority)]:::proc
+    VALID[Validate & Deduplicate\n(Schema/Links)]:::proc
+    MAP[Map → Polarion Fields\n(type, title, description, custom)]:::proc
+    PKG[Package JSON Payload]:::proc
+    PUBL[Publish via MCP → Polarion]:::proc
+    ACK[Writeback Status/IDs]:::proc
+  end
+
+  %% ==== Datenflüsse & Schnittstellen ====
+  SRC  -- "PDF(A) Files" --> INJ
+  INJ  -- "pdf_path list" --> OCR
+  OCR  -- "raw_text.jsonl" --> PARSE
+  PARSE -- "requirements.raw.json" --> NORM
+  NORM -- "requirements.norm.json" --> VALID
+  VALID -- "requirements.valid.json" --> MAP
+  VALID -- "report.csv (Fehler)" --> ERR[Review Queue]:::aux
+  MAP  -- "workitem[].fields" --> PKG
+  PKG  -- "payload.json" --> PUBL
+  PUBL -- "MCP Tool: polarion.publish\n(REST/SOAP unter der Haube)" --> POL
+  PUBL -- "workitem_ids, status" --> ACK
+  ACK  -- "Run Log / Metadata" --> STORE[(Logs/Metadata)]:::store
+
+  %% ==== Styles ====
+  classDef proc fill:#eef,stroke:#58f,stroke-width:1px,rx:6,ry:6;
+  classDef ext fill:#ffd,stroke:#cc9,rx:6,ry:6;
+  classDef store fill:#efe,stroke:#6c6,rx:6,ry:6;
+  classDef aux fill:#fce,stroke:#d36,rx:6,ry:6;
+
+  class SRC,POL ext;
+  class STORE store;
