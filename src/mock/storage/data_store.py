@@ -1,6 +1,21 @@
 """
 Central data store for Polarion Mock Server
-Manages all entities and their relationships
+Manages all entities and their relationships.
+
+Document parts are kept in ONE canonical internal shape per part::
+
+    {
+        "id": "heading_VPAT-11137",        # short part id (= attributes.id)
+        "type": "heading",                 # heading | workitem | normal | ...
+        "content": "<h1 ...></h1>",        # attributes.content (HTML)
+        "workitem_id": "VPATHAI/VPAT-11137" or None,   # full work item id
+        "level": None, "external": None    # optional extras from a dump
+    }
+
+The JSON:API rendering (ids, links, relationships, sparse fieldsets) is done
+in ``src/mock/utils/parts.py`` so every producer (seed data, dump loader,
+POST /parts, moveToDocument) stores the same thing and every consumer reads
+the same thing.
 """
 
 from typing import Dict, List, Optional, Any
@@ -17,33 +32,67 @@ from ..models.user import User
 logger = logging.getLogger(__name__)
 
 
+def make_part(part_id: str, part_type: str, content: str = "",
+              workitem_id: Optional[str] = None,
+              level: Optional[int] = None,
+              external: Optional[bool] = None) -> Dict[str, Any]:
+    """Build a canonical document part dict."""
+    return {
+        "id": part_id,
+        "type": part_type,
+        "content": content or "",
+        "workitem_id": workitem_id,
+        "level": level,
+        "external": external,
+    }
+
+
 @dataclass
 class DataStore:
     """Central data store for all Polarion entities."""
-    
+
     projects: ProjectStore = field(default_factory=ProjectStore)
     workitems: Dict[str, WorkItem] = field(default_factory=dict)
     documents: Dict[str, Document] = field(default_factory=dict)
     collections: Dict[str, Collection] = field(default_factory=dict)
     users: Dict[str, User] = field(default_factory=dict)
-    
-    # Document parts tracking
+
+    # Document parts: document id -> ordered list of canonical part dicts
     document_parts: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)
-    
+
     # Work item counter for auto-generated IDs
     _workitem_counter: Dict[str, int] = field(default_factory=dict)
-    
+
+    # Summaries of the Polarion dumps loaded from disk (see dump_loader)
+    dump_summaries: List[Dict[str, Any]] = field(default_factory=list)
+
     def __post_init__(self):
         """Initialize with dummy data."""
         self.seed_dummy_data()
-    
+
+    # ------------------------------------------------------------------ seeding
+    def reset(self) -> None:
+        """Drop everything and seed again (dummy data + dumps from disk)."""
+        # Clear IN PLACE: the blueprints keep references to these containers
+        # (e.g. projects.py binds data_store.projects at import time).
+        self.projects.projects.clear()
+        self.projects.seed_data()
+        self.workitems.clear()
+        self.documents.clear()
+        self.collections.clear()
+        self.users.clear()
+        self.document_parts.clear()
+        self._workitem_counter.clear()
+        self.dump_summaries.clear()
+        self.seed_dummy_data()
+
     def seed_dummy_data(self):
         """Seed the store with comprehensive dummy data."""
         logger.info("Seeding data store with dummy data...")
-        
+
         # Create users
         self._create_dummy_users()
-        
+
         # Create projects (already handled by ProjectStore)
         # Add more test projects including Python project from requirements
         test_projects = [
@@ -56,25 +105,54 @@ class DataStore:
             Project.create_mock("medical", "Medical Device Project",
                               description="Medical device compliance",
                               trackerPrefix="MED"),
+            # Sandbox project used by tests/test_mock_workitem_document_integration.py
+            Project.create_mock("TestProject", "Test Project",
+                              description="Sandbox for the two-step work item / document tests",
+                              trackerPrefix="TP"),
         ]
-        
+
         for project in test_projects:
             try:
                 self.projects.create(project)
             except ValueError:
                 pass  # Project already exists
-        
+
         # Create documents
         self._create_dummy_documents()
-        
+
         # Create work items
         self._create_dummy_workitems()
-        
+
         # Create collections
         self._create_dummy_collections()
-        
+
+        # Load real Polarion document dumps (exports of the fetch script)
+        self._load_dumps()
+
         logger.info("Data store seeding completed")
-    
+
+    def _load_dumps(self) -> None:
+        """Load every Polarion dump from the dump directories."""
+        from .dump_loader import load_dump_directory  # local import: avoids a cycle
+        try:
+            self.dump_summaries = load_dump_directory(self)
+        except Exception:  # pragma: no cover - never let a bad dump kill the server
+            logger.exception("Loading Polarion dumps failed")
+            self.dump_summaries = []
+        for summary in self.dump_summaries:
+            logger.info("Dump available: %s (%d parts, %d work items)",
+                        summary["document_id"], summary["parts"], summary["workitems"])
+
+    def load_dump(self, dump: Dict[str, Any], source: str = "<api>") -> Dict[str, Any]:
+        """Load one dump dict at runtime (admin endpoint)."""
+        from .dump_loader import load_dump
+        summary = load_dump(self, dump, source=source)
+        # replace an older summary of the same document
+        self.dump_summaries = [
+            s for s in self.dump_summaries if s["document_id"] != summary["document_id"]
+        ] + [summary]
+        return summary
+
     def _create_dummy_users(self):
         """Create dummy users."""
         users = [
@@ -83,10 +161,10 @@ class DataStore:
             User.create_mock("jane.smith", "Jane Smith", email="jane.smith@example.com"),
             User.create_mock("test.user", "Test User", email="test.user@example.com"),
         ]
-        
+
         for user in users:
             self.users[user.id] = user
-    
+
     def _create_dummy_documents(self):
         """Create dummy documents following real Polarion structure."""
         documents_data = [
@@ -103,12 +181,12 @@ class DataStore:
             ("Python", "Product Layer", "Product Requirements Specification",
              "Product Requirements Specification",
              "Product requirements document"),
-            
+
             # Python _default space document (for tests)
             ("Python", "_default", "Functional Concept - Template",
              "Functional Concept - Template",
              "Template document for functional concepts"),
-            
+
             # eLibrary project documents
             ("elibrary", "_default", "requirements", "Requirements Specification",
              "Requirements document for eLibrary system"),
@@ -116,20 +194,24 @@ class DataStore:
              "System architecture and design"),
             ("elibrary", "testing", "test_plan", "Test Plan",
              "Comprehensive test plan for eLibrary"),
-            
+
             # myproject documents
             ("myproject", "_default", "user_stories", "User Stories",
              "Collection of user stories"),
             ("myproject", "docs", "api_spec", "API Specification",
              "REST API specification document"),
-            
+
             # automotive project documents
             ("automotive", "_default", "safety_req", "Safety Requirements",
              "ISO 26262 safety requirements"),
             ("automotive", "testing", "test_cases", "Test Cases",
              "Safety test cases"),
+
+            # sandbox document for the two-step integration tests
+            ("TestProject", "TestSpace", "TestDocument", "Test Document",
+             "Empty sandbox document"),
         ]
-        
+
         for project_id, space_id, doc_id, title, description in documents_data:
             doc = Document.create_mock(
                 project_id=project_id,
@@ -142,62 +224,62 @@ class DataStore:
                 }
             )
             self.documents[doc.id] = doc
-            
+
             # Initialize empty document parts
             self.document_parts[doc.id] = []
-    
+
     def _create_dummy_workitems(self):
         """Create dummy work items with various types and states.
-        
+
         IMPORTANT: Every work item MUST have a module relationship (100% as per requirements).
         """
         workitems_data = [
             # Python project work items (150+ for pagination testing)
             *self._generate_python_workitems(),
-            
+
             # eLibrary work items
             ("elibrary", "ELIB-1", "requirement", "User Authentication",
              "Users shall be able to authenticate using email and password",
              "open", "high", None, "elibrary/_default/requirements"),
-            
+
             ("elibrary", "ELIB-2", "requirement", "Book Search",
              "Users shall be able to search books by title, author, or ISBN",
              "open", "high", None, "elibrary/_default/requirements"),
-            
+
             ("elibrary", "ELIB-3", "defect", "Login Button Not Responsive",
              "Login button does not respond on mobile devices",
              "open", "critical", "major", "elibrary/_default/requirements"),
-            
+
             ("elibrary", "ELIB-4", "task", "Setup CI/CD Pipeline",
              "Configure automated build and deployment pipeline",
              "done", "medium", None, "elibrary/_default/architecture"),
-            
+
             # myproject work items
             ("myproject", "MP-1", "userstory", "As a user, I want to login",
              "User story for authentication feature",
              "open", "high", None, "myproject/_default/user_stories"),
-            
+
             ("myproject", "MP-2", "task", "Implement REST API",
              "Create RESTful API endpoints",
              "in_progress", "high", None, "myproject/docs/api_spec"),
-            
+
             ("myproject", "MP-3", "defect", "API returns 500 error",
              "POST /api/users returns internal server error",
              "open", "high", "critical", "myproject/docs/api_spec"),
-            
+
             # automotive work items
             ("automotive", "AUTO-1", "requirement", "Emergency Braking",
              "System shall engage emergency braking when obstacle detected",
              "approved", "critical", None, "automotive/_default/safety_req"),
-            
+
             ("automotive", "AUTO-2", "testcase", "Test Emergency Braking",
              "Verify emergency braking engages within 100ms",
              "draft", "high", None, "automotive/testing/test_cases"),
         ]
-        
-        for (project_id, work_id, w_type, title, description, 
+
+        for (project_id, work_id, w_type, title, description,
              status, priority, severity, module_id) in workitems_data:
-            
+
             # Build work item attributes
             attrs = {
                 "type": w_type,
@@ -206,7 +288,7 @@ class DataStore:
                 "author": "admin",
                 "assignee": ["john.doe"] if status != "done" else ["jane.smith"]
             }
-            
+
             # Handle description format (can be string or object)
             if isinstance(description, dict):
                 attrs["description"] = description
@@ -215,10 +297,10 @@ class DataStore:
                     "type": "text/html",
                     "value": description
                 }
-            
+
             if severity:
                 attrs["severity"] = severity
-            
+
             # Create work item
             workitem = WorkItem.create_mock(
                 project_id=project_id,
@@ -226,7 +308,7 @@ class DataStore:
                 title=title,
                 **attrs
             )
-            
+
             # Add module relationship if specified
             if module_id:
                 workitem.relationships = {
@@ -237,16 +319,17 @@ class DataStore:
                         }
                     }
                 }
-                
-                # Add to document parts
-                self._add_workitem_to_document(module_id, workitem.id)
-            
+
             self.workitems[workitem.id] = workitem
-    
+
+            # Add to document parts (the seeded items are visible in their document)
+            if module_id:
+                self._add_workitem_to_document(module_id, workitem.id)
+
     def _generate_python_workitems(self):
         """Generate 150+ Python project work items for pagination testing."""
         workitems = []
-        
+
         # Document mapping for Python project
         documents = [
             ("Python/Component Layer/Component Requirement Specification", "componentrequirement"),
@@ -254,17 +337,17 @@ class DataStore:
             ("Python/Functional Layer/Functional Concept", "functionalrequirement"),
             ("Python/Product Layer/Product Requirements Specification", "technicalrequirement"),
         ]
-        
+
         # Status and priority options from real data
         statuses = ["proposed", "approved", "implemented", "verified"]
         priorities = ["50.0", "100.0", "150.0", "200.0"]
         severities = ["not_applicable", "minor", "major", "critical"]
-        
+
         # Generate 150+ work items
         for i in range(1, 155):
             doc_idx = i % len(documents)
             doc_id, w_type = documents[doc_idx]
-            
+
             # Create work item data
             workitems.append((
                 "Python",
@@ -280,9 +363,9 @@ class DataStore:
                 severities[i % len(severities)],
                 doc_id
             ))
-        
+
         return workitems
-    
+
     def _create_dummy_collections(self):
         """Create dummy collections."""
         collections_data = [
@@ -293,7 +376,7 @@ class DataStore:
             ("automotive", "safety_critical", "Safety Critical", "Safety critical requirements",
              "type:requirement AND severity:critical"),
         ]
-        
+
         for project_id, coll_id, name, description, query in collections_data:
             collection = Collection.create_mock(
                 project_id=project_id,
@@ -303,39 +386,91 @@ class DataStore:
                 query=query
             )
             self.collections[collection.id] = collection
-    
-    def _add_workitem_to_document(self, document_id: str, workitem_id: str):
-        """Add work item to document parts."""
-        if document_id not in self.document_parts:
-            self.document_parts[document_id] = []
-        
-        # Create document part
-        part_id = f"{document_id}/part_{len(self.document_parts[document_id]) + 1}"
-        part = {
-            "type": "document_parts",
-            "id": part_id,
-            "attributes": {
-                "type": "workitem"
-            },
-            "relationships": {
-                "workItem": {
-                    "data": {
-                        "type": "workitems",
-                        "id": workitem_id
-                    }
-                }
-            }
-        }
-        
-        self.document_parts[document_id].append(part)
-    
+
+    # ------------------------------------------------------------ document parts
+    def add_part(self, document_id: str, part_id: str, part_type: str,
+                 content: str = "", workitem_id: Optional[str] = None,
+                 position: Optional[int] = None,
+                 level: Optional[int] = None,
+                 external: Optional[bool] = None) -> Dict[str, Any]:
+        """Store a canonical part for ``document_id``.
+
+        ``position`` is 1-based; ``None`` appends. A part with the same short
+        id replaces the existing one (a work item appears once in a document).
+        """
+        parts = self.document_parts.setdefault(document_id, [])
+        parts[:] = [p for p in parts if p["id"] != part_id]
+        part = make_part(part_id, part_type, content, workitem_id, level, external)
+        if position is None or position > len(parts):
+            parts.append(part)
+        else:
+            parts.insert(max(position - 1, 0), part)
+        return part
+
+    def get_parts(self, document_id: str, include_recycled: bool = False) -> List[Dict[str, Any]]:
+        """Ordered, visible parts of a document.
+
+        A part that references a work item is visible only while that work
+        item is in the document (not in the Recycle Bin).
+        """
+        visible: List[Dict[str, Any]] = []
+        for part in self.document_parts.get(document_id, []):
+            workitem_id = part.get("workitem_id")
+            if workitem_id and not include_recycled:
+                workitem = self.workitems.get(workitem_id)
+                if workitem is None or not getattr(workitem, "_is_in_document", False):
+                    continue
+            visible.append(part)
+        return visible
+
+    def find_part(self, document_id: str, part_ref: str) -> Optional[int]:
+        """Index of a part addressed by short id or full id, or None."""
+        for index, part in enumerate(self.document_parts.get(document_id, [])):
+            if part["id"] == part_ref or f"{document_id}/{part['id']}" == part_ref:
+                return index
+        return None
+
+    def remove_parts_for_workitem(self, workitem_id: str) -> int:
+        """Remove every part referencing ``workitem_id``; return the count."""
+        removed = 0
+        for document_id, parts in self.document_parts.items():
+            before = len(parts)
+            parts[:] = [p for p in parts if p.get("workitem_id") != workitem_id]
+            removed += before - len(parts)
+        return removed
+
+    def _add_workitem_to_document(self, document_id: str, workitem_id: str,
+                                  position: Optional[int] = None) -> Dict[str, Any]:
+        """Add a work item to a document (creates the part, marks it visible)."""
+        short_id = workitem_id.split("/", 1)[-1]
+        workitem = self.workitems.get(workitem_id)
+        part_type = "workitem"
+        content = f'<div id="polarion_wiki macro name=module-workitem;params=id={short_id}"></div>'
+        if workitem is not None:
+            if getattr(workitem.attributes, "type", "") == "heading":
+                part_type = "heading"
+                content = f'<h2 id="polarion_wiki macro name=module-workitem;params=id={short_id}"></h2>'
+            workitem._is_in_document = True
+            workitem._in_recycle_bin = False
+        part = self.add_part(
+            document_id,
+            part_id=f"{part_type}_{short_id}",
+            part_type=part_type,
+            content=content,
+            workitem_id=workitem_id,
+            position=position,
+        )
+        if workitem is not None:
+            workitem._document_position = self.find_part(document_id, part["id"]) + 1
+        return part
+
     def get_next_workitem_id(self, project_id: str) -> str:
         """Generate next work item ID for a project."""
         if project_id not in self._workitem_counter:
             # Find highest existing ID for this project
             max_id = 0
             prefix = self.projects.get_by_id(project_id).attributes.trackerPrefix
-            
+
             for wi_id in self.workitems:
                 if wi_id.startswith(f"{project_id}/"):
                     parts = wi_id.split("/")[1].split("-")
@@ -345,43 +480,43 @@ class DataStore:
                             max_id = max(max_id, num)
                         except ValueError:
                             pass
-            
+
             self._workitem_counter[project_id] = max_id
-        
+
         self._workitem_counter[project_id] += 1
         project = self.projects.get_by_id(project_id)
         prefix = project.attributes.trackerPrefix if project else project_id.upper()
-        
+
         return f"{prefix}-{self._workitem_counter[project_id]}"
-    
-    def query_workitems(self, query: Optional[str] = None, 
+
+    def query_workitems(self, query: Optional[str] = None,
                        project_id: Optional[str] = None) -> List[WorkItem]:
         """Query work items with optional filtering."""
         results = list(self.workitems.values())
-        
+
         # Filter by project
         if project_id:
             results = [wi for wi in results if wi.id.startswith(f"{project_id}/")]
-        
+
         # Simple query parsing (real implementation would be more complex)
         if query:
             # Handle module.id query
             if "module.id:" in query:
                 module_id = query.split("module.id:")[1].strip()
-                results = [wi for wi in results 
-                          if wi.relationships and 
+                results = [wi for wi in results
+                          if wi.relationships and
                           wi.relationships.get("module", {}).get("data", {}).get("id") == module_id]
-            
+
             # Handle type queries
             elif "type:" in query:
                 q_type = query.split("type:")[1].split()[0]
                 results = [wi for wi in results if wi.attributes.type == q_type]
-            
+
             # Handle status queries
             elif "status:" in query:
                 q_status = query.split("status:")[1].split()[0]
                 results = [wi for wi in results if wi.attributes.status == q_status]
-        
+
         return results
 
 

@@ -1,0 +1,60 @@
+WARNING: Processor changes detected since last run (2026-09-11_run003.log)
+
+  Stage               File Changed         Hash
+  ---------------------------------------------------------
+  build_requirements  jq_final_hash        9eae6f3e550c -> (none)
+  build_requirements  scenario_yaml_hash   79d6b47adbcf -> (none)
+  build_requirements  wrapper_prompt_hash  (none) -> 6b5dfee9c4a2
+
+Changes acknowledged via --acknowledge-changes (-y). Proceeding.
+Running workflow for 'CLAAS_New' with profile 'lexion_fsm_polarion_requirements_read_api_test'
+  Project: lexion_fsm_polarion
+  Workflow: C:\Users\E017093\v2_vpath_customer_workflows\customers\CLAAS_New\projects\lexion_fsm_polarion\workflows\lexion_fsm_polarion_requirements_read.yaml
+  Type:     YAML
+  LESEN (Dokument Technical_Specification-API_TEST): alle Anforderungs-Work-Items (systemrequirement + componentrequirement) des Polarion-Dokuments ueber die REST-API holen und deterministisch (JQ_ONLY, kein Modell) als requirements.yaml landen. Schreibt NIE in den Graphen und NIE nach Polarion (CQ-WKP-C-CLAASNEW-LFP-04)
+
+Using customer config: CLAAS_New / project: lexion_fsm_polarion
+Initialized workflow 'lexion_fsm_polarion_requirements_read' with DotEnvManager
+  Input: customers\CLAAS_New\projects\lexion_fsm_polarion\config
+  Output: playground\CLAAS_New_lexion_fsm_polarion_requirements_read\lexion_fsm_polarion_requirements_read_claas_new_lexion_fsm_polarion_requirements_read_api_test
+[YAML Builder] Building workflow 'lexion_fsm_polarion_requirements_read' with 3 stages (0 skipped)
+[YAML Builder] Topological order: fetch_polarion_document -> stage_raw_for_requirements -> build_requirements
+Added processor [001]: fetch_polarion_document (RunScriptProcessor)
+Added processor [002]: stage_raw_for_requirements (DataCopierProcessor)
+Added processor [003]: build_requirements (GenericJsonEtlProcessor)
+Starting workflow 'lexion_fsm_polarion_requirements_read': 3 stages in 3 levels, max 1 parallel workers
+Level 0: fetch_polarion_document
+[001/003] Running: fetch_polarion_document
+  Processor RunScriptProcessor received parameters: {'script': 'scripts/fetch_polarion_document.py', 'args': ['--base-url', 'https://localhost:5001', '--project', 'VPATHAI', '--space', 'System Layer', '--document', 'Technical_Specification-API_TEST', '--out-dir', './playground/lexion_fsm_polarion_derived/api_test/fetch', '--verify-ssl', 'false']}
+  Input paths: [WindowsPath('customers/CLAAS_New/projects/lexion_fsm_polarion/config')]
+  Output folder ready: playground\CLAAS_New_lexion_fsm_polarion_requirements_read\lexion_fsm_polarion_requirements_read_claas_new_lexion_fsm_polarion_requirements_read_api_test\001_fetch_polarion_document
+  RunScriptProcessor: running scripts/fetch_polarion_document.py as a stage
+playground\lexion_fsm_polarion_derived\api_test\fetch\polarion_document_raw.json: 218 of 218 reported parts, 158 work items
+  Saved metadata to playground\CLAAS_New_lexion_fsm_polarion_requirements_read\lexion_fsm_polarion_requirements_read_claas_new_lexion_fsm_polarion_requirements_read_api_test\001_fetch_polarion_document\.meta
+Level 1: stage_raw_for_requirements
+[002/003] Running: stage_raw_for_requirements
+  Processor DataCopierProcessor received parameters: {'input_path': './playground/lexion_fsm_polarion_derived/api_test/fetch/polarion_document_raw.json', 'definition_files': ['C:\\Users\\E017093\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\vpath_orchestrator\\processors\\data_copier\\data_copier.py']}
+  Input paths: [WindowsPath('playground/CLAAS_New_lexion_fsm_polarion_requirements_read/lexion_fsm_polarion_requirements_read_claas_new_lexion_fsm_polarion_requirements_read_api_test/001_fetch_polarion_document')]
+  Output folder ready: playground\CLAAS_New_lexion_fsm_polarion_requirements_read\lexion_fsm_polarion_requirements_read_claas_new_lexion_fsm_polarion_requirements_read_api_test\002_stage_raw_for_requirements
+  Copying single file from playground\lexion_fsm_polarion_derived\api_test\fetch\polarion_document_raw.json to playground\CLAAS_New_lexion_fsm_polarion_requirements_read\lexion_fsm_polarion_requirements_read_claas_new_lexion_fsm_polarion_requirements_read_api_test\002_stage_raw_for_requirements
+  Saved metadata to playground\CLAAS_New_lexion_fsm_polarion_requirements_read\lexion_fsm_polarion_requirements_read_claas_new_lexion_fsm_polarion_requirements_read_api_test\002_stage_raw_for_requirements\.meta
+Level 2: build_requirements
+[003/003] Running: build_requirements
+  Processor GenericJsonEtlProcessor received parameters: {'scenario_yaml': 'ground_guidance_requirements/0_scenario.yaml', 'definition_files': ['C:\\Users\\E017093\\v2_vpath_customer_workflows\\customers\\CLAAS_New\\projects\\ground_guidance\\scenarios\\ground_guidance_requirements\\0_scenario.yaml', 'C:\\Users\\E017093\\v2_vpath_customer_workflows\\customers\\CLAAS_New\\projects\\ground_guidance\\scenarios\\ground_guidance_requirements\\5_transform_final_output.jq']}
+  Input paths: [WindowsPath('playground/CLAAS_New_lexion_fsm_polarion_requirements_read/lexion_fsm_polarion_requirements_read_claas_new_lexion_fsm_polarion_requirements_read_api_test/002_stage_raw_for_requirements')]
+  Output folder ready: playground\CLAAS_New_lexion_fsm_polarion_requirements_read\lexion_fsm_polarion_requirements_read_claas_new_lexion_fsm_polarion_requirements_read_api_test\003_build_requirements
+  Custom parameters available: ['definition_files']
+  JQ engine initialized: Python jq library
+  Initialized Jinja2 environment with paths: ['C:\\Users\\E017093\\gitRepos\\left_side_clean\\src\\left_side\\processors\\generic_json_etl\\prompt_lib', 'customers\\CLAAS_New\\projects\\ground_guidance\\scenarios']
+  Loaded domain_context from C:\Users\E017093\v2_vpath_customer_workflows\customers\CLAAS_New\projects\lexion_fsm_polarion\prompt_context\domain_context.md (3384 chars)
+  Copied 'polarion_document_raw.json' from 002_stage_raw_for_requirements
+  JQ_ONLY mode: Skipping AI processing phase
+  Wrote search results to _ETL_SEARCH_RESULTS.YAML
+  Executing jq script with Python jq library
+  JQ execution successful, output type: dict
+  Wrote final output to requirements.yaml
+  Validated 1 expected output file(s)
+  Saved metadata to playground\CLAAS_New_lexion_fsm_polarion_requirements_read\lexion_fsm_polarion_requirements_read_claas_new_lexion_fsm_polarion_requirements_read_api_test\003_build_requirements\.meta
+Report saved to: playground\CLAAS_New_lexion_fsm_polarion_requirements_read\lexion_fsm_polarion_requirements_read_claas_new_lexion_fsm_polarion_requirements_read_api_test\workflow_report_20260912_060939.json
+Workflow finished (completed) in 3.79 seconds
+  Run log: C:\Users\E017093\v2_vpath_customer_workflows\customers\CLAAS_New\projects\lexion_fsm_polarion\runs\2026-09-12_run001.log.yaml

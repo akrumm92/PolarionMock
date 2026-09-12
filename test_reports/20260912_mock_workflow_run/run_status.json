@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "run_id": "e72a9b1552c239a7004b07be25174a3a77ee41a974a71fc905f3454f0d866c7c",
+  "status": "completed",
+  "started_at": "2026-09-12T06:09:35.277228",
+  "finished_at": "2026-09-12T06:09:39.067763",
+  "active_stage": null,
+  "stages": {
+    "fetch_polarion_document": {
+      "state": "completed",
+      "since": "2026-09-12T06:09:38.801490"
+    },
+    "stage_raw_for_requirements": {
+      "state": "completed",
+      "since": "2026-09-12T06:09:38.830902"
+    },
+    "build_requirements": {
+      "state": "completed",
+      "since": "2026-09-12T06:09:39.063312"
+    }
+  }
+}

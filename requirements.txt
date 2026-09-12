@@ -20,6 +20,7 @@ jsonschema==4.20.0
 openapi-spec-validator==0.7.1
 pyyaml==6.0.1
 PyJWT==2.8.0
+cryptography>=41.0  # ad-hoc self-signed certificate for MOCK_SSL=true
 
 # HTTP clients and testing
 requests==2.31.0

@@ -1,0 +1,462 @@
+meta:
+  source_document: Technical_Specification-API_TEST
+  polarion_project: VPATHAI
+  polarion_space: System Layer
+  polarion_base_url: https://localhost:5001
+  fetched_at: '2026-09-12T04:09:38Z'
+  description_format: polarion rich-text HTML, verbatim
+  counts:
+    work_items_total: 158
+    requirements: 29
+    systemrequirement: 10
+    componentrequirement: 19
+    with_description: 29
+requirements:
+- id: VPAT-11134
+  title: Betriebsarten des Systems - Seatswitch
+  type: systemrequirement
+  outlineNumber: 2-1
+  status: draft
+  description: '<p><p>Das System kennt <b>drei Betriebsarten</b>, die den drei Zustaenden
+    der Zustandsmaschine entsprechen: <b>SeatSwitchOff</b> (Sitz nicht besetzt oder
+    Fehler erkannt), <b>SeatSwitchOn</b> (Fahrer sitzt, Signaltest in Ordnung) und
+    <b>SeatSwitchRelease</b> (Sitzkontakt geoeffnet, Loslass-Zeit laeuft).</p><p>Nach
+    dem Start befindet sich das System in <b>SeatSwitchOff</b>. Ein Wechsel zwischen
+    den Betriebsarten findet ausschliesslich ueber die in Kapitel 5.1 beschriebenen
+    Uebergaenge statt; eine andere Ursache fuer einen Wechsel gibt es nicht.</p><table
+    class="polarion-Document-table" style="width:100%;max-width:1280px;margin-left:0px;margin-right:auto;border:1px
+    solid #CCCCCC;empty-cells:show;border-collapse:collapse;"><tbody><tr><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Betriebsart</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Startzustand</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Zeilen im Code</th></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOff</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">ja</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">153&ndash;189</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchRelease</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">nein</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">191&ndash;255</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOn</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">nein</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">257&ndash;306</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Initialisierung (Default-Zweig)</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">&mdash;</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">307&ndash;310</td></tr></tbody></table></p>'
+- id: VPAT-11153
+  title: <RequirementTitle - Supported Crop Types>
+  type: systemrequirement
+  outlineNumber: 2.1-3
+  status: proposed
+  description: '<span style="font-family: Arial, Helvetica, sans-serif;color: #FF9900;">The
+    measurement system shall be able to measure the ingredients of the wheat, barley
+    and corn.</span>'
+- id: VPAT-11264
+  title: 'ZZ REG Fehlererkennung: Sitzkontaktschalter-Fehler'
+  type: systemrequirement
+  outlineNumber: 2.1-5
+  status: draft
+  description: '<p>Das System erkennt <b>zwei</b> Fehlerbilder des Sitzkontaktschalters
+    und meldet sie als Diagnosecode: einen elektrischen Fehler des Sitzkontakt-Kreises
+    und einen Plausibilitaetsfehler, wenn der Sitzkontakt ueber 20 Betriebsstunden
+    hinweg kein einziges Mal wechselt. Beide Codes gehen auf CAN und in den Fehlerspeicher.</p><p>Die
+    vollstaendige Definition beider Codes samt Ausloesebedingung, Entprellung und
+    Ruecknahme steht in Kapitel 5.8.</p><table class="polarion-Document-table" style="width:100%;max-width:1280px;margin-left:0px;margin-right:auto;border:1px
+    solid #CCCCCC;empty-cells:show;border-collapse:collapse;"><tbody><tr><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Lokaler Bezeichner</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Code [hex]</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Bedeutung</th></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>DESC_DTC_Seatcontact_ScUb</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">0x0139</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Sitzkontaktschalter Kurzschluss nach 12V</td></tr><tr><td
+    style="text-align:left;vertical-align:top;border:1px solid #CCCCCC;padding:5px;"><code>DESC_DTC_Seatcontact_Invalid</code></td><td
+    style="text-align:left;vertical-align:top;border:1px solid #CCCCCC;padding:5px;">0x2B07</td><td
+    style="text-align:left;vertical-align:top;border:1px solid #CCCCCC;padding:5px;">Sitzkontaktschalter
+    defekt</td></tr></tbody></table><p><b>Befund der manuellen Code-Analyse (2026-08-19):</b>
+    beide Codes werden im Aufrufer <b>direkt</b> ueber ihr CANdela-Symbol gesetzt
+    &mdash; es gibt fuer diese Funktion weder ein lokales Alias noch eine Bit-Nummer
+    noch eine DTC-Referenztabelle, wie sie andere Funktionen derselben Datei verwenden.
+    Der lokale Bezeichner IST deshalb das Katalog-Symbol.</p>'
+- id: VPAT-11265
+  title: ZZ REG Betriebsarten des Systems - Seatswitch
+  type: systemrequirement
+  outlineNumber: 2.1-6
+  status: draft
+  description: 'Das System kennt <b>drei Betriebsarten</b>, die den drei Zustaenden
+    der Zustandsmaschine entsprechen: <b>SeatSwitchOff</b> (Sitz nicht besetzt oder
+    Fehler erkannt), <b>SeatSwitchOn</b> (Fahrer sitzt, Signaltest in Ordnung) und
+    <b>SeatSwitchRelease</b> (Sitzkontakt geoeffnet, Loslass-Zeit laeuft).<br/>Nach
+    dem Start befindet sich das System in <b>SeatSwitchOff</b>. Ein Wechsel zwischen
+    den Betriebsarten findet ausschliesslich ueber die in Kapitel 5.1 beschriebenen
+    Uebergaenge statt; eine andere Ursache fuer einen Wechsel gibt es nicht.<br/><table
+    class="polarion-Document-table" style="width:100%;max-width:1280px;margin-left:0px;margin-right:auto;border:1px
+    solid #CCCCCC;empty-cells:show;border-collapse:collapse;"><tbody><tr><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Betriebsart</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Startzustand</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Zeilen im Code</th></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOff</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">ja</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">153–189</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchRelease</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">nein</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">191–255</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOn</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">nein</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">257–306</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Initialisierung (Default-Zweig)</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">—</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">307–310</td></tr></tbody></table>'
+- id: VPAT-11267
+  title: ZZ REG State Diagram SeatSwitch
+  type: componentrequirement
+  outlineNumber: 2.1-7
+  status: draft
+  description: 'Die Zustandsmaschine der Funktion ist das flache TargetLink-Chart
+    <code>TL_SeatSwitch/SeatSwitch</code> (Zeile 56 der Quelle). Von aussen betrachtet:
+    <b>3 Zustaende</b>, <b>5 Uebergaenge</b> zuzueglich des Initialuebergangs, <b>0
+    Untermaschinen</b>. Startzustand ist <b>SeatSwitchOff</b>; er wird vom Default-Zweig
+    gesetzt, nicht von einem Uebergangsknoten.<br/><img alt="SysML-Zustandsdiagramm
+    der Funktion SeatSwitch" src="workitemimg:1-statechart_TL_SeatSwitch_SeatSwitch.png"
+    style="max-width: 650px;" title="statechart_TL_SeatSwitch_SeatSwitch.png"/><table
+    class="polarion-Document-table" style="width:100%;max-width:1280px;margin-left:0px;margin-right:auto;border:1px
+    solid #CCCCCC;empty-cells:show;border-collapse:collapse;"><tbody><tr><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Zustand</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Zeilen im Code</th></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOff</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">153–189</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchRelease</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">191–255</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOn</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">257–306</td></tr></tbody></table><table class="polarion-Document-table"
+    style="width:100%;max-width:1280px;margin-left:0px;margin-right:auto;border:1px
+    solid #CCCCCC;empty-cells:show;border-collapse:collapse;"><tbody><tr><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Von</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Nach</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Waechter</th></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOff</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOn</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>TSigStateSeatContact_u16 == 0 && DISeatContact_u8
+    == 1</code></td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOn</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchRelease</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>DISeatContact_u8 == 0</code></td></tr><tr><td
+    style="text-align:left;vertical-align:top;border:1px solid #CCCCCC;padding:5px;"><code>SeatSwitchOn</code></td><td
+    style="text-align:left;vertical-align:top;border:1px solid #CCCCCC;padding:5px;"><code>SeatSwitchOff</code></td><td
+    style="text-align:left;vertical-align:top;border:1px solid #CCCCCC;padding:5px;"><code>DISeatContact_u8
+    != 0 && TSigStateSeatContact_u16 != 0</code></td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchRelease</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOn</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>TSigStateSeatContact_u16 == 0 && DISeatContact_u8
+    == 1</code></td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchRelease</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOff</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>(TSigStateSeatContact_u16 == 0 && DISeatContact_u8
+    == 0 && Cn1_counter == 0) || TSigStateSeatContact_u16 != 0</code></td></tr></tbody></table><b>Notation:</b>
+    abgerundete Kaesten sind Zustaende, Pfeile Uebergaenge. Die Beschriftung eines
+    Pfeils ist der <i>Waechter</i> in eckigen Klammern, danach die Aktionen. Der ausgefuellte
+    Kreis markiert den Startzustand. Ein Kompartiment im Zustandskasten (entry/do/exit)
+    bleibt leer, wo das Verhalten im Modell nicht geführt ist.<br/><b>Zwei Waechter-Korrekturen
+    der SE-Durchsicht vom 2026-08-18</b> bleiben in Kraft: Release→Off prueft code-wahr
+    <code>Cn1_counter == 0</code> statt <code>SeatswitchTimeVal_u16 == 0</code>, und
+    On→Off ist die Konjunktion aus Sitzkontakt UND Signalfehler — das Loslassen hat
+    Vorrang. Die Extraktionskette bleibt auf Operator-Entscheid unveraendert.'
+- id: VPAT-11268
+  title: ZZ REG State SeatSwitch.SeatSwitchOff
+  type: componentrequirement
+  outlineNumber: 2.1-8
+  status: draft
+  description: 'Startzustand. Der Sitz ist nicht besetzt oder die Funktion hat einen
+    Fehler erkannt; der Ausgang SeatSwitch_u8 ist 0.<br/><table class="polarion-Document-table"
+    style="width:100%;max-width:1280px;margin-left:0px;margin-right:auto;border:1px
+    solid #CCCCCC;empty-cells:show;border-collapse:collapse;"><tbody><tr><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Verhalten</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Inhalt</th></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">entry</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">im Modell nicht geführt</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">do</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">meldet der Signaltest des Sitzkontakts einen Fehler
+    (TSigStateSeatContact_u16 ≠ 0), wird der Fehlerzustand eingerastet (Cn1_ErrorState_u16
+    := 1)</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px solid
+    #CCCCCC;padding:5px;">exit</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">im Modell nicht geführt</td></tr></tbody></table><table
+    class="polarion-Document-table" style="width:100%;max-width:1280px;margin-left:0px;margin-right:auto;border:1px
+    solid #CCCCCC;empty-cells:show;border-collapse:collapse;"><tbody><tr><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Richtung</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Gegenzustand</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Waechter</th></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">ausgehend</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOn</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>TSigStateSeatContact_u16 == 0 && DISeatContact_u8
+    == 1</code></td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">eingehend</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOn</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>DISeatContact_u8 != 0 && TSigStateSeatContact_u16
+    != 0</code></td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">eingehend</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchRelease</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>(TSigStateSeatContact_u16 == 0 && DISeatContact_u8
+    == 0 && Cn1_counter == 0) || TSigStateSeatContact_u16 != 0</code></td></tr></tbody></table>'
+- id: VPAT-11185
+  title: <RequirementTitle>
+  type: componentrequirement
+  outlineNumber: 4.1-1
+  status: proposed
+  description: '<span style="font-family: Arial, Helvetica, sans-serif;color: #FF9900;">Adjust
+    the title and enter requirement text for a requirement specifiying an element
+    of the system.</span>'
+- id: VPAT-11188
+  title: Sample Container Volume
+  type: componentrequirement
+  outlineNumber: 4.2.1-1
+  status: proposed
+  description: '<span style="color: #FF9900;">The Sample Container shall have a Volume
+    of at least 350ml.</span>'
+- id: VPAT-11189
+  title: Sample Container Chemical Resistance
+  type: componentrequirement
+  outlineNumber: 4.2.1-2
+  status: proposed
+  description: '<span style="color: #FF9900;">The Sample Container shall resist acids
+    which may result from the crop.</span>'
+- id: VPAT-11190
+  title: Sample Container Removal
+  type: componentrequirement
+  outlineNumber: 4.2.1-3
+  status: proposed
+  description: '<span style="color: #FF9900;">The Sample Container shall be removed
+    in full condition without loosing crop to its environment.</span>'
+- id: VPAT-11198
+  title: '<Example>State ST_SR: SystemRun'
+  type: componentrequirement
+  outlineNumber: 5.1-1.1
+  status: proposed
+  description: The System is checking if all prerequisites are given to transition
+    to Normal Operation.
+- id: VPAT-11199
+  title: '<Example State_ST_NO: NormalOperation'
+  type: componentrequirement
+  outlineNumber: 5.1-1.2
+  status: proposed
+  description: The System is in operating in regular mode to execute its mission.
+- id: VPAT-11204
+  title: Machine type dependencies Req
+  type: componentrequirement
+  outlineNumber: 5.3.1-1
+  status: proposed
+  description: '<span style="font-family: Arial, Helvetica, sans-serif;color: #FF9900;">Adjust
+    the title and enter requirement text for machine specific type dependencies.</span>'
+- id: VPAT-11206
+  title: Configuration dependencies Req
+  type: componentrequirement
+  outlineNumber: 5.3.2-1
+  status: proposed
+  description: '<span style="font-family: Arial, Helvetica, sans-serif;color: #FF9900;">Adjust
+    the title and enter requirement text for configuration dependencies.</span>'
+- id: VPAT-11208
+  title: <RequirementTitle>
+  type: componentrequirement
+  outlineNumber: 5.4-1
+  status: proposed
+  description: '<span style="font-family: Arial, Helvetica, sans-serif;color: #FF9900;">Adjust
+    the title and enter requirement text for a requirement related to the behaviour
+    in this state.</span>'
+- id: VPAT-11209
+  title: <Example>Check of Software Integrity
+  type: componentrequirement
+  outlineNumber: 5.4-2
+  status: proposed
+  description: '<span style="font-family: Arial, Helvetica, sans-serif;color: #FF9900;">If
+    the system starts in State SystemRun AND the Checksum is not correct, the system
+    shall display&nbsp;<span class="polarion-rte-link" data-item-id="FCTS-6354" data-option-id="long"
+    data-scope="Functional_Concepts_and_Technical_Specs" data-type="crossReference"
+    id="fake"></span>&nbsp;and send the signal&nbsp;<span class="polarion-rte-link"
+    data-item-id="FCTS-6306" data-option-id="long" data-scope="Functional_Concepts_and_Technical_Specs"
+    data-type="crossReference" id="fake"></span>&nbsp;.</span>'
+- id: VPAT-11211
+  title: <RequirementTitle>
+  type: componentrequirement
+  outlineNumber: 5.5-1
+  status: proposed
+  description: '<span style="font-family: Arial, Helvetica, sans-serif;color: #FF9900;">Adjust
+    the title and enter requirement text for a requirement related to the behaviour
+    in this state.</span>'
+- id: VPAT-11214
+  title: <RequirementTitle>
+  type: componentrequirement
+  outlineNumber: 5.6-2
+  status: proposed
+  description: '<span style="font-family: Arial, Helvetica, sans-serif;color: #FF9900;">Adjust
+    the title and enter requirement text for a requirement related to the behaviour
+    in this state.</span>'
+- id: VPAT-11216
+  title: <RequirementTitle>
+  type: componentrequirement
+  outlineNumber: 5.7-1
+  status: proposed
+  description: '<span style="font-family: Arial, Helvetica, sans-serif;color: #FF9900;">Adjust
+    the title and enter requirement text for a requirement related to the behaviour
+    in this state.</span>'
+- id: VPAT-11243
+  title: Example TSR1
+  type: componentrequirement
+  outlineNumber: 6.4.1-1
+  status: proposed
+  description: The function shall do...
+- id: VPAT-11245
+  title: <ReqTitle>
+  type: componentrequirement
+  outlineNumber: 7-1
+  status: proposed
+  description: '<span style="color: #FF9900;">e.g. Requirements regarding CCP Access,
+    DDP Packages, etc.</span>'
+- id: VPAT-11261
+  title: ZZ REST Probe B1
+  type: systemrequirement
+  outlineNumber: 13-1
+  status: proposed
+  description: <p>Probe body 1.</p>
+- id: VPAT-11263
+  title: ZZ REST Probe B3
+  type: systemrequirement
+  outlineNumber: 13-1.1
+  status: proposed
+  description: <p>Probe body 3.</p>
+- id: VPAT-11294
+  title: ZZ REG rational OBJECT branch
+  type: systemrequirement
+  outlineNumber: 14.1-1
+  status: draft
+  description: <br/>Exercises the object-rational branch.<br/>
+- id: VPAT-11290
+  title: ZZ REG NEW Betriebsarten des Systems - Seatswitch
+  type: systemrequirement
+  outlineNumber: 14.3-1
+  status: draft
+  description: '<p><p>Das System kennt <b>drei Betriebsarten</b>, die den drei Zustaenden
+    der Zustandsmaschine entsprechen: <b>SeatSwitchOff</b> (Sitz nicht besetzt oder
+    Fehler erkannt), <b>SeatSwitchOn</b> (Fahrer sitzt, Signaltest in Ordnung) und
+    <b>SeatSwitchRelease</b> (Sitzkontakt geoeffnet, Loslass-Zeit laeuft).</p><p>Nach
+    dem Start befindet sich das System in <b>SeatSwitchOff</b>. Ein Wechsel zwischen
+    den Betriebsarten findet ausschliesslich ueber die in Kapitel 5.1 beschriebenen
+    Uebergaenge statt; eine andere Ursache fuer einen Wechsel gibt es nicht.</p><table
+    class="polarion-Document-table" style="width:100%;max-width:1280px;margin-left:0px;margin-right:auto;border:1px
+    solid #CCCCCC;empty-cells:show;border-collapse:collapse;"><tbody><tr><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Betriebsart</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Startzustand</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Zeilen im Code</th></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOff</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">ja</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">153&ndash;189</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchRelease</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">nein</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">191&ndash;255</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOn</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">nein</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">257&ndash;306</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Initialisierung (Default-Zweig)</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">&mdash;</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">307&ndash;310</td></tr></tbody></table></p>'
+- id: VPAT-11289
+  title: 'ZZ REG NEW Fehlererkennung: Sitzkontaktschalter-Fehler'
+  type: systemrequirement
+  outlineNumber: 14.3-2
+  status: draft
+  description: '<p><p>Das System erkennt <b>zwei</b> Fehlerbilder des Sitzkontaktschalters
+    und meldet sie als Diagnosecode: einen elektrischen Fehler des Sitzkontakt-Kreises
+    und einen Plausibilitaetsfehler, wenn der Sitzkontakt ueber 20 Betriebsstunden
+    hinweg kein einziges Mal wechselt. Beide Codes gehen auf CAN und in den Fehlerspeicher.</p><p>Die
+    vollstaendige Definition beider Codes samt Ausloesebedingung, Entprellung und
+    Ruecknahme steht in Kapitel 5.8.</p><table class="polarion-Document-table" style="width:100%;max-width:1280px;margin-left:0px;margin-right:auto;border:1px
+    solid #CCCCCC;empty-cells:show;border-collapse:collapse;"><tbody><tr><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Lokaler Bezeichner</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Code [hex]</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Bedeutung</th></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>DESC_DTC_Seatcontact_ScUb</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">0x0139</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Sitzkontaktschalter Kurzschluss nach 12V</td></tr><tr><td
+    style="text-align:left;vertical-align:top;border:1px solid #CCCCCC;padding:5px;"><code>DESC_DTC_Seatcontact_Invalid</code></td><td
+    style="text-align:left;vertical-align:top;border:1px solid #CCCCCC;padding:5px;">0x2B07</td><td
+    style="text-align:left;vertical-align:top;border:1px solid #CCCCCC;padding:5px;">Sitzkontaktschalter
+    defekt</td></tr></tbody></table><p><b>Befund der manuellen Code-Analyse (2026-08-19):</b>
+    beide Codes werden im Aufrufer <b>direkt</b> ueber ihr CANdela-Symbol gesetzt
+    &mdash; es gibt fuer diese Funktion weder ein lokales Alias noch eine Bit-Nummer
+    noch eine DTC-Referenztabelle, wie sie andere Funktionen derselben Datei verwenden.
+    Der lokale Bezeichner IST deshalb das Katalog-Symbol.</p></p>'
+- id: VPAT-11291
+  title: ZZ REG NEW State SeatSwitch.SeatSwitchOn
+  type: componentrequirement
+  outlineNumber: 15.1-1
+  status: draft
+  description: '<p><p>Der Fahrer sitzt, der Signaltest ist in Ordnung; der Ausgang
+    SeatSwitch_u8 ist 1 — gesetzt durch die EINGEHENDEN Uebergaenge (Zeilen 165 und
+    234), nicht durch eine entry-Aktion.</p><table class="polarion-Document-table"
+    style="width:100%;max-width:1280px;margin-left:0px;margin-right:auto;border:1px
+    solid #CCCCCC;empty-cells:show;border-collapse:collapse;"><tbody><tr><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Verhalten</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Inhalt</th></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">entry</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">im Modell nicht geführt</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">do</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">im Modell nicht geführt</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">exit</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">im Modell nicht geführt</td></tr></tbody></table><table
+    class="polarion-Document-table" style="width:100%;max-width:1280px;margin-left:0px;margin-right:auto;border:1px
+    solid #CCCCCC;empty-cells:show;border-collapse:collapse;"><tbody><tr><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Richtung</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Gegenzustand</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Waechter</th></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">eingehend</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOff</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>TSigStateSeatContact_u16 == 0 &amp;&amp; DISeatContact_u8
+    == 1</code></td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">ausgehend</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchRelease</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>DISeatContact_u8 == 0</code></td></tr><tr><td
+    style="text-align:left;vertical-align:top;border:1px solid #CCCCCC;padding:5px;">ausgehend</td><td
+    style="text-align:left;vertical-align:top;border:1px solid #CCCCCC;padding:5px;"><code>SeatSwitchOff</code></td><td
+    style="text-align:left;vertical-align:top;border:1px solid #CCCCCC;padding:5px;"><code>DISeatContact_u8
+    != 0 &amp;&amp; TSigStateSeatContact_u16 != 0</code></td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">eingehend</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchRelease</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>TSigStateSeatContact_u16 == 0 &amp;&amp; DISeatContact_u8
+    == 1</code></td></tr></tbody></table></p>'
+- id: VPAT-11292
+  title: ZZ REG NEW State SeatSwitch.SeatSwitchOff
+  type: componentrequirement
+  outlineNumber: 15.2-1
+  status: draft
+  description: '<p><p>Startzustand. Der Sitz ist nicht besetzt oder die Funktion hat
+    einen Fehler erkannt; der Ausgang SeatSwitch_u8 ist 0.</p><table class="polarion-Document-table"
+    style="width:100%;max-width:1280px;margin-left:0px;margin-right:auto;border:1px
+    solid #CCCCCC;empty-cells:show;border-collapse:collapse;"><tbody><tr><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Verhalten</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Inhalt</th></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">entry</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">im Modell nicht geführt</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">do</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">meldet der Signaltest des Sitzkontakts einen Fehler
+    (TSigStateSeatContact_u16 &ne; 0), wird der Fehlerzustand eingerastet (Cn1_ErrorState_u16
+    := 1)</td></tr><tr><td style="text-align:left;vertical-align:top;border:1px solid
+    #CCCCCC;padding:5px;">exit</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">im Modell nicht geführt</td></tr></tbody></table><table
+    class="polarion-Document-table" style="width:100%;max-width:1280px;margin-left:0px;margin-right:auto;border:1px
+    solid #CCCCCC;empty-cells:show;border-collapse:collapse;"><tbody><tr><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Richtung</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Gegenzustand</th><th style="font-weight:bold;background-color:#F0F0F0;text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">Waechter</th></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">ausgehend</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOn</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>TSigStateSeatContact_u16 == 0 &amp;&amp; DISeatContact_u8
+    == 1</code></td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">eingehend</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchOn</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>DISeatContact_u8 != 0 &amp;&amp; TSigStateSeatContact_u16
+    != 0</code></td></tr><tr><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;">eingehend</td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>SeatSwitchRelease</code></td><td style="text-align:left;vertical-align:top;border:1px
+    solid #CCCCCC;padding:5px;"><code>(TSigStateSeatContact_u16 == 0 &amp;&amp; DISeatContact_u8
+    == 0 &amp;&amp; Cn1_counter == 0) || TSigStateSeatContact_u16 != 0</code></td></tr></tbody></table></p>'
+- id: VPAT-11302
+  title: ZZ PROOF System Requirement
+  type: systemrequirement
+  outlineNumber: 17.1-1
+  status: draft
+  description: <p>Created over REST only, type systemrequirement.</p>

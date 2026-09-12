@@ -11,7 +11,12 @@ PolarionMock is a comprehensive test and development framework for Siemens Polar
 
 ## Project Status
 
-This is currently a greenfield project with a detailed specification in PROJECT_SPECIFICATION.md. Implementation has not yet begun.
+The mock server (`src/mock`) and the client library (`src/polarion_api`) are implemented.
+Since 2026-09-12 the mock can stand in for production for the customer workflow
+`lexion_fsm_polarion_requirements_read` (read a document's parts + work items over
+the REST API): it serves the document exported from production, accepts the
+customer PAT and needs nothing but a different base URL in the workflow overlay.
+See `docs/STANDALONE_WORKFLOW_TEST.md`.
 
 ## Important Testing Note
 
@@ -117,8 +122,13 @@ pip install -r requirements.txt
 # Or for minimal setup:
 pip install -r requirements-minimal.txt
 
-# Run the mock server
-MOCK_PORT=5001 python -m src.mock
+# Run the mock server (dual-stack IPv4+IPv6, PAT auth, serves the bundled Polarion dumps)
+python run_mock.py            # http://localhost:5001
+python run_mock.py --ssl      # https://localhost:5001 with a self-signed cert (verify-ssl=false)
+MOCK_PORT=5001 python -m src.mock   # same server via the module entry point
+
+# In-process mock tests (Flask test client + real customer fetch script, ~6 s)
+python -m pytest tests/mock_unit -q --env mock
 
 # Generate JWT token for authentication
 python generate_token_auto.py
@@ -278,10 +288,12 @@ MOCK_AUTH_TOKEN            # JWT token for mock API authentication
 ```python
 headers = {
     'Authorization': f'Bearer {pat}',
-    'Accept': '*/*',  # MUST use wildcard - Polarion returns 406 with other values!
+    'Accept': '*/*',  # or 'application/json' - both measured OK against production (2026-09-11)
     'Content-Type': 'application/json'
 }
 ```
+The mock accepts `*/*`, `application/json` and `application/vnd.api+json`; other
+media types (e.g. `text/html`) get 406, like production.
 
 ### Two Different Endpoints:
 1. `/polarion/api` - Legacy API, returns HTML, used for auth testing
@@ -322,7 +334,7 @@ headers = {
   ```
 
 ### Common Issues:
-- **406 Not Acceptable**: You're not using `Accept: */*` header
+- **406 Not Acceptable**: Your `Accept` header allows no JSON (`*/*` or `application/json` work)
 - **SSL Certificate errors**: Set `POLARION_VERIFY_SSL=false`
 - **Connection refused**: Check if REST API is enabled in Polarion
 - **404 on bulk endpoints**: Many bulk query endpoints don't exist in Polarion
@@ -332,10 +344,16 @@ headers = {
 ## Authentication
 
 ### Mock Server Authentication
-- Uses JWT tokens for authentication (unlike production Polarion which uses PAT)
-- Generate tokens with: `python generate_token_auto.py [username] [hours]`
-- Tokens must be generated with the same JWT_SECRET_KEY that the server uses
-- Set DISABLE_AUTH=true in .env for development without authentication
+- `MOCK_AUTH_MODE=pat` (default): the mock accepts Polarion Personal Access Tokens
+  as-is (any well-formed JWT; Polarion's RS256 signature cannot be verified outside
+  Polarion). The customer PAT from `.env.secrets` therefore works unchanged.
+  Expired PATs are accepted with a warning unless `MOCK_PAT_CHECK_EXPIRY=true`.
+- Mock JWTs signed with `JWT_SECRET_KEY` keep working in every mode
+  (`python generate_token_auto.py [username] [hours]`), as do tokens listed in
+  `MOCK_ACCEPTED_TOKENS`.
+- `MOCK_AUTH_MODE=strict`: only mock JWTs / listed tokens. `disabled` or
+  `DISABLE_AUTH=true`: no authentication.
+- Implementation: `src/mock/middleware/auth.py`.
 
 ### Important: JWT_SECRET_KEY vs Token
 - **JWT_SECRET_KEY**: A password/secret used to sign tokens (set in .env)
@@ -367,6 +385,38 @@ headers = {
 - [ ] CI/CD integration
 - [ ] Multi-version support
 - [ ] Advanced performance optimization
+
+## Stand-alone Workflow Testing (mock instead of production)
+
+- **Polarion dumps**: `src/mock/mock_data/polarion_dumps/*.json` are raw exports of the
+  customer fetch script (`polarion_document_raw.json`: document coordinates, parts in
+  order, work items). They are loaded at start-up (`src/mock/storage/dump_loader.py`);
+  more via `MOCK_DUMP_DIR`, `run_mock.py --dump-dir`, or `POST /mock/admin/dumps`.
+  Bundled: `VPATHAI / System Layer / Technical_Specification-API_TEST` (218 parts, 158 work items).
+- **Document parts**: `GET .../documents/{name}/parts` (`src/mock/api/document_parts.py`)
+  paginates (`page[size]` max 100), returns `meta.totalCount`, percent-encoded
+  `first/prev/next/last` links, `attributes.id/type/content`, `relationships.workItem`
+  and supports `fields[document_parts]` and `include=workItem`. Parts are stored in ONE
+  canonical dict shape (`data_store.add_part`), rendered by `src/mock/utils/parts.py`.
+- **Work items**: `GET .../workitems/{id}` honours `fields[workitems]`, returns absolute
+  links and `description` as `{type, value}`.
+- **Verified 2026-09-12**: the complete orchestrated workflow
+  `lexion_fsm_polarion_requirements_read` ran against `https://localhost:5001` with only
+  `POLARION_BASE_URL` changed in the overlay; `requirements.yaml` was identical to the
+  production run (evidence: `test_reports/20260912_mock_workflow_run/`).
+- **Admin endpoints** (mock only): `GET /mock/admin/documents`, `GET|POST /mock/admin/dumps`,
+  `POST /mock/admin/reset`, `GET /health` (shows loaded dumps and auth mode).
+- Full recipe: `docs/STANDALONE_WORKFLOW_TEST.md` (English) and `STARTANLEITUNG_MOCK.md`
+  (German step-by-step guide with the exact overlay configuration).
+
+### Gotchas on this Windows machine
+- `localhost` resolves to `::1` first. The mock binds IPv4 AND IPv6 so
+  `https://localhost:5001` stays fast; a server bound to `0.0.0.0` only costs ~2 s per request.
+- In Git Bash, the MSYS `timeout` command strips the environment of the child
+  (`VPATH_CUSTOMERS_ROOT`, `USERNAME`, ...). Never wrap the workflow runner or pytest in it.
+- `netstat` output is German (`ABHÖREN` instead of `LISTENING`); filter on the port instead.
+- On Windows two processes can bind the same port; check `netstat -ano | findstr :5001`
+  before starting a server.
 
 ## Helpful Tips
 

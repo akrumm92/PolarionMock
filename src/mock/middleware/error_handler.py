@@ -76,12 +76,11 @@ def error_to_dict(error: APIError) -> Dict[str, Any]:
                 'detail': error.message
             }
         else:
-            # General 404 format
+            # General 404 format (detail is always a string, like production)
             return {
                 'status': '404',
                 'title': 'Not Found',
-                'detail': None,
-                'source': None
+                'detail': error.message
             }
     
     error_dict = {

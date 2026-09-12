@@ -219,8 +219,9 @@ class TestDocumentParts:
         logger.info(f"[mock] Successfully added work item {workitem_id} to document")
         
         # Clean up - delete the work item
-        delete_url = f"{api_base_url}/projects/{workitem_id}"
-        http_session.delete(delete_url.replace("//", "/"), headers=auth_headers)
+        project_id, short_id = workitem_id.split("/", 1)
+        delete_url = f"{api_base_url}/projects/{project_id}/workitems/{short_id}"
+        http_session.delete(delete_url, headers=auth_headers)
 
 
 if __name__ == "__main__":

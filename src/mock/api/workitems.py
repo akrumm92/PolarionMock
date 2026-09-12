@@ -12,6 +12,7 @@ from ..storage.data_store import data_store
 from ..utils.response_builder import JSONAPIResponseBuilder
 from ..middleware.auth import require_auth
 from ..middleware.error_handler import NotFoundError, ValidationError, ConflictError
+from ..utils.parts import absolutize_links, apply_fields, base_url_of, parse_fields
 
 logger = logging.getLogger(__name__)
 
@@ -59,8 +60,15 @@ def list_project_workitems(project_id: str):
     end_idx = start_idx + page_size
     workitems_page = workitems[start_idx:end_idx]
     
-    # Convert to JSON:API format
-    resources = [wi.to_json_api() for wi in workitems_page]
+    # Convert to JSON:API format (sparse fieldsets + absolute links)
+    base_url = base_url_of(request)
+    fields = parse_fields(request.args.get('fields[workitems]'))
+    resources = []
+    for wi in workitems_page:
+        resource = absolutize_links(wi.to_json_api(), base_url)
+        if 'attributes' in resource:
+            resource['attributes'] = apply_fields(resource['attributes'], fields)
+        resources.append(resource)
     
     # Handle includes
     included = []
@@ -69,7 +77,7 @@ def list_project_workitems(project_id: str):
             if wi.relationships and 'module' in wi.relationships:
                 module_id = wi.relationships['module']['data']['id']
                 if module_id in data_store.documents:
-                    included.append(data_store.documents[module_id].to_json_api())
+                    included.append(absolutize_links(data_store.documents[module_id].to_json_api(), base_url))
     
     # Build response with proper pagination links
     base_url = request.base_url
@@ -90,8 +98,8 @@ def list_project_workitems(project_id: str):
         'self': request.url,
         'first': build_page_url(1),
         'last': build_page_url(total_pages),
-        'next': build_page_url(page_number + 1) if has_next else None,
-        'prev': build_page_url(page_number - 1) if has_prev else None,
+        **({'next': build_page_url(page_number + 1)} if has_next else {}),
+        **({'prev': build_page_url(page_number - 1)} if has_prev else {}),
         'portal': f"https://polarion.example.com/polarion/#/project/{project_id}/workitems"
     }
     
@@ -103,6 +111,8 @@ def list_project_workitems(project_id: str):
     
     if included:
         response['included'] = included
+    
+    response['meta'] = {'totalCount': total_count}
     
     logger.info(f"Listed {len(resources)} work items for project {project_id} (page {page_number}/{total_pages})")
     return jsonify(response)
@@ -148,13 +158,39 @@ def get_workitem(project_id: str, workitem_id: str):
     """Get a specific work item."""
     full_id = f"{project_id}/{workitem_id}"
     
+    if not data_store.projects.get_by_id(project_id):
+        raise NotFoundError("projects", project_id)
+
     workitem = data_store.workitems.get(full_id)
     if not workitem:
         raise NotFoundError("workitems", full_id)
-    
-    # Build response
-    response = response_builder.build_response(data=workitem.to_json_api())
-    
+
+    base_url = base_url_of(request)
+    resource = absolutize_links(workitem.to_json_api(), base_url)
+
+    # Sparse fieldsets: fields[workitems]=id,title,type,... (@all/@basic = everything)
+    fields = parse_fields(request.args.get('fields[workitems]'))
+    if 'attributes' in resource:
+        resource['attributes'] = apply_fields(resource['attributes'], fields)
+        if not resource['attributes']:
+            del resource['attributes']
+
+    # include=module embeds the document the work item lives in
+    included = []
+    include = [item.strip() for item in request.args.get('include', '').split(',') if item.strip()]
+    if 'module' in include and workitem.relationships and 'module' in workitem.relationships:
+        module_id = workitem.relationships['module'].get('data', {}).get('id')
+        document = data_store.documents.get(module_id)
+        if document is not None:
+            included.append(absolutize_links(document.to_json_api(), base_url))
+
+    # Build response (top-level self link like production)
+    response = response_builder.build_response(
+        data=resource,
+        included=included or None,
+        links={"self": request.url},
+    )
+
     logger.info(f"Retrieved work item: {full_id}")
     return jsonify(response)
 
@@ -302,15 +338,8 @@ def delete_workitem(project_id: str, workitem_id: str):
     if full_id not in data_store.workitems:
         raise NotFoundError("workitems", full_id)
     
-    # Remove from document parts if it has a module relationship
-    workitem = data_store.workitems[full_id]
-    if workitem.relationships and 'module' in workitem.relationships:
-        module_id = workitem.relationships['module']['data']['id']
-        if module_id in data_store.document_parts:
-            data_store.document_parts[module_id] = [
-                part for part in data_store.document_parts[module_id]
-                if part['relationships']['workItem']['data']['id'] != full_id
-            ]
+    # Remove from document parts (canonical part dicts)
+    data_store.remove_parts_for_workitem(full_id)
     
     # Delete work item
     del data_store.workitems[full_id]
@@ -411,6 +440,15 @@ def create_linked_workitem(project_id: str, workitem_id: str):
         
         workitem.linkedWorkItems.append(link)
         created_links.append(link)
+
+        # A parent link also drives the outline numbering in the Document Parts API
+        if role == 'parent':
+            workitem._parent_workitem_id = target_id
+            if not workitem.relationships:
+                workitem.relationships = {}
+            workitem.relationships['parent'] = {
+                'data': {'type': 'workitems', 'id': target_id}
+            }
         
         logger.info(f"Created link: {full_id} --[{role}]--> {target_id}")
     

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "stage": "RunScriptProcessor",
+  "processor": "RunScriptProcessor",
+  "status": "completed",
+  "run_id": "e72a9b1552c239a7004b07be25174a3a77ee41a974a71fc905f3454f0d866c7c",
+  "started_at": "2026-09-12T06:09:35.300966",
+  "finished_at": "2026-09-12T06:09:38.777518",
+  "duration_seconds": 3.476552,
+  "parameters": {
+    "script": "scripts/fetch_polarion_document.py",
+    "args": [
+      "--base-url",
+      "https://localhost:5001",
+      "--project",
+      "VPATHAI",
+      "--space",
+      "System Layer",
+      "--document",
+      "Technical_Specification-API_TEST",
+      "--out-dir",
+      "./playground/lexion_fsm_polarion_derived/api_test/fetch",
+      "--verify-ssl",
+      "false"
+    ]
+  },
+  "outputs": [],
+  "result": {
+    "script": "C:\\Users\\E017093\\v2_vpath_customer_workflows\\customers\\CLAAS_New\\projects\\ground_guidance\\scripts\\fetch_polarion_document.py",
+    "returncode": 0,
+    "argv": [
+      "C:\\Users\\E017093\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "C:\\Users\\E017093\\v2_vpath_customer_workflows\\customers\\CLAAS_New\\projects\\ground_guidance\\scripts\\fetch_polarion_document.py",
+      "--base-url",
+      "https://localhost:5001",
+      "--project",
+      "VPATHAI",
+      "--space",
+      "System Layer",
+      "--document",
+      "Technical_Specification-API_TEST",
+      "--out-dir",
+      "./playground/lexion_fsm_polarion_derived/api_test/fetch",
+      "--verify-ssl",
+      "false"
+    ]
+  }
+}

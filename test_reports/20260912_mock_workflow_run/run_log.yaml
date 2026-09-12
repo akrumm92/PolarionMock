@@ -1,0 +1,32 @@
+run:
+  timestamp: '2026-09-12T04:09:39Z'
+  status: completed
+  duration_seconds: 4.3
+  customer: CLAAS_New
+  workflow: lexion_fsm_polarion_requirements_read
+  type: yaml
+  governed_run:
+    nonce: 84d6c0eab332baefff62f35ec12fd692
+    customer: CLAAS_New
+    mint_epoch: 1789186174
+repository:
+  commit: fac129bd
+  branch: feat/125-behaviour-benchmark
+stages_executed:
+- name: fetch_polarion_document
+- name: stage_raw_for_requirements
+- name: build_requirements
+fingerprints:
+  fetch_polarion_document:
+    processor_hash: null
+  stage_raw_for_requirements:
+    processor_hash: e29544427dc8
+  build_requirements:
+    scenario: ground_guidance_requirements/0_scenario.yaml
+    scenario_yaml_hash: 79d6b47adbcf
+    search_prompt_hash: null
+    jq_transform_hash: null
+    jq_final_hash: 9eae6f3e550c
+    schema_hash: null
+    agent_role_hash: null
+    wrapper_prompt_hash: null

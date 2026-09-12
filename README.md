@@ -116,6 +116,33 @@ Logs include:
 - Assertions with actual vs expected values
 - Performance metrics
 
+### Stand-alone workflow testing (mock instead of production Polarion)
+
+The mock can replace the production server for read-only document workflows
+such as `lexion_fsm_polarion_requirements_read`: it serves the document that was
+exported from production, accepts the customer Personal Access Token as-is and
+speaks HTTPS with a self-signed certificate. **Only the base URL of the workflow
+overlay has to change.**
+
+```bash
+python run_mock.py --ssl           # https://localhost:5001 (auth mode: pat)
+# overlay: POLARION_BASE_URL: "https://localhost:5001"   (was https://polarion-d.claas.local)
+# then run the workflow exactly as for production
+```
+
+* Exported documents live in `src/mock/mock_data/polarion_dumps/*.json`
+  (raw output of the customer fetch script); more can be added via
+  `--dump-dir`, `MOCK_DUMP_DIR` or `POST /mock/admin/dumps`.
+* `GET /mock/admin/documents` lists the coordinates (project / space / document)
+  the mock serves; `GET /health` shows loaded dumps and the auth mode.
+* Tests: `python -m pytest tests/mock_unit -q --env mock` (replays the workflow's
+  request sequence, runs the real fetch script against a live mock and validates
+  the responses against the OpenAPI spec in `Input/api/polarionrest.json`).
+
+Details and troubleshooting: [docs/STANDALONE_WORKFLOW_TEST.md](docs/STANDALONE_WORKFLOW_TEST.md).
+Schritt-für-Schritt-Anleitung mit der konkreten Konfiguration (deutsch):
+[STARTANLEITUNG_MOCK.md](STARTANLEITUNG_MOCK.md).
+
 ### Polarion Integration
 
 #### Testing Connection

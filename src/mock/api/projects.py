@@ -90,15 +90,22 @@ def list_projects():
         'self': request.url,
         'first': build_page_url(1),
         'last': build_page_url(total_pages),
-        'next': build_page_url(page_number + 1) if has_next else None,
-        'prev': build_page_url(page_number - 1) if has_prev else None,
+        **({'next': build_page_url(page_number + 1)} if has_next else {}),
+        **({'prev': build_page_url(page_number - 1)} if has_prev else {}),
         'portal': 'https://polarion.example.com/polarion/#/projects'
     }
     
     # Build response
     response = {
         'links': links,
-        'data': resources
+        'data': resources,
+        'meta': {
+            'totalCount': total_count,
+            'pageCount': len(resources),
+            'currentPage': page_number,
+            'pageSize': page_size,
+            'totalPages': total_pages,
+        }
     }
     
     logger.info(f"Listed {len(resources)} projects (page {page_number})")

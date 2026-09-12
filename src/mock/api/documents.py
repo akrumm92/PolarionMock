@@ -1,5 +1,7 @@
 """
 Documents API endpoints for Polarion Mock Server
+
+The document parts endpoints (GET/POST .../parts) live in document_parts.py.
 """
 
 import logging
@@ -11,6 +13,7 @@ from ..storage.data_store import data_store
 from ..utils.response_builder import JSONAPIResponseBuilder
 from ..middleware.auth import require_auth
 from ..middleware.error_handler import NotFoundError, ValidationError
+from ..utils.parts import absolutize_links, base_url_of
 
 logger = logging.getLogger(__name__)
 
@@ -29,7 +32,8 @@ def get_document_by_id(document_id: str):
     if not document:
         raise NotFoundError("documents", document_id)
     
-    response = response_builder.build_response(data=document.to_json_api())
+    resource = absolutize_links(document.to_json_api(), base_url_of(request))
+    response = response_builder.build_response(data=resource, links={"self": request.url})
     logger.info(f"Retrieved document: {document_id}")
     return jsonify(response)
 
@@ -118,8 +122,9 @@ def get_document(project_id: str, space_id: str, document_id: str):
     if not document:
         raise NotFoundError("documents", full_id)
     
-    # Build response
-    response = response_builder.build_response(data=document.to_json_api())
+    # Build response (absolute links like production)
+    resource = absolutize_links(document.to_json_api(), base_url_of(request))
+    response = response_builder.build_response(data=resource, links={"self": request.url})
     
     logger.info(f"Retrieved document: {full_id}")
     return jsonify(response)
@@ -250,41 +255,6 @@ def delete_document(project_id: str, space_id: str, document_id: str):
     return '', 204
 
 
-@bp.route('/projects/<project_id>/spaces/<space_id>/documents/<document_id>/parts', methods=['GET'])
-@require_auth
-def list_document_parts(project_id: str, space_id: str, document_id: str):
-    """List document parts (structured content)."""
-    full_id = f"{project_id}/{space_id}/{document_id}"
-    
-    # Check if document exists
-    if full_id not in data_store.documents:
-        raise NotFoundError("documents", full_id)
-    
-    # Get document parts
-    parts = data_store.document_parts.get(full_id, [])
-    
-    # Include work items if requested
-    include = request.args.get('include', '').split(',') if request.args.get('include') else []
-    included = []
-    
-    if 'workItem' in include:
-        for part in parts:
-            if (part.get('attributes', {}).get('type') == 'workitem' and
-                'workItem' in part.get('relationships', {})):
-                workitem_id = part['relationships']['workItem']['data']['id']
-                if workitem_id in data_store.workitems:
-                    included.append(data_store.workitems[workitem_id].to_json_api())
-    
-    # Build response
-    response = response_builder.build_response(
-        data=parts,
-        included=included if included else None
-    )
-    
-    logger.info(f"Listed {len(parts)} parts for document {full_id}")
-    return jsonify(response)
-
-
 @bp.route('/documents/<path:document_id>/workitems', methods=['GET'])
 @require_auth
 def list_document_workitems(document_id: str):
@@ -308,83 +278,6 @@ def list_document_workitems(document_id: str):
     
     logger.info(f"Listed {len(resources)} work items for document {document_id}")
     return jsonify(response)
-
-
-@bp.route('/projects/<project_id>/spaces/<space_id>/documents/<document_id>/parts', methods=['POST'])
-@require_auth
-def create_document_part(project_id: str, space_id: str, document_id: str):
-    """Add a part to document (e.g., work item)."""
-    full_id = f"{project_id}/{space_id}/{document_id}"
-    
-    # Check if document exists
-    if full_id not in data_store.documents:
-        raise NotFoundError("documents", full_id)
-    
-    # Validate request
-    if not request.is_json:
-        raise ValidationError("Request must be JSON")
-    
-    data = request.get_json()
-    if not data or 'data' not in data:
-        raise ValidationError("Request must contain 'data' array")
-    
-    if not isinstance(data['data'], list):
-        raise ValidationError("'data' must be an array")
-    
-    created_parts = []
-    
-    for part_data in data['data']:
-        # Validate part data
-        if part_data.get('type') != 'document_parts':
-            raise ValidationError("Resource type must be 'document_parts'")
-        
-        attributes = part_data.get('attributes', {})
-        part_type = attributes.get('type')
-        
-        if part_type == 'workitem':
-            # Validate work item relationship
-            relationships = part_data.get('relationships', {})
-            if 'workItem' not in relationships:
-                raise ValidationError("workItem relationship is required for workitem parts")
-            
-            workitem_id = relationships['workItem']['data']['id']
-            if workitem_id not in data_store.workitems:
-                raise NotFoundError("workitems", workitem_id)
-            
-            # Update work item module relationship
-            workitem = data_store.workitems[workitem_id]
-            if not workitem.relationships:
-                workitem.relationships = {}
-            workitem.relationships['module'] = {
-                'data': {
-                    'type': 'documents',
-                    'id': full_id
-                }
-            }
-        
-        # Create part ID
-        part_num = len(data_store.document_parts.get(full_id, [])) + 1
-        part_id = f"{full_id}/part_{part_num}"
-        
-        # Create part
-        part = {
-            'type': 'document_parts',
-            'id': part_id,
-            'attributes': attributes,
-            'relationships': part_data.get('relationships', {})
-        }
-        
-        # Add to document parts
-        if full_id not in data_store.document_parts:
-            data_store.document_parts[full_id] = []
-        data_store.document_parts[full_id].append(part)
-        created_parts.append(part)
-    
-    # Build response
-    response = response_builder.build_response(data=created_parts)
-    
-    logger.info(f"Created {len(created_parts)} parts in document {full_id}")
-    return jsonify(response), 201
 
 
 # Import to fix circular import issues
