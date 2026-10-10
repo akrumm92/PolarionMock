@@ -439,6 +439,60 @@ def list_linked_workitems(project_id: str, workitem_id: str):
     })
 
 
+def _relationship_data(workitem, relationship_id: str):
+    """``(data, is_list)`` of one work item relationship, or None if the mock
+    holds no such relationship. Links come from the one link store: the links
+    stored on the item (``linkedWorkItems``) and those pointing to it
+    (``backlinkedWorkItems``)."""
+    if relationship_id == 'linkedWorkItems':
+        links = getattr(workitem, 'linkedWorkItems', None) or []
+        return [{'type': 'linkedworkitems', 'id': link['id']} for link in links], True
+    if relationship_id == 'backlinkedWorkItems':
+        links = data_store.backlinks_of(workitem.id)
+        return [{'type': 'linkedworkitems', 'id': link['id']} for link in links], True
+    relationship = (workitem.relationships or {}).get(relationship_id)
+    if relationship is None or 'data' not in relationship:
+        return None
+    data = relationship['data']
+    if isinstance(data, list):
+        return [{'type': item.get('type'), 'id': item.get('id')} for item in data], True
+    return data, False
+
+
+@bp.route(
+    '/projects/<project_id>/workitems/<workitem_id>/relationships/<relationship_id>',
+    methods=['GET'],
+)
+@require_auth
+def get_workitem_relationship(project_id: str, workitem_id: str, relationship_id: str):
+    """One relationship of a work item (``getWorkItemsRelationships``).
+
+    A to-many relationship is paged (``page[size]``/``page[number]``) and
+    carries ``meta.totalCount``; a to-one relationship answers a single
+    identifier.
+    """
+    full_id = f"{project_id}/{workitem_id}"
+    if not data_store.projects.get_by_id(project_id):
+        raise NotFoundError("projects", project_id)
+    workitem = data_store.workitems.get(full_id)
+    if not workitem:
+        raise NotFoundError("workitems", full_id)
+
+    found = _relationship_data(workitem, relationship_id)
+    if found is None:
+        raise NotFoundError("relationships", relationship_id)
+    data, is_list = found
+    if not is_list:
+        return jsonify({'data': data, 'links': {'self': request.url}})
+
+    page_size, page_number = parse_pagination(request.args)
+    return jsonify({
+        'links': pagination_links(request, page_number, page_size, len(data)),
+        'data': paginate(data, page_size, page_number),
+        'meta': {'totalCount': len(data)},
+    })
+
+
 @bp.route('/projects/<project_id>/workitems/<workitem_id>/linkedworkitems', methods=['POST'])
 @require_auth
 def create_linked_workitem(project_id: str, workitem_id: str):
