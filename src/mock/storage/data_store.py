@@ -28,6 +28,8 @@ from ..models.workitem import WorkItem
 from ..models.document import Document
 from ..models.collection import Collection
 from ..models.user import User
+from ..models.common import Description
+from .document_body import render_body, split_body
 
 logger = logging.getLogger(__name__)
 
@@ -218,15 +220,12 @@ class DataStore:
                 space_id=space_id,
                 document_id=doc_id,
                 title=title,
-                homePageContent={
-                    "type": "text/html",
-                    "value": f"<h1>{title}</h1><p>{description}</p>"
-                }
             )
             self.documents[doc.id] = doc
-
-            # Initialize empty document parts
-            self.document_parts[doc.id] = []
+            self.set_document_body(
+                doc.id,
+                f'<h1 id="polarion_1">{title}</h1><p id="polarion_2">{description}</p>',
+            )
 
     def _create_dummy_workitems(self):
         """Create dummy work items with various types and states.
@@ -406,6 +405,55 @@ class DataStore:
         else:
             parts.insert(max(position - 1, 0), part)
         return part
+
+    def document_body(self, document_id: str) -> str:
+        """The document's text (``homePageContent``), made of its visible parts."""
+        return render_body([part["content"] for part in self.get_parts(document_id)])
+
+    def set_document_body(self, document_id: str, html: Optional[str]) -> None:
+        """Write the document's text: its parts become the blocks of ``html``.
+
+        A work item whose macro is new in the text enters the document; one
+        whose macro left the text goes to the document's Recycle Bin.
+        Raises ``ValueError`` (nothing changed) for a macro naming an unknown
+        work item.
+        """
+        project_id = document_id.split("/", 1)[0]
+        parts = split_body(html or "", project_id)
+        for part in parts:
+            if part["workitem_id"] and part["workitem_id"] not in self.workitems:
+                raise ValueError(
+                    f"the document text references work item {part['workitem_id']}, "
+                    "which does not exist"
+                )
+        kept = {part["workitem_id"] for part in parts if part["workitem_id"]}
+        for old in self.document_parts.get(document_id, []):
+            workitem = self.workitems.get(old.get("workitem_id") or "")
+            if workitem is not None and workitem.id not in kept:
+                workitem._is_in_document = False
+                workitem._in_recycle_bin = True
+        stored = []
+        for position, part in enumerate(parts, start=1):
+            workitem = self.workitems.get(part["workitem_id"] or "")
+            if workitem is not None:
+                workitem._is_in_document = True
+                workitem._in_recycle_bin = False
+                workitem._document_position = position
+                if not part["external"]:
+                    workitem.relationships = {
+                        **(workitem.relationships or {}),
+                        "module": {"data": {"type": "documents", "id": document_id}},
+                    }
+            stored.append(make_part(part["id"], part["type"], part["content"],
+                                    part["workitem_id"], external=part["external"]))
+        self.document_parts[document_id] = stored
+
+    def document_resource(self, document: Document) -> Dict[str, Any]:
+        """A document as JSON:API resource, its text rendered from its parts."""
+        document.attributes.homePageContent = Description(
+            type="text/html", value=self.document_body(document.id)
+        )
+        return document.to_json_api()
 
     def get_parts(self, document_id: str, include_recycled: bool = False) -> List[Dict[str, Any]]:
         """Ordered, visible parts of a document.

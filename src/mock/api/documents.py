@@ -32,7 +32,7 @@ def get_document_by_id(document_id: str):
     if not document:
         raise NotFoundError("documents", document_id)
     
-    resource = absolutize_links(document.to_json_api(), base_url_of(request))
+    resource = absolutize_links(data_store.document_resource(document), base_url_of(request))
     response = response_builder.build_response(data=resource, links={"self": request.url})
     logger.info(f"Retrieved document: {document_id}")
     return jsonify(response)
@@ -123,7 +123,7 @@ def get_document(project_id: str, space_id: str, document_id: str):
         raise NotFoundError("documents", full_id)
     
     # Build response (absolute links like production)
-    resource = absolutize_links(document.to_json_api(), base_url_of(request))
+    resource = absolutize_links(data_store.document_resource(document), base_url_of(request))
     response = response_builder.build_response(data=resource, links={"self": request.url})
     
     logger.info(f"Retrieved document: {full_id}")
@@ -179,13 +179,17 @@ def create_documents(project_id: str, space_id: str):
         if document.id in data_store.documents:
             raise ConflictError(f"Document {document.id} already exists")
         
-        # Store document
+        # Store document; its text becomes its parts
         data_store.documents[document.id] = document
-        data_store.document_parts[document.id] = []
+        try:
+            data_store.set_document_body(document.id, (attributes.get('homePageContent') or {}).get('value'))
+        except ValueError as error:
+            del data_store.documents[document.id]
+            raise ValidationError(str(error), field="homePageContent")
         created_documents.append(document)
     
     # Build response
-    resources = [doc.to_json_api() for doc in created_documents]
+    resources = [data_store.document_resource(doc) for doc in created_documents]
     response = response_builder.build_response(data=resources)
     
     logger.info(f"Created {len(created_documents)} documents in {project_id}/{space_id}")
@@ -216,13 +220,19 @@ def update_document(project_id: str, space_id: str, document_id: str):
     # Update attributes
     if 'attributes' in doc_data:
         for key, value in doc_data['attributes'].items():
-            if hasattr(document.attributes, key):
+            if key == 'homePageContent':
+                # The text and the parts are one: writing the text rewrites the parts
+                try:
+                    data_store.set_document_body(full_id, (value or {}).get('value'))
+                except ValueError as error:
+                    raise ValidationError(str(error), field="homePageContent")
+            elif hasattr(document.attributes, key):
                 setattr(document.attributes, key, value)
         
         document.attributes.updated = datetime.utcnow()
     
     # Build response
-    response = response_builder.build_response(data=document.to_json_api())
+    response = response_builder.build_response(data=data_store.document_resource(document))
     
     logger.info(f"Updated document: {full_id}")
     return jsonify(response)

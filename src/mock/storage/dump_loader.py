@@ -137,7 +137,6 @@ def load_dump(store: "DataStore", dump: Dict[str, Any], source: str = "<memory>"
         title=document_name,
         type="generic",
         status="draft",
-        homePageContent={"type": "text/html", "value": ""},
     )
     document.relationships = {
         "project": {"data": {"type": "projects", "id": project_id}},

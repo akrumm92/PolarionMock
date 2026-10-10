@@ -77,7 +77,7 @@ def list_project_workitems(project_id: str):
             if wi.relationships and 'module' in wi.relationships:
                 module_id = wi.relationships['module']['data']['id']
                 if module_id in data_store.documents:
-                    included.append(absolutize_links(data_store.documents[module_id].to_json_api(), base_url))
+                    included.append(absolutize_links(data_store.document_resource(data_store.documents[module_id]), base_url))
     
     # Build response with proper pagination links
     base_url = request.base_url
@@ -182,7 +182,7 @@ def get_workitem(project_id: str, workitem_id: str):
         module_id = workitem.relationships['module'].get('data', {}).get('id')
         document = data_store.documents.get(module_id)
         if document is not None:
-            included.append(absolutize_links(document.to_json_api(), base_url))
+            included.append(absolutize_links(data_store.document_resource(document), base_url))
 
     # Build response (top-level self link like production)
     response = response_builder.build_response(

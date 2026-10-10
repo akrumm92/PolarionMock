@@ -31,7 +31,8 @@ from ..utils.parts import (
     apply_fields,
 )
 from ..middleware.auth import require_auth
-from ..middleware.error_handler import NotFoundError, ValidationError, ConflictError
+from ..middleware.error_handler import APIError, NotFoundError, ValidationError, ConflictError
+from ..storage.document_body import unnamed_blocks
 
 logger = logging.getLogger(__name__)
 
@@ -139,6 +140,15 @@ def get_document_parts(project_id: str, space_id: str, document_name: str):
     base_url = base_url_of(request)
 
     parts = data_store.get_parts(document_id)
+    unnamed = unnamed_blocks(parts)
+    if unnamed:
+        # Polarion cannot list the parts of a text holding a block without an id
+        position, content = unnamed[0]
+        raise APIError(
+            f"Document {document_id}: block {position} of the document text has no id, "
+            f"so it is no document part: {content[:120]}",
+            status_code=500,
+        )
     total_count = len(parts)
     page_size, page_number = parse_pagination(request.args)
     page_parts = paginate(parts, page_size, page_number)
