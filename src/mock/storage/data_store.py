@@ -67,6 +67,9 @@ class DataStore:
     # Document parts: document id -> ordered list of canonical part dicts
     document_parts: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)
 
+    # Work item comments: work item id -> comments, oldest first
+    comments: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)
+
     # Work item counter for auto-generated IDs
     _workitem_counter: Dict[str, int] = field(default_factory=dict)
 
@@ -89,6 +92,7 @@ class DataStore:
         self.collections.clear()
         self.users.clear()
         self.document_parts.clear()
+        self.comments.clear()
         self._workitem_counter.clear()
         self.dump_summaries.clear()
         self.seed_dummy_data()
@@ -505,6 +509,7 @@ class DataStore:
     def delete_workitem(self, workitem_id: str) -> None:
         """Delete a work item and take it out of every document."""
         self.remove_parts_for_workitem(workitem_id)
+        self.comments.pop(workitem_id, None)
         del self.workitems[workitem_id]
 
     def _add_workitem_to_document(self, document_id: str, workitem_id: str,
