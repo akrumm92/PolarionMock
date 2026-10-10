@@ -492,6 +492,16 @@ class DataStore:
             removed += before - len(parts)
         return removed
 
+    def backlinks_of(self, workitem_id: str) -> List[Dict[str, Any]]:
+        """The links stored on other work items that point to ``workitem_id``."""
+        found = []
+        for source in self.workitems.values():
+            for link in getattr(source, "linkedWorkItems", None) or []:
+                target = link.get("relationships", {}).get("workItem", {}).get("data", {})
+                if target.get("id") == workitem_id:
+                    found.append(link)
+        return found
+
     def delete_workitem(self, workitem_id: str) -> None:
         """Delete a work item and take it out of every document."""
         self.remove_parts_for_workitem(workitem_id)

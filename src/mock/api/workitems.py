@@ -12,7 +12,10 @@ from ..storage.data_store import data_store
 from ..utils.response_builder import JSONAPIResponseBuilder
 from ..middleware.auth import require_auth
 from ..middleware.error_handler import NotFoundError, ValidationError, ConflictError
-from ..utils.parts import absolutize_links, apply_fields, base_url_of, parse_fields
+from ..utils.parts import (
+    absolutize_links, apply_fields, base_url_of, paginate, pagination_links, parse_fields,
+    parse_pagination,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -21,6 +24,34 @@ bp = Blueprint('workitems', __name__)
 
 # Initialize response builder
 response_builder = JSONAPIResponseBuilder()
+
+
+def _with_backlinks(resource: Dict[str, Any], fields) -> Dict[str, Any]:
+    """Add the ``backlinkedWorkItems`` relationship (links stored on other
+    work items that point here) when the fieldset asks for it."""
+    if fields is not None and 'backlinkedWorkItems' not in fields:
+        return resource
+    backlinks = data_store.backlinks_of(resource['id'])
+    resource.setdefault('relationships', {})
+    resource['relationships'] = {
+        **resource['relationships'],
+        'backlinkedWorkItems': {
+            'data': [{'type': 'linkedworkitems', 'id': link['id']} for link in backlinks],
+            'meta': {'totalCount': len(backlinks)},
+        },
+    }
+    return resource
+
+
+def _link_resource(link: Dict[str, Any], project_id: str, workitem_id: str, base_url: str) -> Dict[str, Any]:
+    """A stored link as JSON:API resource with its absolute self link."""
+    role = link.get('attributes', {}).get('role')
+    target = link.get('relationships', {}).get('workItem', {}).get('data', {}).get('id', '')
+    return {
+        **link,
+        'links': {'self': f"{base_url}/polarion/rest/v1/projects/{project_id}/workitems/"
+                          f"{workitem_id}/linkedworkitems/{role}/{target}"},
+    }
 
 
 @bp.route('/projects/<project_id>/workitems', methods=['GET'])
@@ -65,7 +96,7 @@ def list_project_workitems(project_id: str):
     fields = parse_fields(request.args.get('fields[workitems]'))
     resources = []
     for wi in workitems_page:
-        resource = absolutize_links(wi.to_json_api(), base_url)
+        resource = _with_backlinks(absolutize_links(wi.to_json_api(), base_url), fields)
         if 'attributes' in resource:
             resource['attributes'] = apply_fields(resource['attributes'], fields)
         resources.append(resource)
@@ -170,6 +201,7 @@ def get_workitem(project_id: str, workitem_id: str):
 
     # Sparse fieldsets: fields[workitems]=id,title,type,... (@all/@basic = everything)
     fields = parse_fields(request.args.get('fields[workitems]'))
+    resource = _with_backlinks(resource, fields)
     if 'attributes' in resource:
         resource['attributes'] = apply_fields(resource['attributes'], fields)
         if not resource['attributes']:
@@ -391,16 +423,19 @@ def list_linked_workitems(project_id: str, workitem_id: str):
     if not workitem:
         raise NotFoundError("workitems", full_id)
     
-    # Get linked work items
-    linked_items = []
-    if hasattr(workitem, 'linkedWorkItems'):
-        linked_items = workitem.linkedWorkItems
-    
+    links = getattr(workitem, 'linkedWorkItems', None) or []
+    page_size, page_number = parse_pagination(request.args)
+    base_url = base_url_of(request)
+    fields = parse_fields(request.args.get('fields[linkedworkitems]'))
+    data = []
+    for link in paginate(links, page_size, page_number):
+        resource = _link_resource(link, project_id, workitem_id, base_url)
+        resource['attributes'] = apply_fields(resource.get('attributes', {}), fields)
+        data.append(resource)
     return jsonify({
-        'data': linked_items,
-        'links': {
-            'self': request.url
-        }
+        'links': pagination_links(request, page_number, page_size, len(links)),
+        'data': data,
+        'meta': {'totalCount': len(links)},
     })
 
 
@@ -445,9 +480,10 @@ def create_linked_workitem(project_id: str, workitem_id: str):
             workitem.linkedWorkItems = []
         
         # Check if link already exists
-        existing_link = next((l for l in workitem.linkedWorkItems 
-                             if l.get('role') == role and 
-                             l.get('workItem', {}).get('id') == target_id), None)
+        existing_link = next((l for l in workitem.linkedWorkItems
+                             if l.get('attributes', {}).get('role') == role and
+                             l.get('relationships', {}).get('workItem', {}).get('data', {}).get('id') == target_id),
+                             None)
         
         if existing_link:
             raise ConflictError(f"Link with role '{role}' to {target_id} already exists")
@@ -484,7 +520,44 @@ def create_linked_workitem(project_id: str, workitem_id: str):
         
         logger.info(f"Created link: {full_id} --[{role}]--> {target_id}")
     
-    return jsonify({'data': created_links}), 201
+    base_url = base_url_of(request)
+    return jsonify({'data': [
+        {'type': link['type'], 'id': link['id'],
+         'links': _link_resource(link, project_id, workitem_id, base_url)['links']}
+        for link in created_links
+    ]}), 201
+
+
+@bp.route('/projects/<project_id>/workitems/<workitem_id>/linkedworkitems', methods=['DELETE'])
+@require_auth
+def delete_linked_workitems(project_id: str, workitem_id: str):
+    """Delete a list of links stored on this work item.
+
+    Body: ``{"data": [{"type": "linkedworkitems", "id": "P/WI/role/P/TARGET"}]}``.
+    Every id is checked before anything is deleted.
+    """
+    full_id = f"{project_id}/{workitem_id}"
+    workitem = data_store.workitems.get(full_id)
+    if not workitem:
+        raise NotFoundError("workitems", full_id)
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict) or not isinstance(data.get('data'), list) or not data['data']:
+        raise ValidationError("Request must contain a non-empty 'data' array")
+    stored = {link['id'] for link in getattr(workitem, 'linkedWorkItems', None) or []}
+    doomed = set()
+    for item in data['data']:
+        if not isinstance(item, dict) or item.get('type') != 'linkedworkitems':
+            raise ValidationError("Resource type must be 'linkedworkitems'")
+        if item.get('id') not in stored:
+            raise NotFoundError("linkedworkitems", str(item.get('id')))
+        doomed.add(item['id'])
+    workitem.linkedWorkItems = [l for l in workitem.linkedWorkItems if l['id'] not in doomed]
+    for link_id in doomed:
+        if link_id.split('/')[2] == 'parent':
+            workitem._parent_workitem_id = None
+            (workitem.relationships or {}).pop('parent', None)
+    logger.info(f"Deleted links of {full_id}: {', '.join(sorted(doomed))}")
+    return '', 204
 
 
 @bp.route('/projects/<project_id>/workitems/<workitem_id>/linkedworkitems/<role>/<path:target_id>', methods=['DELETE'])
