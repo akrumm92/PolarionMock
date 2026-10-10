@@ -18,6 +18,7 @@ POST /parts, moveToDocument) stores the same thing and every consumer reads
 the same thing.
 """
 
+import re
 from typing import Dict, List, Optional, Any
 from datetime import datetime
 from dataclasses import dataclass, field
@@ -28,8 +29,14 @@ from ..models.workitem import WorkItem
 from ..models.document import Document
 from ..models.collection import Collection
 from ..models.user import User
+from ..models.common import Description
+from .document_body import render_body, split_body
 
 logger = logging.getLogger(__name__)
+
+# Lucene ``id:`` clause of a work item query and the ids it names
+_ID_CLAUSE = re.compile(r'(?<![\w.])id:(\([^)]*\)|"[^"]*"|[^\s()]+)')
+_ID_VALUE = re.compile(r'[^\s()"]+')
 
 
 def make_part(part_id: str, part_type: str, content: str = "",
@@ -60,6 +67,9 @@ class DataStore:
     # Document parts: document id -> ordered list of canonical part dicts
     document_parts: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)
 
+    # Work item comments: work item id -> comments, oldest first
+    comments: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)
+
     # Work item counter for auto-generated IDs
     _workitem_counter: Dict[str, int] = field(default_factory=dict)
 
@@ -82,6 +92,7 @@ class DataStore:
         self.collections.clear()
         self.users.clear()
         self.document_parts.clear()
+        self.comments.clear()
         self._workitem_counter.clear()
         self.dump_summaries.clear()
         self.seed_dummy_data()
@@ -218,15 +229,12 @@ class DataStore:
                 space_id=space_id,
                 document_id=doc_id,
                 title=title,
-                homePageContent={
-                    "type": "text/html",
-                    "value": f"<h1>{title}</h1><p>{description}</p>"
-                }
             )
             self.documents[doc.id] = doc
-
-            # Initialize empty document parts
-            self.document_parts[doc.id] = []
+            self.set_document_body(
+                doc.id,
+                f'<h1 id="polarion_1">{title}</h1><p id="polarion_2">{description}</p>',
+            )
 
     def _create_dummy_workitems(self):
         """Create dummy work items with various types and states.
@@ -407,6 +415,55 @@ class DataStore:
             parts.insert(max(position - 1, 0), part)
         return part
 
+    def document_body(self, document_id: str) -> str:
+        """The document's text (``homePageContent``), made of its visible parts."""
+        return render_body([part["content"] for part in self.get_parts(document_id)])
+
+    def set_document_body(self, document_id: str, html: Optional[str]) -> None:
+        """Write the document's text: its parts become the blocks of ``html``.
+
+        A work item whose macro is new in the text enters the document; one
+        whose macro left the text goes to the document's Recycle Bin.
+        Raises ``ValueError`` (nothing changed) for a macro naming an unknown
+        work item.
+        """
+        project_id = document_id.split("/", 1)[0]
+        parts = split_body(html or "", project_id)
+        for part in parts:
+            if part["workitem_id"] and part["workitem_id"] not in self.workitems:
+                raise ValueError(
+                    f"the document text references work item {part['workitem_id']}, "
+                    "which does not exist"
+                )
+        kept = {part["workitem_id"] for part in parts if part["workitem_id"]}
+        for old in self.document_parts.get(document_id, []):
+            workitem = self.workitems.get(old.get("workitem_id") or "")
+            if workitem is not None and workitem.id not in kept:
+                workitem._is_in_document = False
+                workitem._in_recycle_bin = True
+        stored = []
+        for position, part in enumerate(parts, start=1):
+            workitem = self.workitems.get(part["workitem_id"] or "")
+            if workitem is not None:
+                workitem._is_in_document = True
+                workitem._in_recycle_bin = False
+                workitem._document_position = position
+                if not part["external"]:
+                    workitem.relationships = {
+                        **(workitem.relationships or {}),
+                        "module": {"data": {"type": "documents", "id": document_id}},
+                    }
+            stored.append(make_part(part["id"], part["type"], part["content"],
+                                    part["workitem_id"], external=part["external"]))
+        self.document_parts[document_id] = stored
+
+    def document_resource(self, document: Document) -> Dict[str, Any]:
+        """A document as JSON:API resource, its text rendered from its parts."""
+        document.attributes.homePageContent = Description(
+            type="text/html", value=self.document_body(document.id)
+        )
+        return document.to_json_api()
+
     def get_parts(self, document_id: str, include_recycled: bool = False) -> List[Dict[str, Any]]:
         """Ordered, visible parts of a document.
 
@@ -438,6 +495,22 @@ class DataStore:
             parts[:] = [p for p in parts if p.get("workitem_id") != workitem_id]
             removed += before - len(parts)
         return removed
+
+    def backlinks_of(self, workitem_id: str) -> List[Dict[str, Any]]:
+        """The links stored on other work items that point to ``workitem_id``."""
+        found = []
+        for source in self.workitems.values():
+            for link in getattr(source, "linkedWorkItems", None) or []:
+                target = link.get("relationships", {}).get("workItem", {}).get("data", {})
+                if target.get("id") == workitem_id:
+                    found.append(link)
+        return found
+
+    def delete_workitem(self, workitem_id: str) -> None:
+        """Delete a work item and take it out of every document."""
+        self.remove_parts_for_workitem(workitem_id)
+        self.comments.pop(workitem_id, None)
+        del self.workitems[workitem_id]
 
     def _add_workitem_to_document(self, document_id: str, workitem_id: str,
                                   position: Optional[int] = None) -> Dict[str, Any]:
@@ -497,6 +570,16 @@ class DataStore:
         # Filter by project
         if project_id:
             results = [wi for wi in results if wi.id.startswith(f"{project_id}/")]
+
+        # id:X / id:(X Y ...) / id:"PROJ/X" - by work item id, with or without project
+        if query:
+            id_clause = _ID_CLAUSE.search(query)
+            if id_clause:
+                wanted = set(_ID_VALUE.findall(id_clause.group(1))) - {"OR"}
+                results = [wi for wi in results
+                           if wi.id in wanted or wi.id.split("/", 1)[-1] in wanted]
+                query = (query[:id_clause.start()] + query[id_clause.end():]).strip()
+                query = re.sub(r"^(AND\s+)+|(\s+AND)+$", "", query).strip()
 
         # Simple query parsing (real implementation would be more complex)
         if query:
