@@ -487,6 +487,11 @@ class DataStore:
             removed += before - len(parts)
         return removed
 
+    def delete_workitem(self, workitem_id: str) -> None:
+        """Delete a work item and take it out of every document."""
+        self.remove_parts_for_workitem(workitem_id)
+        del self.workitems[workitem_id]
+
     def _add_workitem_to_document(self, document_id: str, workitem_id: str,
                                   position: Optional[int] = None) -> Dict[str, Any]:
         """Add a work item to a document (creates the part, marks it visible)."""

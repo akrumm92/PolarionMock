@@ -329,20 +329,52 @@ def update_workitem(project_id: str, workitem_id: str):
     return '', 204
 
 
+@bp.route('/projects/<project_id>/workitems', methods=['DELETE'])
+@require_auth
+def delete_workitems(project_id: str):
+    """Delete a list of work items (Polarion REST v1: the only work item delete).
+
+    Body: ``{"data": [{"type": "workitems", "id": "PROJ/PROJ-1"}, ...]}``.
+    Every id is checked before anything is deleted; a deleted work item also
+    leaves every document it was part of.
+    """
+    if not data_store.projects.get_by_id(project_id):
+        raise NotFoundError("projects", project_id)
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict) or not isinstance(data.get('data'), list) or not data['data']:
+        raise ValidationError("Request must contain a non-empty 'data' array")
+    full_ids = []
+    for item in data['data']:
+        if not isinstance(item, dict) or item.get('type') != 'workitems':
+            raise ValidationError("Resource type must be 'workitems'")
+        full_id = str(item.get('id') or '')
+        if not full_id.startswith(f"{project_id}/"):
+            raise ValidationError(f"Work item id '{full_id}' is not an id of project {project_id}")
+        if full_id not in data_store.workitems:
+            raise NotFoundError("workitems", full_id)
+        full_ids.append(full_id)
+    for full_id in full_ids:
+        data_store.delete_workitem(full_id)
+    logger.info(f"Deleted work items: {', '.join(full_ids)}")
+    return '', 204
+
+
 @bp.route('/projects/<project_id>/workitems/<workitem_id>', methods=['DELETE'])
 @require_auth
 def delete_workitem(project_id: str, workitem_id: str):
-    """Delete a work item."""
+    """Delete one work item.
+
+    Not part of Polarion REST v1 (it deletes through the list endpoint
+    above); kept because this repository's client
+    (``src/polarion_api/work_items.py`` ``delete_work_item``) and its tests
+    clean up with it.
+    """
     full_id = f"{project_id}/{workitem_id}"
     
     if full_id not in data_store.workitems:
         raise NotFoundError("workitems", full_id)
     
-    # Remove from document parts (canonical part dicts)
-    data_store.remove_parts_for_workitem(full_id)
-    
-    # Delete work item
-    del data_store.workitems[full_id]
+    data_store.delete_workitem(full_id)
     
     logger.info(f"Deleted work item: {full_id}")
     return '', 204
