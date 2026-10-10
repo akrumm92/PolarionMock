@@ -18,6 +18,7 @@ POST /parts, moveToDocument) stores the same thing and every consumer reads
 the same thing.
 """
 
+import re
 from typing import Dict, List, Optional, Any
 from datetime import datetime
 from dataclasses import dataclass, field
@@ -32,6 +33,10 @@ from ..models.common import Description
 from .document_body import render_body, split_body
 
 logger = logging.getLogger(__name__)
+
+# Lucene ``id:`` clause of a work item query and the ids it names
+_ID_CLAUSE = re.compile(r'(?<![\w.])id:(\([^)]*\)|"[^"]*"|[^\s()]+)')
+_ID_VALUE = re.compile(r'[^\s()"]+')
 
 
 def make_part(part_id: str, part_type: str, content: str = "",
@@ -550,6 +555,16 @@ class DataStore:
         # Filter by project
         if project_id:
             results = [wi for wi in results if wi.id.startswith(f"{project_id}/")]
+
+        # id:X / id:(X Y ...) / id:"PROJ/X" - by work item id, with or without project
+        if query:
+            id_clause = _ID_CLAUSE.search(query)
+            if id_clause:
+                wanted = set(_ID_VALUE.findall(id_clause.group(1))) - {"OR"}
+                results = [wi for wi in results
+                           if wi.id in wanted or wi.id.split("/", 1)[-1] in wanted]
+                query = (query[:id_clause.start()] + query[id_clause.end():]).strip()
+                query = re.sub(r"^(AND\s+)+|(\s+AND)+$", "", query).strip()
 
         # Simple query parsing (real implementation would be more complex)
         if query:
