@@ -177,7 +177,24 @@ def seed_attachments(store: "DataStore") -> None:
             ]
 
 
+def seed_collections(store: "DataStore") -> None:
+    """A collection of each dumped project's documents."""
+    from ..models.collection import Collection  # local import: avoids a cycle
+
+    for project_id, documents in dumped_documents(store).items():
+        collection = Collection.create_mock(
+            project_id=project_id,
+            collection_id="baseline_1",
+            name="Baseline 1",
+            description="Demo collection of the project's documents",
+        )
+        data = [{"type": "documents", "id": d} for d in documents]
+        collection.relationships = {"documents": {"data": data}}
+        store.collections[collection.id] = collection
+
+
 def seed_demo_data(store: "DataStore") -> None:
     seed_plans(store)
     seed_testing(store)
     seed_attachments(store)
+    seed_collections(store)
