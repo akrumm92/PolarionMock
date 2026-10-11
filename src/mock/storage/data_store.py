@@ -76,6 +76,9 @@ class DataStore:
     # Summaries of the Polarion dumps loaded from disk (see dump_loader)
     dump_summaries: List[Dict[str, Any]] = field(default_factory=list)
 
+    # Read-only demo data the dumps do not carry (see demo_seed)
+    plans: Dict[str, Dict[str, Any]] = field(default_factory=dict)
+
     def __post_init__(self):
         """Initialize with dummy data."""
         self.seed_dummy_data()
@@ -95,6 +98,7 @@ class DataStore:
         self.comments.clear()
         self._workitem_counter.clear()
         self.dump_summaries.clear()
+        self.plans.clear()
         self.seed_dummy_data()
 
     def seed_dummy_data(self):
@@ -139,6 +143,10 @@ class DataStore:
 
         # Load real Polarion document dumps (exports of the fetch script)
         self._load_dumps()
+
+        # Plans, test runs, ... for the dumped projects
+        from .demo_seed import seed_demo_data  # local import: avoids a cycle
+        seed_demo_data(self)
 
         logger.info("Data store seeding completed")
 
