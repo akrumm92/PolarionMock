@@ -28,6 +28,7 @@ from .middleware.error_handler import error_handler, ValidationError, NotFoundEr
 from .middleware.headers import validate_headers_middleware
 from .middleware.response_padding import pad_response_middleware
 from .api import projects, workitems, documents, collections, enumerations, document_parts, mock_admin, comments
+from .api import users
 from .utils.response_builder import JSONAPIResponseBuilder
 
 # Load environment variables
@@ -91,6 +92,7 @@ def create_app(config: Dict[str, Any] = None) -> Flask:
     app.register_blueprint(documents.bp, url_prefix='/polarion/rest/v1')
     app.register_blueprint(collections.bp, url_prefix='/polarion/rest/v1')
     app.register_blueprint(enumerations.bp, url_prefix='/polarion/rest/v1')
+    app.register_blueprint(users.bp, url_prefix='/polarion/rest/v1')
     # Mock-only administration (outside the Polarion namespace)
     app.register_blueprint(mock_admin.bp)
 

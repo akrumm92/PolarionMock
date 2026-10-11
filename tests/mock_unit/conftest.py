@@ -154,3 +154,15 @@ def replay_fetch(client, headers) -> dict:
             ),
         })
     return {"parts": parts, "workitems": workitems, "reported": reported, "pages": pages}
+
+
+def assert_matches_schema(schema_name: str, instance: dict) -> None:
+    """Validate ``instance`` against ``#/components/schemas/<schema_name>``."""
+    import jsonschema
+    with open(OPENAPI_SPEC, encoding="utf-8") as handle:
+        spec = json.load(handle)
+    schema = {"$ref": f"#/components/schemas/{schema_name}"}
+    validator = jsonschema.Draft7Validator(
+        schema, resolver=jsonschema.RefResolver.from_schema(spec))
+    errors = sorted(validator.iter_errors(instance), key=lambda e: list(e.path))
+    assert not errors, "\n".join(f"{list(e.path)}: {e.message}" for e in errors[:10])
