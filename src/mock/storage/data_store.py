@@ -82,6 +82,8 @@ class DataStore:
     # test run id -> records; work item id -> steps (column id -> text)
     test_records: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)
     test_steps: Dict[str, List[Dict[str, str]]] = field(default_factory=dict)
+    # demo_seed.attachment_key(kind, owner id) -> attachments
+    attachments: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)
 
     def __post_init__(self):
         """Initialize with dummy data."""
@@ -106,6 +108,7 @@ class DataStore:
         self.testruns.clear()
         self.test_records.clear()
         self.test_steps.clear()
+        self.attachments.clear()
         self.seed_dummy_data()
 
     def seed_dummy_data(self):

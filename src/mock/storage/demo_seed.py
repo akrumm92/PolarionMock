@@ -144,6 +144,40 @@ def seed_testing(store: "DataStore") -> None:
             ]
 
 
+def attachment_key(kind: str, owner_id: str) -> str:
+    """Key of an owner's attachments: ``workitem``/``document``/``testrun``."""
+    return f"{kind}:{owner_id}"
+
+
+def _attachment(file_name: str, text: str) -> Dict:
+    return {
+        "id": f"1-{file_name}",
+        "fileName": file_name,
+        "title": file_name,
+        "content": text.encode("utf-8"),
+    }
+
+
+def seed_attachments(store: "DataStore") -> None:
+    """A generic text attachment on each dumped document, on its first work
+    item that is not a heading and on the project's TestRun_1."""
+    for project_id, documents in dumped_documents(store).items():
+        owners = []
+        for document_id in documents:
+            owners.append(("document", document_id))
+            items = document_items(store, document_id)
+            if items:
+                owners.append(("workitem", items[0]))
+        if f"{project_id}/TestRun_1" in store.testruns:
+            owners.append(("testrun", f"{project_id}/TestRun_1"))
+        for kind, owner_id in owners:
+            text = f"Demo attachment of {kind} {owner_id}.\n"
+            store.attachments[attachment_key(kind, owner_id)] = [
+                _attachment("notes.txt", text)
+            ]
+
+
 def seed_demo_data(store: "DataStore") -> None:
     seed_plans(store)
     seed_testing(store)
+    seed_attachments(store)
