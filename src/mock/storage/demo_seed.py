@@ -83,5 +83,67 @@ def seed_plans(store: "DataStore") -> None:
             store.plans[f"{project_id}/{plan['id']}"] = plan
 
 
+def _test_cases(store: "DataStore", project_id: str) -> List[str]:
+    return [
+        workitem.id
+        for workitem in store.workitems.values()
+        if workitem.id.startswith(f"{project_id}/")
+        and workitem.attributes.type == "testcase"
+    ]
+
+
+def _test_run(project_id: str, run_id: str, title: str, **values) -> Dict:
+    return {
+        "project": project_id,
+        "id": run_id,
+        "title": title,
+        "isTemplate": values.get("isTemplate", False),
+        "status": values.get("status"),
+        "type": values.get("type", "manual"),
+        "selectTestCasesBy": values.get("selectTestCasesBy", "manualSelection"),
+        "document": values.get("document"),
+        "template": values.get("template"),
+    }
+
+
+def seed_testing(store: "DataStore") -> None:
+    """A Manual Test template and one run per dumped project or project with
+    test cases; the run records a pass for each test case, every test case
+    gets two generic steps."""
+    projects = dumped_documents(store)
+    for workitem in store.workitems.values():
+        if workitem.attributes.type == "testcase":
+            projects.setdefault(workitem.id.split("/", 1)[0], [])
+    for project_id, documents in projects.items():
+        title = f"Test of {documents[0].rsplit('/', 1)[1]}" if documents else "Test"
+        runs = [
+            _test_run(project_id, "manual", "Manual Test", isTemplate=True),
+            _test_run(
+                project_id,
+                "TestRun_1",
+                title,
+                status="open",
+                template="manual",
+                document=documents[0] if documents else None,
+                selectTestCasesBy="staticLiveDoc" if documents else "manualSelection",
+            ),
+        ]
+        for run in runs:
+            store.testruns[f"{project_id}/{run['id']}"] = run
+        cases = _test_cases(store, project_id)
+        store.test_records[f"{project_id}/TestRun_1"] = [
+            {"testCase": case, "iteration": 0, "result": "passed"} for case in cases
+        ]
+        for case in cases:
+            store.test_steps[case] = [
+                {"step": "Prepare the test setup.", "expectedResult": "Setup ready."},
+                {
+                    "step": "Execute the test case.",
+                    "expectedResult": "The system behaves as specified.",
+                },
+            ]
+
+
 def seed_demo_data(store: "DataStore") -> None:
     seed_plans(store)
+    seed_testing(store)

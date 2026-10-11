@@ -78,6 +78,10 @@ class DataStore:
 
     # Read-only demo data the dumps do not carry (see demo_seed)
     plans: Dict[str, Dict[str, Any]] = field(default_factory=dict)
+    testruns: Dict[str, Dict[str, Any]] = field(default_factory=dict)
+    # test run id -> records; work item id -> steps (column id -> text)
+    test_records: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)
+    test_steps: Dict[str, List[Dict[str, str]]] = field(default_factory=dict)
 
     def __post_init__(self):
         """Initialize with dummy data."""
@@ -99,6 +103,9 @@ class DataStore:
         self._workitem_counter.clear()
         self.dump_summaries.clear()
         self.plans.clear()
+        self.testruns.clear()
+        self.test_records.clear()
+        self.test_steps.clear()
         self.seed_dummy_data()
 
     def seed_dummy_data(self):
